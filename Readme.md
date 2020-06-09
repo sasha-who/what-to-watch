@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Саша Смыгина](https://up.htmlacademy.ru/react/4/user/277207).
-* Наставник: `Неизвестно`.
+* Наставник: [Игорь Антонов](https://up.htmlacademy.ru/react/4/user/3162).
 
 ---
 
