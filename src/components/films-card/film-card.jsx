@@ -1,6 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-// eslint-disable-next-line react/prop-types
 const FilmCard = ({title}) => {
   return (
     <article className="small-movie-card catalog__movies-card">
@@ -12,6 +12,10 @@ const FilmCard = ({title}) => {
       </h3>
     </article>
   );
+};
+
+FilmCard.propTypes = {
+  title: PropTypes.string.isRequired
 };
 
 export default FilmCard;
