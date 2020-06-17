@@ -33,14 +33,12 @@ const filmTitles = [
   `Midnight Special`
 ];
 
-(() => {
-  ReactDOM.render(
-      <App
-        title={PromoFilmData.TITLE}
-        genre={PromoFilmData.GENRE}
-        date={PromoFilmData.DATE}
-        filmTitles={filmTitles}
-      />,
-      rootElement
-  );
-})();
+ReactDOM.render(
+    <App
+      title={PromoFilmData.TITLE}
+      genre={PromoFilmData.GENRE}
+      date={PromoFilmData.DATE}
+      filmTitles={filmTitles}
+    />,
+    rootElement
+);
