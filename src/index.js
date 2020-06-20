@@ -33,12 +33,15 @@ const filmTitles = [
   `Midnight Special`
 ];
 
+const onTitleClick = () => {};
+
 ReactDOM.render(
     <App
       title={PromoFilmData.TITLE}
       genre={PromoFilmData.GENRE}
       date={PromoFilmData.DATE}
       filmTitles={filmTitles}
+      onTitleClick={onTitleClick}
     />,
     rootElement
 );

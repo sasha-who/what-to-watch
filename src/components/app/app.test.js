@@ -11,6 +11,7 @@ it(`App should render correctly`, () => {
           genre={PromoFilmData.GENRE}
           date={PromoFilmData.DATE}
           filmTitles={filmTitles}
+          onTitleClick={() => {}}
         />
     )
     .toJSON();

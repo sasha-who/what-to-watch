@@ -19,6 +19,7 @@ exports[`FilmCard should render correctly 1`] = `
     <a
       className="small-movie-card__link"
       href="movie-page.html"
+      onClick={[Function]}
     />
   </h3>
 </article>

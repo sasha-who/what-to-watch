@@ -10,6 +10,7 @@ it(`FilmCard should render correctly`, () => {
     .create(
         <FilmCard
           title={title}
+          onTitleClick={() => {}}
         />
     )
     .toJSON();

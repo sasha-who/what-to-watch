@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import FilmCard from "../films-card/film-card.jsx";
 
-const Main = ({title, genre, date, filmTitles}) => {
+const Main = ({title, genre, date, filmTitles, onTitleClick}) => {
   return (
     <div>
       <section className="movie-card">
@@ -117,7 +117,15 @@ const Main = ({title, genre, date, filmTitles}) => {
             </li>
           </ul>
           <div className="catalog__movies-list">
-            {filmTitles.map((item, i) => <FilmCard title={item} key={item + i} />)}
+            {filmTitles.map((item, i) => {
+              return (
+                <FilmCard
+                  title={item}
+                  onTitleClick={onTitleClick}
+                  key={item + i}
+                />
+              );
+            })}
           </div>
           <div className="catalog__more">
             <button className="catalog__button" type="button">
@@ -146,7 +154,8 @@ Main.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  filmTitles: PropTypes.arrayOf(PropTypes.string).isRequired
+  filmTitles: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onTitleClick: PropTypes.func.isRequired
 };
 
 export default Main;
