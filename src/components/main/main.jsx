@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import FilmCard from "../films-card/film-card.jsx";
 
-const Main = ({title, genre, date, filmTitles, onTitleClick}) => (
+const Main = ({title, genre, date, films, onTitleClick, onCardHover}) => (
   <div>
     <section className="movie-card">
       <div className="movie-card__bg">
@@ -116,12 +116,13 @@ const Main = ({title, genre, date, filmTitles, onTitleClick}) => (
           </li>
         </ul>
         <div className="catalog__movies-list">
-          {filmTitles.map((item, i) => {
+          {films.map((film, i) => {
             return (
               <FilmCard
-                title={item}
+                film={film}
                 onTitleClick={onTitleClick}
-                key={item + i}
+                onCardHover={onCardHover}
+                key={film + i}
               />
             );
           })}
@@ -152,8 +153,14 @@ Main.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  filmTitles: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onTitleClick: PropTypes.func.isRequired
+  films: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        cover: PropTypes.string.isRequired
+      })
+  ).isRequired,
+  onTitleClick: PropTypes.func.isRequired,
+  onCardHover: PropTypes.func.isRequired
 };
 
 export default Main;

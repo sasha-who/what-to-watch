@@ -1,16 +1,17 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {filmTitles} from "../../test-mocks.js";
+import {films} from "../../test-mocks.js";
 import FilmCard from "./film-card.jsx";
 
-const {title} = filmTitles;
+const [film] = films;
 
 it(`FilmCard should render correctly`, () => {
   const tree = renderer
     .create(
         <FilmCard
-          title={title}
+          film={film}
           onTitleClick={() => {}}
+          onCardHover={() => {}}
         />
     )
     .toJSON();
