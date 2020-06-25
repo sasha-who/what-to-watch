@@ -12,7 +12,6 @@ it(`App should render correctly`, () => {
           date={PromoFilmData.DATE}
           films={films}
           onTitleClick={() => {}}
-          onCardHover={() => {}}
         />
     )
     .toJSON();

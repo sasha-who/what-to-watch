@@ -9,7 +9,6 @@ it(`FilmsList should render correctly`, () => {
         <FilmsList
           films={films}
           onTitleClick={() => {}}
-          onCardHover={() => {}}
         />
     )
     .toJSON();

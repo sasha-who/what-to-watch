@@ -2,14 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 
-const App = ({title, genre, date, films, onTitleClick, onCardHover}) => (
+const App = ({title, genre, date, films, onTitleClick}) => (
   <Main
     title={title}
     genre={genre}
     date={date}
     films={films}
     onTitleClick={onTitleClick}
-    onCardHover={onCardHover}
   />
 );
 
@@ -23,8 +22,7 @@ App.propTypes = {
         cover: PropTypes.string.isRequired
       })
   ).isRequired,
-  onTitleClick: PropTypes.func.isRequired,
-  onCardHover: PropTypes.func.isRequired
+  onTitleClick: PropTypes.func.isRequired
 };
 
 export default App;

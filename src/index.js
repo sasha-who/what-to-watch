@@ -12,7 +12,6 @@ const PromoFilmData = {
 };
 
 const onTitleClick = () => {};
-const onCardHover = () => {};
 
 ReactDOM.render(
     <App
@@ -21,7 +20,6 @@ ReactDOM.render(
       date={PromoFilmData.DATE}
       films={films}
       onTitleClick={onTitleClick}
-      onCardHover={onCardHover}
     />,
     rootElement
 );

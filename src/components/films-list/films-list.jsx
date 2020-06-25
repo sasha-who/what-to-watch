@@ -5,10 +5,16 @@ import FilmCard from "../films-card/film-card.jsx";
 class FilmsList extends React.PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      activeCard: null
+    };
+
+    this._handlerCardHover = this._handlerCardHover.bind(this);
   }
 
   render() {
-    const {films, onTitleClick, onCardHover} = this.props;
+    const {films, onTitleClick} = this.props;
 
     return (
       <div className="catalog__movies-list">
@@ -17,13 +23,19 @@ class FilmsList extends React.PureComponent {
             <FilmCard
               film={film}
               onTitleClick={onTitleClick}
-              onCardHover={onCardHover}
+              onCardHover={this._handlerCardHover}
               key={film + i}
             />
           );
         })}
       </div>
     );
+  }
+
+  _handlerCardHover(film, activeCard) {
+    this.setState({
+      activeCard
+    });
   }
 }
 
@@ -35,7 +47,6 @@ FilmsList.propTypes = {
       })
   ).isRequired,
   onTitleClick: PropTypes.func.isRequired,
-  onCardHover: PropTypes.func.isRequired
 };
 
 export default FilmsList;

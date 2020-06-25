@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import FilmsList from "../films-list/films-list.jsx";
 
-const Main = ({title, genre, date, films, onTitleClick, onCardHover}) => (
+const Main = ({title, genre, date, films, onTitleClick}) => (
   <div>
     <section className="movie-card">
       <div className="movie-card__bg">
@@ -118,7 +118,6 @@ const Main = ({title, genre, date, films, onTitleClick, onCardHover}) => (
         <FilmsList
           films={films}
           onTitleClick={onTitleClick}
-          onCardHover={onCardHover}
         />
         <div className="catalog__more">
           <button className="catalog__button" type="button">
@@ -152,8 +151,7 @@ Main.propTypes = {
         cover: PropTypes.string.isRequired
       })
   ).isRequired,
-  onTitleClick: PropTypes.func.isRequired,
-  onCardHover: PropTypes.func.isRequired
+  onTitleClick: PropTypes.func.isRequired
 };
 
 export default Main;

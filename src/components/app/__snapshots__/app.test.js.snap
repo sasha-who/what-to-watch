@@ -259,6 +259,7 @@ exports[`App should render correctly 1`] = `
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -277,7 +278,6 @@ exports[`App should render correctly 1`] = `
               className="small-movie-card__link"
               href="movie-page.html"
               onClick={[Function]}
-              onMouseEnter={[Function]}
             >
               Fantastic Beasts: The Crimes of Grindelwald
             </a>
@@ -285,6 +285,7 @@ exports[`App should render correctly 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -303,7 +304,6 @@ exports[`App should render correctly 1`] = `
               className="small-movie-card__link"
               href="movie-page.html"
               onClick={[Function]}
-              onMouseEnter={[Function]}
             >
               Bohemian Rhapsody
             </a>
@@ -311,6 +311,7 @@ exports[`App should render correctly 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -329,7 +330,6 @@ exports[`App should render correctly 1`] = `
               className="small-movie-card__link"
               href="movie-page.html"
               onClick={[Function]}
-              onMouseEnter={[Function]}
             >
               Macbeth
             </a>
@@ -337,6 +337,7 @@ exports[`App should render correctly 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -355,7 +356,6 @@ exports[`App should render correctly 1`] = `
               className="small-movie-card__link"
               href="movie-page.html"
               onClick={[Function]}
-              onMouseEnter={[Function]}
             >
               Aviator
             </a>
@@ -363,6 +363,7 @@ exports[`App should render correctly 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -381,7 +382,6 @@ exports[`App should render correctly 1`] = `
               className="small-movie-card__link"
               href="movie-page.html"
               onClick={[Function]}
-              onMouseEnter={[Function]}
             >
               We need to talk about Kevin
             </a>
@@ -389,6 +389,7 @@ exports[`App should render correctly 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -407,7 +408,6 @@ exports[`App should render correctly 1`] = `
               className="small-movie-card__link"
               href="movie-page.html"
               onClick={[Function]}
-              onMouseEnter={[Function]}
             >
               What We Do in the Shadows
             </a>
@@ -415,6 +415,7 @@ exports[`App should render correctly 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -433,7 +434,6 @@ exports[`App should render correctly 1`] = `
               className="small-movie-card__link"
               href="movie-page.html"
               onClick={[Function]}
-              onMouseEnter={[Function]}
             >
               Revenant
             </a>
@@ -441,6 +441,7 @@ exports[`App should render correctly 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -459,7 +460,6 @@ exports[`App should render correctly 1`] = `
               className="small-movie-card__link"
               href="movie-page.html"
               onClick={[Function]}
-              onMouseEnter={[Function]}
             >
               Johnny English
             </a>
