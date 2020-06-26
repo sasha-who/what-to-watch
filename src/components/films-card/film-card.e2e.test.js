@@ -9,13 +9,8 @@ Enzyme.configure({
 });
 
 const [film] = films;
-const {title, cover} = film;
 const onTitleClick = jest.fn();
 const onCardHover = jest.fn();
-const filmData = {
-  title,
-  cover
-};
 
 it(`Click to title should be done`, () => {
   const filmCard = shallow(
@@ -44,5 +39,5 @@ it(`Film info should be pass in arguments`, () => {
 
   filmCard.simulate(`mouseenter`, {target: {}});
 
-  expect(onCardHover.mock.calls[0][0]).toMatchObject(filmData);
+  expect(onCardHover.mock.calls[0][0]).toMatchObject(film);
 });

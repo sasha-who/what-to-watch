@@ -1,3 +1,10 @@
+import {getRandomIntegerNumber} from "../utils/common.js";
+
+const IdRange = {
+  MIN: 1,
+  MAX: 2000
+};
+
 const TITLES = [
   `Fantastic Beasts: The Crimes of Grindelwald`,
   `Bohemian Rhapsody`,
@@ -23,6 +30,7 @@ const COVERS = [
 
 export const films = TITLES.map((title, index) => {
   return ({
+    id: getRandomIntegerNumber(IdRange.MIN, IdRange.MAX),
     title,
     cover: COVERS[index]
   });

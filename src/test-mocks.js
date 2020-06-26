@@ -1,7 +1,14 @@
+import {getRandomIntegerNumber} from "./utils/common.js";
+
 export const PromoFilmData = {
   TITLE: `The Grand Budapest Hotel`,
   GENRE: `Drama`,
   DATE: `2014`
+};
+
+const IdRange = {
+  MIN: 1,
+  MAX: 2000
 };
 
 const TITLES = [
@@ -29,6 +36,7 @@ const COVERS = [
 
 export const films = TITLES.map((title, index) => {
   return ({
+    id: getRandomIntegerNumber(IdRange.MIN, IdRange.MAX),
     title,
     cover: COVERS[index]
   });

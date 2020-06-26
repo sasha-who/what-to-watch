@@ -7,9 +7,7 @@ it(`App should render correctly`, () => {
   const tree = renderer
     .create(
         <App
-          title={PromoFilmData.TITLE}
-          genre={PromoFilmData.GENRE}
-          date={PromoFilmData.DATE}
+          promoFilmData={PromoFilmData}
           films={films}
           onTitleClick={() => {}}
         />
