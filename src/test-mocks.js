@@ -1,16 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./components/app/app.jsx";
-
-const rootElement = document.querySelector(`#root`);
-
-const PromoFilmData = {
+export const PromoFilmData = {
   TITLE: `The Grand Budapest Hotel`,
   GENRE: `Drama`,
   DATE: `2014`
 };
 
-const filmTitles = [
+export const filmTitles = [
   `Fantastic Beasts: The Crimes of Grindelwald`,
   `Bohemian Rhapsody`,
   `Macbeth`,
@@ -32,16 +26,3 @@ const filmTitles = [
   `Mindhunter`,
   `Midnight Special`
 ];
-
-const onTitleClick = () => {};
-
-ReactDOM.render(
-    <App
-      title={PromoFilmData.TITLE}
-      genre={PromoFilmData.GENRE}
-      date={PromoFilmData.DATE}
-      filmTitles={filmTitles}
-      onTitleClick={onTitleClick}
-    />,
-    rootElement
-);
