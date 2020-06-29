@@ -1,15 +1,21 @@
-import {getRandomIntegerNumber, getRandomArrayItem, getRandomArrayItems} from "./utils/common.js";
-
 export const PromoFilmData = {
-  TITLE: `The Grand Budapest Hotel`,
-  GENRE: `Drama`,
-  DATE: `2014`
+  title: `The Grand Budapest Hotel`,
+  genre: `Drama`,
+  date: `2014`
 };
 
-const IdRange = {
-  MIN: 1,
-  MAX: 2000
-};
+const GENRE = `drama`;
+const RELEASE = `2020`;
+const RATING = 9;
+const RATINGS_COUNT = 228;
+const DIRECTOR = `Otto Bathurst`;
+
+const DESCRRIPTION = `In the 1930s, the Grand Budapest Hotel is a popular European ski resort,
+presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's
+friend and protege. Gustave prides himself on providing first-class service to the hotel's guests,
+including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's
+lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief
+suspect in her murder.`;
 
 const TITLES = [
   `Fantastic Beasts: The Crimes of Grindelwald`,
@@ -22,7 +28,6 @@ const TITLES = [
   `Johnny English`
 ];
 
-
 const COVERS = [
   `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
   `img/bohemian-rhapsody.jpg`,
@@ -34,67 +39,27 @@ const COVERS = [
   `img/johnny-english.jpg`
 ];
 
-const GENRES = [
-  `comedy`,
-  `drama`,
-  `melodrama`,
-  `horror`
-];
-
-const ReleaseRange = {
-  MIN: 1980,
-  MAX: 2020
-};
-
-const RatingRange = {
-  MIN: 0,
-  MAX: 10
-};
-
-const RatingsCountRange = {
-  MIN: 0,
-  MAX: 1000
-};
-
-const DESCRRIPTION = `In the 1930s, the Grand Budapest Hotel is a popular European ski resort,
-presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's
-friend and protege. Gustave prides himself on providing first-class service to the hotel's guests,
-including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's
-lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief
-suspect in her murder.`;
-
-const DIRECTORS = [
-  `Otto Bathurst`,
-  `Tom Harper`,
-  `Colm McCarthy`,
-  `Tim Mielants`,
-  `David Caffrey`
-];
-
 const ACTORS = [
   `Cillian Murphy`,
   `Sam Neill`,
   `Helen McCrory`,
   `Paul Anderson`,
   `Annabelle Wallis`,
-  `Iddo Goldberg`,
-  `Sophie Rundle`,
-  `Joe Cole`,
-  `Finn Cole`
+  `Iddo Goldberg`
 ];
 
 export const films = TITLES.map((title, index) => {
   return ({
-    id: getRandomIntegerNumber(IdRange.MIN, IdRange.MAX),
+    id: index,
     title,
     cover: COVERS[index],
     poster: COVERS[index],
-    genre: getRandomArrayItem(GENRES),
-    release: getRandomIntegerNumber(ReleaseRange.MIN, ReleaseRange.MAX).toString(),
-    rating: getRandomIntegerNumber(RatingRange.MIN, RatingRange.MAX),
-    ratingsCount: getRandomIntegerNumber(RatingsCountRange.MIN, RatingsCountRange.MAX),
+    genre: GENRE,
+    release: RELEASE,
+    rating: RATING,
+    ratingsCount: RATINGS_COUNT,
     description: DESCRRIPTION,
-    director: getRandomArrayItem(DIRECTORS),
-    actors: getRandomArrayItems(ACTORS)
+    director: DIRECTOR,
+    actors: ACTORS
   });
 });

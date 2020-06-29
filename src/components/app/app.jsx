@@ -20,7 +20,7 @@ class App extends React.PureComponent {
             {this._renderMainScreen()}
           </Route>
           <Route exact path="/film-card">
-            <DetailedFilmCard film={film}/>
+            <DetailedFilmCard film={film} />
           </Route>
         </Switch>
       </BrowserRouter>
