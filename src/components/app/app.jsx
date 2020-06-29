@@ -10,6 +10,9 @@ class App extends React.PureComponent {
   }
 
   render() {
+    const {films} = this.props;
+    const [film] = films;
+
     return (
       <BrowserRouter>
         <Switch>
@@ -17,7 +20,7 @@ class App extends React.PureComponent {
             {this._renderMainScreen()}
           </Route>
           <Route exact path="/film-card">
-            <DetailedFilmCard />
+            <DetailedFilmCard film={film}/>
           </Route>
         </Switch>
       </BrowserRouter>
@@ -47,7 +50,15 @@ App.propTypes = {
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
-        cover: PropTypes.string.isRequired
+        cover: PropTypes.string.isRequired,
+        poster: PropTypes.string.isRequired,
+        genre: PropTypes.string.isRequired,
+        release: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired,
+        ratingsCount: PropTypes.number.isRequired,
+        description: PropTypes.string.isRequired,
+        director: PropTypes.string.isRequired,
+        actors: PropTypes.arrayOf(PropTypes.string)
       })
   ).isRequired,
   onTitleClick: PropTypes.func.isRequired

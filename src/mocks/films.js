@@ -84,7 +84,7 @@ export const films = TITLES.map((title, index) => {
     cover: COVERS[index],
     poster: COVERS[index],
     genre: getRandomArrayItem(GENRES),
-    release: getRandomIntegerNumber(ReleaseRange.MIN, ReleaseRange.MAX),
+    release: getRandomIntegerNumber(ReleaseRange.MIN, ReleaseRange.MAX).toString(),
     rating: getRandomIntegerNumber(RatingRange.MIN, RatingRange.MAX),
     ratingsCount: getRandomIntegerNumber(RatingsCountRange.MIN, RatingsCountRange.MAX),
     description: DESCRRIPTION,

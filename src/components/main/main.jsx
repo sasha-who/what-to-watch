@@ -155,7 +155,15 @@ Main.propTypes = {
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
-        cover: PropTypes.string.isRequired
+        cover: PropTypes.string.isRequired,
+        poster: PropTypes.string.isRequired,
+        genre: PropTypes.string.isRequired,
+        release: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired,
+        ratingsCount: PropTypes.number.isRequired,
+        description: PropTypes.string.isRequired,
+        director: PropTypes.string.isRequired,
+        actors: PropTypes.arrayOf(PropTypes.string)
       })
   ).isRequired,
   onTitleClick: PropTypes.func.isRequired
