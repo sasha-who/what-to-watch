@@ -11,13 +11,10 @@ const promoFilmData = {
   date: `2014`
 };
 
-const onTitleClick = () => {};
-
 ReactDOM.render(
     <App
       promoFilmData={promoFilmData}
       films={films}
-      onTitleClick={onTitleClick}
     />,
     rootElement
 );

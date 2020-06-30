@@ -13,3 +13,8 @@ export const RatingGrade = {
   VERY_GOOD: `Very good`,
   AWESOME: `Awesome`
 };
+
+export const Screen = {
+  MAIN: `main`,
+  CARD: `card`
+};

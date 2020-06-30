@@ -8,7 +8,7 @@ it(`FilmsList should render correctly`, () => {
     .create(
         <FilmsList
           films={films}
-          onTitleClick={() => {}}
+          onCardClick={() => {}}
         />
     )
     .toJSON();

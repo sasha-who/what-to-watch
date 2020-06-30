@@ -14,14 +14,14 @@ class FilmsList extends React.PureComponent {
   }
 
   render() {
-    const {films, onTitleClick} = this.props;
+    const {films, onCardClick} = this.props;
 
     return (
       <div className="catalog__movies-list">
         {films.map((film) => (
           <FilmCard
             film={film}
-            onTitleClick={onTitleClick}
+            onCardClick={onCardClick}
             onCardHover={this._handlerCardHover}
             key={film.id}
           />
@@ -53,7 +53,7 @@ FilmsList.propTypes = {
         actors: PropTypes.arrayOf(PropTypes.string)
       })
   ).isRequired,
-  onTitleClick: PropTypes.func.isRequired,
+  onCardClick: PropTypes.func.isRequired,
 };
 
 export default FilmsList;

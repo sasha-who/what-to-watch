@@ -9,7 +9,7 @@ it(`Main should render correctly`, () => {
         <Main
           promoFilmData={PromoFilmData}
           films={films}
-          onTitleClick={() => {}}
+          onCardClick={() => {}}
         />
     )
     .toJSON();

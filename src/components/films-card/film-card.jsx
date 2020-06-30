@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const FilmCard = ({film, onTitleClick, onCardHover}) => {
+const FilmCard = ({film, onCardClick, onCardHover}) => {
   const {title, cover} = film;
 
   return (
@@ -10,6 +10,7 @@ const FilmCard = ({film, onTitleClick, onCardHover}) => {
       onMouseEnter={(evt) => {
         onCardHover(film, evt.target);
       }}
+      onClick={onCardClick.bind(true, film)}
     >
       <div className="small-movie-card__image">
         <img src={cover} alt={title} width={280} height={175} />
@@ -18,7 +19,6 @@ const FilmCard = ({film, onTitleClick, onCardHover}) => {
         <a
           className="small-movie-card__link"
           href="movie-page.html"
-          onClick={onTitleClick}
         >{title}</a>
       </h3>
     </article>
@@ -39,7 +39,7 @@ FilmCard.propTypes = {
     director: PropTypes.string.isRequired,
     actors: PropTypes.arrayOf(PropTypes.string)
   }).isRequired,
-  onTitleClick: PropTypes.func.isRequired,
+  onCardClick: PropTypes.func.isRequired,
   onCardHover: PropTypes.func.isRequired
 };
 

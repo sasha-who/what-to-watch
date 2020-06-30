@@ -9,7 +9,6 @@ it(`App should render correctly`, () => {
         <App
           promoFilmData={PromoFilmData}
           films={films}
-          onTitleClick={() => {}}
         />
     )
     .toJSON();

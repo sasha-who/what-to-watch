@@ -9,31 +9,15 @@ Enzyme.configure({
 });
 
 const [film] = films;
-const onTitleClick = jest.fn();
 const onCardHover = jest.fn();
-
-it(`Click to title should be done`, () => {
-  const filmCard = shallow(
-      <FilmCard
-        film={film}
-        onTitleClick={onTitleClick}
-        onCardHover={onCardHover}
-      />
-  );
-
-  const titleElement = filmCard.find(`.small-movie-card__link`);
-
-  titleElement.props().onClick();
-
-  expect(onTitleClick.mock.calls.length).toBe(1);
-});
+const onCardClick = jest.fn();
 
 it(`Film info should be pass in arguments`, () => {
   const filmCard = shallow(
       <FilmCard
         film={film}
-        onTitleClick={onTitleClick}
         onCardHover={onCardHover}
+        onCardClick={onCardClick}
       />
   );
 
