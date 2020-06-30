@@ -6,7 +6,7 @@ const Main = ({promoFilmData, films, onCardClick}) => {
   const {title, genre, date} = promoFilmData;
 
   return (
-    <div>
+    <React.Fragment>
       <section className="movie-card">
         <div className="movie-card__bg">
           <img
@@ -141,7 +141,7 @@ const Main = ({promoFilmData, films, onCardClick}) => {
           </div>
         </footer>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 
@@ -153,7 +153,7 @@ Main.propTypes = {
   }),
   films: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.number.isRequired,
+        id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         cover: PropTypes.string.isRequired,
         poster: PropTypes.string.isRequired,

@@ -1,9 +1,7 @@
+import {nanoid} from "nanoid";
 import {getRandomIntegerNumber, getRandomArrayItem, getRandomArrayItems} from "../utils/common.js";
 
-const IdRange = {
-  MIN: 1,
-  MAX: 2000
-};
+const ID_LENGTH = 8;
 
 const TITLES = [
   `Fantastic Beasts: The Crimes of Grindelwald`,
@@ -79,7 +77,7 @@ const ACTORS = [
 
 export const films = TITLES.map((title, index) => {
   return ({
-    id: getRandomIntegerNumber(IdRange.MIN, IdRange.MAX),
+    id: nanoid(ID_LENGTH),
     title,
     cover: COVERS[index],
     poster: COVERS[index],

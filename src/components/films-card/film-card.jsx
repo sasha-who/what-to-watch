@@ -27,7 +27,7 @@ const FilmCard = ({film, onCardClick, onCardHover}) => {
 
 FilmCard.propTypes = {
   film: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     cover: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
