@@ -12,7 +12,7 @@ const [film] = films;
 const onCardHover = jest.fn();
 const onCardClick = jest.fn();
 
-it(`Film info should be pass in arguments`, () => {
+it(`Film info should be pass in arguments after hover`, () => {
   const filmCard = shallow(
       <FilmCard
         film={film}
@@ -22,6 +22,20 @@ it(`Film info should be pass in arguments`, () => {
   );
 
   filmCard.simulate(`mouseenter`, {target: {}});
+
+  expect(onCardHover.mock.calls[0][0]).toMatchObject(film);
+});
+
+it(`Film info should be pass in arguments after click`, () => {
+  const filmCard = shallow(
+      <FilmCard
+        film={film}
+        onCardHover={onCardHover}
+        onCardClick={onCardClick}
+      />
+  );
+
+  filmCard.simulate(`click`);
 
   expect(onCardHover.mock.calls[0][0]).toMatchObject(film);
 });
