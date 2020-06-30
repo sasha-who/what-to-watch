@@ -50,7 +50,7 @@ const ACTORS = [
 
 export const films = TITLES.map((title, index) => {
   return ({
-    id: index,
+    id: index.toString(),
     title,
     cover: COVERS[index],
     poster: COVERS[index],
