@@ -1,9 +1,3 @@
-export const PromoFilmData = {
-  TITLE: `The Grand Budapest Hotel`,
-  GENRE: `Drama`,
-  DATE: `2014`
-};
-
 const TITLES = [
   `Fantastic Beasts: The Crimes of Grindelwald`,
   `Bohemian Rhapsody`,
@@ -33,4 +27,3 @@ export const films = TITLES.map((title, index) => {
     cover: COVERS[index]
   });
 });
-

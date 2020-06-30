@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import FilmCard from "../films-card/film-card.jsx";
+import FilmsList from "../films-list/films-list.jsx";
 
-const Main = ({title, genre, date, filmTitles, onTitleClick}) => (
+const Main = ({title, genre, date, films, onTitleClick}) => (
   <div>
     <section className="movie-card">
       <div className="movie-card__bg">
@@ -115,17 +115,10 @@ const Main = ({title, genre, date, filmTitles, onTitleClick}) => (
             </a>
           </li>
         </ul>
-        <div className="catalog__movies-list">
-          {filmTitles.map((item, i) => {
-            return (
-              <FilmCard
-                title={item}
-                onTitleClick={onTitleClick}
-                key={item + i}
-              />
-            );
-          })}
-        </div>
+        <FilmsList
+          films={films}
+          onTitleClick={onTitleClick}
+        />
         <div className="catalog__more">
           <button className="catalog__button" type="button">
             Show more
@@ -152,7 +145,12 @@ Main.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  filmTitles: PropTypes.arrayOf(PropTypes.string).isRequired,
+  films: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        cover: PropTypes.string.isRequired
+      })
+  ).isRequired,
   onTitleClick: PropTypes.func.isRequired
 };
 
