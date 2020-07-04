@@ -26,6 +26,7 @@ Array [
       >
         <a
           className="logo__link"
+          href="main.html"
         >
           <span
             className="logo__letter logo__letter--1"
@@ -164,7 +165,7 @@ Array [
           </a>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item "
         >
           <a
             className="catalog__genres-link"
@@ -174,7 +175,7 @@ Array [
           </a>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item "
         >
           <a
             className="catalog__genres-link"
@@ -184,7 +185,7 @@ Array [
           </a>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item "
         >
           <a
             className="catalog__genres-link"
@@ -194,7 +195,7 @@ Array [
           </a>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item "
         >
           <a
             className="catalog__genres-link"
@@ -204,7 +205,7 @@ Array [
           </a>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item "
         >
           <a
             className="catalog__genres-link"
@@ -214,17 +215,17 @@ Array [
           </a>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item "
         >
           <a
             className="catalog__genres-link"
             href="#"
           >
-            Kids & Family
+            Kids &amp; Family
           </a>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item "
         >
           <a
             className="catalog__genres-link"
@@ -234,7 +235,7 @@ Array [
           </a>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item "
         >
           <a
             className="catalog__genres-link"
@@ -244,7 +245,7 @@ Array [
           </a>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item "
         >
           <a
             className="catalog__genres-link"
@@ -485,6 +486,7 @@ Array [
       >
         <a
           className="logo__link logo__link--light"
+          href="main.html"
         >
           <span
             className="logo__letter logo__letter--1"

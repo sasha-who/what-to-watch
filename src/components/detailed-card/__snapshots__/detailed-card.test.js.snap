@@ -265,6 +265,8 @@ suspect in her murder.
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -289,6 +291,8 @@ suspect in her murder.
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -313,6 +317,8 @@ suspect in her murder.
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -337,6 +343,8 @@ suspect in her murder.
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
         >
           <div
             className="small-movie-card__image"
