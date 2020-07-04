@@ -1,4 +1,5 @@
 export const RECOMENDED_FILMS_COUNT = 4;
+export const PREVIEW_DELAY = 1000;
 
 export const RatingRange = {
   MIN: 0,

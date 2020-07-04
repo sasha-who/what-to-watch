@@ -9,7 +9,11 @@ it(`App should render correctly`, () => {
         <App
           promoFilmData={PromoFilmData}
           films={films}
-        />
+        />, {
+          createNodeMock: () => {
+            return {};
+          }
+        }
     )
     .toJSON();
 

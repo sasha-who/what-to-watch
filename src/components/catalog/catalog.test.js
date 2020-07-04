@@ -9,7 +9,11 @@ it(`Catalog should render correctly`, () => {
         <Catalog
           films={films}
           onCardClick={() => {}}
-        />
+        />, {
+          createNodeMock: () => {
+            return {};
+          }
+        }
     )
     .toJSON();
 

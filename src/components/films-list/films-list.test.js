@@ -9,7 +9,11 @@ it(`FilmsList should render correctly`, () => {
         <FilmsList
           films={films}
           onCardClick={() => {}}
-        />
+        />, {
+          createNodeMock: () => {
+            return {};
+          }
+        }
     )
     .toJSON();
 

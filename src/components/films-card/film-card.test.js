@@ -12,7 +12,11 @@ it(`FilmCard should render correctly`, () => {
           film={film}
           onCardHover={() => {}}
           onCardClick={() => {}}
-        />
+        />, {
+          createNodeMock: () => {
+            return {};
+          }
+        }
     )
     .toJSON();
 

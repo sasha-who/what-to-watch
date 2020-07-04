@@ -1,30 +1,66 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {PREVIEW_DELAY} from "../../const.js";
 import VideoPlayer from "../video-player/video-player.jsx";
 
-const FilmCard = ({film, onCardClick, onCardHover}) => {
-  const {title, cover, preview} = film;
+export default class FilmCard extends React.PureComponent {
+  constructor(props) {
+    super(props);
 
-  return (
-    <article
-      className="small-movie-card catalog__movies-card"
-      onMouseEnter={(evt) => {
-        onCardHover(film, evt.target);
-      }}
-      onClick={onCardClick.bind(true, film)}
-    >
-      <div className="small-movie-card__image">
-        <VideoPlayer preview={preview} defaultImage={cover} />
-      </div>
-      <h3 className="small-movie-card__title">
-        <a
-          className="small-movie-card__link"
-          href="movie-page.html"
-        >{title}</a>
-      </h3>
-    </article>
-  );
-};
+    this.state = {
+      isPlaying: false
+    };
+
+    this._isCardHovered = false;
+  }
+
+  render() {
+    const {film, onCardClick, onCardHover} = this.props;
+    const {title, cover, preview} = film;
+
+    return (
+      <article
+        className="small-movie-card catalog__movies-card"
+        onMouseEnter={(evt) => {
+          this._isCardHovered = true;
+          onCardHover(film, evt.target);
+          this._startPlaying();
+        }}
+        onMouseLeave={() => {
+          this._isCardHovered = false;
+          this._stopPlaying();
+        }}
+        onClick={onCardClick.bind(true, film)}
+      >
+        <div className="small-movie-card__image">
+          <VideoPlayer preview={preview} defaultImage={cover} isPlaying={this.state.isPlaying} />
+        </div>
+        <h3 className="small-movie-card__title">
+          <a
+            className="small-movie-card__link"
+            href="movie-page.html"
+          >{title}</a>
+        </h3>
+      </article>
+    );
+  }
+
+  _startPlaying() {
+    setTimeout(() => {
+      if (this._isCardHovered === true) {
+        this.setState({
+          isPlaying: true
+        });
+      }
+    }, PREVIEW_DELAY);
+  }
+
+  _stopPlaying() {
+    this.setState({
+      isPlaying: false
+    });
+  }
+}
 
 FilmCard.propTypes = {
   film: PropTypes.shape({
@@ -44,5 +80,3 @@ FilmCard.propTypes = {
   onCardClick: PropTypes.func.isRequired,
   onCardHover: PropTypes.func.isRequired
 };
-
-export default FilmCard;

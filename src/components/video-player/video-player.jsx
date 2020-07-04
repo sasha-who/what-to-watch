@@ -5,15 +5,39 @@ export default class VideoPlayer extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-
-    };
-
     this._videoRef = React.createRef();
   }
 
   componentDidMount() {
-    // const video = this._videoRef.current;
+    const {isPlaying} = this.props;
+    const video = this._videoRef.current;
+
+    video.onpause = () => {
+      video.load();
+    };
+
+    if (isPlaying) {
+      video.play();
+    }
+  }
+
+  componentWillUnmount() {
+    const video = this._videoRef.current;
+
+    video.onpause = null;
+    video.src = ``;
+  }
+
+  componentDidUpdate() {
+    const {isPlaying} = this.props;
+    const video = this._videoRef.current;
+
+    if (isPlaying) {
+      video.play();
+    } else {
+      video.pause();
+      video.currentTime = 0;
+    }
   }
 
   render() {
@@ -34,5 +58,6 @@ export default class VideoPlayer extends React.PureComponent {
 
 VideoPlayer.propTypes = {
   preview: PropTypes.string.isRequired,
-  defaultImage: PropTypes.string.isRequired
+  defaultImage: PropTypes.string.isRequired,
+  isPlaying: PropTypes.bool.isRequired
 };
