@@ -33,7 +33,11 @@ export default class FilmCard extends React.PureComponent {
         onClick={onCardClick.bind(true, film)}
       >
         <div className="small-movie-card__image">
-          <VideoPlayer preview={preview} defaultImage={cover} isPlaying={this.state.isPlaying} />
+          <VideoPlayer
+            preview={preview}
+            defaultImage={cover}
+            isPlaying={this.state.isPlaying}
+          />
         </div>
         <h3 className="small-movie-card__title">
           <a
