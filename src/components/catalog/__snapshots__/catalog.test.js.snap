@@ -124,10 +124,11 @@ exports[`Catalog should render correctly 1`] = `
       <div
         className="small-movie-card__image"
       >
-        <img
-          alt="Fantastic Beasts: The Crimes of Grindelwald"
+        <video
           height={175}
-          src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+          muted={true}
+          poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+          src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
           width={280}
         />
       </div>
@@ -150,10 +151,11 @@ exports[`Catalog should render correctly 1`] = `
       <div
         className="small-movie-card__image"
       >
-        <img
-          alt="Bohemian Rhapsody"
+        <video
           height={175}
-          src="img/bohemian-rhapsody.jpg"
+          muted={true}
+          poster="img/bohemian-rhapsody.jpg"
+          src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
           width={280}
         />
       </div>
@@ -176,10 +178,11 @@ exports[`Catalog should render correctly 1`] = `
       <div
         className="small-movie-card__image"
       >
-        <img
-          alt="Macbeth"
+        <video
           height={175}
-          src="img/macbeth.jpg"
+          muted={true}
+          poster="img/macbeth.jpg"
+          src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
           width={280}
         />
       </div>
@@ -202,10 +205,11 @@ exports[`Catalog should render correctly 1`] = `
       <div
         className="small-movie-card__image"
       >
-        <img
-          alt="Aviator"
+        <video
           height={175}
-          src="img/aviator.jpg"
+          muted={true}
+          poster="img/aviator.jpg"
+          src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
           width={280}
         />
       </div>
@@ -228,10 +232,11 @@ exports[`Catalog should render correctly 1`] = `
       <div
         className="small-movie-card__image"
       >
-        <img
-          alt="We need to talk about Kevin"
+        <video
           height={175}
-          src="img/we-need-to-talk-about-kevin.jpg"
+          muted={true}
+          poster="img/we-need-to-talk-about-kevin.jpg"
+          src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
           width={280}
         />
       </div>
@@ -254,10 +259,11 @@ exports[`Catalog should render correctly 1`] = `
       <div
         className="small-movie-card__image"
       >
-        <img
-          alt="What We Do in the Shadows"
+        <video
           height={175}
-          src="img/what-we-do-in-the-shadows.jpg"
+          muted={true}
+          poster="img/what-we-do-in-the-shadows.jpg"
+          src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
           width={280}
         />
       </div>
@@ -280,10 +286,11 @@ exports[`Catalog should render correctly 1`] = `
       <div
         className="small-movie-card__image"
       >
-        <img
-          alt="Revenant"
+        <video
           height={175}
-          src="img/revenant.jpg"
+          muted={true}
+          poster="img/revenant.jpg"
+          src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
           width={280}
         />
       </div>
@@ -306,10 +313,11 @@ exports[`Catalog should render correctly 1`] = `
       <div
         className="small-movie-card__image"
       >
-        <img
-          alt="Johnny English"
+        <video
           height={175}
-          src="img/johnny-english.jpg"
+          muted={true}
+          poster="img/johnny-english.jpg"
+          src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
           width={280}
         />
       </div>

@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import VideoPlayer from "../video-player/video-player.jsx";
 
 const FilmCard = ({film, onCardClick, onCardHover}) => {
-  const {title, cover} = film;
+  const {title, cover, preview} = film;
 
   return (
     <article
@@ -13,7 +14,7 @@ const FilmCard = ({film, onCardClick, onCardHover}) => {
       onClick={onCardClick.bind(true, film)}
     >
       <div className="small-movie-card__image">
-        <img src={cover} alt={title} width={280} height={175} />
+        <VideoPlayer preview={preview} defaultImage={cover} />
       </div>
       <h3 className="small-movie-card__title">
         <a
@@ -31,6 +32,7 @@ FilmCard.propTypes = {
     title: PropTypes.string.isRequired,
     cover: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
+    preview: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     release: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,

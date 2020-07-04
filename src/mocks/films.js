@@ -26,6 +26,11 @@ const COVERS = [
   `img/johnny-english.jpg`
 ];
 
+const PREVIEWS = [
+  `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+];
+
 const GENRES = [
   `comedy`,
   `drama`,
@@ -81,6 +86,7 @@ export const films = TITLES.map((title, index) => {
     title,
     cover: COVERS[index],
     poster: COVERS[index],
+    preview: getRandomArrayItem(PREVIEWS),
     genre: getRandomArrayItem(GENRES),
     release: getRandomIntegerNumber(ReleaseRange.MIN, ReleaseRange.MAX).toString(),
     rating: getRandomIntegerNumber(RatingRange.MIN, RatingRange.MAX),
