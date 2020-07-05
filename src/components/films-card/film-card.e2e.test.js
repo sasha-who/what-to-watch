@@ -12,6 +12,8 @@ const [film] = films;
 const onCardHover = jest.fn();
 const onCardClick = jest.fn();
 
+jest.useFakeTimers();
+
 it(`Film info should be pass in arguments after hover`, () => {
   const filmCard = shallow(
       <FilmCard
@@ -38,4 +40,23 @@ it(`Film info should be pass in arguments after click`, () => {
   filmCard.simulate(`click`);
 
   expect(onCardHover.mock.calls[0][0]).toMatchObject(film);
+});
+
+it(`Playing state should be pass to VideoPlayer`, () => {
+  const filmCard = shallow(
+      <FilmCard
+        film={film}
+        onCardHover={onCardHover}
+        onCardClick={onCardClick}
+      />
+  );
+
+  filmCard.simulate(`mouseenter`, {target: {}});
+  jest.runAllTimers();
+
+  expect(filmCard.state().isPlaying).toBeTruthy();
+
+  filmCard.simulate(`mouseleave`);
+
+  expect(filmCard.state().isPlaying).toBeFalsy();
 });
