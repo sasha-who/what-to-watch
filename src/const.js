@@ -37,3 +37,15 @@ export const GENRES = [
   `Sci-Fi`,
   `Thrillers`
 ];
+
+export const TabsNames = {
+  OVERVIEW: `overview`,
+  DETAILS: `details`,
+  REVIEWS: `reviews`
+};
+
+export const TabsData = [
+  {name: TabsNames.OVERVIEW, content: `Overview`},
+  {name: TabsNames.DETAILS, content: `Details`},
+  {name: TabsNames.REVIEWS, content: `Reviews`}
+];

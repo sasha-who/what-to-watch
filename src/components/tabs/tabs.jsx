@@ -6,7 +6,9 @@ import {
   REVIEW_DATE_HUMAN_FORMAT,
   REVIEW_DATE_SERVICE_FORMAT,
   RatingRange,
-  RatingGrade
+  RatingGrade,
+  TabsNames,
+  TabsData
 } from "../../const.js";
 import {getFormatedRunTime} from "../../utils/common.js";
 
@@ -35,6 +37,10 @@ const getRatingGrade = (rating) => {
 export default class Tabs extends React.PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      activeTab: TabsNames.OVERVIEW
+    };
   }
 
   render() {
@@ -42,24 +48,36 @@ export default class Tabs extends React.PureComponent {
       <React.Fragment>
         <nav className="movie-nav movie-card__nav">
           <ul className="movie-nav__list">
-            <li className="movie-nav__item movie-nav__item--active">
-              <a href="#" className="movie-nav__link">
-                Overview
-              </a>
-            </li>
-            <li className="movie-nav__item">
-              <a href="#" className="movie-nav__link">
-                Details
-              </a>
-            </li>
-            <li className="movie-nav__item">
-              <a href="#" className="movie-nav__link">
-                Reviews
-              </a>
-            </li>
+            {TabsData.map((tab) => {
+              const {name, content} = tab;
+              const activeClass = this.state.activeTab === name ?
+                `movie-nav__item--active` :
+                ``;
+
+              return (
+                <li
+                  key={name}
+                  className={`movie-nav__item ${activeClass}`}
+                >
+                  <a
+                    href="#"
+                    className="movie-nav__link"
+                    onClick={() => {
+                      if (this.state.activeTab !== name) {
+                        this.setState({
+                          activeTab: name
+                        });
+                      }
+                    }}
+                  >
+                    {content}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </nav>
-        {this._getOverviewTab()}
+        {this._renderTabContent()}
       </React.Fragment>
     );
   }
@@ -183,6 +201,22 @@ export default class Tabs extends React.PureComponent {
         <div className="review__rating">{rating}</div>
       </div>
     );
+  }
+
+  _renderTabContent() {
+    switch (this.state.activeTab) {
+      case TabsNames.OVERVIEW:
+        return this._getOverviewTab();
+
+      case TabsNames.DETAILS:
+        return this._getDetailsTab();
+
+      case TabsNames.REVIEWS:
+        return this._getReviewsTab();
+
+      default:
+        return this._getOverviewTab();
+    }
   }
 }
 
