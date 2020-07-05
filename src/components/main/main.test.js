@@ -7,11 +7,9 @@ it(`Main should render correctly`, () => {
   const tree = renderer
     .create(
         <Main
-          title={PromoFilmData.TITLE}
-          genre={PromoFilmData.GENRE}
-          date={PromoFilmData.DATE}
+          promoFilmData={PromoFilmData}
           films={films}
-          onTitleClick={() => {}}
+          onCardClick={() => {}}
         />
     )
     .toJSON();

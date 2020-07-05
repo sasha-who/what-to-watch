@@ -5,21 +5,16 @@ import {films} from "./mocks/films.js";
 
 const rootElement = document.querySelector(`#root`);
 
-const PromoFilmData = {
-  TITLE: `The Grand Budapest Hotel`,
-  GENRE: `Drama`,
-  DATE: `2014`
+const promoFilmData = {
+  title: `The Grand Budapest Hotel`,
+  genre: `Drama`,
+  date: `2014`
 };
-
-const onTitleClick = () => {};
 
 ReactDOM.render(
     <App
-      title={PromoFilmData.TITLE}
-      genre={PromoFilmData.GENRE}
-      date={PromoFilmData.DATE}
+      promoFilmData={promoFilmData}
       films={films}
-      onTitleClick={onTitleClick}
     />,
     rootElement
 );

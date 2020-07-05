@@ -9,40 +9,33 @@ Enzyme.configure({
 });
 
 const [film] = films;
-const {title, cover} = film;
-const onTitleClick = jest.fn();
 const onCardHover = jest.fn();
-const filmData = {
-  title,
-  cover
-};
+const onCardClick = jest.fn();
 
-it(`Click to title should be done`, () => {
+it(`Film info should be pass in arguments after hover`, () => {
   const filmCard = shallow(
       <FilmCard
         film={film}
-        onTitleClick={onTitleClick}
         onCardHover={onCardHover}
-      />
-  );
-
-  const titleElement = filmCard.find(`.small-movie-card__link`);
-
-  titleElement.props().onClick();
-
-  expect(onTitleClick.mock.calls.length).toBe(1);
-});
-
-it(`Film info should be pass in arguments`, () => {
-  const filmCard = shallow(
-      <FilmCard
-        film={film}
-        onTitleClick={onTitleClick}
-        onCardHover={onCardHover}
+        onCardClick={onCardClick}
       />
   );
 
   filmCard.simulate(`mouseenter`, {target: {}});
 
-  expect(onCardHover.mock.calls[0][0]).toMatchObject(filmData);
+  expect(onCardHover.mock.calls[0][0]).toMatchObject(film);
+});
+
+it(`Film info should be pass in arguments after click`, () => {
+  const filmCard = shallow(
+      <FilmCard
+        film={film}
+        onCardHover={onCardHover}
+        onCardClick={onCardClick}
+      />
+  );
+
+  filmCard.simulate(`click`);
+
+  expect(onCardHover.mock.calls[0][0]).toMatchObject(film);
 });

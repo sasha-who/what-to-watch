@@ -14,20 +14,18 @@ class FilmsList extends React.PureComponent {
   }
 
   render() {
-    const {films, onTitleClick} = this.props;
+    const {films, onCardClick} = this.props;
 
     return (
       <div className="catalog__movies-list">
-        {films.map((film, i) => {
-          return (
-            <FilmCard
-              film={film}
-              onTitleClick={onTitleClick}
-              onCardHover={this._handlerCardHover}
-              key={film + i}
-            />
-          );
-        })}
+        {films.map((film) => (
+          <FilmCard
+            film={film}
+            onCardClick={onCardClick}
+            onCardHover={this._handlerCardHover}
+            key={film.id}
+          />
+        ))}
       </div>
     );
   }
@@ -42,11 +40,20 @@ class FilmsList extends React.PureComponent {
 FilmsList.propTypes = {
   films: PropTypes.arrayOf(
       PropTypes.shape({
+        id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
-        cover: PropTypes.string.isRequired
+        cover: PropTypes.string.isRequired,
+        poster: PropTypes.string.isRequired,
+        genre: PropTypes.string.isRequired,
+        release: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired,
+        ratingsCount: PropTypes.number.isRequired,
+        description: PropTypes.string.isRequired,
+        director: PropTypes.string.isRequired,
+        actors: PropTypes.arrayOf(PropTypes.string)
       })
   ).isRequired,
-  onTitleClick: PropTypes.func.isRequired,
+  onCardClick: PropTypes.func.isRequired,
 };
 
 export default FilmsList;
