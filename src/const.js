@@ -1,5 +1,8 @@
 export const RECOMENDED_FILMS_COUNT = 4;
 export const PREVIEW_DELAY = 1000;
+export const REVIEWS_IN_COLUMN_COUNT = 3;
+export const REVIEW_DATE_HUMAN_FORMAT = `MMMM D, YYYY`;
+export const REVIEW_DATE_SERVICE_FORMAT = `YYYY-MM-DD`;
 
 export const RatingRange = {
   MIN: 0,

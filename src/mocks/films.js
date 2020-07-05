@@ -1,5 +1,6 @@
 import {nanoid} from "nanoid";
 import {getRandomIntegerNumber, getRandomArrayItem, getRandomArrayItems} from "../utils/common.js";
+import {reviews} from "../mocks/reviews.js";
 
 const ID_LENGTH = 8;
 
@@ -38,21 +39,6 @@ const GENRES = [
   `horror`
 ];
 
-const ReleaseRange = {
-  MIN: 1980,
-  MAX: 2020
-};
-
-const RatingRange = {
-  MIN: 0,
-  MAX: 10
-};
-
-const RatingsCountRange = {
-  MIN: 0,
-  MAX: 1000
-};
-
 const DESCRRIPTION = `In the 1930s, the Grand Budapest Hotel is a popular European ski resort,
 presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's
 friend and protege. Gustave prides himself on providing first-class service to the hotel's guests,
@@ -80,6 +66,26 @@ const ACTORS = [
   `Finn Cole`
 ];
 
+const ReleaseRange = {
+  MIN: 1980,
+  MAX: 2020
+};
+
+const RatingRange = {
+  MIN: 0,
+  MAX: 10
+};
+
+const RatingsCountRange = {
+  MIN: 0,
+  MAX: 1000
+};
+
+const RunTimeRange = {
+  MIN: 20,
+  MAX: 240
+};
+
 export const films = TITLES.map((title, index) => {
   return ({
     id: nanoid(ID_LENGTH),
@@ -93,6 +99,8 @@ export const films = TITLES.map((title, index) => {
     ratingsCount: getRandomIntegerNumber(RatingsCountRange.MIN, RatingsCountRange.MAX),
     description: DESCRRIPTION,
     director: getRandomArrayItem(DIRECTORS),
-    actors: getRandomArrayItems(ACTORS)
+    actors: getRandomArrayItems(ACTORS),
+    runTime: getRandomIntegerNumber(RunTimeRange.MIN, RunTimeRange.MAX),
+    reviews
   });
 });
