@@ -79,3 +79,9 @@ export const films = TITLES.map((title, index) => {
     reviews: [review]
   });
 });
+
+export const TABS_DATA = [
+  `overview`,
+  `details`,
+  `reviews`
+];
