@@ -2,10 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 import Header from "../header/header.jsx";
 import Footer from "../footer/footer.jsx";
+import {RECOMENDED_FILMS_COUNT} from "../../const.js";
 import FilmsList from "../films-list/films-list.jsx";
 import Tabs from "../tabs/tabs.jsx";
 
-const DetailedFilmCard = ({film, recomendedFilms, onCardClick}) => {
+const getRecomendedFilms = (films, currentFilm) => {
+  return (
+    films.filter((film) => (film !== currentFilm) && (film.genre === currentFilm.genre))
+      .slice(0, RECOMENDED_FILMS_COUNT)
+  );
+};
+
+const DetailedFilmCard = ({film, films, onCardClick}) => {
   const {
     title,
     cover,
@@ -73,7 +81,7 @@ const DetailedFilmCard = ({film, recomendedFilms, onCardClick}) => {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
           <FilmsList
-            films={recomendedFilms}
+            films={getRecomendedFilms(films, film)}
             onCardClick={onCardClick}
           />
         </section>
@@ -107,7 +115,7 @@ DetailedFilmCard.propTypes = {
         })
     ).isRequired
   }).isRequired,
-  recomendedFilms: PropTypes.arrayOf(
+  films: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,

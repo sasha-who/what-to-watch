@@ -1,5 +1,3 @@
-export const RECOMENDED_FILMS_COUNT = 4;
-
 export const PromoFilmData = {
   title: `The Grand Budapest Hotel`,
   genre: `Drama`,
