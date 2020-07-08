@@ -29,8 +29,16 @@ export const getRandomArrayItems = (array) => {
   return shuffledArray.slice(0, getRandomIntegerNumber(0, array.length));
 };
 
+export const extend = (a, b) => {
+  return Object.assign({}, a, b);
+};
+
 export const getFormatedRunTime = (duration) => {
   const durationInMinutes = moment.duration(duration, `minutes`);
 
   return `${durationInMinutes.hours()}h ${durationInMinutes.minutes()}m`;
+};
+
+export const getFilmsFilteredByGenre = (films, genre) => {
+  return films.filter((film) => film.genre === genre);
 };

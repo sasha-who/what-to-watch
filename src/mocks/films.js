@@ -36,7 +36,11 @@ const GENRES = [
   `comedy`,
   `drama`,
   `melodrama`,
-  `horror`
+  `horror`,
+  `crime`,
+  `documentary`,
+  `romance`,
+  `thriller`
 ];
 
 const DESCRRIPTION = `In the 1930s, the Grand Budapest Hotel is a popular European ski resort,

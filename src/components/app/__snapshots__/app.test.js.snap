@@ -161,7 +161,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            All genres
+            all genres
           </a>
         </li>
         <li
@@ -171,7 +171,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Comedies
+            comedy
           </a>
         </li>
         <li
@@ -181,7 +181,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Crime
+            drama
           </a>
         </li>
         <li
@@ -191,7 +191,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Documentary
+            melodrama
           </a>
         </li>
         <li
@@ -201,7 +201,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Dramas
+            horror
           </a>
         </li>
         <li
@@ -211,7 +211,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Horror
+            crime
           </a>
         </li>
         <li
@@ -221,7 +221,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Kids &amp; Family
+            documentary
           </a>
         </li>
         <li
@@ -231,7 +231,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Romance
+            romance
           </a>
         </li>
         <li
@@ -241,17 +241,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Sci-Fi
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item "
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Thrillers
+            thriller
           </a>
         </li>
       </ul>

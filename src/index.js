@@ -1,7 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import {createStore} from "redux";
+import {Provider} from "react-redux";
 import App from "./components/app/app.jsx";
 import {films} from "./mocks/films.js";
+import {reducer} from "./reducer/reducer.js";
+
+const store = createStore(reducer);
 
 const rootElement = document.querySelector(`#root`);
 
@@ -12,9 +17,11 @@ const promoFilmData = {
 };
 
 ReactDOM.render(
-    <App
-      promoFilmData={promoFilmData}
-      films={films}
-    />,
+    <Provider store={store}>
+      <App
+        promoFilmData={promoFilmData}
+        films={films}
+      />
+    </Provider>,
     rootElement
 );
