@@ -12,6 +12,16 @@ const ActionType = {
   GET_FILTERED_FILMS: `GET_FILTERED_FILMS`
 };
 
+const ActionCreator = {
+  changeCurrentGenre: (genre) => ({
+    type: ActionType.CHANGE_CURRENT_GENRE,
+    payload: genre
+  }),
+  getFilteredFilms: () => ({
+    type: ActionType.GET_FILTERED_FILMS
+  })
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.CHANGE_CURRENT_GENRE:
@@ -28,4 +38,4 @@ const reducer = (state = initialState, action) => {
   return state;
 };
 
-export {reducer, ActionType};
+export {reducer, ActionType, ActionCreator};
