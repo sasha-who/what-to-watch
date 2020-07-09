@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {PromoFilmData, films} from "../../test-mocks.js";
-import App from "./app.jsx";
+import {App} from "./app.jsx";
 
 it(`App should render correctly`, () => {
   const tree = renderer

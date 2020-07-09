@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {films} from "../../test-mocks.js";
+import {GENRES, films} from "../../test-mocks.js";
 import Catalog from "./catalog.jsx";
 
 it(`Catalog should render correctly`, () => {
@@ -8,7 +8,11 @@ it(`Catalog should render correctly`, () => {
     .create(
         <Catalog
           films={films}
+          filteredFilms={films}
+          currentGenre={GENRES[0]}
           onCardClick={() => {}}
+          onGenreChange={() => {}}
+          filterFilmsByGenre={() => {}}
         />, {
           createNodeMock: () => {
             return {};

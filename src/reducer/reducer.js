@@ -1,15 +1,16 @@
-import {GENRES} from "../const.js";
-import {extend, getFilmsFilteredByGenre} from "../utils/common.js";
+import {DEFAULT_GENRE} from "../const.js";
+import {extend} from "../utils/common.js";
 import {films} from "../mocks/films.js";
 
 const initialState = {
-  currentGenre: GENRES[0],
-  films
+  currentGenre: DEFAULT_GENRE,
+  films,
+  filteredFilms: films
 };
 
 const ActionType = {
   CHANGE_CURRENT_GENRE: `CHANGE_CURRENT_GENRE`,
-  GET_FILTERED_FILMS: `GET_FILTERED_FILMS`
+  FILTER_FILMS_BY_GENRE: `FILTER_FILMS_BY_GENRE`
 };
 
 const ActionCreator = {
@@ -17,8 +18,8 @@ const ActionCreator = {
     type: ActionType.CHANGE_CURRENT_GENRE,
     payload: genre
   }),
-  getFilteredFilms: () => ({
-    type: ActionType.GET_FILTERED_FILMS
+  filterFilmsByGenre: () => ({
+    type: ActionType.FILTER_FILMS_BY_GENRE
   })
 };
 
@@ -29,13 +30,23 @@ const reducer = (state = initialState, action) => {
         currentGenre: action.payload || state.currentGenre
       });
 
-    case ActionType.GET_FILTERED_FILMS:
-      return extend(state, {
-        filteredFilms: getFilmsFilteredByGenre(state.films, state.currentGenre)
-      });
+    case ActionType.FILTER_FILMS_BY_GENRE:
+      const filteredFilms = state.currentGenre === DEFAULT_GENRE ?
+        state.films :
+        getFilmsFilteredByGenre(state.films, state.currentGenre);
+
+      return extend(state, {filteredFilms});
   }
 
   return state;
 };
 
-export {reducer, ActionType, ActionCreator};
+const getFilmsFilteredByGenre = (allFilms, genre) => {
+  if (genre === DEFAULT_GENRE) {
+    return allFilms;
+  }
+
+  return allFilms.filter((film) => film.genre === genre);
+};
+
+export {reducer, ActionType, ActionCreator, getFilmsFilteredByGenre};

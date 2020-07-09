@@ -38,7 +38,3 @@ export const getFormatedRunTime = (duration) => {
 
   return `${durationInMinutes.hours()}h ${durationInMinutes.minutes()}m`;
 };
-
-export const getFilmsFilteredByGenre = (films, genre) => {
-  return films.filter((film) => film.genre === genre);
-};

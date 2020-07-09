@@ -49,7 +49,7 @@ const ACTORS = [
   `Iddo Goldberg`
 ];
 
-const GENRES = [
+export const GENRES = [
   `all genres`,
   `comedy`,
   `drama`,

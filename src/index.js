@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import {createStore} from "redux";
 import {Provider} from "react-redux";
 import App from "./components/app/app.jsx";
-import {films} from "./mocks/films.js";
 import {reducer} from "./reducer/reducer.js";
 
 const store = createStore(
@@ -23,7 +22,6 @@ ReactDOM.render(
     <Provider store={store}>
       <App
         promoFilmData={promoFilmData}
-        films={films}
       />
     </Provider>,
     rootElement
