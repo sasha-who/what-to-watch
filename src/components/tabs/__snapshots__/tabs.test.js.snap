@@ -309,9 +309,9 @@ Array [
             </cite>
             <time
               className="review__date"
-              dateTime="2020-07-09"
+              dateTime="2020-07-10"
             >
-              July 9, 2020
+              July 10, 2020
             </time>
           </footer>
         </blockquote>

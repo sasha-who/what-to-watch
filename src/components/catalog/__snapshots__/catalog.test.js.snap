@@ -18,8 +18,9 @@ exports[`Catalog should render correctly 1`] = `
       <a
         className="catalog__genres-link"
         href="#"
+        onClick={[Function]}
       >
-        all genres
+        All genres
       </a>
     </li>
     <li
@@ -28,8 +29,9 @@ exports[`Catalog should render correctly 1`] = `
       <a
         className="catalog__genres-link"
         href="#"
+        onClick={[Function]}
       >
-        comedy
+        Comedy
       </a>
     </li>
     <li
@@ -38,8 +40,9 @@ exports[`Catalog should render correctly 1`] = `
       <a
         className="catalog__genres-link"
         href="#"
+        onClick={[Function]}
       >
-        drama
+        Drama
       </a>
     </li>
     <li
@@ -48,8 +51,9 @@ exports[`Catalog should render correctly 1`] = `
       <a
         className="catalog__genres-link"
         href="#"
+        onClick={[Function]}
       >
-        melodrama
+        Melodrama
       </a>
     </li>
     <li
@@ -58,8 +62,9 @@ exports[`Catalog should render correctly 1`] = `
       <a
         className="catalog__genres-link"
         href="#"
+        onClick={[Function]}
       >
-        horror
+        Horror
       </a>
     </li>
     <li
@@ -68,8 +73,9 @@ exports[`Catalog should render correctly 1`] = `
       <a
         className="catalog__genres-link"
         href="#"
+        onClick={[Function]}
       >
-        crime
+        Crime
       </a>
     </li>
     <li
@@ -78,8 +84,9 @@ exports[`Catalog should render correctly 1`] = `
       <a
         className="catalog__genres-link"
         href="#"
+        onClick={[Function]}
       >
-        documentary
+        Documentary
       </a>
     </li>
     <li
@@ -88,8 +95,9 @@ exports[`Catalog should render correctly 1`] = `
       <a
         className="catalog__genres-link"
         href="#"
+        onClick={[Function]}
       >
-        romance
+        Romance
       </a>
     </li>
     <li
@@ -98,8 +106,9 @@ exports[`Catalog should render correctly 1`] = `
       <a
         className="catalog__genres-link"
         href="#"
+        onClick={[Function]}
       >
-        thriller
+        Thriller
       </a>
     </li>
   </ul>
