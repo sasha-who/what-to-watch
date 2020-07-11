@@ -89,13 +89,13 @@ Catalog.propTypes = {
         ).isRequired
       })
   ).isRequired,
-  filmsCountToShow: PropTypes.number.isRequired,
+  filmsCountToShow: PropTypes.number,
   currentGenre: PropTypes.string.isRequired,
   onCardClick: PropTypes.func.isRequired,
   onGenreChange: PropTypes.func.isRequired,
   filterFilmsByGenre: PropTypes.func.isRequired,
   resetFilmsCountToShow: PropTypes.func.isRequired,
-  incrementFilmsCountToShow: PropTypes.func.isRequired
+  incrementFilmsCountToShow: PropTypes.func
 };
 
 export default Catalog;

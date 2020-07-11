@@ -155,11 +155,11 @@ App.propTypes = {
       })
   ).isRequired,
   currentGenre: PropTypes.string.isRequired,
-  filmsCountToShow: PropTypes.number.isRequired,
+  filmsCountToShow: PropTypes.number,
   onGenreChange: PropTypes.func.isRequired,
   filterFilmsByGenre: PropTypes.func.isRequired,
   resetFilmsCountToShow: PropTypes.func.isRequired,
-  incrementFilmsCountToShow: PropTypes.func.isRequired
+  incrementFilmsCountToShow: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({

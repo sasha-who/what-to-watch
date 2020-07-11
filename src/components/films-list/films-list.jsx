@@ -73,9 +73,9 @@ FilmsList.propTypes = {
         ).isRequired
       })
   ).isRequired,
-  filmsCountToShow: PropTypes.number.isRequired,
+  filmsCountToShow: PropTypes.number,
   onCardClick: PropTypes.func.isRequired,
-  incrementFilmsCountToShow: PropTypes.func.isRequired
+  incrementFilmsCountToShow: PropTypes.func
 };
 
 export default FilmsList;
