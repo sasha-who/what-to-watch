@@ -11,9 +11,12 @@ const Main = (props) => {
     promoFilmData,
     currentGenre,
     filteredFilms,
+    filmsCountToShow,
     onCardClick,
     onGenreChange,
-    filterFilmsByGenre
+    filterFilmsByGenre,
+    resetFilmsCountToShow,
+    incrementFilmsCountToShow
   } = props;
 
   return (
@@ -34,9 +37,12 @@ const Main = (props) => {
           films={films}
           currentGenre={currentGenre}
           filteredFilms={filteredFilms}
+          filmsCountToShow={filmsCountToShow}
           onCardClick={onCardClick}
           onGenreChange={onGenreChange}
           filterFilmsByGenre={filterFilmsByGenre}
+          resetFilmsCountToShow={resetFilmsCountToShow}
+          incrementFilmsCountToShow={incrementFilmsCountToShow}
         />
         <Footer />
       </div>
@@ -103,9 +109,12 @@ Main.propTypes = {
       })
   ).isRequired,
   currentGenre: PropTypes.string.isRequired,
+  filmsCountToShow: PropTypes.number.isRequired,
   onCardClick: PropTypes.func.isRequired,
   onGenreChange: PropTypes.func.isRequired,
-  filterFilmsByGenre: PropTypes.func.isRequired
+  filterFilmsByGenre: PropTypes.func.isRequired,
+  resetFilmsCountToShow: PropTypes.func.isRequired,
+  incrementFilmsCountToShow: PropTypes.func.isRequired
 };
 
 export default Main;
