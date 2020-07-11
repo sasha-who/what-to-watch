@@ -5,6 +5,8 @@ export const REVIEW_DATE_HUMAN_FORMAT = `MMMM D, YYYY`;
 export const REVIEW_DATE_SERVICE_FORMAT = `YYYY-MM-DD`;
 export const DEFAULT_GENRE = `all genres`;
 export const MAX_FILTERS_COUNT = 10;
+export const INITIAL_FILMS_COUNT = 8;
+export const ADDITIONAL_FILMS_COUNT = 8;
 
 export const RatingRange = {
   MIN: 0,

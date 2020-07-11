@@ -12,7 +12,8 @@ const TITLES = [
   `We need to talk about Kevin`,
   `What We Do in the Shadows`,
   `Revenant`,
-  `Johnny English`
+  `Johnny English`,
+  `Fantastic Beasts and Where to Find Them`
 ];
 
 
@@ -94,8 +95,8 @@ export const films = TITLES.map((title, index) => {
   return ({
     id: nanoid(ID_LENGTH),
     title,
-    cover: COVERS[index],
-    poster: COVERS[index],
+    cover: COVERS[index] || COVERS[0],
+    poster: COVERS[index] || COVERS[0],
     preview: getRandomArrayItem(PREVIEWS),
     genre: getRandomArrayItem(GENRES),
     release: getRandomIntegerNumber(ReleaseRange.MIN, ReleaseRange.MAX).toString(),
