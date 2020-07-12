@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {PREVIEW_DELAY} from "../../const.js";
+import {PREVIEW_DELAY, Screen} from "../../const.js";
 import VideoPlayer from "../video-player/video-player.jsx";
 
 export default class FilmCard extends React.PureComponent {
@@ -15,7 +15,7 @@ export default class FilmCard extends React.PureComponent {
   }
 
   render() {
-    const {film, onCardClick, onCardHover} = this.props;
+    const {film, onScreenChange, onActiveFilmChange, onCardHover} = this.props;
     const {title, cover, preview} = film;
 
     return (
@@ -30,7 +30,10 @@ export default class FilmCard extends React.PureComponent {
           this._isCardHovered = false;
           this._stopPlaying();
         }}
-        onClick={onCardClick.bind(true, film)}
+        onClick={() => {
+          onScreenChange(Screen.CARD);
+          onActiveFilmChange(film);
+        }}
       >
         <div className="small-movie-card__image">
           <VideoPlayer
@@ -90,6 +93,7 @@ FilmCard.propTypes = {
         })
     ).isRequired
   }).isRequired,
-  onCardClick: PropTypes.func.isRequired,
+  onScreenChange: PropTypes.func.isRequired,
+  onActiveFilmChange: PropTypes.func.isRequired,
   onCardHover: PropTypes.func.isRequired
 };
