@@ -11,7 +11,8 @@ it(`FilmCard should render correctly`, () => {
         <FilmCard
           film={film}
           onCardHover={() => {}}
-          onCardClick={() => {}}
+          onScreenChange={() => {}}
+          onActiveFilmChange={() => {}}
         />, {
           createNodeMock: () => {
             return {};
