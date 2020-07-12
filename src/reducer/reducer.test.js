@@ -127,4 +127,16 @@ describe(`Action creators work correctly`, () => {
       type: ActionType.FILTER_FILMS_BY_GENRE
     });
   });
+
+  it(`Action creator for reseting films count to show returns correct action`, () => {
+    expect(ActionCreator.resetFilmsCountToShow()).toEqual({
+      type: ActionType.RESET_FILMS_COUNT_TO_SHOW
+    });
+  });
+
+  it(`Action creator for incrementing films count to show returns correct action`, () => {
+    expect(ActionCreator.incrementFilmsCountToShow()).toEqual({
+      type: ActionType.INCREMENT_FILMS_COUNT_TO_SHOW
+    });
+  });
 });
