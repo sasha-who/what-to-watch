@@ -13,7 +13,8 @@ it(`Main should render correctly`, () => {
           currentGenre={GENRES[0]}
           filteredFilms={films}
           filmsCountToShow={INITIAL_FILMS_COUNT}
-          onCardClick={() => {}}
+          onScreenChange={() => {}}
+          onActiveFilmChange={() => {}}
           onGenreChange={() => {}}
           filterFilmsByGenre={() => {}}
           resetFilmsCountToShow={() => {}}

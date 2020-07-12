@@ -13,7 +13,7 @@ const getRecomendedFilms = (films, currentFilm) => {
   );
 };
 
-const DetailedFilmCard = ({film, films, onCardClick}) => {
+const DetailedFilmCard = ({film, films, onScreenChange, onActiveFilmChange}) => {
   const {
     title,
     cover,
@@ -82,7 +82,8 @@ const DetailedFilmCard = ({film, films, onCardClick}) => {
           <h2 className="catalog__title">More like this</h2>
           <FilmsList
             films={getRecomendedFilms(films, film)}
-            onCardClick={onCardClick}
+            onScreenChange={onScreenChange}
+            onActiveFilmChange={onActiveFilmChange}
           />
         </section>
         <Footer />
@@ -140,7 +141,8 @@ DetailedFilmCard.propTypes = {
         ).isRequired
       })
   ).isRequired,
-  onCardClick: PropTypes.func.isRequired
+  onScreenChange: PropTypes.func.isRequired,
+  onActiveFilmChange: PropTypes.func.isRequired
 };
 
 export default DetailedFilmCard;
