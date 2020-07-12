@@ -10,7 +10,6 @@ Enzyme.configure({
 
 const [film] = films;
 const onCardHover = jest.fn();
-const onCardClick = jest.fn();
 
 jest.useFakeTimers();
 
@@ -19,25 +18,12 @@ it(`Film info should be pass in arguments after hover`, () => {
       <FilmCard
         film={film}
         onCardHover={onCardHover}
-        onCardClick={onCardClick}
+        onScreenChange={() => {}}
+        onActiveFilmChange={() => {}}
       />
   );
 
   filmCard.simulate(`mouseenter`, {target: {}});
-
-  expect(onCardHover.mock.calls[0][0]).toMatchObject(film);
-});
-
-it(`Film info should be pass in arguments after click`, () => {
-  const filmCard = shallow(
-      <FilmCard
-        film={film}
-        onCardHover={onCardHover}
-        onCardClick={onCardClick}
-      />
-  );
-
-  filmCard.simulate(`click`);
 
   expect(onCardHover.mock.calls[0][0]).toMatchObject(film);
 });
@@ -47,7 +33,8 @@ it(`Playing state should be pass to VideoPlayer`, () => {
       <FilmCard
         film={film}
         onCardHover={onCardHover}
-        onCardClick={onCardClick}
+        onScreenChange={() => {}}
+        onActiveFilmChange={() => {}}
       />
   );
 
