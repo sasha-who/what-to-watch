@@ -67,7 +67,7 @@ const review = {
   it's an hour and 40 minutes I wish I could take back.`,
   rating: 8,
   userName: `Kate Muir`,
-  date: new Date()
+  date: new Date(`December 25, 2019 01:00:00`)
 };
 
 export const films = TITLES.map((title, index) => {
