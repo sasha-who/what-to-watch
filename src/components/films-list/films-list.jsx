@@ -15,7 +15,14 @@ class FilmsList extends React.PureComponent {
   }
 
   render() {
-    const {films, onCardClick, filmsCountToShow, incrementFilmsCountToShow} = this.props;
+    const {
+      films,
+      filmsCountToShow,
+      onScreenChange,
+      onActiveFilmChange,
+      incrementFilmsCountToShow
+    } = this.props;
+
     const shownFilms = films.slice(0, filmsCountToShow);
     const isAnyFilmsToShow = films.length > filmsCountToShow;
 
@@ -25,7 +32,8 @@ class FilmsList extends React.PureComponent {
           {shownFilms.map((film) => (
             <FilmCard
               film={film}
-              onCardClick={onCardClick}
+              onScreenChange={onScreenChange}
+              onActiveFilmChange={onActiveFilmChange}
               onCardHover={this._handlerCardHover}
               key={film.id}
             />
@@ -74,7 +82,8 @@ FilmsList.propTypes = {
       })
   ).isRequired,
   filmsCountToShow: PropTypes.number,
-  onCardClick: PropTypes.func.isRequired,
+  onScreenChange: PropTypes.func.isRequired,
+  onActiveFilmChange: PropTypes.func.isRequired,
   incrementFilmsCountToShow: PropTypes.func
 };
 
