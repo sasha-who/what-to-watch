@@ -12,7 +12,8 @@ const Main = (props) => {
     currentGenre,
     filteredFilms,
     filmsCountToShow,
-    onCardClick,
+    onScreenChange,
+    onActiveFilmChange,
     onGenreChange,
     filterFilmsByGenre,
     resetFilmsCountToShow,
@@ -38,7 +39,8 @@ const Main = (props) => {
           currentGenre={currentGenre}
           filteredFilms={filteredFilms}
           filmsCountToShow={filmsCountToShow}
-          onCardClick={onCardClick}
+          onScreenChange={onScreenChange}
+          onActiveFilmChange={onActiveFilmChange}
           onGenreChange={onGenreChange}
           filterFilmsByGenre={filterFilmsByGenre}
           resetFilmsCountToShow={resetFilmsCountToShow}
@@ -110,7 +112,8 @@ Main.propTypes = {
   ).isRequired,
   currentGenre: PropTypes.string.isRequired,
   filmsCountToShow: PropTypes.number,
-  onCardClick: PropTypes.func.isRequired,
+  onScreenChange: PropTypes.func.isRequired,
+  onActiveFilmChange: PropTypes.func.isRequired,
   onGenreChange: PropTypes.func.isRequired,
   filterFilmsByGenre: PropTypes.func.isRequired,
   resetFilmsCountToShow: PropTypes.func.isRequired,
