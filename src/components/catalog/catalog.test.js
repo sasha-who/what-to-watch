@@ -1,14 +1,14 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {PromoFilmData, films} from "../../test-mocks.js";
-import App from "./app.jsx";
+import {films} from "../../test-mocks.js";
+import Catalog from "./catalog.jsx";
 
-it(`App should render correctly`, () => {
+it(`Catalog should render correctly`, () => {
   const tree = renderer
     .create(
-        <App
-          promoFilmData={PromoFilmData}
+        <Catalog
           films={films}
+          onCardClick={() => {}}
         />, {
           createNodeMock: () => {
             return {};

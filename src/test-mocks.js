@@ -1,3 +1,5 @@
+export const RECOMENDED_FILMS_COUNT = 4;
+
 export const PromoFilmData = {
   title: `The Grand Budapest Hotel`,
   genre: `Drama`,
@@ -9,6 +11,7 @@ const RELEASE = `2020`;
 const RATING = 9;
 const RATINGS_COUNT = 228;
 const DIRECTOR = `Otto Bathurst`;
+const PREVIEW = `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`;
 
 const DESCRRIPTION = `In the 1930s, the Grand Budapest Hotel is a popular European ski resort,
 presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's
@@ -54,6 +57,7 @@ export const films = TITLES.map((title, index) => {
     title,
     cover: COVERS[index],
     poster: COVERS[index],
+    preview: PREVIEW,
     genre: GENRE,
     release: RELEASE,
     rating: RATING,

@@ -1,3 +1,6 @@
+export const RECOMENDED_FILMS_COUNT = 4;
+export const PREVIEW_DELAY = 1000;
+
 export const RatingRange = {
   MIN: 0,
   MAX_BAD: 3,
@@ -18,3 +21,16 @@ export const Screen = {
   MAIN: `main`,
   CARD: `card`
 };
+
+export const GENRES = [
+  `All genres`,
+  `Comedies`,
+  `Crime`,
+  `Documentary`,
+  `Dramas`,
+  `Horror`,
+  `Kids &amp; Family`,
+  `Romance`,
+  `Sci-Fi`,
+  `Thrillers`
+];

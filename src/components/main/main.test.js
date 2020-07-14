@@ -10,7 +10,11 @@ it(`Main should render correctly`, () => {
           promoFilmData={PromoFilmData}
           films={films}
           onCardClick={() => {}}
-        />
+        />, {
+          createNodeMock: () => {
+            return {};
+          }
+        }
     )
     .toJSON();
 

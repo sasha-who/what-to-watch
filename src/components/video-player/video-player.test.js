@@ -1,14 +1,18 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import VideoPlayer from "./video-player.jsx";
 import {films} from "../../test-mocks.js";
-import FilmsList from "./films-list.jsx";
 
-it(`FilmsList should render correctly`, () => {
+const [film] = films;
+const {preview, cover} = film;
+
+it(`VideoPlayer should render correctly`, () => {
   const tree = renderer
     .create(
-        <FilmsList
-          films={films}
-          onCardClick={() => {}}
+        <VideoPlayer
+          preview={preview}
+          defaultImage={cover}
+          isPlaying={false}
         />, {
           createNodeMock: () => {
             return {};

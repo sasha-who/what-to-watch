@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
-import {Screen} from "../../const.js";
+import {RECOMENDED_FILMS_COUNT, Screen} from "../../const.js";
 import Main from "../main/main.jsx";
 import DetailedFilmCard from "../detailed-card/detailed-card.jsx";
 
@@ -20,6 +20,7 @@ class App extends React.PureComponent {
   render() {
     const {films} = this.props;
     const [film] = films;
+    const recomendedFilms = films.slice(0, RECOMENDED_FILMS_COUNT);
 
     return (
       <BrowserRouter>
@@ -28,7 +29,11 @@ class App extends React.PureComponent {
             {this._renderScreen()}
           </Route>
           <Route exact path="/film-card">
-            <DetailedFilmCard film={film} />
+            <DetailedFilmCard
+              film={film}
+              recomendedFilms={recomendedFilms}
+              onCardClick={this._handlerCardClick}
+            />
           </Route>
         </Switch>
       </BrowserRouter>
@@ -46,6 +51,7 @@ class App extends React.PureComponent {
   _renderScreen() {
     const {promoFilmData, films} = this.props;
     const {activeScreen} = this.state;
+    const recomendedFilms = films.slice(0, RECOMENDED_FILMS_COUNT);
 
     switch (activeScreen) {
       case Screen.MAIN:
@@ -59,7 +65,11 @@ class App extends React.PureComponent {
 
       case Screen.CARD:
         return (
-          <DetailedFilmCard film={this.activeFilm} />
+          <DetailedFilmCard
+            film={this.activeFilm}
+            recomendedFilms={recomendedFilms}
+            onCardClick={this._handlerCardClick}
+          />
         );
 
       default:
@@ -80,6 +90,7 @@ App.propTypes = {
         title: PropTypes.string.isRequired,
         cover: PropTypes.string.isRequired,
         poster: PropTypes.string.isRequired,
+        preview: PropTypes.string.isRequired,
         genre: PropTypes.string.isRequired,
         release: PropTypes.string.isRequired,
         rating: PropTypes.number.isRequired,
