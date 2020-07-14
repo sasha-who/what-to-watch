@@ -1,7 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import FilmCard from "../films-card/film-card.jsx";
+import withFilmCard from "../../hocs/with-film-card/with-film-card.js";
 import ShowMoreButton from "../show-more/show-more.jsx";
+
+const FilmCardWrapped = withFilmCard(FilmCard);
 
 class FilmsList extends React.PureComponent {
   constructor(props) {
@@ -11,7 +14,7 @@ class FilmsList extends React.PureComponent {
       activeCard: null
     };
 
-    this._handlerCardHover = this._handlerCardHover.bind(this);
+    this._handleCardHover = this._handleCardHover.bind(this);
   }
 
   render() {
@@ -30,11 +33,11 @@ class FilmsList extends React.PureComponent {
       <React.Fragment>
         <div className="catalog__movies-list">
           {shownFilms.map((film) => (
-            <FilmCard
+            <FilmCardWrapped
               film={film}
               onScreenChange={onScreenChange}
               onActiveFilmChange={onActiveFilmChange}
-              onCardHover={this._handlerCardHover}
+              onCardHover={this._handleCardHover}
               key={film.id}
             />
           ))}
@@ -48,7 +51,7 @@ class FilmsList extends React.PureComponent {
     );
   }
 
-  _handlerCardHover(film, activeCard) {
+  _handleCardHover(activeCard) {
     this.setState({
       activeCard
     });
