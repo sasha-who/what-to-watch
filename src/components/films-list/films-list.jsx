@@ -6,57 +6,38 @@ import ShowMoreButton from "../show-more/show-more.jsx";
 
 const FilmCardWrapped = withFilmCard(FilmCard);
 
-class FilmsList extends React.PureComponent {
-  constructor(props) {
-    super(props);
+const FilmsList = (props) => {
+  const {
+    films,
+    filmsCountToShow,
+    onScreenChange,
+    onActiveFilmChange,
+    incrementFilmsCountToShow
+  } = props;
 
-    this.state = {
-      activeCard: null
-    };
+  const shownFilms = films.slice(0, filmsCountToShow);
+  const isAnyFilmsToShow = films.length > filmsCountToShow;
 
-    this._handleCardHover = this._handleCardHover.bind(this);
-  }
-
-  render() {
-    const {
-      films,
-      filmsCountToShow,
-      onScreenChange,
-      onActiveFilmChange,
-      incrementFilmsCountToShow
-    } = this.props;
-
-    const shownFilms = films.slice(0, filmsCountToShow);
-    const isAnyFilmsToShow = films.length > filmsCountToShow;
-
-    return (
-      <React.Fragment>
-        <div className="catalog__movies-list">
-          {shownFilms.map((film) => (
-            <FilmCardWrapped
-              film={film}
-              onScreenChange={onScreenChange}
-              onActiveFilmChange={onActiveFilmChange}
-              onCardHover={this._handleCardHover}
-              key={film.id}
-            />
-          ))}
-        </div>
-        {isAnyFilmsToShow &&
-          <ShowMoreButton
-            incrementFilmsCountToShow={incrementFilmsCountToShow}
+  return (
+    <React.Fragment>
+      <div className="catalog__movies-list">
+        {shownFilms.map((film) => (
+          <FilmCardWrapped
+            film={film}
+            onScreenChange={onScreenChange}
+            onActiveFilmChange={onActiveFilmChange}
+            key={film.id}
           />
-        }
-      </React.Fragment>
-    );
-  }
-
-  _handleCardHover(activeCard) {
-    this.setState({
-      activeCard
-    });
-  }
-}
+        ))}
+      </div>
+      {isAnyFilmsToShow &&
+        <ShowMoreButton
+          incrementFilmsCountToShow={incrementFilmsCountToShow}
+        />
+      }
+    </React.Fragment>
+  );
+};
 
 FilmsList.propTypes = {
   films: PropTypes.arrayOf(
