@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
+import {Screen} from "../../const.js";
 import {films} from "../../test-mocks.js";
 import withFilmCard from "./with-film-card.js";
 
@@ -9,10 +10,14 @@ Enzyme.configure({
   adapter: new Adapter()
 });
 
+jest.useFakeTimers();
+
 const [film] = films;
 
 const FilmCard = (props) => {
   const {
+    onScreenChange,
+    onActiveFilmChange,
     onHoverChange,
     onStartPlaying,
     onStopPlaying
@@ -28,34 +33,40 @@ const FilmCard = (props) => {
         onHoverChange();
         onStopPlaying();
       }}
+      onClick={() => {
+        onScreenChange(Screen.CARD);
+        onActiveFilmChange(film);
+      }}
     ></article>
   );
 };
 
 FilmCard.propTypes = {
+  onScreenChange: PropTypes.func.isRequired,
+  onActiveFilmChange: PropTypes.func.isRequired,
   onHoverChange: PropTypes.func.isRequired,
   onStartPlaying: PropTypes.func.isRequired,
   onStopPlaying: PropTypes.func.isRequired
 };
 
-jest.useFakeTimers();
+const onActiveFilmChange = jest.fn();
+const onScreenChange = jest.fn();
+const FilmCardWrapped = withFilmCard(FilmCard);
+
+const wrapper = mount(
+    <FilmCardWrapped
+      film={film}
+      isPlaying={false}
+      onCardHover={() => {}}
+      onScreenChange={onScreenChange}
+      onActiveFilmChange={onActiveFilmChange}
+      onStartPlaying={() => {}}
+      onStopPlaying={() => {}}
+      onHoverChange={() => {}}
+    />
+);
 
 it(`Playing state should change after interaction`, () => {
-  const FilmCardWrapped = withFilmCard(FilmCard);
-
-  const wrapper = mount(
-      <FilmCardWrapped
-        film={film}
-        isPlaying={false}
-        onCardHover={() => {}}
-        onScreenChange={() => {}}
-        onActiveFilmChange={() => {}}
-        onStartPlaying={() => {}}
-        onStopPlaying={() => {}}
-        onHoverChange={() => {}}
-      />
-  );
-
   wrapper.find(`article`).simulate(`mouseenter`, {target: {}});
   jest.runAllTimers();
 
@@ -67,24 +78,16 @@ it(`Playing state should change after interaction`, () => {
 });
 
 it(`Playing state should reset to false if hover was end before timeout`, () => {
-  const FilmCardWrapped = withFilmCard(FilmCard);
-
-  const wrapper = mount(
-      <FilmCardWrapped
-        film={film}
-        isPlaying={false}
-        onCardHover={() => {}}
-        onScreenChange={() => {}}
-        onActiveFilmChange={() => {}}
-        onStartPlaying={() => {}}
-        onStopPlaying={() => {}}
-        onHoverChange={() => {}}
-      />
-  );
-
   wrapper.find(`article`).simulate(`mouseenter`, {target: {}});
   wrapper.find(`article`).simulate(`mouseleave`);
   jest.runAllTimers();
 
   expect(wrapper.state().isPlaying).toBeFalsy();
+});
+
+it(`Click to card cause changing of active film and screen`, () => {
+  wrapper.find(`article`).simulate(`click`);
+
+  expect(onActiveFilmChange.mock.calls.length).toBe(1);
+  expect(onScreenChange.mock.calls.length).toBe(1);
 });
