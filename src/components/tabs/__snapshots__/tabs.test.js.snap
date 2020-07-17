@@ -108,7 +108,7 @@ Array [
       className="movie-nav__list"
     >
       <li
-        className="movie-nav__item "
+        className="movie-nav__item movie-nav__item--active"
       >
         <a
           className="movie-nav__link"
@@ -119,7 +119,7 @@ Array [
         </a>
       </li>
       <li
-        className="movie-nav__item movie-nav__item--active"
+        className="movie-nav__item "
       >
         <a
           className="movie-nav__link"
@@ -143,97 +143,57 @@ Array [
     </ul>
   </nav>,
   <div
-    className="movie-card__text movie-card__row"
+    className="movie-rating"
   >
     <div
-      className="movie-card__text-col"
+      className="movie-rating__score"
     >
-      <p
-        className="movie-card__details-item"
-      >
-        <strong
-          className="movie-card__details-name"
-        >
-          Director
-        </strong>
-        <span
-          className="movie-card__details-value"
-        >
-          Otto Bathurst
-        </span>
-      </p>
-      <p
-        className="movie-card__details-item"
-      >
-        <strong
-          className="movie-card__details-name"
-        >
-          Starring
-        </strong>
-        <span
-          className="movie-card__details-value"
-        >
-          Cillian Murphy
-          <br />
-          Sam Neill
-          <br />
-          Helen McCrory
-          <br />
-          Paul Anderson
-          <br />
-          Annabelle Wallis
-          <br />
-          Iddo Goldberg
-          <br />
-        </span>
-      </p>
+      9
     </div>
-    <div
-      className="movie-card__text-col"
+    <p
+      className="movie-rating__meta"
     >
-      <p
-        className="movie-card__details-item"
+      <span
+        className="movie-rating__level"
       >
-        <strong
-          className="movie-card__details-name"
-        >
-          Run Time
-        </strong>
-        <span
-          className="movie-card__details-value"
-        >
-          2h 20m
-        </span>
-      </p>
-      <p
-        className="movie-card__details-item"
+        Very good
+      </span>
+      <span
+        className="movie-rating__count"
       >
-        <strong
-          className="movie-card__details-name"
-        >
-          Genre
-        </strong>
-        <span
-          className="movie-card__details-value"
-        >
-          comedy
-        </span>
-      </p>
-      <p
-        className="movie-card__details-item"
-      >
-        <strong
-          className="movie-card__details-name"
-        >
-          Released
-        </strong>
-        <span
-          className="movie-card__details-value"
-        >
-          2020
-        </span>
-      </p>
-    </div>
+        228
+         ratings
+      </span>
+    </p>
+  </div>,
+  <div
+    className="movie-card__text"
+  >
+    <p>
+      In the 1930s, the Grand Budapest Hotel is a popular European ski resort,
+presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's
+friend and protege. Gustave prides himself on providing first-class service to the hotel's guests,
+including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's
+lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief
+suspect in her murder.
+    </p>
+    <p
+      className="movie-card__director"
+    >
+      <strong>
+        Director: 
+        Otto Bathurst
+      </strong>
+    </p>
+    <p
+      className="movie-card__starring"
+    >
+      <strong>
+        Starring: 
+        Cillian Murphy, Sam Neill, Helen McCrory, Paul Anderson, Annabelle Wallis, Iddo Goldberg
+         and other
+      </strong>
+    </p>
   </div>,
 ]
 `;
@@ -247,7 +207,7 @@ Array [
       className="movie-nav__list"
     >
       <li
-        className="movie-nav__item "
+        className="movie-nav__item movie-nav__item--active"
       >
         <a
           className="movie-nav__link"
@@ -269,7 +229,7 @@ Array [
         </a>
       </li>
       <li
-        className="movie-nav__item movie-nav__item--active"
+        className="movie-nav__item "
       >
         <a
           className="movie-nav__link"
@@ -282,49 +242,57 @@ Array [
     </ul>
   </nav>,
   <div
-    className="movie-card__reviews movie-card__row"
+    className="movie-rating"
   >
     <div
-      className="movie-card__reviews-col"
+      className="movie-rating__score"
     >
-      <div
-        className="review"
-      >
-        <blockquote
-          className="review__quote"
-        >
-          <p
-            className="review__text"
-          >
-            I didn't find it amusing, and while I can appreciate the creativity,
-  it's an hour and 40 minutes I wish I could take back.
-          </p>
-          <footer
-            className="review__details"
-          >
-            <cite
-              className="review__author"
-            >
-              Kate Muir
-            </cite>
-            <time
-              className="review__date"
-              dateTime="2019-12-25"
-            >
-              December 25, 2019
-            </time>
-          </footer>
-        </blockquote>
-        <div
-          className="review__rating"
-        >
-          8
-        </div>
-      </div>
+      9
     </div>
-    <div
-      className="movie-card__reviews-col"
-    />
+    <p
+      className="movie-rating__meta"
+    >
+      <span
+        className="movie-rating__level"
+      >
+        Very good
+      </span>
+      <span
+        className="movie-rating__count"
+      >
+        228
+         ratings
+      </span>
+    </p>
+  </div>,
+  <div
+    className="movie-card__text"
+  >
+    <p>
+      In the 1930s, the Grand Budapest Hotel is a popular European ski resort,
+presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's
+friend and protege. Gustave prides himself on providing first-class service to the hotel's guests,
+including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's
+lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief
+suspect in her murder.
+    </p>
+    <p
+      className="movie-card__director"
+    >
+      <strong>
+        Director: 
+        Otto Bathurst
+      </strong>
+    </p>
+    <p
+      className="movie-card__starring"
+    >
+      <strong>
+        Starring: 
+        Cillian Murphy, Sam Neill, Helen McCrory, Paul Anderson, Annabelle Wallis, Iddo Goldberg
+         and other
+      </strong>
+    </p>
   </div>,
 ]
 `;
