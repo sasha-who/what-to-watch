@@ -1,5 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import {TabsNames} from "../../const.js";
 import {films} from "../../test-mocks.js";
 import Tabs from "../tabs/tabs.jsx";
 
@@ -10,6 +11,8 @@ it(`Tabs should render correctly all tabs`, () => {
     .create(
         <Tabs
           film={film}
+          activeTab={TabsNames.OVERVIEW}
+          onActiveTabChange={() => {}}
         />
     );
 

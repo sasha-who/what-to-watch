@@ -5,6 +5,7 @@ import Footer from "../footer/footer.jsx";
 import {RECOMENDED_FILMS_COUNT} from "../../const.js";
 import FilmsList from "../films-list/films-list.jsx";
 import Tabs from "../tabs/tabs.jsx";
+import withActiveTab from "../../hocs/with-active-tab/with-active-tab.js";
 
 const getRecomendedFilms = (films, currentFilm) => {
   return (
@@ -12,6 +13,8 @@ const getRecomendedFilms = (films, currentFilm) => {
       .slice(0, RECOMENDED_FILMS_COUNT)
   );
 };
+
+const TabsWrapped = withActiveTab(Tabs);
 
 const DetailedFilmCard = ({film, films, onScreenChange, onActiveFilmChange}) => {
   const {
@@ -72,7 +75,7 @@ const DetailedFilmCard = ({film, films, onScreenChange, onActiveFilmChange}) => 
               />
             </div>
             <div className="movie-card__desc">
-              <Tabs film={film} />
+              <TabsWrapped film={film} />
             </div>
           </div>
         </div>
