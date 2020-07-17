@@ -35,22 +35,16 @@ const getRatingGrade = (rating) => {
 };
 
 export default class Tabs extends React.PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeTab: TabsNames.OVERVIEW
-    };
-  }
-
   render() {
+    const {activeTab, onActiveTabChange} = this.props;
+
     return (
       <React.Fragment>
         <nav className="movie-nav movie-card__nav">
           <ul className="movie-nav__list">
             {TabsData.map((tab) => {
               const {name, content} = tab;
-              const activeClass = this.state.activeTab === name ?
+              const activeClass = activeTab === name ?
                 `movie-nav__item--active` :
                 ``;
 
@@ -63,11 +57,7 @@ export default class Tabs extends React.PureComponent {
                     href="#"
                     className="movie-nav__link"
                     onClick={() => {
-                      if (this.state.activeTab !== name) {
-                        this.setState({
-                          activeTab: name
-                        });
-                      }
+                      onActiveTabChange(name);
                     }}
                   >
                     {content}
@@ -204,7 +194,7 @@ export default class Tabs extends React.PureComponent {
   }
 
   _renderTabContent() {
-    switch (this.state.activeTab) {
+    switch (this.props.activeTab) {
       case TabsNames.OVERVIEW:
         return this._getOverviewTab();
 
@@ -244,5 +234,7 @@ Tabs.propTypes = {
           date: PropTypes.instanceOf(Date).isRequired
         })
     ).isRequired
-  }).isRequired
+  }).isRequired,
+  activeTab: PropTypes.string.isRequired,
+  onActiveTabChange: PropTypes.func.isRequired
 };
