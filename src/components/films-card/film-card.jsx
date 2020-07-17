@@ -79,7 +79,16 @@ FilmCard.propTypes = {
     ratingsCount: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
-    actors: PropTypes.arrayOf(PropTypes.string)
+    actors: PropTypes.arrayOf(PropTypes.string),
+    reviews: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.string.isRequired,
+          text: PropTypes.string.isRequired,
+          rating: PropTypes.number.isRequired,
+          userName: PropTypes.string.isRequired,
+          date: PropTypes.instanceOf(Date).isRequired
+        })
+    ).isRequired
   }).isRequired,
   onCardClick: PropTypes.func.isRequired,
   onCardHover: PropTypes.func.isRequired

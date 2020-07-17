@@ -1,48 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {RatingRange, RatingGrade} from "../../const.js";
 import Header from "../header/header.jsx";
 import Footer from "../footer/footer.jsx";
+import {RECOMENDED_FILMS_COUNT} from "../../const.js";
 import FilmsList from "../films-list/films-list.jsx";
+import Tabs from "../tabs/tabs.jsx";
 
-const getRatingGrade = (rating) => {
-  switch (true) {
-    case rating >= RatingRange.MIN && rating < RatingRange.MAX_BAD:
-      return RatingGrade.BAD;
-
-    case rating >= RatingRange.MAX_BAD && rating < RatingRange.MAX_NORMAL:
-      return RatingGrade.NORMAL;
-
-    case rating >= RatingRange.MAX_NORMAL && rating < RatingRange.MAX_GOOD:
-      return RatingGrade.GOOD;
-
-    case rating >= RatingRange.MAX_GOOD && rating < RatingRange.MAX:
-      return RatingGrade.VERY_GOOD;
-
-    case rating === RatingRange.MAX:
-      return RatingGrade.AWESOME;
-
-    default:
-      return RatingGrade.BAD;
-  }
+const getRecomendedFilms = (films, currentFilm) => {
+  return (
+    films.filter((film) => (film !== currentFilm) && (film.genre === currentFilm.genre))
+      .slice(0, RECOMENDED_FILMS_COUNT)
+  );
 };
 
-const DetailedFilmCard = ({film, recomendedFilms, onCardClick}) => {
+const DetailedFilmCard = ({film, films, onCardClick}) => {
   const {
     title,
     cover,
     poster,
     genre,
-    release,
-    rating,
-    ratingsCount,
-    description,
-    director,
-    actors
+    release
   } = film;
-
-  const ratingGrade = getRatingGrade(rating);
-  const actorsList = actors.join(`, `);
 
   return (
     <div>
@@ -94,43 +72,7 @@ const DetailedFilmCard = ({film, recomendedFilms, onCardClick}) => {
               />
             </div>
             <div className="movie-card__desc">
-              <nav className="movie-nav movie-card__nav">
-                <ul className="movie-nav__list">
-                  <li className="movie-nav__item movie-nav__item--active">
-                    <a href="#" className="movie-nav__link">
-                      Overview
-                    </a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">
-                      Details
-                    </a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">
-                      Reviews
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-              <div className="movie-rating">
-                <div className="movie-rating__score">{rating}</div>
-                <p className="movie-rating__meta">
-                  <span className="movie-rating__level">{ratingGrade}</span>
-                  <span className="movie-rating__count">{ratingsCount} ratings</span>
-                </p>
-              </div>
-              <div className="movie-card__text">
-                <p>{description}</p>
-                <p className="movie-card__director">
-                  <strong>Director: {director}</strong>
-                </p>
-                <p className="movie-card__starring">
-                  <strong>
-                    Starring: {actorsList} and other
-                  </strong>
-                </p>
-              </div>
+              <Tabs film={film} />
             </div>
           </div>
         </div>
@@ -139,7 +81,7 @@ const DetailedFilmCard = ({film, recomendedFilms, onCardClick}) => {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
           <FilmsList
-            films={recomendedFilms}
+            films={getRecomendedFilms(films, film)}
             onCardClick={onCardClick}
           />
         </section>
@@ -162,9 +104,18 @@ DetailedFilmCard.propTypes = {
     ratingsCount: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
-    actors: PropTypes.arrayOf(PropTypes.string)
+    actors: PropTypes.arrayOf(PropTypes.string),
+    reviews: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.string.isRequired,
+          text: PropTypes.string.isRequired,
+          rating: PropTypes.number.isRequired,
+          userName: PropTypes.string.isRequired,
+          date: PropTypes.instanceOf(Date).isRequired
+        })
+    ).isRequired
   }).isRequired,
-  recomendedFilms: PropTypes.arrayOf(
+  films: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
@@ -177,7 +128,16 @@ DetailedFilmCard.propTypes = {
         ratingsCount: PropTypes.number.isRequired,
         description: PropTypes.string.isRequired,
         director: PropTypes.string.isRequired,
-        actors: PropTypes.arrayOf(PropTypes.string)
+        actors: PropTypes.arrayOf(PropTypes.string),
+        reviews: PropTypes.arrayOf(
+            PropTypes.shape({
+              id: PropTypes.string.isRequired,
+              text: PropTypes.string.isRequired,
+              rating: PropTypes.number.isRequired,
+              userName: PropTypes.string.isRequired,
+              date: PropTypes.instanceOf(Date).isRequired
+            })
+        ).isRequired
       })
   ).isRequired,
   onCardClick: PropTypes.func.isRequired

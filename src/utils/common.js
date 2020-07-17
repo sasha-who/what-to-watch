@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export const getRandomIntegerNumber = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -25,4 +27,10 @@ export const getRandomArrayItems = (array) => {
   const shuffledArray = shuffleArray(array.slice());
 
   return shuffledArray.slice(0, getRandomIntegerNumber(0, array.length));
+};
+
+export const getFormatedRunTime = (duration) => {
+  const durationInMinutes = moment.duration(duration, `minutes`);
+
+  return `${durationInMinutes.hours()}h ${durationInMinutes.minutes()}m`;
 };
