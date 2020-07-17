@@ -57,7 +57,6 @@ const wrapper = mount(
     <FilmCardWrapped
       film={film}
       isPlaying={false}
-      onCardHover={() => {}}
       onScreenChange={onScreenChange}
       onActiveFilmChange={onActiveFilmChange}
       onStartPlaying={() => {}}
