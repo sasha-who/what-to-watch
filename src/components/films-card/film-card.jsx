@@ -9,7 +9,6 @@ const FilmCard = (props) => {
     isPlaying,
     onScreenChange,
     onActiveFilmChange,
-    onCardHover,
     onStartPlaying,
     onStopPlaying,
     onHoverChange
@@ -20,9 +19,8 @@ const FilmCard = (props) => {
   return (
     <article
       className="small-movie-card catalog__movies-card"
-      onMouseEnter={(evt) => {
+      onMouseEnter={() => {
         onHoverChange();
-        onCardHover(evt.target);
         onStartPlaying();
       }}
       onMouseLeave={() => {
@@ -78,7 +76,6 @@ FilmCard.propTypes = {
   isPlaying: PropTypes.bool.isRequired,
   onScreenChange: PropTypes.func.isRequired,
   onActiveFilmChange: PropTypes.func.isRequired,
-  onCardHover: PropTypes.func.isRequired,
   onStartPlaying: PropTypes.func.isRequired,
   onStopPlaying: PropTypes.func.isRequired,
   onHoverChange: PropTypes.func.isRequired
