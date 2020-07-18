@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const ShowMoreButton = ({incrementFilmsCountToShow}) => (
+const ShowMoreButton = ({onFilmsCountToShowIncrement}) => (
   <div className="catalog__more">
     <button
       className="catalog__button"
       type="button"
       onClick={() => {
-        incrementFilmsCountToShow();
+        onFilmsCountToShowIncrement();
       }}
     >
       Show more
@@ -16,7 +16,7 @@ const ShowMoreButton = ({incrementFilmsCountToShow}) => (
 );
 
 ShowMoreButton.propTypes = {
-  incrementFilmsCountToShow: PropTypes.func.isRequired
+  onFilmsCountToShowIncrement: PropTypes.func.isRequired
 };
 
 export default ShowMoreButton;

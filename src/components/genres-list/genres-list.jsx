@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 import {DEFAULT_GENRE, MAX_FILTERS_COUNT} from "../../const.js";
 
 const generateGenresList = (films) => {
@@ -30,7 +31,9 @@ const GenresList = (props) => {
   return (
     <ul className="catalog__genres-list">
       {generateGenresList(films).map((genre) => {
-        const activeClass = (genre === currentGenre) ? `catalog__genres-item--active` : ``;
+        const activeClass = classNames({
+          'catalog__genres-item--active': genre === currentGenre
+        });
 
         return (
           <li
