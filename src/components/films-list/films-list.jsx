@@ -12,7 +12,7 @@ const FilmsList = (props) => {
     filmsCountToShow,
     onScreenChange,
     onActiveFilmChange,
-    incrementFilmsCountToShow,
+    onFilmsCountToShowIncrement,
     onSimilarFilmsUpdate
   } = props;
 
@@ -34,7 +34,7 @@ const FilmsList = (props) => {
       </div>
       {isAnyFilmsToShow &&
         <ShowMoreButton
-          incrementFilmsCountToShow={incrementFilmsCountToShow}
+          onFilmsCountToShowIncrement={onFilmsCountToShowIncrement}
         />
       }
     </React.Fragment>
@@ -70,7 +70,7 @@ FilmsList.propTypes = {
   filmsCountToShow: PropTypes.number,
   onScreenChange: PropTypes.func.isRequired,
   onActiveFilmChange: PropTypes.func.isRequired,
-  incrementFilmsCountToShow: PropTypes.func,
+  onFilmsCountToShowIncrement: PropTypes.func,
   onSimilarFilmsUpdate: PropTypes.func.isRequired
 };
 

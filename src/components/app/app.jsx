@@ -50,9 +50,9 @@ class App extends React.PureComponent {
       onScreenChange,
       onActiveFilmChange,
       onGenreChange,
-      filterFilmsByGenre,
-      resetFilmsCountToShow,
-      incrementFilmsCountToShow,
+      onFilmsFilterByGenre,
+      onFilmsCountToShowReset,
+      onFilmsCountToShowIncrement,
       onSimilarFilmsUpdate
     } = this.props;
 
@@ -68,9 +68,9 @@ class App extends React.PureComponent {
             onScreenChange={onScreenChange}
             onActiveFilmChange={onActiveFilmChange}
             onGenreChange={onGenreChange}
-            filterFilmsByGenre={filterFilmsByGenre}
-            resetFilmsCountToShow={resetFilmsCountToShow}
-            incrementFilmsCountToShow={incrementFilmsCountToShow}
+            onFilmsFilterByGenre={onFilmsFilterByGenre}
+            onFilmsCountToShowReset={onFilmsCountToShowReset}
+            onFilmsCountToShowIncrement={onFilmsCountToShowIncrement}
             onSimilarFilmsUpdate={onSimilarFilmsUpdate}
           />
         );
@@ -206,9 +206,9 @@ App.propTypes = {
   onScreenChange: PropTypes.func.isRequired,
   onActiveFilmChange: PropTypes.func.isRequired,
   onGenreChange: PropTypes.func.isRequired,
-  filterFilmsByGenre: PropTypes.func.isRequired,
-  resetFilmsCountToShow: PropTypes.func.isRequired,
-  incrementFilmsCountToShow: PropTypes.func,
+  onFilmsFilterByGenre: PropTypes.func.isRequired,
+  onFilmsCountToShowReset: PropTypes.func.isRequired,
+  onFilmsCountToShowIncrement: PropTypes.func,
   onSimilarFilmsUpdate: PropTypes.func.isRequired
 };
 
@@ -232,13 +232,13 @@ const mapDispatchToProps = (dispatch) => ({
   onGenreChange(genre) {
     dispatch(ActionCreator.changeCurrentGenre(genre));
   },
-  filterFilmsByGenre() {
+  onFilmsFilterByGenre() {
     dispatch(ActionCreator.filterFilmsByGenre());
   },
-  resetFilmsCountToShow() {
+  onFilmsCountToShowReset() {
     dispatch(ActionCreator.resetFilmsCountToShow());
   },
-  incrementFilmsCountToShow() {
+  onFilmsCountToShowIncrement() {
     dispatch(ActionCreator.incrementFilmsCountToShow());
   },
   onSimilarFilmsUpdate() {
