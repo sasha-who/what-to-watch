@@ -15,9 +15,9 @@ const Main = (props) => {
     onScreenChange,
     onActiveFilmChange,
     onGenreChange,
-    filterFilmsByGenre,
-    resetFilmsCountToShow,
-    incrementFilmsCountToShow,
+    onFilmsFilterByGenre,
+    onFilmsCountToShowReset,
+    onFilmsCountToShowIncrement,
     onSimilarFilmsUpdate
   } = props;
 
@@ -43,9 +43,9 @@ const Main = (props) => {
           onScreenChange={onScreenChange}
           onActiveFilmChange={onActiveFilmChange}
           onGenreChange={onGenreChange}
-          filterFilmsByGenre={filterFilmsByGenre}
-          resetFilmsCountToShow={resetFilmsCountToShow}
-          incrementFilmsCountToShow={incrementFilmsCountToShow}
+          onFilmsFilterByGenre={onFilmsFilterByGenre}
+          onFilmsCountToShowReset={onFilmsCountToShowReset}
+          onFilmsCountToShowIncrement={onFilmsCountToShowIncrement}
           onSimilarFilmsUpdate={onSimilarFilmsUpdate}
         />
         <Footer />
@@ -117,9 +117,9 @@ Main.propTypes = {
   onScreenChange: PropTypes.func.isRequired,
   onActiveFilmChange: PropTypes.func.isRequired,
   onGenreChange: PropTypes.func.isRequired,
-  filterFilmsByGenre: PropTypes.func.isRequired,
-  resetFilmsCountToShow: PropTypes.func.isRequired,
-  incrementFilmsCountToShow: PropTypes.func,
+  onFilmsFilterByGenre: PropTypes.func.isRequired,
+  onFilmsCountToShowReset: PropTypes.func.isRequired,
+  onFilmsCountToShowIncrement: PropTypes.func,
   onSimilarFilmsUpdate: PropTypes.func.isRequired
 };
 
