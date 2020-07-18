@@ -20,7 +20,8 @@ const FilmCard = (props) => {
     onActiveFilmChange,
     onHoverChange,
     onStartPlaying,
-    onStopPlaying
+    onStopPlaying,
+    onSimilarFilmsUpdate
   } = props;
 
   return (
@@ -36,6 +37,7 @@ const FilmCard = (props) => {
       onClick={() => {
         onScreenChange(Screen.CARD);
         onActiveFilmChange(film);
+        onSimilarFilmsUpdate();
       }}
     ></article>
   );
@@ -46,11 +48,13 @@ FilmCard.propTypes = {
   onActiveFilmChange: PropTypes.func.isRequired,
   onHoverChange: PropTypes.func.isRequired,
   onStartPlaying: PropTypes.func.isRequired,
-  onStopPlaying: PropTypes.func.isRequired
+  onStopPlaying: PropTypes.func.isRequired,
+  onSimilarFilmsUpdate: PropTypes.func.isRequired
 };
 
 const onActiveFilmChange = jest.fn();
 const onScreenChange = jest.fn();
+const onSimilarFilmsUpdate = jest.fn();
 const FilmCardWrapped = withFilmCard(FilmCard);
 
 const wrapper = mount(
@@ -62,6 +66,7 @@ const wrapper = mount(
       onStartPlaying={() => {}}
       onStopPlaying={() => {}}
       onHoverChange={() => {}}
+      onSimilarFilmsUpdate={onSimilarFilmsUpdate}
     />
 );
 

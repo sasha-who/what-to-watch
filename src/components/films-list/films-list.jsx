@@ -12,7 +12,8 @@ const FilmsList = (props) => {
     filmsCountToShow,
     onScreenChange,
     onActiveFilmChange,
-    incrementFilmsCountToShow
+    incrementFilmsCountToShow,
+    onSimilarFilmsUpdate
   } = props;
 
   const shownFilms = films.slice(0, filmsCountToShow);
@@ -26,6 +27,7 @@ const FilmsList = (props) => {
             film={film}
             onScreenChange={onScreenChange}
             onActiveFilmChange={onActiveFilmChange}
+            onSimilarFilmsUpdate={onSimilarFilmsUpdate}
             key={film.id}
           />
         ))}
@@ -68,7 +70,8 @@ FilmsList.propTypes = {
   filmsCountToShow: PropTypes.number,
   onScreenChange: PropTypes.func.isRequired,
   onActiveFilmChange: PropTypes.func.isRequired,
-  incrementFilmsCountToShow: PropTypes.func
+  incrementFilmsCountToShow: PropTypes.func,
+  onSimilarFilmsUpdate: PropTypes.func.isRequired
 };
 
 export default FilmsList;

@@ -9,7 +9,13 @@ import DetailedFilmCard from "../detailed-card/detailed-card.jsx";
 
 class App extends React.PureComponent {
   render() {
-    const {films, activeFilm, onScreenChange, onActiveFilmChange} = this.props;
+    const {
+      similarFilms,
+      activeFilm,
+      onScreenChange,
+      onActiveFilmChange,
+      onSimilarFilmsUpdate
+    } = this.props;
 
     return (
       <BrowserRouter>
@@ -20,9 +26,10 @@ class App extends React.PureComponent {
           <Route exact path="/film-card">
             <DetailedFilmCard
               film={activeFilm}
-              films={films}
+              similarFilms={similarFilms}
               onScreenChange={onScreenChange}
               onActiveFilmChange={onActiveFilmChange}
+              onSimilarFilmsUpdate={onSimilarFilmsUpdate}
             />
           </Route>
         </Switch>
@@ -39,12 +46,14 @@ class App extends React.PureComponent {
       currentGenre,
       filteredFilms,
       filmsCountToShow,
+      similarFilms,
       onScreenChange,
       onActiveFilmChange,
       onGenreChange,
       filterFilmsByGenre,
       resetFilmsCountToShow,
-      incrementFilmsCountToShow
+      incrementFilmsCountToShow,
+      onSimilarFilmsUpdate
     } = this.props;
 
     switch (activeScreen) {
@@ -62,6 +71,7 @@ class App extends React.PureComponent {
             filterFilmsByGenre={filterFilmsByGenre}
             resetFilmsCountToShow={resetFilmsCountToShow}
             incrementFilmsCountToShow={incrementFilmsCountToShow}
+            onSimilarFilmsUpdate={onSimilarFilmsUpdate}
           />
         );
 
@@ -69,9 +79,10 @@ class App extends React.PureComponent {
         return (
           <DetailedFilmCard
             film={activeFilm}
-            films={films}
+            similarFilms={similarFilms}
             onScreenChange={onScreenChange}
             onActiveFilmChange={onActiveFilmChange}
+            onSimilarFilmsUpdate={onSimilarFilmsUpdate}
           />
         );
 
@@ -164,6 +175,32 @@ App.propTypes = {
         })
     ).isRequired
   }).isRequired,
+  similarFilms: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        cover: PropTypes.string.isRequired,
+        poster: PropTypes.string.isRequired,
+        preview: PropTypes.string.isRequired,
+        genre: PropTypes.string.isRequired,
+        release: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired,
+        ratingsCount: PropTypes.number.isRequired,
+        description: PropTypes.string.isRequired,
+        director: PropTypes.string.isRequired,
+        actors: PropTypes.arrayOf(PropTypes.string),
+        runTime: PropTypes.number.isRequired,
+        reviews: PropTypes.arrayOf(
+            PropTypes.shape({
+              id: PropTypes.string.isRequired,
+              text: PropTypes.string.isRequired,
+              rating: PropTypes.number.isRequired,
+              userName: PropTypes.string.isRequired,
+              date: PropTypes.instanceOf(Date).isRequired
+            })
+        ).isRequired
+      })
+  ).isRequired,
   currentGenre: PropTypes.string.isRequired,
   filmsCountToShow: PropTypes.number,
   onScreenChange: PropTypes.func.isRequired,
@@ -171,7 +208,8 @@ App.propTypes = {
   onGenreChange: PropTypes.func.isRequired,
   filterFilmsByGenre: PropTypes.func.isRequired,
   resetFilmsCountToShow: PropTypes.func.isRequired,
-  incrementFilmsCountToShow: PropTypes.func
+  incrementFilmsCountToShow: PropTypes.func,
+  onSimilarFilmsUpdate: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -180,7 +218,8 @@ const mapStateToProps = (state) => ({
   currentGenre: state.currentGenre,
   films: state.films,
   filteredFilms: state.filteredFilms || [],
-  filmsCountToShow: state.filmsCountToShow
+  filmsCountToShow: state.filmsCountToShow,
+  similarFilms: state.similarFilms || []
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -201,6 +240,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   incrementFilmsCountToShow() {
     dispatch(ActionCreator.incrementFilmsCountToShow());
+  },
+  onSimilarFilmsUpdate() {
+    dispatch(ActionCreator.setSimilarFilms());
   }
 });
 
