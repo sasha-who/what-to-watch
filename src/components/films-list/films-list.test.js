@@ -13,6 +13,7 @@ it(`FilmsList should render correctly with show more button`, () => {
           onScreenChange={() => {}}
           onActiveFilmChange={() => {}}
           incrementFilmsCountToShow={() => {}}
+          onSimilarFilmsUpdate={() => {}}
         />, {
           createNodeMock: () => {
             return {};
@@ -33,6 +34,7 @@ it(`FilmsList should render correctly without show more button`, () => {
           onScreenChange={() => {}}
           onActiveFilmChange={() => {}}
           incrementFilmsCountToShow={() => {}}
+          onSimilarFilmsUpdate={() => {}}
         />, {
           createNodeMock: () => {
             return {};

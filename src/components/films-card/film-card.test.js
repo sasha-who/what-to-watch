@@ -16,6 +16,7 @@ it(`FilmCard should render correctly`, () => {
           onStartPlaying={() => {}}
           onStopPlaying={() => {}}
           onHoverChange={() => {}}
+          onSimilarFilmsUpdate={() => {}}
         />, {
           createNodeMock: () => {
             return {};
