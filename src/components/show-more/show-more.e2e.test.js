@@ -7,12 +7,12 @@ Enzyme.configure({
   adapter: new Adapter()
 });
 
-const incrementFilmsCountToShow = jest.fn();
+const onFilmsCountToShowIncrement = jest.fn();
 
 it(`Click to show more button should cause incrementing of films counter`, () => {
   const showMoreButton = shallow(
       <ShowMoreButton
-        incrementFilmsCountToShow={incrementFilmsCountToShow}
+        onFilmsCountToShowIncrement={onFilmsCountToShowIncrement}
       />
   );
 
@@ -20,5 +20,5 @@ it(`Click to show more button should cause incrementing of films counter`, () =>
 
   button.simulate(`click`);
 
-  expect(incrementFilmsCountToShow.mock.calls.length).toBe(1);
+  expect(onFilmsCountToShowIncrement.mock.calls.length).toBe(1);
 });
