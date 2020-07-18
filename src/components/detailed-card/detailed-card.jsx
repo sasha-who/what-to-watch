@@ -2,21 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import Header from "../header/header.jsx";
 import Footer from "../footer/footer.jsx";
-import {RECOMENDED_FILMS_COUNT} from "../../const.js";
 import FilmsList from "../films-list/films-list.jsx";
 import Tabs from "../tabs/tabs.jsx";
 import withActiveTab from "../../hocs/with-active-tab/with-active-tab.js";
 
-const getRecomendedFilms = (films, currentFilm) => {
-  return (
-    films.filter((film) => (film !== currentFilm) && (film.genre === currentFilm.genre))
-      .slice(0, RECOMENDED_FILMS_COUNT)
-  );
-};
-
 const TabsWrapped = withActiveTab(Tabs);
 
-const DetailedFilmCard = ({film, films, onScreenChange, onActiveFilmChange}) => {
+const DetailedFilmCard = (props) => {
+  const {film, similarFilms, onScreenChange, onActiveFilmChange, onSimilarFilmsUpdate} = props;
+
   const {
     title,
     cover,
@@ -84,9 +78,10 @@ const DetailedFilmCard = ({film, films, onScreenChange, onActiveFilmChange}) => 
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
           <FilmsList
-            films={getRecomendedFilms(films, film)}
+            films={similarFilms}
             onScreenChange={onScreenChange}
             onActiveFilmChange={onActiveFilmChange}
+            onSimilarFilmsUpdate={onSimilarFilmsUpdate}
           />
         </section>
         <Footer />
@@ -119,7 +114,7 @@ DetailedFilmCard.propTypes = {
         })
     ).isRequired
   }).isRequired,
-  films: PropTypes.arrayOf(
+  similarFilms: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
@@ -133,6 +128,7 @@ DetailedFilmCard.propTypes = {
         description: PropTypes.string.isRequired,
         director: PropTypes.string.isRequired,
         actors: PropTypes.arrayOf(PropTypes.string),
+        runTime: PropTypes.number.isRequired,
         reviews: PropTypes.arrayOf(
             PropTypes.shape({
               id: PropTypes.string.isRequired,
@@ -145,7 +141,8 @@ DetailedFilmCard.propTypes = {
       })
   ).isRequired,
   onScreenChange: PropTypes.func.isRequired,
-  onActiveFilmChange: PropTypes.func.isRequired
+  onActiveFilmChange: PropTypes.func.isRequired,
+  onSimilarFilmsUpdate: PropTypes.func.isRequired
 };
 
 export default DetailedFilmCard;
