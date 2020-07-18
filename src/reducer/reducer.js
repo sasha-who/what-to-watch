@@ -111,4 +111,4 @@ const getSimilarFilms = (allFilms, currentFilm) => {
   );
 };
 
-export {reducer, ActionType, ActionCreator, getFilmsFilteredByGenre};
+export {reducer, ActionType, ActionCreator, getFilmsFilteredByGenre, getSimilarFilms};
