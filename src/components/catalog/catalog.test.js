@@ -18,6 +18,7 @@ it(`Catalog should render correctly`, () => {
           filterFilmsByGenre={() => {}}
           resetFilmsCountToShow={() => {}}
           incrementFilmsCountToShow={() => {}}
+          onSimilarFilmsUpdate={() => {}}
         />, {
           createNodeMock: () => {
             return {};
