@@ -1,4 +1,10 @@
-import {DEFAULT_GENRE, INITIAL_FILMS_COUNT, ADDITIONAL_FILMS_COUNT, Screen} from "../const.js";
+import {
+  DEFAULT_GENRE,
+  INITIAL_FILMS_COUNT,
+  ADDITIONAL_FILMS_COUNT,
+  RECOMENDED_FILMS_COUNT,
+  Screen
+} from "../const.js";
 import {extend} from "../utils/common.js";
 import {films} from "../mocks/films.js";
 
@@ -16,7 +22,8 @@ const ActionType = {
   CHANGE_CURRENT_GENRE: `CHANGE_CURRENT_GENRE`,
   FILTER_FILMS_BY_GENRE: `FILTER_FILMS_BY_GENRE`,
   RESET_FILMS_COUNT_TO_SHOW: `RESET_FILMS_COUNT_TO_SHOW`,
-  INCREMENT_FILMS_COUNT_TO_SHOW: `INCREMENT_FILMS_COUNT_TO_SHOW`
+  INCREMENT_FILMS_COUNT_TO_SHOW: `INCREMENT_FILMS_COUNT_TO_SHOW`,
+  SET_SIMILAR_FILMS: `SET_SIMILAR_FILMS`
 };
 
 const ActionCreator = {
@@ -40,6 +47,9 @@ const ActionCreator = {
   }),
   incrementFilmsCountToShow: () => ({
     type: ActionType.INCREMENT_FILMS_COUNT_TO_SHOW
+  }),
+  setSimilarFilms: () => ({
+    type: ActionType.SET_SIMILAR_FILMS
   })
 };
 
@@ -76,6 +86,11 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         filmsCountToShow: state.filmsCountToShow + ADDITIONAL_FILMS_COUNT
       });
+
+    case ActionType.SET_SIMILAR_FILMS:
+      return extend(state, {
+        similarFilms: getSimilarFilms(state.films, state.activeFilm)
+      });
   }
 
   return state;
@@ -87,6 +102,13 @@ const getFilmsFilteredByGenre = (allFilms, genre) => {
   }
 
   return allFilms.filter((film) => film.genre === genre);
+};
+
+const getSimilarFilms = (allFilms, currentFilm) => {
+  return (
+    allFilms.filter((film) => (film !== currentFilm) && (film.genre === currentFilm.genre))
+      .slice(0, RECOMENDED_FILMS_COUNT)
+  );
 };
 
 export {reducer, ActionType, ActionCreator, getFilmsFilteredByGenre};

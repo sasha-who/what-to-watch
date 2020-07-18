@@ -29,12 +29,14 @@ it(`Main screen should render correctly`, () => {
             filteredFilms={films}
             filmsCountToShow={INITIAL_FILMS_COUNT}
             currentGenre={GENRES[0]}
+            similarFilms={films}
             onScreenChange={() => {}}
             onActiveFilmChange={() => {}}
             onGenreChange={() => {}}
             filterFilmsByGenre={() => {}}
             resetFilmsCountToShow={() => {}}
             incrementFilmsCountToShow={() => {}}
+            onSimilarFilmsUpdate={() => {}}
           />
         </Provider>, {
           createNodeMock: () => {
@@ -59,12 +61,14 @@ it(`Card screen should render correctly`, () => {
             filteredFilms={films}
             filmsCountToShow={INITIAL_FILMS_COUNT}
             currentGenre={GENRES[0]}
+            similarFilms={films}
             onScreenChange={() => {}}
             onActiveFilmChange={() => {}}
             onGenreChange={() => {}}
             filterFilmsByGenre={() => {}}
             resetFilmsCountToShow={() => {}}
             incrementFilmsCountToShow={() => {}}
+            onSimilarFilmsUpdate={() => {}}
           />
         </Provider>, {
           createNodeMock: () => {
