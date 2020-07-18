@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
+import classNames from "classnames";
 import {
   REVIEWS_IN_COLUMN_COUNT,
   REVIEW_DATE_HUMAN_FORMAT,
@@ -44,9 +45,9 @@ export default class Tabs extends React.PureComponent {
           <ul className="movie-nav__list">
             {TabsData.map((tab) => {
               const {name, content} = tab;
-              const activeClass = activeTab === name ?
-                `movie-nav__item--active` :
-                ``;
+              const activeClass = classNames({
+                'movie-nav__item--active': activeTab === name
+              });
 
               return (
                 <li
