@@ -33,9 +33,9 @@ it(`Main screen should render correctly`, () => {
             onScreenChange={() => {}}
             onActiveFilmChange={() => {}}
             onGenreChange={() => {}}
-            filterFilmsByGenre={() => {}}
-            resetFilmsCountToShow={() => {}}
-            incrementFilmsCountToShow={() => {}}
+            onFilmsFilterByGenre={() => {}}
+            onFilmsCountToShowReset={() => {}}
+            onFilmsCountToShowIncrement={() => {}}
             onSimilarFilmsUpdate={() => {}}
           />
         </Provider>, {
@@ -65,9 +65,9 @@ it(`Card screen should render correctly`, () => {
             onScreenChange={() => {}}
             onActiveFilmChange={() => {}}
             onGenreChange={() => {}}
-            filterFilmsByGenre={() => {}}
-            resetFilmsCountToShow={() => {}}
-            incrementFilmsCountToShow={() => {}}
+            onFilmsFilterByGenre={() => {}}
+            onFilmsCountToShowReset={() => {}}
+            onFilmsCountToShowIncrement={() => {}}
             onSimilarFilmsUpdate={() => {}}
           />
         </Provider>, {

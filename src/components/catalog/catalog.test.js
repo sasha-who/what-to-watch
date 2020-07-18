@@ -15,9 +15,9 @@ it(`Catalog should render correctly`, () => {
           onScreenChange={() => {}}
           onActiveFilmChange={() => {}}
           onGenreChange={() => {}}
-          filterFilmsByGenre={() => {}}
-          resetFilmsCountToShow={() => {}}
-          incrementFilmsCountToShow={() => {}}
+          onFilmsFilterByGenre={() => {}}
+          onFilmsCountToShowReset={() => {}}
+          onFilmsCountToShowIncrement={() => {}}
           onSimilarFilmsUpdate={() => {}}
         />, {
           createNodeMock: () => {
