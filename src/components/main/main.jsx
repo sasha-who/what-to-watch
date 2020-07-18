@@ -17,7 +17,8 @@ const Main = (props) => {
     onGenreChange,
     filterFilmsByGenre,
     resetFilmsCountToShow,
-    incrementFilmsCountToShow
+    incrementFilmsCountToShow,
+    onSimilarFilmsUpdate
   } = props;
 
   return (
@@ -45,6 +46,7 @@ const Main = (props) => {
           filterFilmsByGenre={filterFilmsByGenre}
           resetFilmsCountToShow={resetFilmsCountToShow}
           incrementFilmsCountToShow={incrementFilmsCountToShow}
+          onSimilarFilmsUpdate={onSimilarFilmsUpdate}
         />
         <Footer />
       </div>
@@ -117,7 +119,8 @@ Main.propTypes = {
   onGenreChange: PropTypes.func.isRequired,
   filterFilmsByGenre: PropTypes.func.isRequired,
   resetFilmsCountToShow: PropTypes.func.isRequired,
-  incrementFilmsCountToShow: PropTypes.func
+  incrementFilmsCountToShow: PropTypes.func,
+  onSimilarFilmsUpdate: PropTypes.func.isRequired
 };
 
 export default Main;

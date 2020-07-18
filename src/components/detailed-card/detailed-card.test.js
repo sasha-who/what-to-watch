@@ -10,9 +10,10 @@ it(`DetailedFilmCard should render correctly`, () => {
     .create(
         <DetailedFilmCard
           film={film}
-          films={films}
+          similarFilms={films}
           onScreenChange={() => {}}
           onActiveFilmChange={() => {}}
+          onSimilarFilmsUpdate={() => {}}
         />, {
           createNodeMock: () => {
             return {};

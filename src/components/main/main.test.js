@@ -19,6 +19,7 @@ it(`Main should render correctly`, () => {
           filterFilmsByGenre={() => {}}
           resetFilmsCountToShow={() => {}}
           incrementFilmsCountToShow={() => {}}
+          onSimilarFilmsUpdate={() => {}}
         />, {
           createNodeMock: () => {
             return {};
