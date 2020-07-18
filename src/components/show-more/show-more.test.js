@@ -6,7 +6,7 @@ it(`ShowMoreButton should render correctly`, () => {
   const tree = renderer
     .create(
         <ShowMoreButton
-          incrementFilmsCountToShow={() => {}}
+          onFilmsCountToShowIncrement={() => {}}
         />
     )
     .toJSON();
