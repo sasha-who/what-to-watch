@@ -4,12 +4,21 @@ import Header from "../header/header.jsx";
 import Footer from "../footer/footer.jsx";
 import FilmsList from "../films-list/films-list.jsx";
 import Tabs from "../tabs/tabs.jsx";
+import Player from "../player/player.jsx";
 import withActiveTab from "../../hocs/with-active-tab/with-active-tab.js";
 
 const TabsWrapped = withActiveTab(Tabs);
 
 const DetailedFilmCard = (props) => {
-  const {film, similarFilms, onScreenChange, onActiveFilmChange, onSimilarFilmsUpdate} = props;
+  const {
+    film,
+    similarFilms,
+    isPlayerActive,
+    onScreenChange,
+    onActiveFilmChange,
+    onSimilarFilmsUpdate,
+    onPlayerStateChange
+  } = props;
 
   const {
     title,
@@ -18,6 +27,10 @@ const DetailedFilmCard = (props) => {
     genre,
     release
   } = film;
+
+  if (isPlayerActive) {
+    return <Player />;
+  }
 
   return (
     <div>
@@ -39,7 +52,11 @@ const DetailedFilmCard = (props) => {
                 <span className="movie-card__year">{release}</span>
               </p>
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <button
+                  className="btn btn--play movie-card__button"
+                  type="button"
+                  onClick={onPlayerStateChange}
+                >
                   <svg viewBox="0 0 19 19" width={19} height={19}>
                     <use xlinkHref="#play-s" />
                   </svg>
@@ -140,9 +157,11 @@ DetailedFilmCard.propTypes = {
         ).isRequired
       })
   ).isRequired,
+  isPlayerActive: PropTypes.bool.isRequired,
   onScreenChange: PropTypes.func.isRequired,
   onActiveFilmChange: PropTypes.func.isRequired,
-  onSimilarFilmsUpdate: PropTypes.func.isRequired
+  onSimilarFilmsUpdate: PropTypes.func.isRequired,
+  onPlayerStateChange: PropTypes.func.isRequired
 };
 
 export default DetailedFilmCard;
