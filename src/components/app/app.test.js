@@ -14,7 +14,8 @@ const store = mockStore({
   currentGenre: GENRES[0],
   films,
   filteredFilms: films,
-  filmsCountToShow: INITIAL_FILMS_COUNT
+  filmsCountToShow: INITIAL_FILMS_COUNT,
+  isPlayerActive: false
 });
 
 it(`Main screen should render correctly`, () => {
@@ -30,6 +31,7 @@ it(`Main screen should render correctly`, () => {
             filmsCountToShow={INITIAL_FILMS_COUNT}
             currentGenre={GENRES[0]}
             similarFilms={films}
+            isPlayerActive={false}
             onScreenChange={() => {}}
             onActiveFilmChange={() => {}}
             onGenreChange={() => {}}
@@ -37,6 +39,7 @@ it(`Main screen should render correctly`, () => {
             onFilmsCountToShowReset={() => {}}
             onFilmsCountToShowIncrement={() => {}}
             onSimilarFilmsUpdate={() => {}}
+            onPlayerStateChange={() => {}}
           />
         </Provider>, {
           createNodeMock: () => {
@@ -62,6 +65,7 @@ it(`Card screen should render correctly`, () => {
             filmsCountToShow={INITIAL_FILMS_COUNT}
             currentGenre={GENRES[0]}
             similarFilms={films}
+            isPlayerActive={false}
             onScreenChange={() => {}}
             onActiveFilmChange={() => {}}
             onGenreChange={() => {}}
@@ -69,6 +73,7 @@ it(`Card screen should render correctly`, () => {
             onFilmsCountToShowReset={() => {}}
             onFilmsCountToShowIncrement={() => {}}
             onSimilarFilmsUpdate={() => {}}
+            onPlayerStateChange={() => {}}
           />
         </Provider>, {
           createNodeMock: () => {
