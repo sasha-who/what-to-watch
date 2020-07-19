@@ -12,9 +12,11 @@ class App extends React.PureComponent {
     const {
       similarFilms,
       activeFilm,
+      isPlayerActive,
       onScreenChange,
       onActiveFilmChange,
-      onSimilarFilmsUpdate
+      onSimilarFilmsUpdate,
+      onPlayerStateChange
     } = this.props;
 
     return (
@@ -27,9 +29,11 @@ class App extends React.PureComponent {
             <DetailedFilmCard
               film={activeFilm}
               similarFilms={similarFilms}
+              isPlayerActive={isPlayerActive}
               onScreenChange={onScreenChange}
               onActiveFilmChange={onActiveFilmChange}
               onSimilarFilmsUpdate={onSimilarFilmsUpdate}
+              onPlayerStateChange={onPlayerStateChange}
             />
           </Route>
         </Switch>
@@ -47,13 +51,15 @@ class App extends React.PureComponent {
       filteredFilms,
       filmsCountToShow,
       similarFilms,
+      isPlayerActive,
       onScreenChange,
       onActiveFilmChange,
       onGenreChange,
       onFilmsFilterByGenre,
       onFilmsCountToShowReset,
       onFilmsCountToShowIncrement,
-      onSimilarFilmsUpdate
+      onSimilarFilmsUpdate,
+      onPlayerStateChange
     } = this.props;
 
     switch (activeScreen) {
@@ -65,6 +71,7 @@ class App extends React.PureComponent {
             currentGenre={currentGenre}
             filteredFilms={filteredFilms}
             filmsCountToShow={filmsCountToShow}
+            isPlayerActive={isPlayerActive}
             onScreenChange={onScreenChange}
             onActiveFilmChange={onActiveFilmChange}
             onGenreChange={onGenreChange}
@@ -72,6 +79,7 @@ class App extends React.PureComponent {
             onFilmsCountToShowReset={onFilmsCountToShowReset}
             onFilmsCountToShowIncrement={onFilmsCountToShowIncrement}
             onSimilarFilmsUpdate={onSimilarFilmsUpdate}
+            onPlayerStateChange={onPlayerStateChange}
           />
         );
 
@@ -80,9 +88,11 @@ class App extends React.PureComponent {
           <DetailedFilmCard
             film={activeFilm}
             similarFilms={similarFilms}
+            isPlayerActive={isPlayerActive}
             onScreenChange={onScreenChange}
             onActiveFilmChange={onActiveFilmChange}
             onSimilarFilmsUpdate={onSimilarFilmsUpdate}
+            onPlayerStateChange={onPlayerStateChange}
           />
         );
 
@@ -203,13 +213,15 @@ App.propTypes = {
   ).isRequired,
   currentGenre: PropTypes.string.isRequired,
   filmsCountToShow: PropTypes.number,
+  isPlayerActive: PropTypes.bool.isRequired,
   onScreenChange: PropTypes.func.isRequired,
   onActiveFilmChange: PropTypes.func.isRequired,
   onGenreChange: PropTypes.func.isRequired,
   onFilmsFilterByGenre: PropTypes.func.isRequired,
   onFilmsCountToShowReset: PropTypes.func.isRequired,
   onFilmsCountToShowIncrement: PropTypes.func,
-  onSimilarFilmsUpdate: PropTypes.func.isRequired
+  onSimilarFilmsUpdate: PropTypes.func.isRequired,
+  onPlayerStateChange: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -219,7 +231,8 @@ const mapStateToProps = (state) => ({
   films: state.films,
   filteredFilms: state.filteredFilms || [],
   filmsCountToShow: state.filmsCountToShow,
-  similarFilms: state.similarFilms || []
+  similarFilms: state.similarFilms || [],
+  isPlayerActive: state.isPlayerActive
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -243,6 +256,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onSimilarFilmsUpdate() {
     dispatch(ActionCreator.setSimilarFilms());
+  },
+  onPlayerStateChange() {
+    dispatch(ActionCreator.changePlayerState());
   }
 });
 

@@ -5,7 +5,11 @@ import PromoCard from "./promo-card.jsx";
 
 it(`PromoCard should render correctly`, () => {
   const tree = renderer
-    .create(<PromoCard promoFilmData={PromoFilmData} />)
+    .create(
+        <PromoCard
+          promoFilmData={PromoFilmData}
+          onPlayerStateChange={() => {}}
+        />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

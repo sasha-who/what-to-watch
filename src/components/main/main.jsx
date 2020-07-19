@@ -4,6 +4,7 @@ import Header from "../header/header.jsx";
 import PromoCard from "../promo-card/promo-card.jsx";
 import Catalog from "../catalog/catalog.jsx";
 import Footer from "../footer/footer.jsx";
+import Player from "../player/player.jsx";
 
 const Main = (props) => {
   const {
@@ -12,14 +13,20 @@ const Main = (props) => {
     currentGenre,
     filteredFilms,
     filmsCountToShow,
+    isPlayerActive,
     onScreenChange,
     onActiveFilmChange,
     onGenreChange,
     onFilmsFilterByGenre,
     onFilmsCountToShowReset,
     onFilmsCountToShowIncrement,
-    onSimilarFilmsUpdate
+    onSimilarFilmsUpdate,
+    onPlayerStateChange
   } = props;
+
+  if (isPlayerActive) {
+    return <Player />;
+  }
 
   return (
     <React.Fragment>
@@ -32,7 +39,10 @@ const Main = (props) => {
         </div>
         <h1 className="visually-hidden">WTW</h1>
         <Header />
-        <PromoCard promoFilmData={promoFilmData} />
+        <PromoCard
+          promoFilmData={promoFilmData}
+          onPlayerStateChange={onPlayerStateChange}
+        />
       </section>
       <div className="page-content">
         <Catalog
@@ -114,13 +124,15 @@ Main.propTypes = {
   ).isRequired,
   currentGenre: PropTypes.string.isRequired,
   filmsCountToShow: PropTypes.number,
+  isPlayerActive: PropTypes.bool.isRequired,
   onScreenChange: PropTypes.func.isRequired,
   onActiveFilmChange: PropTypes.func.isRequired,
   onGenreChange: PropTypes.func.isRequired,
   onFilmsFilterByGenre: PropTypes.func.isRequired,
   onFilmsCountToShowReset: PropTypes.func.isRequired,
   onFilmsCountToShowIncrement: PropTypes.func,
-  onSimilarFilmsUpdate: PropTypes.func.isRequired
+  onSimilarFilmsUpdate: PropTypes.func.isRequired,
+  onPlayerStateChange: PropTypes.func.isRequired
 };
 
 export default Main;
