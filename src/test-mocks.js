@@ -1,9 +1,3 @@
-export const PromoFilmData = {
-  title: `The Grand Budapest Hotel`,
-  genre: `Drama`,
-  date: `2014`
-};
-
 const RELEASE = `2020`;
 const RATING = 9;
 const RATINGS_COUNT = 228;
@@ -61,6 +55,12 @@ export const GENRES = [
   `thriller`
 ];
 
+export const TABS_DATA = [
+  `overview`,
+  `details`,
+  `reviews`
+];
+
 const review = {
   id: `0`,
   text: `I didn't find it amusing, and while I can appreciate the creativity,
@@ -88,9 +88,3 @@ export const films = TITLES.map((title, index) => {
     reviews: [review]
   });
 });
-
-export const TABS_DATA = [
-  `overview`,
-  `details`,
-  `reviews`
-];
