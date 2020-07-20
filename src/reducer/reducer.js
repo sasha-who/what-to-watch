@@ -14,7 +14,8 @@ const initialState = {
   films,
   filteredFilms: films,
   filmsCountToShow: INITIAL_FILMS_COUNT,
-  isPlayerActive: false
+  isPlayerActive: false,
+  promoFilm: films[0]
 };
 
 const ActionType = {

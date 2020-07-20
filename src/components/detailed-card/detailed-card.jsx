@@ -29,7 +29,7 @@ const DetailedFilmCard = (props) => {
   } = film;
 
   if (isPlayerActive) {
-    return <Player />;
+    return <Player film={film} />;
   }
 
   return (

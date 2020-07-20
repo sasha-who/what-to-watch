@@ -614,7 +614,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            The Grand Budapest Hotel
+            Fantastic Beasts: The Crimes of Grindelwald
           </h2>
           <p
             className="movie-card__meta"
@@ -622,12 +622,12 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Drama
+              comedy
             </span>
             <span
               className="movie-card__year"
             >
-              2014
+              2020
             </span>
           </p>
           <div
