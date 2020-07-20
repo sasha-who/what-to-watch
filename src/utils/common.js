@@ -1,4 +1,5 @@
 import moment from "moment";
+import {DURATION_INITS, RUN_TIME_FORMAT} from "../const.js";
 
 export const getRandomIntegerNumber = (min, max) => {
   min = Math.ceil(min);
@@ -34,7 +35,13 @@ export const extend = (a, b) => {
 };
 
 export const getFormatedRunTime = (duration) => {
-  const durationInMinutes = moment.duration(duration, `minutes`);
+  const durationInMinutes = moment.duration(duration, DURATION_INITS);
 
   return `${durationInMinutes.hours()}h ${durationInMinutes.minutes()}m`;
+};
+
+export const getRunTimeForPlayer = (duration) => {
+  const durationInMillisecond = moment.duration(duration, DURATION_INITS).asMilliseconds();
+
+  return moment(durationInMillisecond).format(RUN_TIME_FORMAT);
 };
