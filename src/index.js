@@ -12,17 +12,9 @@ const store = createStore(
 
 const rootElement = document.querySelector(`#root`);
 
-const promoFilmData = {
-  title: `The Grand Budapest Hotel`,
-  genre: `Drama`,
-  date: `2014`
-};
-
 ReactDOM.render(
     <Provider store={store}>
-      <App
-        promoFilmData={promoFilmData}
-      />
+      <App />
     </Provider>,
     rootElement
 );
