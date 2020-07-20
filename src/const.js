@@ -7,6 +7,8 @@ export const DEFAULT_GENRE = `all genres`;
 export const MAX_FILTERS_COUNT = 10;
 export const INITIAL_FILMS_COUNT = 8;
 export const ADDITIONAL_FILMS_COUNT = 8;
+export const DURATION_INITS = `minutes`;
+export const RUN_TIME_FORMAT = `hh:mm:ss`;
 
 export const RatingRange = {
   MIN: 0,

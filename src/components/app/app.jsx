@@ -45,7 +45,7 @@ class App extends React.PureComponent {
     const {
       activeScreen,
       activeFilm,
-      promoFilmData,
+      promoFilm,
       films,
       currentGenre,
       filteredFilms,
@@ -67,7 +67,7 @@ class App extends React.PureComponent {
         return (
           <Main
             films={films}
-            promoFilmData={promoFilmData}
+            promoFilm={promoFilm}
             currentGenre={currentGenre}
             filteredFilms={filteredFilms}
             filmsCountToShow={filmsCountToShow}
@@ -103,10 +103,29 @@ class App extends React.PureComponent {
 }
 
 App.propTypes = {
-  promoFilmData: PropTypes.shape({
+  promoFilm: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    preview: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired
+    release: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    ratingsCount: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    actors: PropTypes.arrayOf(PropTypes.string),
+    runTime: PropTypes.number.isRequired,
+    reviews: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.string.isRequired,
+          text: PropTypes.string.isRequired,
+          rating: PropTypes.number.isRequired,
+          userName: PropTypes.string.isRequired,
+          date: PropTypes.instanceOf(Date).isRequired
+        })
+    ).isRequired
   }),
   films: PropTypes.arrayOf(
       PropTypes.shape({
@@ -232,7 +251,8 @@ const mapStateToProps = (state) => ({
   filteredFilms: state.filteredFilms || [],
   filmsCountToShow: state.filmsCountToShow,
   similarFilms: state.similarFilms || [],
-  isPlayerActive: state.isPlayerActive
+  isPlayerActive: state.isPlayerActive,
+  promoFilm: state.promoFilm
 });
 
 const mapDispatchToProps = (dispatch) => ({
