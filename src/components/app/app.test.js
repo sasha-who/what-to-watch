@@ -3,7 +3,7 @@ import renderer from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {INITIAL_FILMS_COUNT, Screen} from "../../const.js";
-import {PromoFilmData, films, GENRES} from "../../test-mocks.js";
+import {films, GENRES} from "../../test-mocks.js";
 import {App} from "./app.jsx";
 
 const mockStore = configureStore([]);
@@ -25,7 +25,7 @@ it(`Main screen should render correctly`, () => {
           <App
             activeScreen={Screen.MAIN}
             activeFilm={films[0]}
-            promoFilmData={PromoFilmData}
+            promoFilm={films[0]}
             films={films}
             filteredFilms={films}
             filmsCountToShow={INITIAL_FILMS_COUNT}
@@ -59,7 +59,7 @@ it(`Card screen should render correctly`, () => {
           <App
             activeScreen={Screen.CARD}
             activeFilm={films[0]}
-            promoFilmData={PromoFilmData}
+            promoFilm={films[0]}
             films={films}
             filteredFilms={films}
             filmsCountToShow={INITIAL_FILMS_COUNT}

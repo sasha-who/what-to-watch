@@ -9,7 +9,7 @@ import Player from "../player/player.jsx";
 const Main = (props) => {
   const {
     films,
-    promoFilmData,
+    promoFilm,
     currentGenre,
     filteredFilms,
     filmsCountToShow,
@@ -25,7 +25,7 @@ const Main = (props) => {
   } = props;
 
   if (isPlayerActive) {
-    return <Player />;
+    return <Player film={promoFilm} />;
   }
 
   return (
@@ -40,7 +40,7 @@ const Main = (props) => {
         <h1 className="visually-hidden">WTW</h1>
         <Header />
         <PromoCard
-          promoFilmData={promoFilmData}
+          promoFilm={promoFilm}
           onPlayerStateChange={onPlayerStateChange}
         />
       </section>
@@ -65,10 +65,29 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  promoFilmData: PropTypes.shape({
+  promoFilm: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    preview: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired
+    release: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    ratingsCount: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    actors: PropTypes.arrayOf(PropTypes.string),
+    runTime: PropTypes.number.isRequired,
+    reviews: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.string.isRequired,
+          text: PropTypes.string.isRequired,
+          rating: PropTypes.number.isRequired,
+          userName: PropTypes.string.isRequired,
+          date: PropTypes.instanceOf(Date).isRequired
+        })
+    ).isRequired
   }),
   films: PropTypes.arrayOf(
       PropTypes.shape({

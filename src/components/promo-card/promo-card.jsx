@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const PromoCard = ({promoFilmData, onPlayerStateChange}) => {
-  const {title, genre, date} = promoFilmData;
+const PromoCard = ({promoFilm, onPlayerStateChange}) => {
+  const {title, genre, release} = promoFilm;
 
   return (
     <React.Fragment>
@@ -20,7 +20,7 @@ const PromoCard = ({promoFilmData, onPlayerStateChange}) => {
             <h2 className="movie-card__title">{title}</h2>
             <p className="movie-card__meta">
               <span className="movie-card__genre">{genre}</span>
-              <span className="movie-card__year">{date}</span>
+              <span className="movie-card__year">{release}</span>
             </p>
             <div className="movie-card__buttons">
               <button
@@ -48,11 +48,30 @@ const PromoCard = ({promoFilmData, onPlayerStateChange}) => {
 };
 
 PromoCard.propTypes = {
-  promoFilmData: PropTypes.shape({
+  promoFilm: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    preview: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired
-  }).isRequired,
+    release: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    ratingsCount: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    actors: PropTypes.arrayOf(PropTypes.string),
+    runTime: PropTypes.number.isRequired,
+    reviews: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.string.isRequired,
+          text: PropTypes.string.isRequired,
+          rating: PropTypes.number.isRequired,
+          userName: PropTypes.string.isRequired,
+          date: PropTypes.instanceOf(Date).isRequired
+        })
+    ).isRequired
+  }),
   onPlayerStateChange: PropTypes.func.isRequired
 };
 

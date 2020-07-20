@@ -1,13 +1,13 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {PromoFilmData} from "../../test-mocks.js";
+import {films} from "../../test-mocks.js";
 import PromoCard from "./promo-card.jsx";
 
 it(`PromoCard should render correctly`, () => {
   const tree = renderer
     .create(
         <PromoCard
-          promoFilmData={PromoFilmData}
+          promoFilm={films[0]}
           onPlayerStateChange={() => {}}
         />)
     .toJSON();
