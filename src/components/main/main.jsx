@@ -28,7 +28,12 @@ const Main = (props) => {
   } = props;
 
   if (isPlayerActive) {
-    return <PlayerWrapped film={promoFilm} />;
+    return (
+      <PlayerWrapped
+        film={promoFilm}
+        onPlayerStateChange={onPlayerStateChange}
+      />
+    );
   }
 
   return (
