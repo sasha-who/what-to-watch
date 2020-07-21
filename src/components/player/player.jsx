@@ -4,7 +4,15 @@ import {PlayIconStart, PlayIconPause} from "../../const.js";
 import {getRunTimeForPlayer} from "../../utils/common.js";
 
 const Player = (props) => {
-  const {film, children, isPlaying, onPlayButtonClick, onPlayerStateChange} = props;
+  const {
+    film,
+    children,
+    isPlaying,
+    onPlayButtonClick,
+    onPlayerStateChange,
+    onFullScreenButtonClick
+  } = props;
+
   const {title, runTime} = film;
   const playIcon = isPlaying ? PlayIconPause : PlayIconStart;
 
@@ -40,7 +48,11 @@ const Player = (props) => {
             <span>{playIcon.DESCRIPTION}</span>
           </button>
           <div className="player__name">{title}</div>
-          <button type="button" className="player__full-screen">
+          <button
+            type="button"
+            className="player__full-screen"
+            onClick={onFullScreenButtonClick}
+          >
             <svg viewBox="0 0 27 27" width={27} height={27}>
               <use xlinkHref="#full-screen" />
             </svg>
@@ -83,7 +95,8 @@ Player.propTypes = {
   ]).isRequired,
   isPlaying: PropTypes.bool.isRequired,
   onPlayButtonClick: PropTypes.func.isRequired,
-  onPlayerStateChange: PropTypes.func.isRequired
+  onPlayerStateChange: PropTypes.func.isRequired,
+  onFullScreenButtonClick: PropTypes.func.isRequired
 };
 
 export default Player;
