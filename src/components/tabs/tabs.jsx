@@ -4,8 +4,7 @@ import moment from "moment";
 import classNames from "classnames";
 import {
   REVIEWS_IN_COLUMN_COUNT,
-  REVIEW_DATE_HUMAN_FORMAT,
-  REVIEW_DATE_SERVICE_FORMAT,
+  ReviewDate,
   RatingRange,
   RatingGrade,
   TabsNames,
@@ -175,8 +174,8 @@ export default class Tabs extends React.PureComponent {
 
   _getReviewMarkup(review) {
     const {id, text, rating, userName, date} = review;
-    const reviewDateInHumanFormat = moment(date).format(REVIEW_DATE_HUMAN_FORMAT);
-    const reviewDateInServiceFormat = moment(date).format(REVIEW_DATE_SERVICE_FORMAT);
+    const reviewDateInHumanFormat = moment(date).format(ReviewDate.HUMAN_FORMAT);
+    const reviewDateInServiceFormat = moment(date).format(ReviewDate.SERVICE_FORMAT);
 
     return (
       <div key={id} className="review">
