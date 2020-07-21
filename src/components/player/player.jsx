@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {PlayIconStart, PlayIconPause} from "../../const.js";
+import {SECONDS_IN_MINUTE_COUNT, PlayIconStart, PlayIconPause} from "../../const.js";
 import {getRunTimeForPlayer} from "../../utils/common.js";
 
 const Player = (props) => {
@@ -8,6 +8,7 @@ const Player = (props) => {
     film,
     children,
     isPlaying,
+    progress,
     onPlayButtonClick,
     onPlayerStateChange,
     onFullScreenButtonClick
@@ -15,6 +16,9 @@ const Player = (props) => {
 
   const {title, runTime} = film;
   const playIcon = isPlaying ? PlayIconPause : PlayIconStart;
+  const progressInMinutes = progress / SECONDS_IN_MINUTE_COUNT;
+  const runTimeWithProgress = runTime - progressInMinutes;
+  const togglerValue = progressInMinutes * 100 / runTime;
 
   return (
     <div className="player">
@@ -29,12 +33,12 @@ const Player = (props) => {
       <div className="player__controls">
         <div className="player__controls-row">
           <div className="player__time">
-            <progress className="player__progress" value={0} max={100} />
-            <div className="player__toggler">
+            <progress className="player__progress" value={togglerValue} max={100} />
+            <div className="player__toggler" style={{left: `${togglerValue}%`}}>
               Toggler
             </div>
           </div>
-          <div className="player__time-value">{getRunTimeForPlayer(runTime)}</div>
+          <div className="player__time-value">{getRunTimeForPlayer(runTimeWithProgress)}</div>
         </div>
         <div className="player__controls-row">
           <button type="button" className="player__play" onClick={onPlayButtonClick}>
@@ -94,6 +98,7 @@ Player.propTypes = {
     PropTypes.node
   ]).isRequired,
   isPlaying: PropTypes.bool.isRequired,
+  progress: PropTypes.number.isRequired,
   onPlayButtonClick: PropTypes.func.isRequired,
   onPlayerStateChange: PropTypes.func.isRequired,
   onFullScreenButtonClick: PropTypes.func.isRequired
