@@ -1,13 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {PlayIconStart, PlayIconPause} from "../../const.js";
 import {getRunTimeForPlayer} from "../../utils/common.js";
 
-const Player = ({film}) => {
-  const {title, preview, poster, runTime} = film;
+const Player = ({film, children, isPlaying, onPlayButtonClick}) => {
+  const {title, runTime} = film;
+  const playIcon = isPlaying ? PlayIconPause : PlayIconStart;
 
   return (
     <div className="player">
-      <video src={preview} className="player__video" poster={poster} />
+      {children}
       <button type="button" className="player__exit">
         Exit
       </button>
@@ -22,11 +24,15 @@ const Player = ({film}) => {
           <div className="player__time-value">{getRunTimeForPlayer(runTime)}</div>
         </div>
         <div className="player__controls-row">
-          <button type="button" className="player__play">
-            <svg viewBox="0 0 19 19" width={19} height={19}>
-              <use xlinkHref="#play-s" />
+          <button type="button" className="player__play" onClick={onPlayButtonClick}>
+            <svg
+              viewBox={`0 0 ${playIcon.WIDTH} ${playIcon.HEIGHT}`}
+              width={playIcon.WIDTH}
+              height={playIcon.HEIGHT}
+            >
+              <use xlinkHref={`#${playIcon.ID}`} />
             </svg>
-            <span>Play</span>
+            <span>{playIcon.DESCRIPTION}</span>
           </button>
           <div className="player__name">{title}</div>
           <button type="button" className="player__full-screen">
@@ -66,6 +72,12 @@ Player.propTypes = {
         })
     ).isRequired
   }),
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
+  isPlaying: PropTypes.bool.isRequired,
+  onPlayButtonClick: PropTypes.func.isRequired
 };
 
 export default Player;
