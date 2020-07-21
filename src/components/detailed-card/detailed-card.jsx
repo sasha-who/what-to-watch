@@ -6,8 +6,10 @@ import FilmsList from "../films-list/films-list.jsx";
 import Tabs from "../tabs/tabs.jsx";
 import Player from "../player/player.jsx";
 import withActiveTab from "../../hocs/with-active-tab/with-active-tab.js";
+import withPlayer from "../../hocs/with-player/with-player.js";
 
 const TabsWrapped = withActiveTab(Tabs);
+const PlayerWrapped = withPlayer(Player);
 
 const DetailedFilmCard = (props) => {
   const {
@@ -29,7 +31,7 @@ const DetailedFilmCard = (props) => {
   } = film;
 
   if (isPlayerActive) {
-    return <Player film={film} />;
+    return <PlayerWrapped film={film} />;
   }
 
   return (
