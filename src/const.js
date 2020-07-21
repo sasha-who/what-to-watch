@@ -9,6 +9,7 @@ export const INITIAL_FILMS_COUNT = 8;
 export const ADDITIONAL_FILMS_COUNT = 8;
 export const DURATION_INITS = `minutes`;
 export const RUN_TIME_FORMAT = `hh:mm:ss`;
+export const VIDEO_CLASS_NAME = `player__video`;
 
 export const RatingRange = {
   MIN: 0,
@@ -42,3 +43,17 @@ export const TabsData = [
   {name: TabsNames.DETAILS, content: `Details`},
   {name: TabsNames.REVIEWS, content: `Reviews`}
 ];
+
+export const PlayIconStart = {
+  WIDTH: 19,
+  HEIGHT: 19,
+  ID: `play-s`,
+  DESCRIPTION: `Play`
+};
+
+export const PlayIconPause = {
+  WIDTH: 14,
+  HEIGHT: 21,
+  ID: `pause`,
+  DESCRIPTION: `Pause`
+};
