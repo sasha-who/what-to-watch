@@ -5,6 +5,9 @@ import PromoCard from "../promo-card/promo-card.jsx";
 import Catalog from "../catalog/catalog.jsx";
 import Footer from "../footer/footer.jsx";
 import Player from "../player/player.jsx";
+import withPlayer from "../../hocs/with-player/with-player.js";
+
+const PlayerWrapped = withPlayer(Player);
 
 const Main = (props) => {
   const {
@@ -25,7 +28,7 @@ const Main = (props) => {
   } = props;
 
   if (isPlayerActive) {
-    return <Player film={promoFilm} />;
+    return <PlayerWrapped film={promoFilm} />;
   }
 
   return (
