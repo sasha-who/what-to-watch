@@ -3,14 +3,19 @@ import PropTypes from "prop-types";
 import {PlayIconStart, PlayIconPause} from "../../const.js";
 import {getRunTimeForPlayer} from "../../utils/common.js";
 
-const Player = ({film, children, isPlaying, onPlayButtonClick}) => {
+const Player = (props) => {
+  const {film, children, isPlaying, onPlayButtonClick, onPlayerStateChange} = props;
   const {title, runTime} = film;
   const playIcon = isPlaying ? PlayIconPause : PlayIconStart;
 
   return (
     <div className="player">
       {children}
-      <button type="button" className="player__exit">
+      <button
+        type="button"
+        className="player__exit"
+        onClick={onPlayerStateChange}
+      >
         Exit
       </button>
       <div className="player__controls">
@@ -77,7 +82,8 @@ Player.propTypes = {
     PropTypes.node
   ]).isRequired,
   isPlaying: PropTypes.bool.isRequired,
-  onPlayButtonClick: PropTypes.func.isRequired
+  onPlayButtonClick: PropTypes.func.isRequired,
+  onPlayerStateChange: PropTypes.func.isRequired
 };
 
 export default Player;
