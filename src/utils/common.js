@@ -43,5 +43,5 @@ export const getFormatedRunTime = (duration) => {
 export const getRunTimeForPlayer = (duration) => {
   const durationInMillisecond = moment.duration(duration, DURATION_INITS).asMilliseconds();
 
-  return moment(durationInMillisecond).format(RUN_TIME_FORMAT);
+  return moment.utc(durationInMillisecond).format(RUN_TIME_FORMAT);
 };

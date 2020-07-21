@@ -8,8 +8,9 @@ export const MAX_FILTERS_COUNT = 10;
 export const INITIAL_FILMS_COUNT = 8;
 export const ADDITIONAL_FILMS_COUNT = 8;
 export const DURATION_INITS = `minutes`;
-export const RUN_TIME_FORMAT = `hh:mm:ss`;
+export const RUN_TIME_FORMAT = `HH:mm:ss`;
 export const VIDEO_CLASS_NAME = `player__video`;
+export const SECONDS_IN_MINUTE_COUNT = 60;
 
 export const RatingRange = {
   MIN: 0,
