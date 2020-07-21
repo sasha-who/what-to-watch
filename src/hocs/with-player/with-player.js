@@ -8,7 +8,8 @@ const withPlayer = (Component) => {
       super(props);
 
       this.state = {
-        isPlaying: true
+        isPlaying: true,
+        progress: 0
       };
 
       this._videoRef = React.createRef();
@@ -31,6 +32,10 @@ const withPlayer = (Component) => {
 
       video.onpause = () => this.setState({
         isPlaying: false
+      });
+
+      video.ontimeupdate = () => this.setState({
+        progress: Math.floor(video.currentTime),
       });
 
       if (isPlaying) {
@@ -80,6 +85,7 @@ const withPlayer = (Component) => {
         <Component
           {...this.props}
           isPlaying={this.state.isPlaying}
+          progress={this.state.progress}
           onPlayButtonClick={this.handlePlayButtonClick}
           onFullScreenButtonClick={this.handleFullScreenButtonClick}
         >
