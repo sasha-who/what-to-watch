@@ -13,6 +13,7 @@ const withPlayer = (Component) => {
 
       this._videoRef = React.createRef();
       this.handlePlayButtonClick = this.handlePlayButtonClick.bind(this);
+      this.handleFullScreenButtonClick = this.handleFullScreenButtonClick.bind(this);
     }
 
     componentDidMount() {
@@ -64,12 +65,23 @@ const withPlayer = (Component) => {
       }));
     }
 
+    handleFullScreenButtonClick() {
+      const video = this._videoRef.current;
+
+      if (!document.fullscreenElement) {
+        video.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    }
+
     render() {
       return (
         <Component
           {...this.props}
           isPlaying={this.state.isPlaying}
           onPlayButtonClick={this.handlePlayButtonClick}
+          onFullScreenButtonClick={this.handleFullScreenButtonClick}
         >
           <video ref={this._videoRef} />
         </Component>
