@@ -31,7 +31,12 @@ const DetailedFilmCard = (props) => {
   } = film;
 
   if (isPlayerActive) {
-    return <PlayerWrapped film={film} />;
+    return (
+      <PlayerWrapped
+        film={film}
+        onPlayerStateChange={onPlayerStateChange}
+      />
+    );
   }
 
   return (
