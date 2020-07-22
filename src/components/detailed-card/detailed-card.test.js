@@ -26,25 +26,3 @@ it(`DetailedFilmCard should render correctly`, () => {
 
   expect(tree).toMatchSnapshot();
 });
-
-it(`Player in film card should render correctly`, () => {
-  const tree = renderer
-    .create(
-        <DetailedFilmCard
-          film={film}
-          similarFilms={films}
-          isPlayerActive={true}
-          onScreenChange={() => {}}
-          onActiveFilmChange={() => {}}
-          onSimilarFilmsUpdate={() => {}}
-          onPlayerStateChange={() => {}}
-        />, {
-          createNodeMock: () => {
-            return {};
-          }
-        }
-    )
-    .toJSON();
-
-  expect(tree).toMatchSnapshot();
-});
