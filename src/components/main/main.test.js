@@ -32,32 +32,3 @@ it(`Main should render correctly`, () => {
 
   expect(tree).toMatchSnapshot();
 });
-
-it(`Player in promo card should render correctly`, () => {
-  const tree = renderer
-    .create(
-        <Main
-          films={films}
-          promoFilm={films[0]}
-          currentGenre={GENRES[0]}
-          filteredFilms={films}
-          filmsCountToShow={INITIAL_FILMS_COUNT}
-          isPlayerActive={true}
-          onScreenChange={() => {}}
-          onActiveFilmChange={() => {}}
-          onGenreChange={() => {}}
-          onFilmsFilterByGenre={() => {}}
-          onFilmsCountToShowReset={() => {}}
-          onFilmsCountToShowIncrement={() => {}}
-          onSimilarFilmsUpdate={() => {}}
-          onPlayerStateChange={() => {}}
-        />, {
-          createNodeMock: () => {
-            return {};
-          }
-        }
-    )
-    .toJSON();
-
-  expect(tree).toMatchSnapshot();
-});
