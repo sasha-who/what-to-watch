@@ -1,4 +1,4 @@
-import {films} from "../test-mocks.js";
+import {films} from "../../test-mocks.js";
 import {reducer, ActionType, ActionCreator} from "./data.js";
 
 const [film] = films;
@@ -24,7 +24,7 @@ it(`Reducer should load promo film`, () => {
     type: ActionType.LOAD_PROMO_FILM,
     payload: film
   })).toEqual({
-    films,
+    films: [],
     promoFilm: film
   });
 });
