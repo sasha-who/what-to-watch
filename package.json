@@ -15,6 +15,7 @@
     "@babel/core": "7.10.2",
     "@babel/preset-env": "7.10.2",
     "@babel/preset-react": "7.10.1",
+    "axios-mock-adapter": "1.18.2",
     "babel-jest": "26.0.1",
     "babel-loader": "8.1.0",
     "classnames": "2.2.6",
@@ -36,6 +37,7 @@
     "node": "10"
   },
   "dependencies": {
+    "axios": "0.19.2",
     "moment": "2.27.0",
     "moment-locales-webpack-plugin": "1.2.0",
     "prop-types": "15.7.2",
