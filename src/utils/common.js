@@ -1,5 +1,10 @@
 import moment from "moment";
-import {DURATION_INITS, RUN_TIME_FORMAT, DEFAULT_GENRE} from "../const.js";
+import {
+  DURATION_INITS,
+  RUN_TIME_FORMAT,
+  DEFAULT_GENRE,
+  RECOMENDED_FILMS_COUNT
+} from "../const.js";
 
 export const getRandomIntegerNumber = (min, max) => {
   min = Math.ceil(min);
@@ -54,9 +59,9 @@ export const getFilmsFilteredByGenre = (allFilms, genre) => {
   return allFilms.filter((film) => film.genre === genre);
 };
 
-// const getSimilarFilms = (allFilms, currentFilm) => {
-//   return (
-//     allFilms.filter((film) => (film !== currentFilm) && (film.genre === currentFilm.genre))
-//       .slice(0, RECOMENDED_FILMS_COUNT)
-//   );
-// };
+export const getSimilarForCurrentFilm = (allFilms, currentFilm) => {
+  return (
+    allFilms.filter((film) => (film !== currentFilm) && (film.genre === currentFilm.genre))
+      .slice(0, RECOMENDED_FILMS_COUNT)
+  );
+};
