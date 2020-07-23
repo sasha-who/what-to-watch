@@ -12,10 +12,8 @@ const Catalog = (props) => {
     onScreenChange,
     onActiveFilmChange,
     onGenreChange,
-    onFilmsFilterByGenre,
     onFilmsCountToShowReset,
     onFilmsCountToShowIncrement,
-    onSimilarFilmsUpdate
   } = props;
 
   return (
@@ -25,7 +23,6 @@ const Catalog = (props) => {
         films={films}
         currentGenre={currentGenre}
         onGenreChange={onGenreChange}
-        onFilmsFilterByGenre={onFilmsFilterByGenre}
         onFilmsCountToShowReset={onFilmsCountToShowReset}
       />
       <FilmsList
@@ -34,7 +31,6 @@ const Catalog = (props) => {
         onScreenChange={onScreenChange}
         onActiveFilmChange={onActiveFilmChange}
         onFilmsCountToShowIncrement={onFilmsCountToShowIncrement}
-        onSimilarFilmsUpdate={onSimilarFilmsUpdate}
       />
     </section>
   );
@@ -98,10 +94,8 @@ Catalog.propTypes = {
   onScreenChange: PropTypes.func.isRequired,
   onActiveFilmChange: PropTypes.func.isRequired,
   onGenreChange: PropTypes.func.isRequired,
-  onFilmsFilterByGenre: PropTypes.func.isRequired,
   onFilmsCountToShowReset: PropTypes.func.isRequired,
   onFilmsCountToShowIncrement: PropTypes.func,
-  onSimilarFilmsUpdate: PropTypes.func.isRequired
 };
 
 export default Catalog;

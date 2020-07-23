@@ -18,7 +18,6 @@ const DetailedFilmCard = (props) => {
     isPlayerActive,
     onScreenChange,
     onActiveFilmChange,
-    onSimilarFilmsUpdate,
     onPlayerStateChange
   } = props;
 
@@ -105,7 +104,6 @@ const DetailedFilmCard = (props) => {
             films={similarFilms}
             onScreenChange={onScreenChange}
             onActiveFilmChange={onActiveFilmChange}
-            onSimilarFilmsUpdate={onSimilarFilmsUpdate}
           />
         </section>
         <Footer />
@@ -167,7 +165,6 @@ DetailedFilmCard.propTypes = {
   isPlayerActive: PropTypes.bool.isRequired,
   onScreenChange: PropTypes.func.isRequired,
   onActiveFilmChange: PropTypes.func.isRequired,
-  onSimilarFilmsUpdate: PropTypes.func.isRequired,
   onPlayerStateChange: PropTypes.func.isRequired
 };
 

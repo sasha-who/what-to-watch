@@ -17,10 +17,8 @@ it(`Main should render correctly`, () => {
           onScreenChange={() => {}}
           onActiveFilmChange={() => {}}
           onGenreChange={() => {}}
-          onFilmsFilterByGenre={() => {}}
           onFilmsCountToShowReset={() => {}}
           onFilmsCountToShowIncrement={() => {}}
-          onSimilarFilmsUpdate={() => {}}
           onPlayerStateChange={() => {}}
         />, {
           createNodeMock: () => {
