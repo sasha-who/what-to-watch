@@ -12,7 +12,6 @@ const FilmCard = (props) => {
     onStartPlaying,
     onStopPlaying,
     onHoverChange,
-    onSimilarFilmsUpdate
   } = props;
 
   const {title, cover, preview} = film;
@@ -31,7 +30,6 @@ const FilmCard = (props) => {
       onClick={() => {
         onScreenChange(Screen.CARD);
         onActiveFilmChange(film);
-        onSimilarFilmsUpdate();
       }}
     >
       <div className="small-movie-card__image">
@@ -81,7 +79,6 @@ FilmCard.propTypes = {
   onStartPlaying: PropTypes.func.isRequired,
   onStopPlaying: PropTypes.func.isRequired,
   onHoverChange: PropTypes.func.isRequired,
-  onSimilarFilmsUpdate: PropTypes.func.isRequired
 };
 
 export default FilmCard;
