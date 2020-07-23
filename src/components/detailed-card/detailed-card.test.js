@@ -14,7 +14,6 @@ it(`DetailedFilmCard should render correctly`, () => {
           isPlayerActive={false}
           onScreenChange={() => {}}
           onActiveFilmChange={() => {}}
-          onSimilarFilmsUpdate={() => {}}
           onPlayerStateChange={() => {}}
         />, {
           createNodeMock: () => {
