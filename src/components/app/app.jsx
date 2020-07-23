@@ -25,7 +25,6 @@ class App extends React.PureComponent {
       isPlayerActive,
       onScreenChange,
       onActiveFilmChange,
-      onSimilarFilmsUpdate,
       onPlayerStateChange
     } = this.props;
 
@@ -42,7 +41,6 @@ class App extends React.PureComponent {
               isPlayerActive={isPlayerActive}
               onScreenChange={onScreenChange}
               onActiveFilmChange={onActiveFilmChange}
-              onSimilarFilmsUpdate={onSimilarFilmsUpdate}
               onPlayerStateChange={onPlayerStateChange}
             />
           </Route>
@@ -65,10 +63,8 @@ class App extends React.PureComponent {
       onScreenChange,
       onActiveFilmChange,
       onGenreChange,
-      onFilmsFilterByGenre,
       onFilmsCountToShowReset,
       onFilmsCountToShowIncrement,
-      onSimilarFilmsUpdate,
       onPlayerStateChange
     } = this.props;
 
@@ -85,10 +81,8 @@ class App extends React.PureComponent {
             onScreenChange={onScreenChange}
             onActiveFilmChange={onActiveFilmChange}
             onGenreChange={onGenreChange}
-            onFilmsFilterByGenre={onFilmsFilterByGenre}
             onFilmsCountToShowReset={onFilmsCountToShowReset}
             onFilmsCountToShowIncrement={onFilmsCountToShowIncrement}
-            onSimilarFilmsUpdate={onSimilarFilmsUpdate}
             onPlayerStateChange={onPlayerStateChange}
           />
         );
@@ -101,7 +95,6 @@ class App extends React.PureComponent {
             isPlayerActive={isPlayerActive}
             onScreenChange={onScreenChange}
             onActiveFilmChange={onActiveFilmChange}
-            onSimilarFilmsUpdate={onSimilarFilmsUpdate}
             onPlayerStateChange={onPlayerStateChange}
           />
         );
@@ -246,10 +239,8 @@ App.propTypes = {
   onScreenChange: PropTypes.func.isRequired,
   onActiveFilmChange: PropTypes.func.isRequired,
   onGenreChange: PropTypes.func.isRequired,
-  onFilmsFilterByGenre: PropTypes.func.isRequired,
   onFilmsCountToShowReset: PropTypes.func.isRequired,
   onFilmsCountToShowIncrement: PropTypes.func,
-  onSimilarFilmsUpdate: PropTypes.func.isRequired,
   onPlayerStateChange: PropTypes.func.isRequired
 };
 
@@ -275,17 +266,11 @@ const mapDispatchToProps = (dispatch) => ({
   onGenreChange(genre) {
     dispatch(ActionCreator.changeCurrentGenre(genre));
   },
-  onFilmsFilterByGenre() {
-    dispatch(ActionCreator.filterFilmsByGenre());
-  },
   onFilmsCountToShowReset() {
     dispatch(ActionCreator.resetFilmsCountToShow());
   },
   onFilmsCountToShowIncrement() {
     dispatch(ActionCreator.incrementFilmsCountToShow());
-  },
-  onSimilarFilmsUpdate() {
-    dispatch(ActionCreator.setSimilarFilms());
   },
   onPlayerStateChange() {
     dispatch(ActionCreator.changePlayerState());
