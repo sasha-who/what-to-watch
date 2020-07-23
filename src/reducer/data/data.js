@@ -1,8 +1,9 @@
-import {extend} from "../utils/common.js";
+import {extend} from "../../utils/common.js";
+import {films} from "../../mocks/films.js";
 
 const initialState = {
-  films: [],
-  promoFilm: null
+  films,
+  promoFilm: films[0]
 };
 
 const ActionType = {
@@ -34,7 +35,7 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.LOAD_PROMO_FILM:
       return extend(state, {
-        film: action.payload
+        promoFilm: action.payload
       });
   }
 

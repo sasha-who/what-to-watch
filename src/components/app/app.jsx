@@ -2,8 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer/reducer.js";
+import {ActionCreator} from "../../reducer/app-state/app-state.js";
 import {Screen} from "../../const.js";
+import {getFilms, getPromoFilm} from "../../reducer/data/selectors.js";
+import {
+  getActiveScreen,
+  getCurrentGenre,
+  getFilmsCountToShow,
+  getPlayerState,
+  getActiveFilm,
+  getFilteredFilms,
+  getSimilarFilms
+} from "../../reducer/app-state/selectors.js";
 import Main from "../main/main.jsx";
 import DetailedFilmCard from "../detailed-card/detailed-card.jsx";
 
@@ -244,15 +254,15 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  activeScreen: state.activeScreen,
-  activeFilm: state.activeFilm || state.films[0],
-  currentGenre: state.currentGenre,
-  films: state.films,
-  filteredFilms: state.filteredFilms || [],
-  filmsCountToShow: state.filmsCountToShow,
-  similarFilms: state.similarFilms || [],
-  isPlayerActive: state.isPlayerActive,
-  promoFilm: state.promoFilm
+  activeScreen: getActiveScreen(state),
+  activeFilm: getActiveFilm(state),
+  currentGenre: getCurrentGenre(state),
+  films: getFilms(state),
+  filteredFilms: getFilteredFilms(state),
+  filmsCountToShow: getFilmsCountToShow(state),
+  similarFilms: getSimilarFilms(state),
+  isPlayerActive: getPlayerState(state),
+  promoFilm: getPromoFilm(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

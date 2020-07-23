@@ -3,8 +3,9 @@ import {
   INITIAL_FILMS_COUNT,
   ADDITIONAL_FILMS_COUNT,
   Screen
-} from "../const.js";
-import {extend} from "../utils/common.js";
+} from "../../const.js";
+import {films} from "../../mocks/films.js";
+import {extend} from "../../utils/common.js";
 
 const initialState = {
   activeScreen: Screen.MAIN,
@@ -12,6 +13,7 @@ const initialState = {
   filteredFilms: [],
   filmsCountToShow: INITIAL_FILMS_COUNT,
   isPlayerActive: false,
+  activeFilm: films[0]
 };
 
 const ActionType = {
@@ -38,9 +40,9 @@ const ActionCreator = {
     type: ActionType.CHANGE_CURRENT_GENRE,
     payload: genre
   }),
-  filterFilmsByGenre: (films) => ({
+  filterFilmsByGenre: (filteredFilms) => ({
     type: ActionType.FILTER_FILMS_BY_GENRE,
-    payload: films
+    payload: filteredFilms
   }),
   resetFilmsCountToShow: () => ({
     type: ActionType.RESET_FILMS_COUNT_TO_SHOW
@@ -48,9 +50,9 @@ const ActionCreator = {
   incrementFilmsCountToShow: () => ({
     type: ActionType.INCREMENT_FILMS_COUNT_TO_SHOW
   }),
-  setSimilarFilms: (films) => ({
+  setSimilarFilms: (similarFilms) => ({
     type: ActionType.SET_SIMILAR_FILMS,
-    payload: films
+    payload: similarFilms
   }),
   changePlayerState: () => ({
     type: ActionType.CHANGE_PLAYER_STATE

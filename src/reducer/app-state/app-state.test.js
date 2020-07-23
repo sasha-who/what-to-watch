@@ -1,6 +1,6 @@
-import {INITIAL_FILMS_COUNT, ADDITIONAL_FILMS_COUNT, Screen} from "../const.js";
+import {INITIAL_FILMS_COUNT, ADDITIONAL_FILMS_COUNT, Screen} from "../../const.js";
 import {getFilmsFilteredByGenre} from "../../utils/common.js";
-import {GENRES, films} from "../test-mocks.js";
+import {GENRES, films} from "../../test-mocks.js";
 import {reducer, ActionType, ActionCreator} from "./app-state.js";
 
 it(`Reducer should change current genre by a given value`, () => {
