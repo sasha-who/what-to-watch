@@ -9,6 +9,9 @@ export const DURATION_INITS = `minutes`;
 export const RUN_TIME_FORMAT = `HH:mm:ss`;
 export const VIDEO_CLASS_NAME = `player__video`;
 export const SECONDS_IN_MINUTE_COUNT = 60;
+export const UNAUTHORIZED_ERROR = 401;
+export const SERVER_TIMEOUT = 5000;
+export const BASE_URL = `https://4.react.pages.academy/wtw`;
 
 export const RatingRange = {
   MIN: 0,
