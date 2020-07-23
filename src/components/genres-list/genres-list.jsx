@@ -24,7 +24,6 @@ const GenresList = (props) => {
     films,
     currentGenre,
     onGenreChange,
-    onFilmsFilterByGenre,
     onFilmsCountToShowReset
   } = props;
 
@@ -46,7 +45,6 @@ const GenresList = (props) => {
               onClick={(evt) => {
                 if (genre !== currentGenre) {
                   onGenreChange(evt.target.textContent.toLowerCase());
-                  onFilmsFilterByGenre();
                   onFilmsCountToShowReset();
                 }
               }}
@@ -89,7 +87,6 @@ GenresList.propTypes = {
   ).isRequired,
   currentGenre: PropTypes.string.isRequired,
   onGenreChange: PropTypes.func.isRequired,
-  onFilmsFilterByGenre: PropTypes.func.isRequired,
   onFilmsCountToShowReset: PropTypes.func.isRequired
 };
 
