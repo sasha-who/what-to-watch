@@ -1,6 +1,9 @@
+import MockAdapter from "axios-mock-adapter";
+import {createAPI} from "../../api.js";
+import {reducer, ActionType, ActionCreator, Operation} from "./data.js";
 import {films} from "../../test-mocks.js";
-import {reducer, ActionType, ActionCreator} from "./data.js";
 
+const api = createAPI(() => {});
 const [film] = films;
 
 it(`Reducer should load all films`, () => {
@@ -42,5 +45,45 @@ describe(`Action creators work correctly`, () => {
       type: ActionType.LOAD_PROMO_FILM,
       payload: film
     });
+  });
+});
+
+describe(`Operation work correctly`, () => {
+  it(`Operation should make a correct API call to /films`, function () {
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const filmsLoader = Operation.loadFilms();
+
+    apiMock
+      .onGet(`/films`)
+      .reply(200, [{fake: true}]);
+
+    return filmsLoader(dispatch, () => {}, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.LOAD_FILMS,
+          payload: [{fake: true}],
+        });
+      });
+  });
+
+  it(`Operation should make a correct API call to /films/promo`, function () {
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const promoFilmLoader = Operation.loadFilms();
+
+    apiMock
+      .onGet(`/films/promo`)
+      .reply(200, [{fake: true}]);
+
+    return promoFilmLoader(dispatch, () => {}, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.LOAD_PROMO_FILM,
+          payload: [{fake: true}],
+        });
+      });
   });
 });
