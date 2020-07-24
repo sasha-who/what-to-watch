@@ -2,6 +2,16 @@ import {INITIAL_FILMS_COUNT, ADDITIONAL_FILMS_COUNT, Screen} from "../../const.j
 import {GENRES} from "../../test-mocks.js";
 import {reducer, ActionType, ActionCreator} from "./app-state.js";
 
+it(`Reducer without additional parameters should return initial state`, () => {
+  expect(reducer(void 0, {})).toEqual({
+    activeScreen: Screen.MAIN,
+    currentGenre: GENRES[0],
+    filteredFilms: [],
+    filmsCountToShow: INITIAL_FILMS_COUNT,
+    isPlayerActive: false
+  });
+});
+
 it(`Reducer should change current genre by a given value`, () => {
   expect(reducer({
     activeScreen: Screen.MAIN,
