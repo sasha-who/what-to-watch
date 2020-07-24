@@ -29,7 +29,7 @@ const reducer = (state = initialState, action) => {
 };
 
 const Operation = {
-  checkAuth: () => (dispatch, getState, api) => {
+  checkAuthorization: () => (dispatch, getState, api) => {
     return api.get(`/login`)
       .then(() => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTHORIZED));
