@@ -10,12 +10,20 @@ import {Operation as UserOperation, ActionCreator} from "./reducer/user/user.js"
 import {createAPI} from "./api";
 import {AuthorizationStatus} from "./const.js";
 
-const api = createAPI(() => {});
+const onUnauthorized = () => {
+  store.dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTHORIZED));
+};
+
+const api = createAPI(onUnauthorized);
 
 const store = createStore(
     reducer,
     applyMiddleware(thunk.withExtraArgument(api))
 );
+
+store.dispatch(DataOperation.loadFilms());
+store.dispatch(DataOperation.loadPromoFilm());
+store.dispatch(UserOperation.checkAuthorization());
 
 const rootElement = document.querySelector(`#root`);
 
