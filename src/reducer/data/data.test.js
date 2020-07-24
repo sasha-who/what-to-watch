@@ -6,6 +6,13 @@ import {films} from "../../test-mocks.js";
 const api = createAPI(() => {});
 const [film] = films;
 
+it(`Reducer without additional parameters should return initial state`, () => {
+  expect(reducer(void 0, {})).toEqual({
+    films: [],
+    promoFilm: null
+  });
+});
+
 it(`Reducer should load all films`, () => {
   expect(reducer({
     films: [],

@@ -64,3 +64,8 @@ export const ReviewDate = {
   HUMAN_FORMAT: `MMMM D, YYYY`,
   SERVICE_FORMAT: `YYYY-MM-DD`
 };
+
+export const AuthorizationStatus = {
+  AUTHORIZED: `AUTHORIZED`,
+  NO_AUTHORIZED: `NO_AUTHORIZED`,
+};
