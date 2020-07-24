@@ -6,8 +6,9 @@ import thunk from "redux-thunk";
 import App from "./components/app/app.jsx";
 import reducer from "./reducer/reducer.js";
 import {Operation as DataOperation} from "./reducer/data/data.js";
-import {Operation as AppStateOperation} from "./reducer/app-state/app-state.js";
+import {Operation as UserOperation, ActionCreator} from "./reducer/user/user.js";
 import {createAPI} from "./api";
+import {AuthorizationStatus} from "./const.js";
 
 const api = createAPI(() => {});
 
