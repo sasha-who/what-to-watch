@@ -4,7 +4,6 @@ import {
   ADDITIONAL_FILMS_COUNT,
   Screen
 } from "../../const.js";
-import {films} from "../../mocks/films.js";
 import {extend} from "../../utils/common.js";
 
 const initialState = {
@@ -12,8 +11,7 @@ const initialState = {
   currentGenre: DEFAULT_GENRE,
   filteredFilms: [],
   filmsCountToShow: INITIAL_FILMS_COUNT,
-  isPlayerActive: false,
-  activeFilm: films[0]
+  isPlayerActive: false
 };
 
 const ActionType = {

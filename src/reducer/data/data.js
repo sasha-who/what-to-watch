@@ -1,9 +1,9 @@
 import {extend} from "../../utils/common.js";
-import {films} from "../../mocks/films.js";
+import {adaptFilmfromServer, adaptFilmsfromServer} from "../../adapters/films.js";
 
 const initialState = {
-  films,
-  promoFilm: films[0]
+  films: [],
+  promoFilm: null
 };
 
 const ActionType = {
@@ -30,13 +30,17 @@ const Operation = {
   loadFilms: () => (dispatch, getState, api) => {
     return api.get(`/films`)
       .then((response) => {
-        dispatch(ActionCreator.loadFilms(response.data));
+        const adaptedFilms = adaptFilmsfromServer(response.data);
+
+        dispatch(ActionCreator.loadFilms(adaptedFilms));
       });
   },
   loadPromoFilm: () => (dispatch, getState, api) => {
     return api.get(`/films/promo`)
       .then((response) => {
-        dispatch(ActionCreator.loadPromoFilm(response.data));
+        const adaptedFilm = adaptFilmfromServer(response.data);
+
+        dispatch(ActionCreator.loadPromoFilm(adaptedFilm));
       });
   }
 };
