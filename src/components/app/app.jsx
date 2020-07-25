@@ -2,8 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer/app-state/app-state.js";
 import {Screen} from "../../const.js";
+import {ActionCreator} from "../../reducer/app-state/app-state.js";
+import {Operation as UserOperation} from "../../reducer/user/user.js";
 import {getFilms, getPromoFilm} from "../../reducer/data/selectors.js";
 import {
   getActiveScreen,
@@ -14,12 +15,15 @@ import {
   getFilteredFilms,
   getSimilarFilms
 } from "../../reducer/app-state/selectors.js";
+import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import Main from "../main/main.jsx";
 import DetailedFilmCard from "../detailed-card/detailed-card.jsx";
 
 class App extends React.PureComponent {
   render() {
     const {
+      // authorizationStatus,
+      // login,
       similarFilms,
       activeFilm,
       isPlayerActive,
@@ -51,6 +55,8 @@ class App extends React.PureComponent {
 
   _renderScreen() {
     const {
+      // authorizationStatus,
+      // login,
       activeScreen,
       activeFilm,
       promoFilm,
@@ -106,6 +112,8 @@ class App extends React.PureComponent {
 }
 
 App.propTypes = {
+  authorizationStatus: PropTypes.string.isRequired,
+  login: PropTypes.func.isRequired,
   promoFilm: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -206,7 +214,7 @@ App.propTypes = {
           date: PropTypes.instanceOf(Date).isRequired
         })
     ).isRequired
-  }).isRequired,
+  }),
   similarFilms: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,
@@ -245,6 +253,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
+  authorizationStatus: getAuthorizationStatus(state),
   activeScreen: getActiveScreen(state),
   activeFilm: getActiveFilm(state),
   currentGenre: getCurrentGenre(state),
@@ -257,6 +266,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  login(authorizationData) {
+    dispatch(UserOperation.login(authorizationData));
+  },
   onScreenChange(screen) {
     dispatch(ActionCreator.changeActiveScreen(screen));
   },
