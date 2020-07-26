@@ -3,12 +3,16 @@ import {adaptFilmfromServer, adaptFilmsfromServer} from "../../adapters/films.js
 
 const initialState = {
   films: [],
-  promoFilm: null
+  promoFilm: null,
+  isFilmsLoaded: false,
+  isPromoFilmLoaded: false
 };
 
 const ActionType = {
   LOAD_FILMS: `LOAD_FILMS`,
-  LOAD_PROMO_FILM: `LOAD_PROMO_FILM`
+  LOAD_PROMO_FILM: `LOAD_PROMO_FILM`,
+  CHANGE_FILMS_LOAD_STATE: `CHANGE_FILMS_LOAD_STATE`,
+  CHANGE_PROMO_FILM_LOAD_STATE: `CHANGE_PROMO_FILM_LOAD_STATE`
 };
 
 const ActionCreator = {
@@ -23,6 +27,16 @@ const ActionCreator = {
       type: ActionType.LOAD_PROMO_FILM,
       payload: film,
     };
+  },
+  changeFilmsLoadState: () => {
+    return {
+      type: ActionType.CHANGE_FILMS_LOAD_STATE
+    };
+  },
+  changePromoFilmLoadState: () => {
+    return {
+      type: ActionType.CHANGE_PROMO_FILM_LOAD_STATE
+    };
   }
 };
 
@@ -33,6 +47,7 @@ const Operation = {
         const adaptedFilms = adaptFilmsfromServer(response.data);
 
         dispatch(ActionCreator.loadFilms(adaptedFilms));
+        dispatch(ActionCreator.changeFilmsLoadState());
       });
   },
   loadPromoFilm: () => (dispatch, getState, api) => {
@@ -41,6 +56,7 @@ const Operation = {
         const adaptedFilm = adaptFilmfromServer(response.data);
 
         dispatch(ActionCreator.loadPromoFilm(adaptedFilm));
+        dispatch(ActionCreator.changePromoFilmLoadState());
       });
   }
 };
@@ -55,6 +71,16 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_PROMO_FILM:
       return extend(state, {
         promoFilm: action.payload
+      });
+
+    case ActionType.CHANGE_FILMS_LOAD_STATE:
+      return extend(state, {
+        isFilmsLoaded: true
+      });
+
+    case ActionType.CHANGE_PROMO_FILM_LOAD_STATE:
+      return extend(state, {
+        isPromoFilmLoaded: true
       });
   }
 

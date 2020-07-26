@@ -32,6 +32,8 @@ it(`Main screen should render correctly`, () => {
             currentGenre={GENRES[0]}
             similarFilms={films}
             isPlayerActive={false}
+            isFilmsLoaded={true}
+            isPromoFilmLoaded={true}
             onScreenChange={() => {}}
             onActiveFilmChange={() => {}}
             onGenreChange={() => {}}
@@ -64,6 +66,8 @@ it(`Card screen should render correctly`, () => {
             currentGenre={GENRES[0]}
             similarFilms={films}
             isPlayerActive={false}
+            isFilmsLoaded={true}
+            isPromoFilmLoaded={true}
             onScreenChange={() => {}}
             onActiveFilmChange={() => {}}
             onGenreChange={() => {}}
