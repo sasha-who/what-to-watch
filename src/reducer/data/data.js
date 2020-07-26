@@ -19,10 +19,10 @@ const ActionType = {
 };
 
 const ActionCreator = {
-  loadFilms: (allFilms) => {
+  loadFilms: (films) => {
     return {
       type: ActionType.LOAD_FILMS,
-      payload: allFilms,
+      payload: films,
     };
   },
   loadPromoFilm: (film) => {
