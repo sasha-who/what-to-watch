@@ -7,7 +7,7 @@ export const adaptFilmfromServer = (film) => {
     cover: film[`background_image`],
     backgroundColor: film[`background_color`],
     previewVideo: film[`preview_video_link`],
-    video: film[`video_link`],
+    videoLink: film[`video_link`],
     genre: film[`genre`],
     release: film[`released`],
     rating: film[`rating`],
