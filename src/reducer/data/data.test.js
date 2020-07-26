@@ -9,33 +9,77 @@ const [film] = films;
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
     films: [],
-    promoFilm: null
+    promoFilm: null,
+    isFilmsLoaded: false,
+    isPromoFilmLoaded: false
   });
 });
 
 it(`Reducer should load all films`, () => {
   expect(reducer({
     films: [],
-    promoFilm: null
+    promoFilm: null,
+    isFilmsLoaded: false,
+    isPromoFilmLoaded: false
   }, {
     type: ActionType.LOAD_FILMS,
     payload: films
   })).toEqual({
     films,
-    promoFilm: null
+    promoFilm: null,
+    isFilmsLoaded: false,
+    isPromoFilmLoaded: false
   });
 });
 
 it(`Reducer should load promo film`, () => {
   expect(reducer({
     films: [],
-    promoFilm: null
+    promoFilm: null,
+    isFilmsLoaded: false,
+    isPromoFilmLoaded: false
   }, {
     type: ActionType.LOAD_PROMO_FILM,
     payload: film
   })).toEqual({
     films: [],
-    promoFilm: film
+    promoFilm: film,
+    isFilmsLoaded: false,
+    isPromoFilmLoaded: false
+  });
+});
+
+it(`Reducer should change films load state after loading`, () => {
+  expect(reducer({
+    films: [],
+    promoFilm: null,
+    isFilmsLoaded: false,
+    isPromoFilmLoaded: false
+  }, {
+    type: ActionType.CHANGE_FILMS_LOAD_STATE,
+    payload: film
+  })).toEqual({
+    films: [],
+    promoFilm: null,
+    isFilmsLoaded: true,
+    isPromoFilmLoaded: false
+  });
+});
+
+it(`Reducer should change promo films load state after loading`, () => {
+  expect(reducer({
+    films: [],
+    promoFilm: null,
+    isFilmsLoaded: false,
+    isPromoFilmLoaded: false
+  }, {
+    type: ActionType.CHANGE_PROMO_FILM_LOAD_STATE,
+    payload: film
+  })).toEqual({
+    films: [],
+    promoFilm: null,
+    isFilmsLoaded: false,
+    isPromoFilmLoaded: true
   });
 });
 
@@ -51,6 +95,18 @@ describe(`Action creators work correctly`, () => {
     expect(ActionCreator.loadPromoFilm(film)).toEqual({
       type: ActionType.LOAD_PROMO_FILM,
       payload: film
+    });
+  });
+
+  it(`Action creator for changing films load state returns correct action`, () => {
+    expect(ActionCreator.changeFilmsLoadState()).toEqual({
+      type: ActionType.CHANGE_FILMS_LOAD_STATE
+    });
+  });
+
+  it(`Action creator for changing promo film load state returns correct action`, () => {
+    expect(ActionCreator.changePromoFilmLoadState()).toEqual({
+      type: ActionType.CHANGE_PROMO_FILM_LOAD_STATE
     });
   });
 });
@@ -78,7 +134,7 @@ describe(`Operation work correctly`, () => {
   it(`Operation should make a correct API call to /films/promo`, function () {
     const apiMock = new MockAdapter(api);
     const dispatch = jest.fn();
-    const promoFilmLoader = Operation.loadFilms();
+    const promoFilmLoader = Operation.loadPromoFilm();
 
     apiMock
       .onGet(`/films/promo`)

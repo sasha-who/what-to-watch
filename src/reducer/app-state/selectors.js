@@ -1,7 +1,7 @@
 import {createSelector} from "reselect";
 import {getFilmsFilteredByGenre, getSimilarForCurrentFilm} from "../../utils/common.js";
 import NameSpace from "../name-space.js";
-import {getFilms} from "../data/selectors.js";
+import {getFilms, getFilmsLoadState} from "../data/selectors.js";
 
 const NAME_SPACE = NameSpace.APP_STATE;
 
@@ -36,7 +36,11 @@ export const getFilteredFilms = createSelector(
 export const getSimilarFilms = createSelector(
     getFilms,
     getActiveFilm,
-    (films, activeFilm) => {
+    getFilmsLoadState,
+    (films, activeFilm, isFilmsLoaded) => {
+      if (!isFilmsLoaded || !activeFilm) {
+        return [];
+      }
       return getSimilarForCurrentFilm(films, activeFilm);
     }
 );
