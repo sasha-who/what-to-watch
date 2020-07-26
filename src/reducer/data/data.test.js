@@ -1,4 +1,5 @@
 import MockAdapter from "axios-mock-adapter";
+import {HttpStatus} from "../../const.js";
 import {createAPI} from "../../api.js";
 import {reducer, ActionType, ActionCreator, Operation} from "./data.js";
 import {films} from "../../test-mocks.js";
@@ -11,7 +12,8 @@ it(`Reducer without additional parameters should return initial state`, () => {
     films: [],
     promoFilm: null,
     isFilmsLoaded: false,
-    isPromoFilmLoaded: false
+    isPromoFilmLoaded: false,
+    requestStatus: HttpStatus.SUCCESS
   });
 });
 
@@ -20,7 +22,8 @@ it(`Reducer should load all films`, () => {
     films: [],
     promoFilm: null,
     isFilmsLoaded: false,
-    isPromoFilmLoaded: false
+    isPromoFilmLoaded: false,
+    requestStatus: HttpStatus.SUCCESS
   }, {
     type: ActionType.LOAD_FILMS,
     payload: films
@@ -28,7 +31,8 @@ it(`Reducer should load all films`, () => {
     films,
     promoFilm: null,
     isFilmsLoaded: false,
-    isPromoFilmLoaded: false
+    isPromoFilmLoaded: false,
+    requestStatus: HttpStatus.SUCCESS
   });
 });
 
@@ -37,7 +41,8 @@ it(`Reducer should load promo film`, () => {
     films: [],
     promoFilm: null,
     isFilmsLoaded: false,
-    isPromoFilmLoaded: false
+    isPromoFilmLoaded: false,
+    requestStatus: HttpStatus.SUCCESS
   }, {
     type: ActionType.LOAD_PROMO_FILM,
     payload: film
@@ -45,7 +50,8 @@ it(`Reducer should load promo film`, () => {
     films: [],
     promoFilm: film,
     isFilmsLoaded: false,
-    isPromoFilmLoaded: false
+    isPromoFilmLoaded: false,
+    requestStatus: HttpStatus.SUCCESS
   });
 });
 
@@ -54,7 +60,8 @@ it(`Reducer should change films load state after loading`, () => {
     films: [],
     promoFilm: null,
     isFilmsLoaded: false,
-    isPromoFilmLoaded: false
+    isPromoFilmLoaded: false,
+    requestStatus: HttpStatus.SUCCESS
   }, {
     type: ActionType.CHANGE_FILMS_LOAD_STATE,
     payload: film
@@ -62,7 +69,8 @@ it(`Reducer should change films load state after loading`, () => {
     films: [],
     promoFilm: null,
     isFilmsLoaded: true,
-    isPromoFilmLoaded: false
+    isPromoFilmLoaded: false,
+    requestStatus: HttpStatus.SUCCESS
   });
 });
 
@@ -71,7 +79,8 @@ it(`Reducer should change promo films load state after loading`, () => {
     films: [],
     promoFilm: null,
     isFilmsLoaded: false,
-    isPromoFilmLoaded: false
+    isPromoFilmLoaded: false,
+    requestStatus: HttpStatus.SUCCESS
   }, {
     type: ActionType.CHANGE_PROMO_FILM_LOAD_STATE,
     payload: film
@@ -79,7 +88,27 @@ it(`Reducer should change promo films load state after loading`, () => {
     films: [],
     promoFilm: null,
     isFilmsLoaded: false,
-    isPromoFilmLoaded: true
+    isPromoFilmLoaded: true,
+    requestStatus: HttpStatus.SUCCESS
+  });
+});
+
+it(`Reducer should set response status after request`, () => {
+  expect(reducer({
+    films: [],
+    promoFilm: null,
+    isFilmsLoaded: false,
+    isPromoFilmLoaded: false,
+    requestStatus: HttpStatus.SUCCESS
+  }, {
+    type: ActionType.SET_REQUEST_STATUS,
+    payload: status
+  })).toEqual({
+    films: [],
+    promoFilm: null,
+    isFilmsLoaded: false,
+    isPromoFilmLoaded: false,
+    requestStatus: status
   });
 });
 
@@ -107,6 +136,13 @@ describe(`Action creators work correctly`, () => {
   it(`Action creator for changing promo film load state returns correct action`, () => {
     expect(ActionCreator.changePromoFilmLoadState()).toEqual({
       type: ActionType.CHANGE_PROMO_FILM_LOAD_STATE
+    });
+  });
+
+  it(`Action creator for setting request status returns correct action`, () => {
+    expect(ActionCreator.setRequestStatus(status)).toEqual({
+      type: ActionType.SET_REQUEST_STATUS,
+      payload: status
     });
   });
 });
