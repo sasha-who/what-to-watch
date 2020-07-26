@@ -9,3 +9,11 @@ export const getFilms = (state) => {
 export const getPromoFilm = (state) => {
   return state[NAME_SPACE].promoFilm;
 };
+
+export const getFilmsLoadState = (state) => {
+  return state[NAME_SPACE].isFilmsLoaded;
+};
+
+export const getPromoFilmLoadState = (state) => {
+  return state[NAME_SPACE].isPromoFilmLoaded;
+};

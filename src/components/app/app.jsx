@@ -5,7 +5,12 @@ import {connect} from "react-redux";
 import {Screen} from "../../const.js";
 import {ActionCreator} from "../../reducer/app-state/app-state.js";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
-import {getFilms, getPromoFilm} from "../../reducer/data/selectors.js";
+import {
+  getFilms,
+  getPromoFilm,
+  getFilmsLoadState,
+  getPromoFilmLoadState
+} from "../../reducer/data/selectors.js";
 import {
   getActiveScreen,
   getCurrentGenre,
@@ -27,10 +32,16 @@ class App extends React.PureComponent {
       similarFilms,
       activeFilm,
       isPlayerActive,
+      isFilmsLoaded,
+      isPromoFilmLoaded,
       onScreenChange,
       onActiveFilmChange,
       onPlayerStateChange
     } = this.props;
+
+    if (!isFilmsLoaded || !isPromoFilmLoaded) {
+      return null;
+    }
 
     return (
       <BrowserRouter>
@@ -244,6 +255,8 @@ App.propTypes = {
   currentGenre: PropTypes.string.isRequired,
   filmsCountToShow: PropTypes.number,
   isPlayerActive: PropTypes.bool.isRequired,
+  isFilmsLoaded: PropTypes.bool.isRequired,
+  isPromoFilmLoaded: PropTypes.bool.isRequired,
   onScreenChange: PropTypes.func.isRequired,
   onActiveFilmChange: PropTypes.func.isRequired,
   onGenreChange: PropTypes.func.isRequired,
@@ -262,7 +275,9 @@ const mapStateToProps = (state) => ({
   filmsCountToShow: getFilmsCountToShow(state),
   similarFilms: getSimilarFilms(state),
   isPlayerActive: getPlayerState(state),
-  promoFilm: getPromoFilm(state)
+  promoFilm: getPromoFilm(state),
+  isFilmsLoaded: getFilmsLoadState(state),
+  isPromoFilmLoaded: getPromoFilmLoadState(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
