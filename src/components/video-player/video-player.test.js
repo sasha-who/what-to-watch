@@ -4,13 +4,13 @@ import VideoPlayer from "./video-player.jsx";
 import {films} from "../../test-mocks.js";
 
 const [film] = films;
-const {preview, cover} = film;
+const {previewVideo, cover} = film;
 
 it(`VideoPlayer should render correctly`, () => {
   const tree = renderer
     .create(
         <VideoPlayer
-          preview={preview}
+          previewVideo={previewVideo}
           defaultImage={cover}
           isPlaying={false}
         />, {
