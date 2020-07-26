@@ -49,22 +49,26 @@ const PromoCard = ({promoFilm, onPlayerStateChange}) => {
 
 PromoCard.propTypes = {
   promoFilm: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     cover: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
-    preview: PropTypes.string.isRequired,
+    previewVideo: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    release: PropTypes.string.isRequired,
+    release: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
     ratingsCount: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
     actors: PropTypes.arrayOf(PropTypes.string),
     runTime: PropTypes.number.isRequired,
+    previewImage: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
+    videoLink: PropTypes.string.isRequired,
+    isFavorite: PropTypes.bool.isRequired,
     reviews: PropTypes.arrayOf(
         PropTypes.shape({
-          id: PropTypes.string.isRequired,
+          id: PropTypes.number.isRequired,
           text: PropTypes.string.isRequired,
           rating: PropTypes.number.isRequired,
           userName: PropTypes.string.isRequired,
