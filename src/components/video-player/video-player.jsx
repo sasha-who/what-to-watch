@@ -41,12 +41,12 @@ export default class VideoPlayer extends React.PureComponent {
   }
 
   render() {
-    const {preview, defaultImage} = this.props;
+    const {previewVideo, defaultImage} = this.props;
 
     return (
       <video
         ref={this._videoRef}
-        src={preview}
+        src={previewVideo}
         width={280}
         height={175}
         poster={defaultImage}
@@ -57,7 +57,7 @@ export default class VideoPlayer extends React.PureComponent {
 }
 
 VideoPlayer.propTypes = {
-  preview: PropTypes.string.isRequired,
+  previewVideo: PropTypes.string.isRequired,
   defaultImage: PropTypes.string.isRequired,
   isPlaying: PropTypes.bool.isRequired
 };
