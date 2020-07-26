@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {connect} from "react-redux";
-import {Screen} from "../../const.js";
+import Loader from "react-loader-spinner";
+import {Screen, LoaderData} from "../../const.js";
 import {ActionCreator} from "../../reducer/app-state/app-state.js";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
 import {
@@ -40,7 +41,16 @@ class App extends React.PureComponent {
     } = this.props;
 
     if (!isFilmsLoaded || !isPromoFilmLoaded) {
-      return null;
+      return (
+        <div style={LoaderData.STYLE}>
+          <Loader
+            type={LoaderData.TYPE}
+            color={LoaderData.COLOR}
+            width={LoaderData.HEIGHT}
+            height={LoaderData.WIDTH}
+          />
+        </div>
+      );
     }
 
     return (
