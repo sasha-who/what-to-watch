@@ -41,6 +41,7 @@ export const getSimilarFilms = createSelector(
       if (!isFilmsLoaded || !activeFilm) {
         return [];
       }
+
       return getSimilarForCurrentFilm(films, activeFilm);
     }
 );
