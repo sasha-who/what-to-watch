@@ -69,3 +69,16 @@ export const AuthorizationStatus = {
   AUTHORIZED: `AUTHORIZED`,
   NO_AUTHORIZED: `NO_AUTHORIZED`,
 };
+
+export const LoaderData = {
+  TYPE: `Circles`,
+  COLOR: `#dfcf77`,
+  WIDTH: 150,
+  HEIGHT: 150,
+  STYLE: {
+    position: `fixed`,
+    top: `50%`,
+    left: `50%`,
+    transform: `translate(-50%, -50%)`
+  }
+};
