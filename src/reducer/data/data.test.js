@@ -155,14 +155,17 @@ describe(`Operation work correctly`, () => {
 
     apiMock
       .onGet(`/films`)
-      .reply(200, [{fake: true}]);
+      .reply(200, []);
 
     return filmsLoader(dispatch, () => {}, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.LOAD_FILMS,
-          payload: [{fake: true}],
+          payload: []
+        });
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
+          type: ActionType.CHANGE_FILMS_LOAD_STATE
         });
       });
   });
@@ -174,14 +177,17 @@ describe(`Operation work correctly`, () => {
 
     apiMock
       .onGet(`/films/promo`)
-      .reply(200, [{fake: true}]);
+      .reply(200, {});
 
     return promoFilmLoader(dispatch, () => {}, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.LOAD_PROMO_FILM,
-          payload: [{fake: true}],
+          payload: {}
+        });
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
+          type: ActionType.CHANGE_PROMO_FILM_LOAD_STATE
         });
       });
   });
