@@ -17,3 +17,7 @@ export const getFilmsLoadState = (state) => {
 export const getPromoFilmLoadState = (state) => {
   return state[NAME_SPACE].isPromoFilmLoaded;
 };
+
+export const getRequestStatus = (state) => {
+  return state[NAME_SPACE].requestStatus;
+};

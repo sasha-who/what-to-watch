@@ -3,14 +3,15 @@ import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import Loader from "react-loader-spinner";
-import {Screen, LoaderData} from "../../const.js";
+import {Screen, LoaderData, HttpStatus} from "../../const.js";
 import {ActionCreator} from "../../reducer/app-state/app-state.js";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
 import {
   getFilms,
   getPromoFilm,
   getFilmsLoadState,
-  getPromoFilmLoadState
+  getPromoFilmLoadState,
+  getRequestStatus
 } from "../../reducer/data/selectors.js";
 import {
   getActiveScreen,
@@ -24,6 +25,7 @@ import {
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import Main from "../main/main.jsx";
 import DetailedFilmCard from "../detailed-card/detailed-card.jsx";
+import ServerError from "../server-error/server-error.jsx";
 
 class App extends React.PureComponent {
   render() {
@@ -35,6 +37,7 @@ class App extends React.PureComponent {
       isPlayerActive,
       isFilmsLoaded,
       isPromoFilmLoaded,
+      requestStatus,
       onScreenChange,
       onActiveFilmChange,
       onPlayerStateChange
@@ -51,6 +54,10 @@ class App extends React.PureComponent {
           />
         </div>
       );
+    }
+
+    if (!(requestStatus >= HttpStatus.SUCCESS && requestStatus < HttpStatus.REDIRECT)) {
+      return <ServerError requestStatus={requestStatus} />;
     }
 
     return (
@@ -287,6 +294,7 @@ App.propTypes = {
   isPlayerActive: PropTypes.bool.isRequired,
   isFilmsLoaded: PropTypes.bool.isRequired,
   isPromoFilmLoaded: PropTypes.bool.isRequired,
+  requestStatus: PropTypes.number.isRequired,
   onScreenChange: PropTypes.func.isRequired,
   onActiveFilmChange: PropTypes.func.isRequired,
   onGenreChange: PropTypes.func.isRequired,
@@ -307,7 +315,8 @@ const mapStateToProps = (state) => ({
   isPlayerActive: getPlayerState(state),
   promoFilm: getPromoFilm(state),
   isFilmsLoaded: getFilmsLoadState(state),
-  isPromoFilmLoaded: getPromoFilmLoadState(state)
+  isPromoFilmLoaded: getPromoFilmLoadState(state),
+  requestStatus: getRequestStatus(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
