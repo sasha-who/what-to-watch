@@ -56,7 +56,7 @@ export const getFilmsFilteredByGenre = (allFilms, genre) => {
     return allFilms;
   }
 
-  return allFilms.filter((film) => film.genre === genre);
+  return allFilms.filter((film) => film.genre.toLowerCase() === genre);
 };
 
 export const getSimilarForCurrentFilm = (allFilms, currentFilm) => {
