@@ -1,4 +1,4 @@
-const RELEASE = `2020`;
+const RELEASE = 2020;
 const RATING = 9;
 const RATINGS_COUNT = 228;
 const DIRECTOR = `Otto Bathurst`;
@@ -62,7 +62,7 @@ export const TABS_DATA = [
 ];
 
 const review = {
-  id: `0`,
+  id: 0,
   text: `I didn't find it amusing, and while I can appreciate the creativity,
   it's an hour and 40 minutes I wish I could take back.`,
   rating: 8,
@@ -72,11 +72,13 @@ const review = {
 
 export const films = TITLES.map((title, index) => {
   return ({
-    id: index.toString(),
+    id: index,
     title,
     cover: COVERS[index],
     poster: COVERS[index],
-    preview: PREVIEW,
+    previewImage: COVERS[index],
+    previewVideo: PREVIEW,
+    videoLink: PREVIEW,
     genre: GENRES[index + 1] || GENRES[1],
     release: RELEASE,
     rating: RATING,
@@ -85,6 +87,8 @@ export const films = TITLES.map((title, index) => {
     director: DIRECTOR,
     actors: ACTORS,
     runTime: RUN_TIME,
-    reviews: [review]
+    reviews: [review],
+    isFavorite: false,
+    backgroundColor: `black`
   });
 });
