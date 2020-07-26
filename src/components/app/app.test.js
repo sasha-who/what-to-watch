@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import {INITIAL_FILMS_COUNT, Screen} from "../../const.js";
+import {INITIAL_FILMS_COUNT, Screen, HttpStatus} from "../../const.js";
 import {films, GENRES} from "../../test-mocks.js";
 import {App} from "./app.jsx";
 
@@ -34,6 +34,7 @@ it(`Main screen should render correctly`, () => {
             isPlayerActive={false}
             isFilmsLoaded={true}
             isPromoFilmLoaded={true}
+            requestStatus={HttpStatus.SUCCESS}
             onScreenChange={() => {}}
             onActiveFilmChange={() => {}}
             onGenreChange={() => {}}
@@ -68,6 +69,7 @@ it(`Card screen should render correctly`, () => {
             isPlayerActive={false}
             isFilmsLoaded={true}
             isPromoFilmLoaded={true}
+            requestStatus={HttpStatus.SUCCESS}
             onScreenChange={() => {}}
             onActiveFilmChange={() => {}}
             onGenreChange={() => {}}
