@@ -41,8 +41,9 @@ exports[`AuthorizationScreen should render correctly 1`] = `
     className="sign-in user-page__content"
   >
     <form
-      action="#"
+      action=""
       className="sign-in__form"
+      onSubmit={[Function]}
     >
       <div
         className="sign-in__fields"
@@ -54,6 +55,7 @@ exports[`AuthorizationScreen should render correctly 1`] = `
             className="sign-in__input"
             id="user-email"
             name="user-email"
+            onInvalid={[Function]}
             placeholder="Email address"
             type="email"
           />

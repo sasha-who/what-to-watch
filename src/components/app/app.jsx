@@ -31,8 +31,6 @@ import AuthorizationScreen from "../authorization-screen/authorization-screen.js
 class App extends React.PureComponent {
   render() {
     const {
-      // authorizationStatus,
-      // login,
       similarFilms,
       activeFilm,
       isPlayerActive,
@@ -41,7 +39,8 @@ class App extends React.PureComponent {
       requestStatus,
       onScreenChange,
       onActiveFilmChange,
-      onPlayerStateChange
+      onPlayerStateChange,
+      login
     } = this.props;
 
     if (!isFilmsLoaded || !isPromoFilmLoaded) {
@@ -79,7 +78,8 @@ class App extends React.PureComponent {
           </Route>
           <Route exact path="/dev-auth">
             <AuthorizationScreen
-              onAuthorizationFormSubmit={() => {}}
+              onAuthorizationFormSubmit={login}
+              onScreenChange={onScreenChange}
             />
           </Route>
         </Switch>
@@ -89,8 +89,6 @@ class App extends React.PureComponent {
 
   _renderScreen() {
     const {
-      // authorizationStatus,
-      // login,
       activeScreen,
       activeFilm,
       promoFilm,
