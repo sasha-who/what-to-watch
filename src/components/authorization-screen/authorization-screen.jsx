@@ -1,25 +1,39 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {Screen} from "../../const.js";
 import Footer from "../footer/footer.jsx";
 
 class AuthorizationScreen extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.loginRef = React.createRef();
+    this.state = {
+      isEmailValid: true
+    };
+
+    this.emailRef = React.createRef();
     this.passwordRef = React.createRef();
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleInputInvalid = this.handleInputInvalid.bind(this);
   }
 
-  handleSubmit(evt) {
-    const {onAuthorizationFormSubmit} = this.props;
+  handleFormSubmit(evt) {
+    const {onAuthorizationFormSubmit, onScreenChange} = this.props;
 
     evt.preventDefault();
 
     onAuthorizationFormSubmit({
-      login: this.loginRef.current.value,
-      password: this.passwordRef.current.value,
+      email: this.emailRef.current.value,
+      password: this.passwordRef.current.value
+    });
+
+    onScreenChange(Screen.MAIN);
+  }
+
+  handleInputInvalid() {
+    this.setState({
+      isEmailValid: false
     });
   }
 
@@ -37,7 +51,14 @@ class AuthorizationScreen extends React.PureComponent {
           <h1 className="page-title user-page__title">Sign in</h1>
         </header>
         <div className="sign-in user-page__content">
-          <form action="#" className="sign-in__form">
+          <form
+            action=""
+            className="sign-in__form"
+            onSubmit={this.handleFormSubmit}
+          >
+            {!this.state.isEmailValid && <div className="sign-in__message">
+              <p>Please enter a valid email address</p>
+            </div>}
             <div className="sign-in__fields">
               <div className="sign-in__field">
                 <input
@@ -46,7 +67,8 @@ class AuthorizationScreen extends React.PureComponent {
                   placeholder="Email address"
                   name="user-email"
                   id="user-email"
-                  ref={this.loginRef}
+                  ref={this.emailRef}
+                  onInvalid={this.handleInputInvalid}
                 />
                 <label
                   className="sign-in__label visually-hidden"
@@ -86,7 +108,8 @@ class AuthorizationScreen extends React.PureComponent {
 }
 
 AuthorizationScreen.propTypes = {
-  onAuthorizationFormSubmit: PropTypes.func.isRequired
+  onAuthorizationFormSubmit: PropTypes.func.isRequired,
+  onScreenChange: PropTypes.func.isRequired
 };
 
 export default AuthorizationScreen;
