@@ -26,6 +26,7 @@ import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import Main from "../main/main.jsx";
 import DetailedFilmCard from "../detailed-card/detailed-card.jsx";
 import ServerError from "../server-error/server-error.jsx";
+import AuthorizationScreen from "../authorization-screen/authorization-screen.jsx";
 
 class App extends React.PureComponent {
   render() {
@@ -74,6 +75,11 @@ class App extends React.PureComponent {
               onScreenChange={onScreenChange}
               onActiveFilmChange={onActiveFilmChange}
               onPlayerStateChange={onPlayerStateChange}
+            />
+          </Route>
+          <Route exact path="/dev-auth">
+            <AuthorizationScreen
+              onAuthorizationFormSubmit={() => {}}
             />
           </Route>
         </Switch>
