@@ -5,7 +5,8 @@ import AuthorizationScreen from "../authorization-screen/authorization-screen.js
 it(`AuthorizationScreen should render correctly`, () => {
   const tree = renderer.create(
       <AuthorizationScreen
-        onSubmit={() => {}}
+        onAuthorizationFormSubmit={() => {}}
+        onScreenChange={() => {}}
       />
   ).toJSON();
 
