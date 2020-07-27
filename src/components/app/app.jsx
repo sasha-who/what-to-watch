@@ -27,6 +27,9 @@ import Main from "../main/main.jsx";
 import DetailedFilmCard from "../detailed-card/detailed-card.jsx";
 import ServerError from "../server-error/server-error.jsx";
 import AuthorizationScreen from "../authorization-screen/authorization-screen.jsx";
+import withValidityCheck from "../../hocs/with-validity-check/with-validity-check.js";
+
+const AuthorizationScreenWrapped = withValidityCheck(AuthorizationScreen);
 
 class App extends React.PureComponent {
   render() {
@@ -77,7 +80,7 @@ class App extends React.PureComponent {
             />
           </Route>
           <Route exact path="/dev-auth">
-            <AuthorizationScreen
+            <AuthorizationScreenWrapped
               onAuthorizationFormSubmit={login}
               onScreenChange={onScreenChange}
             />
