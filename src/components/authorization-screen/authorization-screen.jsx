@@ -7,15 +7,10 @@ class AuthorizationScreen extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      isEmailValid: true
-    };
-
     this.emailRef = React.createRef();
     this.passwordRef = React.createRef();
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    this.handleInputInvalid = this.handleInputInvalid.bind(this);
   }
 
   handleFormSubmit(evt) {
@@ -31,13 +26,9 @@ class AuthorizationScreen extends React.PureComponent {
     onScreenChange(Screen.MAIN);
   }
 
-  handleInputInvalid() {
-    this.setState({
-      isEmailValid: false
-    });
-  }
-
   render() {
+    const {isInputValid, onInputInvalid} = this.props;
+
     return (
       <div className="user-page">
         <header className="page-header user-page__head">
@@ -56,7 +47,7 @@ class AuthorizationScreen extends React.PureComponent {
             className="sign-in__form"
             onSubmit={this.handleFormSubmit}
           >
-            {!this.state.isEmailValid && <div className="sign-in__message">
+            {!isInputValid && <div className="sign-in__message">
               <p>Please enter a valid email address</p>
             </div>}
             <div className="sign-in__fields">
@@ -68,7 +59,7 @@ class AuthorizationScreen extends React.PureComponent {
                   name="user-email"
                   id="user-email"
                   ref={this.emailRef}
-                  onInvalid={this.handleInputInvalid}
+                  onInvalid={onInputInvalid}
                 />
                 <label
                   className="sign-in__label visually-hidden"
@@ -108,8 +99,10 @@ class AuthorizationScreen extends React.PureComponent {
 }
 
 AuthorizationScreen.propTypes = {
+  isInputValid: PropTypes.bool.isRequired,
   onAuthorizationFormSubmit: PropTypes.func.isRequired,
-  onScreenChange: PropTypes.func.isRequired
+  onScreenChange: PropTypes.func.isRequired,
+  onInputInvalid: PropTypes.func.isRequired
 };
 
 export default AuthorizationScreen;
