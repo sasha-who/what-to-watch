@@ -1,11 +1,14 @@
 import {AuthorizationStatus} from "../../const.js";
+import {adaptUserDataFromServer} from "../../adapters/user-data.js";
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTHORIZED,
+  authorizationData: {}
 };
 
 const ActionType = {
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  GET_USER_DATA: `GET_USER_DATA`
 };
 
 const ActionCreator = {
@@ -15,13 +18,24 @@ const ActionCreator = {
       payload: status,
     };
   },
+  getUserData: (authorizationData) => {
+    return {
+      type: ActionType.GET_USER_DATA,
+      payload: authorizationData
+    };
+  }
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.REQUIRED_AUTHORIZATION:
       return Object.assign({}, state, {
-        authorizationStatus: action.payload,
+        authorizationStatus: action.payload
+      });
+
+    case ActionType.GET_USER_DATA:
+      return Object.assign({}, state, {
+        authorizationData: action.payload
       });
   }
 
@@ -39,12 +53,15 @@ const Operation = {
       });
   },
 
-  login: (authData) => (dispatch, getState, api) => {
+  login: (authorizationData) => (dispatch, getState, api) => {
     return api.post(`/login`, {
-      email: authData.email,
-      password: authData.password,
+      email: authorizationData.email,
+      password: authorizationData.password,
     })
-      .then(() => {
+      .then((response) => {
+        const adaptedData = adaptUserDataFromServer(response.data);
+
+        dispatch(ActionCreator.getUserData(adaptedData));
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTHORIZED));
       });
   },

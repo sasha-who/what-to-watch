@@ -3,12 +3,14 @@ import renderer from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {INITIAL_FILMS_COUNT, Screen, HttpStatus, AuthorizationStatus} from "../../const.js";
-import {films, GENRES} from "../../test-mocks.js";
+import {films, GENRES, userData} from "../../test-mocks.js";
 import {App} from "./app.jsx";
 
 const mockStore = configureStore([]);
 
 const store = mockStore({
+  authorizationStatus: AuthorizationStatus.AUTHORIZED,
+  authorizationData: userData,
   activeScreen: Screen.MAIN,
   activeFilm: films[0],
   currentGenre: GENRES[0],
@@ -36,6 +38,7 @@ it(`Main screen should render correctly`, () => {
             isPromoFilmLoaded={true}
             requestStatus={HttpStatus.SUCCESS}
             authorizationStatus={AuthorizationStatus.AUTHORIZED}
+            authorizationData={userData}
             onScreenChange={() => {}}
             onActiveFilmChange={() => {}}
             onGenreChange={() => {}}
@@ -73,6 +76,7 @@ it(`Card screen should render correctly`, () => {
             isPromoFilmLoaded={true}
             requestStatus={HttpStatus.SUCCESS}
             authorizationStatus={AuthorizationStatus.AUTHORIZED}
+            authorizationData={userData}
             onScreenChange={() => {}}
             onActiveFilmChange={() => {}}
             onGenreChange={() => {}}
