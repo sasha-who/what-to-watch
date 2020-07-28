@@ -24,7 +24,8 @@ const Main = (props) => {
     onGenreChange,
     onFilmsCountToShowReset,
     onFilmsCountToShowIncrement,
-    onPlayerStateChange
+    onPlayerStateChange,
+    loadFilmComments
   } = props;
 
   if (isPlayerActive) {
@@ -67,6 +68,7 @@ const Main = (props) => {
           onGenreChange={onGenreChange}
           onFilmsCountToShowReset={onFilmsCountToShowReset}
           onFilmsCountToShowIncrement={onFilmsCountToShowIncrement}
+          loadFilmComments={loadFilmComments}
         />
         <Footer />
       </div>
@@ -99,16 +101,7 @@ Main.propTypes = {
     previewImage: PropTypes.string.isRequired,
     backgroundColor: PropTypes.string.isRequired,
     videoLink: PropTypes.string.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-    reviews: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          text: PropTypes.string.isRequired,
-          rating: PropTypes.number.isRequired,
-          userName: PropTypes.string.isRequired,
-          date: PropTypes.instanceOf(Date).isRequired
-        })
-    ).isRequired
+    isFavorite: PropTypes.bool.isRequired
   }),
   films: PropTypes.arrayOf(
       PropTypes.shape({
@@ -128,16 +121,7 @@ Main.propTypes = {
         previewImage: PropTypes.string.isRequired,
         backgroundColor: PropTypes.string.isRequired,
         videoLink: PropTypes.string.isRequired,
-        isFavorite: PropTypes.bool.isRequired,
-        reviews: PropTypes.arrayOf(
-            PropTypes.shape({
-              id: PropTypes.number.isRequired,
-              text: PropTypes.string.isRequired,
-              rating: PropTypes.number.isRequired,
-              userName: PropTypes.string.isRequired,
-              date: PropTypes.instanceOf(Date).isRequired
-            })
-        ).isRequired
+        isFavorite: PropTypes.bool.isRequired
       })
   ).isRequired,
   filteredFilms: PropTypes.arrayOf(
@@ -158,16 +142,7 @@ Main.propTypes = {
         previewImage: PropTypes.string.isRequired,
         backgroundColor: PropTypes.string.isRequired,
         videoLink: PropTypes.string.isRequired,
-        isFavorite: PropTypes.bool.isRequired,
-        reviews: PropTypes.arrayOf(
-            PropTypes.shape({
-              id: PropTypes.number.isRequired,
-              text: PropTypes.string.isRequired,
-              rating: PropTypes.number.isRequired,
-              userName: PropTypes.string.isRequired,
-              date: PropTypes.instanceOf(Date).isRequired
-            })
-        ).isRequired
+        isFavorite: PropTypes.bool.isRequired
       })
   ).isRequired,
   currentGenre: PropTypes.string.isRequired,
@@ -178,7 +153,8 @@ Main.propTypes = {
   onGenreChange: PropTypes.func.isRequired,
   onFilmsCountToShowReset: PropTypes.func.isRequired,
   onFilmsCountToShowIncrement: PropTypes.func,
-  onPlayerStateChange: PropTypes.func.isRequired
+  onPlayerStateChange: PropTypes.func.isRequired,
+  loadFilmComments: PropTypes.func.isRequired
 };
 
 export default Main;

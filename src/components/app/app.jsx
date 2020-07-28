@@ -5,13 +5,16 @@ import {connect} from "react-redux";
 import Loader from "react-loader-spinner";
 import {Screen, LoaderData, HttpStatus} from "../../const.js";
 import {ActionCreator} from "../../reducer/app-state/app-state.js";
+import {Operation as DataOperation} from "../../reducer/data/data.js";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
 import {
   getFilms,
   getPromoFilm,
   getFilmsLoadState,
   getPromoFilmLoadState,
-  getRequestStatus
+  getRequestStatus,
+  getFilmComments,
+  getCommentsLoadState
 } from "../../reducer/data/selectors.js";
 import {
   getActiveScreen,
@@ -36,8 +39,10 @@ class App extends React.PureComponent {
     const {
       authorizationStatus,
       authorizationData,
+      isCommentsLoaded,
       similarFilms,
       activeFilm,
+      activeFilmComments,
       isPlayerActive,
       isFilmsLoaded,
       isPromoFilmLoaded,
@@ -45,7 +50,8 @@ class App extends React.PureComponent {
       onScreenChange,
       onActiveFilmChange,
       onPlayerStateChange,
-      login
+      login,
+      loadFilmComments
     } = this.props;
 
     if (!isFilmsLoaded || !isPromoFilmLoaded) {
@@ -75,12 +81,15 @@ class App extends React.PureComponent {
             <DetailedFilmCard
               authorizationStatus={authorizationStatus}
               authorizationData={authorizationData}
+              isCommentsLoaded={isCommentsLoaded}
               film={activeFilm}
               similarFilms={similarFilms}
+              activeFilmComments={activeFilmComments}
               isPlayerActive={isPlayerActive}
               onScreenChange={onScreenChange}
               onActiveFilmChange={onActiveFilmChange}
               onPlayerStateChange={onPlayerStateChange}
+              loadFilmComments={loadFilmComments}
             />
           </Route>
           <Route exact path="/dev-auth">
@@ -99,9 +108,11 @@ class App extends React.PureComponent {
       authorizationStatus,
       authorizationData,
       activeScreen,
+      isCommentsLoaded,
       activeFilm,
       promoFilm,
       films,
+      activeFilmComments,
       currentGenre,
       filteredFilms,
       filmsCountToShow,
@@ -113,7 +124,8 @@ class App extends React.PureComponent {
       onFilmsCountToShowReset,
       onFilmsCountToShowIncrement,
       onPlayerStateChange,
-      login
+      login,
+      loadFilmComments
     } = this.props;
 
     switch (activeScreen) {
@@ -134,6 +146,7 @@ class App extends React.PureComponent {
             onFilmsCountToShowReset={onFilmsCountToShowReset}
             onFilmsCountToShowIncrement={onFilmsCountToShowIncrement}
             onPlayerStateChange={onPlayerStateChange}
+            loadFilmComments={loadFilmComments}
           />
         );
 
@@ -142,12 +155,15 @@ class App extends React.PureComponent {
           <DetailedFilmCard
             authorizationStatus={authorizationStatus}
             authorizationData={authorizationData}
+            isCommentsLoaded={isCommentsLoaded}
+            activeFilmComments={activeFilmComments}
             film={activeFilm}
             similarFilms={similarFilms}
             isPlayerActive={isPlayerActive}
             onScreenChange={onScreenChange}
             onActiveFilmChange={onActiveFilmChange}
             onPlayerStateChange={onPlayerStateChange}
+            loadFilmComments={loadFilmComments}
           />
         );
 
@@ -191,16 +207,7 @@ App.propTypes = {
     previewImage: PropTypes.string.isRequired,
     backgroundColor: PropTypes.string.isRequired,
     videoLink: PropTypes.string.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-    reviews: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          text: PropTypes.string.isRequired,
-          rating: PropTypes.number.isRequired,
-          userName: PropTypes.string.isRequired,
-          date: PropTypes.instanceOf(Date).isRequired
-        })
-    ).isRequired
+    isFavorite: PropTypes.bool.isRequired
   }),
   films: PropTypes.arrayOf(
       PropTypes.shape({
@@ -220,16 +227,7 @@ App.propTypes = {
         previewImage: PropTypes.string.isRequired,
         backgroundColor: PropTypes.string.isRequired,
         videoLink: PropTypes.string.isRequired,
-        isFavorite: PropTypes.bool.isRequired,
-        reviews: PropTypes.arrayOf(
-            PropTypes.shape({
-              id: PropTypes.number.isRequired,
-              text: PropTypes.string.isRequired,
-              rating: PropTypes.number.isRequired,
-              userName: PropTypes.string.isRequired,
-              date: PropTypes.instanceOf(Date).isRequired
-            })
-        ).isRequired
+        isFavorite: PropTypes.bool.isRequired
       })
   ).isRequired,
   filteredFilms: PropTypes.arrayOf(
@@ -250,16 +248,7 @@ App.propTypes = {
         previewImage: PropTypes.string.isRequired,
         backgroundColor: PropTypes.string.isRequired,
         videoLink: PropTypes.string.isRequired,
-        isFavorite: PropTypes.bool.isRequired,
-        reviews: PropTypes.arrayOf(
-            PropTypes.shape({
-              id: PropTypes.number.isRequired,
-              text: PropTypes.string.isRequired,
-              rating: PropTypes.number.isRequired,
-              userName: PropTypes.string.isRequired,
-              date: PropTypes.instanceOf(Date).isRequired
-            })
-        ).isRequired
+        isFavorite: PropTypes.bool.isRequired
       })
   ).isRequired,
   activeScreen: PropTypes.string.isRequired,
@@ -280,16 +269,7 @@ App.propTypes = {
     previewImage: PropTypes.string.isRequired,
     backgroundColor: PropTypes.string.isRequired,
     videoLink: PropTypes.string.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-    reviews: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          text: PropTypes.string.isRequired,
-          rating: PropTypes.number.isRequired,
-          userName: PropTypes.string.isRequired,
-          date: PropTypes.instanceOf(Date).isRequired
-        })
-    ).isRequired
+    isFavorite: PropTypes.bool.isRequired
   }),
   similarFilms: PropTypes.arrayOf(
       PropTypes.shape({
@@ -309,16 +289,16 @@ App.propTypes = {
         previewImage: PropTypes.string.isRequired,
         backgroundColor: PropTypes.string.isRequired,
         videoLink: PropTypes.string.isRequired,
-        isFavorite: PropTypes.bool.isRequired,
-        reviews: PropTypes.arrayOf(
-            PropTypes.shape({
-              id: PropTypes.number.isRequired,
-              text: PropTypes.string.isRequired,
-              rating: PropTypes.number.isRequired,
-              userName: PropTypes.string.isRequired,
-              date: PropTypes.instanceOf(Date).isRequired
-            })
-        ).isRequired
+        isFavorite: PropTypes.bool.isRequired
+      })
+  ).isRequired,
+  activeFilmComments: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        text: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired,
+        userName: PropTypes.string.isRequired,
+        date: PropTypes.instanceOf(Date).isRequired
       })
   ).isRequired,
   currentGenre: PropTypes.string.isRequired,
@@ -326,13 +306,15 @@ App.propTypes = {
   isPlayerActive: PropTypes.bool.isRequired,
   isFilmsLoaded: PropTypes.bool.isRequired,
   isPromoFilmLoaded: PropTypes.bool.isRequired,
+  isCommentsLoaded: PropTypes.bool.isRequired,
   requestStatus: PropTypes.number.isRequired,
   onScreenChange: PropTypes.func.isRequired,
   onActiveFilmChange: PropTypes.func.isRequired,
   onGenreChange: PropTypes.func.isRequired,
   onFilmsCountToShowReset: PropTypes.func.isRequired,
   onFilmsCountToShowIncrement: PropTypes.func,
-  onPlayerStateChange: PropTypes.func.isRequired
+  onPlayerStateChange: PropTypes.func.isRequired,
+  loadFilmComments: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -347,14 +329,19 @@ const mapStateToProps = (state) => ({
   similarFilms: getSimilarFilms(state),
   isPlayerActive: getPlayerState(state),
   promoFilm: getPromoFilm(state),
+  activeFilmComments: getFilmComments(state),
   isFilmsLoaded: getFilmsLoadState(state),
   isPromoFilmLoaded: getPromoFilmLoadState(state),
+  isCommentsLoaded: getCommentsLoadState(state),
   requestStatus: getRequestStatus(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
   login(authorizationData) {
     dispatch(UserOperation.login(authorizationData));
+  },
+  loadFilmComments(filmId) {
+    dispatch(DataOperation.loadActiveFilmComments(filmId));
   },
   onScreenChange(screen) {
     dispatch(ActionCreator.changeActiveScreen(screen));

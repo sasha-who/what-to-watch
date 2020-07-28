@@ -1,20 +1,25 @@
 import {HttpStatus} from "../../const.js";
 import {extend} from "../../utils/common.js";
-import {adaptFilmfromServer, adaptFilmsfromServer} from "../../adapters/films.js";
+import {adaptFilmFromServer, adaptFilmsFromServer} from "../../adapters/films.js";
+import {adaptCommentsFromServer} from "../../adapters/comments.js";
 
 const initialState = {
   films: [],
   promoFilm: null,
+  activeFilmComments: [],
   isFilmsLoaded: false,
   isPromoFilmLoaded: false,
+  isCommentsLoaded: false,
   requestStatus: HttpStatus.SUCCESS
 };
 
 const ActionType = {
   LOAD_FILMS: `LOAD_FILMS`,
   LOAD_PROMO_FILM: `LOAD_PROMO_FILM`,
+  LOAD_ACTIVE_FILM_COMMENTS: `LOAD_ACTIVE_FILM_COMMENTS`,
   CHANGE_FILMS_LOAD_STATE: `CHANGE_FILMS_LOAD_STATE`,
   CHANGE_PROMO_FILM_LOAD_STATE: `CHANGE_PROMO_FILM_LOAD_STATE`,
+  CHANGE_COMMENTS_LOAD_STATE: `CHANGE_COMMENTS_LOAD_STATE`,
   SET_REQUEST_STATUS: `SET_REQUEST_STATUS`
 };
 
@@ -22,13 +27,19 @@ const ActionCreator = {
   loadFilms: (films) => {
     return {
       type: ActionType.LOAD_FILMS,
-      payload: films,
+      payload: films
     };
   },
   loadPromoFilm: (film) => {
     return {
       type: ActionType.LOAD_PROMO_FILM,
-      payload: film,
+      payload: film
+    };
+  },
+  loadActiveFilmComments: (comments) => {
+    return {
+      type: ActionType.LOAD_ACTIVE_FILM_COMMENTS,
+      payload: comments
     };
   },
   changeFilmsLoadState: () => {
@@ -39,6 +50,11 @@ const ActionCreator = {
   changePromoFilmLoadState: () => {
     return {
       type: ActionType.CHANGE_PROMO_FILM_LOAD_STATE
+    };
+  },
+  changeCommentsLoadState: () => {
+    return {
+      type: ActionType.CHANGE_COMMENTS_LOAD_STATE
     };
   },
   setRequestStatus: (status) => {
@@ -53,7 +69,7 @@ const Operation = {
   loadFilms: () => (dispatch, getState, api) => {
     return api.get(`/films`)
       .then((response) => {
-        const adaptedFilms = adaptFilmsfromServer(response.data);
+        const adaptedFilms = adaptFilmsFromServer(response.data);
 
         dispatch(ActionCreator.loadFilms(adaptedFilms));
         dispatch(ActionCreator.changeFilmsLoadState());
@@ -66,7 +82,7 @@ const Operation = {
   loadPromoFilm: () => (dispatch, getState, api) => {
     return api.get(`/films/promo`)
       .then((response) => {
-        const adaptedFilm = adaptFilmfromServer(response.data);
+        const adaptedFilm = adaptFilmFromServer(response.data);
 
         dispatch(ActionCreator.loadPromoFilm(adaptedFilm));
         dispatch(ActionCreator.changePromoFilmLoadState());
@@ -74,6 +90,15 @@ const Operation = {
       .catch((error) => {
         dispatch(ActionCreator.setRequestStatus(error.response.status));
         dispatch(ActionCreator.changePromoFilmLoadState());
+      });
+  },
+  loadActiveFilmComments: (filmId) => (dispatch, getState, api) => {
+    return api.get(`/comments/${filmId}`)
+      .then((response) => {
+        const adaptedComments = adaptCommentsFromServer(response.data);
+
+        dispatch(ActionCreator.loadActiveFilmComments(adaptedComments));
+        dispatch(ActionCreator.changeCommentsLoadState());
       });
   }
 };
@@ -90,6 +115,11 @@ const reducer = (state = initialState, action) => {
         promoFilm: action.payload
       });
 
+    case ActionType.LOAD_ACTIVE_FILM_COMMENTS:
+      return extend(state, {
+        activeFilmComments: action.payload
+      });
+
     case ActionType.CHANGE_FILMS_LOAD_STATE:
       return extend(state, {
         isFilmsLoaded: true
@@ -98,6 +128,11 @@ const reducer = (state = initialState, action) => {
     case ActionType.CHANGE_PROMO_FILM_LOAD_STATE:
       return extend(state, {
         isPromoFilmLoaded: true
+      });
+
+    case ActionType.CHANGE_COMMENTS_LOAD_STATE:
+      return extend(state, {
+        isCommentsLoaded: true
       });
 
     case ActionType.SET_REQUEST_STATUS:

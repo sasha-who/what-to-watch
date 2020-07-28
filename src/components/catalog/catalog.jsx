@@ -14,6 +14,7 @@ const Catalog = (props) => {
     onGenreChange,
     onFilmsCountToShowReset,
     onFilmsCountToShowIncrement,
+    loadFilmComments
   } = props;
 
   return (
@@ -31,6 +32,7 @@ const Catalog = (props) => {
         onScreenChange={onScreenChange}
         onActiveFilmChange={onActiveFilmChange}
         onFilmsCountToShowIncrement={onFilmsCountToShowIncrement}
+        loadFilmComments={loadFilmComments}
       />
     </section>
   );
@@ -55,16 +57,7 @@ Catalog.propTypes = {
         previewImage: PropTypes.string.isRequired,
         backgroundColor: PropTypes.string.isRequired,
         videoLink: PropTypes.string.isRequired,
-        isFavorite: PropTypes.bool.isRequired,
-        reviews: PropTypes.arrayOf(
-            PropTypes.shape({
-              id: PropTypes.number.isRequired,
-              text: PropTypes.string.isRequired,
-              rating: PropTypes.number.isRequired,
-              userName: PropTypes.string.isRequired,
-              date: PropTypes.instanceOf(Date).isRequired
-            })
-        ).isRequired
+        isFavorite: PropTypes.bool.isRequired
       })
   ).isRequired,
   filteredFilms: PropTypes.arrayOf(
@@ -85,16 +78,7 @@ Catalog.propTypes = {
         previewImage: PropTypes.string.isRequired,
         backgroundColor: PropTypes.string.isRequired,
         videoLink: PropTypes.string.isRequired,
-        isFavorite: PropTypes.bool.isRequired,
-        reviews: PropTypes.arrayOf(
-            PropTypes.shape({
-              id: PropTypes.number.isRequired,
-              text: PropTypes.string.isRequired,
-              rating: PropTypes.number.isRequired,
-              userName: PropTypes.string.isRequired,
-              date: PropTypes.instanceOf(Date).isRequired
-            })
-        ).isRequired
+        isFavorite: PropTypes.bool.isRequired
       })
   ).isRequired,
   filmsCountToShow: PropTypes.number,
@@ -104,6 +88,7 @@ Catalog.propTypes = {
   onGenreChange: PropTypes.func.isRequired,
   onFilmsCountToShowReset: PropTypes.func.isRequired,
   onFilmsCountToShowIncrement: PropTypes.func,
+  loadFilmComments: PropTypes.func.isRequired
 };
 
 export default Catalog;

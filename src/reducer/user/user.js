@@ -52,7 +52,6 @@ const Operation = {
         throw err;
       });
   },
-
   login: (authorizationData) => (dispatch, getState, api) => {
     return api.post(`/login`, {
       email: authorizationData.email,

@@ -22,6 +22,7 @@ it(`Main should render correctly`, () => {
           onFilmsCountToShowReset={() => {}}
           onFilmsCountToShowIncrement={() => {}}
           onPlayerStateChange={() => {}}
+          loadFilmComments={() => {}}
         />, {
           createNodeMock: () => {
             return {};
