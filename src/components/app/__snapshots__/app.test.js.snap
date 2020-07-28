@@ -57,7 +57,7 @@ exports[`Card screen should render correctly 1`] = `
             <img
               alt="User avatar"
               height={63}
-              src="img/1.png"
+              src="https://4.react.pages.academyimg/1.png"
               width={63}
             />
           </div>
@@ -586,7 +586,7 @@ Array [
           <img
             alt="User avatar"
             height={63}
-            src="img/1.png"
+            src="https://4.react.pages.academyimg/1.png"
             width={63}
           />
         </div>

@@ -21,3 +21,11 @@ export const getPromoFilmLoadState = (state) => {
 export const getRequestStatus = (state) => {
   return state[NAME_SPACE].requestStatus;
 };
+
+export const getFilmComments = (state) => {
+  return state[NAME_SPACE].activeFilmComments;
+};
+
+export const getCommentsLoadState = (state) => {
+  return state[NAME_SPACE].isCommentsLoaded;
+};
