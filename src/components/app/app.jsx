@@ -22,7 +22,7 @@ import {
   getFilteredFilms,
   getSimilarFilms
 } from "../../reducer/app-state/selectors.js";
-import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
+import {getAuthorizationStatus, getAuthorizationData} from "../../reducer/user/selectors.js";
 import Main from "../main/main.jsx";
 import DetailedFilmCard from "../detailed-card/detailed-card.jsx";
 import ServerError from "../server-error/server-error.jsx";
@@ -34,6 +34,8 @@ const AuthorizationScreenWrapped = withValidityCheck(AuthorizationScreen);
 class App extends React.PureComponent {
   render() {
     const {
+      authorizationStatus,
+      authorizationData,
       similarFilms,
       activeFilm,
       isPlayerActive,
@@ -71,6 +73,8 @@ class App extends React.PureComponent {
           </Route>
           <Route exact path="/film-card">
             <DetailedFilmCard
+              authorizationStatus={authorizationStatus}
+              authorizationData={authorizationData}
               film={activeFilm}
               similarFilms={similarFilms}
               isPlayerActive={isPlayerActive}
@@ -92,6 +96,8 @@ class App extends React.PureComponent {
 
   _renderScreen() {
     const {
+      authorizationStatus,
+      authorizationData,
       activeScreen,
       activeFilm,
       promoFilm,
@@ -106,13 +112,16 @@ class App extends React.PureComponent {
       onGenreChange,
       onFilmsCountToShowReset,
       onFilmsCountToShowIncrement,
-      onPlayerStateChange
+      onPlayerStateChange,
+      login
     } = this.props;
 
     switch (activeScreen) {
       case Screen.MAIN:
         return (
           <Main
+            authorizationStatus={authorizationStatus}
+            authorizationData={authorizationData}
             films={films}
             promoFilm={promoFilm}
             currentGenre={currentGenre}
@@ -131,12 +140,22 @@ class App extends React.PureComponent {
       case Screen.CARD:
         return (
           <DetailedFilmCard
+            authorizationStatus={authorizationStatus}
+            authorizationData={authorizationData}
             film={activeFilm}
             similarFilms={similarFilms}
             isPlayerActive={isPlayerActive}
             onScreenChange={onScreenChange}
             onActiveFilmChange={onActiveFilmChange}
             onPlayerStateChange={onPlayerStateChange}
+          />
+        );
+
+      case Screen.SIGN_IN:
+        return (
+          <AuthorizationScreenWrapped
+            onAuthorizationFormSubmit={login}
+            onScreenChange={onScreenChange}
           />
         );
 
@@ -149,6 +168,12 @@ class App extends React.PureComponent {
 App.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   login: PropTypes.func.isRequired,
+  authorizationData: PropTypes.shape({
+    id: PropTypes.number,
+    email: PropTypes.string,
+    name: PropTypes.string,
+    avatarUrl: PropTypes.string
+  }),
   promoFilm: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
@@ -312,6 +337,7 @@ App.propTypes = {
 
 const mapStateToProps = (state) => ({
   authorizationStatus: getAuthorizationStatus(state),
+  authorizationData: getAuthorizationData(state),
   activeScreen: getActiveScreen(state),
   activeFilm: getActiveFilm(state),
   currentGenre: getCurrentGenre(state),

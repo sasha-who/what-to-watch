@@ -92,3 +92,10 @@ export const films = TITLES.map((title, index) => {
     backgroundColor: `black`
   });
 });
+
+export const userData = {
+  id: 1,
+  email: `Tommy@gmail.com`,
+  name: `Tommy`,
+  avatarUrl: `img/1.png`
+};
