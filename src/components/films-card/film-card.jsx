@@ -12,6 +12,7 @@ const FilmCard = (props) => {
     onStartPlaying,
     onStopPlaying,
     onHoverChange,
+    loadFilmComments
   } = props;
 
   const {title, previewImage, previewVideo} = film;
@@ -30,6 +31,7 @@ const FilmCard = (props) => {
       onClick={() => {
         onScreenChange(Screen.CARD);
         onActiveFilmChange(film);
+        loadFilmComments(film.id);
       }}
     >
       <div className="small-movie-card__image">
@@ -66,16 +68,7 @@ FilmCard.propTypes = {
     previewImage: PropTypes.string.isRequired,
     backgroundColor: PropTypes.string.isRequired,
     videoLink: PropTypes.string.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-    reviews: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          text: PropTypes.string.isRequired,
-          rating: PropTypes.number.isRequired,
-          userName: PropTypes.string.isRequired,
-          date: PropTypes.instanceOf(Date).isRequired
-        })
-    ).isRequired
+    isFavorite: PropTypes.bool.isRequired
   }).isRequired,
   isPlaying: PropTypes.bool.isRequired,
   onScreenChange: PropTypes.func.isRequired,
@@ -83,6 +76,7 @@ FilmCard.propTypes = {
   onStartPlaying: PropTypes.func.isRequired,
   onStopPlaying: PropTypes.func.isRequired,
   onHoverChange: PropTypes.func.isRequired,
+  loadFilmComments: PropTypes.func.isRequired
 };
 
 export default FilmCard;

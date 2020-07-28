@@ -36,7 +36,10 @@ const getRatingGrade = (rating) => {
 
 export default class Tabs extends React.PureComponent {
   render() {
-    const {activeTab, onActiveTabChange} = this.props;
+    const {
+      activeTab,
+      onActiveTabChange
+    } = this.props;
 
     return (
       <React.Fragment>
@@ -154,18 +157,18 @@ export default class Tabs extends React.PureComponent {
   }
 
   _getReviewsTab() {
-    const {reviews} = this.props.film;
+    const {activeFilmComments} = this.props;
 
     return (
       <div className="movie-card__reviews movie-card__row">
         <div className="movie-card__reviews-col">
-          {reviews.slice(0, REVIEWS_IN_COLUMN_COUNT).map((review) => (
-            this._getReviewMarkup(review)
+          {activeFilmComments.slice(0, REVIEWS_IN_COLUMN_COUNT).map((comment) => (
+            this._getReviewMarkup(comment)
           ))}
         </div>
         <div className="movie-card__reviews-col">
-          {reviews.slice(REVIEWS_IN_COLUMN_COUNT).map((review) => (
-            this._getReviewMarkup(review)
+          {activeFilmComments.slice(REVIEWS_IN_COLUMN_COUNT).map((comment) => (
+            this._getReviewMarkup(comment)
           ))}
         </div>
       </div>
@@ -228,17 +231,17 @@ Tabs.propTypes = {
     previewImage: PropTypes.string.isRequired,
     backgroundColor: PropTypes.string.isRequired,
     videoLink: PropTypes.string.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-    reviews: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          text: PropTypes.string.isRequired,
-          rating: PropTypes.number.isRequired,
-          userName: PropTypes.string.isRequired,
-          date: PropTypes.instanceOf(Date).isRequired
-        })
-    ).isRequired
+    isFavorite: PropTypes.bool.isRequired
   }).isRequired,
+  activeFilmComments: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        text: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired,
+        userName: PropTypes.string.isRequired,
+        date: PropTypes.instanceOf(Date).isRequired
+      })
+  ).isRequired,
   activeTab: PropTypes.string.isRequired,
   onActiveTabChange: PropTypes.func.isRequired
 };

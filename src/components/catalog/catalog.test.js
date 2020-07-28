@@ -17,6 +17,7 @@ it(`Catalog should render correctly`, () => {
           onGenreChange={() => {}}
           onFilmsCountToShowReset={() => {}}
           onFilmsCountToShowIncrement={() => {}}
+          loadFilmComments={() => {}}
         />, {
           createNodeMock: () => {
             return {};

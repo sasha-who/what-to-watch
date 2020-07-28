@@ -4,6 +4,7 @@ const RATINGS_COUNT = 228;
 const DIRECTOR = `Otto Bathurst`;
 const PREVIEW = `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`;
 const RUN_TIME = 140;
+const COMMENTS_COUNT = 6;
 
 const DESCRRIPTION = `In the 1930s, the Grand Budapest Hotel is a popular European ski resort,
 presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's
@@ -61,7 +62,7 @@ export const TABS_DATA = [
   `reviews`
 ];
 
-const review = {
+const comment = {
   id: 0,
   text: `I didn't find it amusing, and while I can appreciate the creativity,
   it's an hour and 40 minutes I wish I could take back.`,
@@ -69,6 +70,10 @@ const review = {
   userName: `Kate Muir`,
   date: new Date(`December 25, 2019 01:00:00`)
 };
+
+export const comments = Array(COMMENTS_COUNT)
+  .fill()
+  .map(() => comment);
 
 export const films = TITLES.map((title, index) => {
   return ({
@@ -87,7 +92,6 @@ export const films = TITLES.map((title, index) => {
     director: DIRECTOR,
     actors: ACTORS,
     runTime: RUN_TIME,
-    reviews: [review],
     isFavorite: false,
     backgroundColor: `black`
   });
