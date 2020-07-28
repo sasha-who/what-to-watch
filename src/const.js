@@ -30,7 +30,8 @@ export const RatingGrade = {
 
 export const Screen = {
   MAIN: `main`,
-  CARD: `card`
+  CARD: `card`,
+  SIGN_IN: `sign-in`
 };
 
 export const TabsNames = {

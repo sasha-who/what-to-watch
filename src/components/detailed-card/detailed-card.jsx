@@ -13,6 +13,8 @@ const PlayerWrapped = withPlayer(Player);
 
 const DetailedFilmCard = (props) => {
   const {
+    authorizationStatus,
+    authorizationData,
     film,
     similarFilms,
     isPlayerActive,
@@ -49,7 +51,11 @@ const DetailedFilmCard = (props) => {
             />
           </div>
           <h1 className="visually-hidden">WTW</h1>
-          <Header />
+          <Header
+            authorizationData={authorizationData}
+            authorizationStatus={authorizationStatus}
+            onScreenChange={onScreenChange}
+          />
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
               <h2 className="movie-card__title">{title}</h2>
@@ -113,6 +119,13 @@ const DetailedFilmCard = (props) => {
 };
 
 DetailedFilmCard.propTypes = {
+  authorizationStatus: PropTypes.string.isRequired,
+  authorizationData: PropTypes.shape({
+    id: PropTypes.number,
+    email: PropTypes.string,
+    name: PropTypes.string,
+    avatarUrl: PropTypes.string
+  }),
   film: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,

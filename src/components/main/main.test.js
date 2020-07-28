@@ -1,13 +1,15 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {INITIAL_FILMS_COUNT} from "../../const.js";
-import {films, GENRES} from "../../test-mocks.js";
+import {INITIAL_FILMS_COUNT, AuthorizationStatus} from "../../const.js";
+import {films, GENRES, userData} from "../../test-mocks.js";
 import Main from "./main.jsx";
 
 it(`Main should render correctly`, () => {
   const tree = renderer
     .create(
         <Main
+          authorizationStatus={AuthorizationStatus.AUTHORIZED}
+          authorizationData={userData}
           films={films}
           promoFilm={films[0]}
           currentGenre={GENRES[0]}

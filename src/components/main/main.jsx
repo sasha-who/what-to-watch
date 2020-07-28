@@ -11,6 +11,8 @@ const PlayerWrapped = withPlayer(Player);
 
 const Main = (props) => {
   const {
+    authorizationStatus,
+    authorizationData,
     films,
     promoFilm,
     currentGenre,
@@ -44,7 +46,11 @@ const Main = (props) => {
           />
         </div>
         <h1 className="visually-hidden">WTW</h1>
-        <Header />
+        <Header
+          authorizationData={authorizationData}
+          authorizationStatus={authorizationStatus}
+          onScreenChange={onScreenChange}
+        />
         <PromoCard
           promoFilm={promoFilm}
           onPlayerStateChange={onPlayerStateChange}
@@ -69,6 +75,13 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
+  authorizationStatus: PropTypes.string.isRequired,
+  authorizationData: PropTypes.shape({
+    id: PropTypes.number,
+    email: PropTypes.string,
+    name: PropTypes.string,
+    avatarUrl: PropTypes.string
+  }),
   promoFilm: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,

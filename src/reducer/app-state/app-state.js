@@ -103,19 +103,4 @@ const reducer = (state = initialState, action) => {
   return state;
 };
 
-// const getFilmsFilteredByGenre = (allFilms, genre) => {
-//   if (genre === DEFAULT_GENRE) {
-//     return allFilms;
-//   }
-
-//   return allFilms.filter((film) => film.genre === genre);
-// };
-
-// const getSimilarFilms = (allFilms, currentFilm) => {
-//   return (
-//     allFilms.filter((film) => (film !== currentFilm) && (film.genre === currentFilm.genre))
-//       .slice(0, RECOMENDED_FILMS_COUNT)
-//   );
-// };
-
 export {reducer, ActionType, ActionCreator};
