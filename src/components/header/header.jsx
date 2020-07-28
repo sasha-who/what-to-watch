@@ -14,7 +14,7 @@ const Header = ({authorizationStatus, authorizationData, onScreenChange}) => (
     <div className="user-block">
       {authorizationStatus === AuthorizationStatus.AUTHORIZED ?
         <div className="user-block__avatar">
-          <img src={authorizationData.avatarUrl} alt="User avatar" width={63} height={63} />
+          <img src={`https://4.react.pages.academy${authorizationData.avatarUrl}`} alt="User avatar" width={63} height={63} />
         </div> :
         <a
           href="#"
