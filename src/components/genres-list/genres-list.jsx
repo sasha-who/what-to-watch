@@ -77,16 +77,7 @@ GenresList.propTypes = {
         previewImage: PropTypes.string.isRequired,
         backgroundColor: PropTypes.string.isRequired,
         videoLink: PropTypes.string.isRequired,
-        isFavorite: PropTypes.bool.isRequired,
-        reviews: PropTypes.arrayOf(
-            PropTypes.shape({
-              id: PropTypes.number.isRequired,
-              text: PropTypes.string.isRequired,
-              rating: PropTypes.number.isRequired,
-              userName: PropTypes.string.isRequired,
-              date: PropTypes.instanceOf(Date).isRequired
-            })
-        ).isRequired
+        isFavorite: PropTypes.bool.isRequired
       })
   ).isRequired,
   currentGenre: PropTypes.string.isRequired,

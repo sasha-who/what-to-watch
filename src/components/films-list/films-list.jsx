@@ -13,6 +13,7 @@ const FilmsList = (props) => {
     onScreenChange,
     onActiveFilmChange,
     onFilmsCountToShowIncrement,
+    loadFilmComments
   } = props;
 
   const shownFilms = films.slice(0, filmsCountToShow);
@@ -26,6 +27,7 @@ const FilmsList = (props) => {
             film={film}
             onScreenChange={onScreenChange}
             onActiveFilmChange={onActiveFilmChange}
+            loadFilmComments={loadFilmComments}
             key={film.id}
           />
         ))}
@@ -57,22 +59,14 @@ FilmsList.propTypes = {
         previewImage: PropTypes.string.isRequired,
         backgroundColor: PropTypes.string.isRequired,
         videoLink: PropTypes.string.isRequired,
-        isFavorite: PropTypes.bool.isRequired,
-        reviews: PropTypes.arrayOf(
-            PropTypes.shape({
-              id: PropTypes.number.isRequired,
-              text: PropTypes.string.isRequired,
-              rating: PropTypes.number.isRequired,
-              userName: PropTypes.string.isRequired,
-              date: PropTypes.instanceOf(Date).isRequired
-            })
-        ).isRequired
+        isFavorite: PropTypes.bool.isRequired
       })
   ).isRequired,
   filmsCountToShow: PropTypes.number,
   onScreenChange: PropTypes.func.isRequired,
   onActiveFilmChange: PropTypes.func.isRequired,
   onFilmsCountToShowIncrement: PropTypes.func,
+  loadFilmComments: PropTypes.func.isRequired
 };
 
 export default FilmsList;

@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Loader from "react-loader-spinner";
+import {LoaderData} from "../../const.js";
 import Header from "../header/header.jsx";
 import Footer from "../footer/footer.jsx";
 import FilmsList from "../films-list/films-list.jsx";
@@ -15,12 +17,15 @@ const DetailedFilmCard = (props) => {
   const {
     authorizationStatus,
     authorizationData,
+    isCommentsLoaded,
     film,
     similarFilms,
+    activeFilmComments,
     isPlayerActive,
     onScreenChange,
     onActiveFilmChange,
-    onPlayerStateChange
+    onPlayerStateChange,
+    loadFilmComments
   } = props;
 
   const {
@@ -30,6 +35,19 @@ const DetailedFilmCard = (props) => {
     genre,
     release
   } = film;
+
+  if (!isCommentsLoaded) {
+    return (
+      <div style={LoaderData.STYLE}>
+        <Loader
+          type={LoaderData.TYPE}
+          color={LoaderData.COLOR}
+          width={LoaderData.HEIGHT}
+          height={LoaderData.WIDTH}
+        />
+      </div>
+    );
+  }
 
   if (isPlayerActive) {
     return (
@@ -98,7 +116,10 @@ const DetailedFilmCard = (props) => {
               />
             </div>
             <div className="movie-card__desc">
-              <TabsWrapped film={film} />
+              <TabsWrapped
+                film={film}
+                activeFilmComments={activeFilmComments}
+              />
             </div>
           </div>
         </div>
@@ -110,6 +131,7 @@ const DetailedFilmCard = (props) => {
             films={similarFilms}
             onScreenChange={onScreenChange}
             onActiveFilmChange={onActiveFilmChange}
+            loadFilmComments={loadFilmComments}
           />
         </section>
         <Footer />
@@ -142,16 +164,7 @@ DetailedFilmCard.propTypes = {
     previewImage: PropTypes.string.isRequired,
     backgroundColor: PropTypes.string.isRequired,
     videoLink: PropTypes.string.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-    reviews: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          text: PropTypes.string.isRequired,
-          rating: PropTypes.number.isRequired,
-          userName: PropTypes.string.isRequired,
-          date: PropTypes.instanceOf(Date).isRequired
-        })
-    ).isRequired
+    isFavorite: PropTypes.bool.isRequired
   }).isRequired,
   similarFilms: PropTypes.arrayOf(
       PropTypes.shape({
@@ -171,22 +184,24 @@ DetailedFilmCard.propTypes = {
         previewImage: PropTypes.string.isRequired,
         backgroundColor: PropTypes.string.isRequired,
         videoLink: PropTypes.string.isRequired,
-        isFavorite: PropTypes.bool.isRequired,
-        reviews: PropTypes.arrayOf(
-            PropTypes.shape({
-              id: PropTypes.number.isRequired,
-              text: PropTypes.string.isRequired,
-              rating: PropTypes.number.isRequired,
-              userName: PropTypes.string.isRequired,
-              date: PropTypes.instanceOf(Date).isRequired
-            })
-        ).isRequired
+        isFavorite: PropTypes.bool.isRequired
       })
   ).isRequired,
+  activeFilmComments: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        text: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired,
+        userName: PropTypes.string.isRequired,
+        date: PropTypes.instanceOf(Date).isRequired
+      })
+  ).isRequired,
+  isCommentsLoaded: PropTypes.bool.isRequired,
   isPlayerActive: PropTypes.bool.isRequired,
   onScreenChange: PropTypes.func.isRequired,
   onActiveFilmChange: PropTypes.func.isRequired,
-  onPlayerStateChange: PropTypes.func.isRequired
+  onPlayerStateChange: PropTypes.func.isRequired,
+  loadFilmComments: PropTypes.func.isRequired
 };
 
 export default DetailedFilmCard;
