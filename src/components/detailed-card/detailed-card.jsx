@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Loader from "react-loader-spinner";
-import {LoaderData, Screen} from "../../const.js";
+import {LoaderData, Screen, AuthorizationStatus} from "../../const.js";
 import Header from "../header/header.jsx";
 import Footer from "../footer/footer.jsx";
 import FilmsList from "../films-list/films-list.jsx";
@@ -98,15 +98,17 @@ const DetailedFilmCard = (props) => {
                   </svg>
                   <span>My list</span>
                 </button>
-                <a
-                  href="#"
-                  className="btn movie-card__button"
-                  onClick={() => {
-                    onScreenChange(Screen.REVIEW);
-                  }}
-                >
-                  Add review
-                </a>
+                {authorizationStatus === AuthorizationStatus.AUTHORIZED &&
+                    <a
+                      href="#"
+                      className="btn movie-card__button"
+                      onClick={() => {
+                        onScreenChange(Screen.REVIEW);
+                      }}
+                    >
+                      Add review
+                    </a>
+                }
               </div>
             </div>
           </div>
