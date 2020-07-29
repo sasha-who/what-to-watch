@@ -11,7 +11,7 @@ it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
     films: [],
     promoFilm: null,
-    activeFilmComments: {},
+    activeFilmComments: [],
     isFilmsLoaded: false,
     isPromoFilmLoaded: false,
     isCommentsLoaded: false,
