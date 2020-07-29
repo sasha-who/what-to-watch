@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {AuthorizationStatus, Screen} from "../../const.js";
 
-const Header = ({authorizationStatus, authorizationData, onScreenChange}) => (
+const Header = ({authorizationStatus, authorizationData, onScreenChange, children}) => (
   <header className="page-header movie-card__head">
     <div className="logo">
       <a href="main.html" className="logo__link">
@@ -11,6 +11,7 @@ const Header = ({authorizationStatus, authorizationData, onScreenChange}) => (
         <span className="logo__letter logo__letter--3">W</span>
       </a>
     </div>
+    {children}
     <div className="user-block">
       {authorizationStatus === AuthorizationStatus.AUTHORIZED ?
         <div className="user-block__avatar">
@@ -36,7 +37,11 @@ Header.propTypes = {
     name: PropTypes.string,
     avatarUrl: PropTypes.string
   }),
-  onScreenChange: PropTypes.func.isRequired
+  onScreenChange: PropTypes.func.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
 };
 
 export default Header;
