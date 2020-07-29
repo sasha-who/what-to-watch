@@ -9,7 +9,7 @@ const withValidityCheck = (Component) => {
         isValid: true
       };
 
-      this.handleInputInvalid = this.handleInputInvalid.bind(this);
+      this.handleInputSwitchValidity = this.handleInputSwitchValidity.bind(this);
     }
 
     render() {
@@ -17,15 +17,15 @@ const withValidityCheck = (Component) => {
         <Component
           {...this.props}
           isInputValid={this.state.isValid}
-          onInputInvalid={this.handleInputInvalid}
+          onInputValidityChange={this.handleInputSwitchValidity}
         />
       );
     }
 
-    handleInputInvalid() {
-      this.setState({
-        isValid: false
-      });
+    handleInputSwitchValidity() {
+      this.setState((state) => ({
+        isValid: !state.isValid
+      }));
     }
   }
 

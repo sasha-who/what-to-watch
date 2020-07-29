@@ -1,14 +1,16 @@
-import {AuthorizationStatus} from "../../const.js";
+import {AuthorizationStatus, CommentPostStatus} from "../../const.js";
 import {adaptUserDataFromServer} from "../../adapters/user-data.js";
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTHORIZED,
-  authorizationData: {}
+  authorizationData: {},
+  commentPostStatus: CommentPostStatus.PENDING
 };
 
 const ActionType = {
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
-  GET_USER_DATA: `GET_USER_DATA`
+  GET_USER_DATA: `GET_USER_DATA`,
+  CHANGE_COMMENT_POST_STATUS: `CHANGE_COMMENT_POST_STATUS`
 };
 
 const ActionCreator = {
@@ -23,6 +25,12 @@ const ActionCreator = {
       type: ActionType.GET_USER_DATA,
       payload: authorizationData
     };
+  },
+  changeCommentPostStatus: (status) => {
+    return {
+      type: ActionType.CHANGE_COMMENT_POST_STATUS,
+      payload: status
+    };
   }
 };
 
@@ -36,6 +44,11 @@ const reducer = (state = initialState, action) => {
     case ActionType.GET_USER_DATA:
       return Object.assign({}, state, {
         authorizationData: action.payload
+      });
+
+    case ActionType.CHANGE_COMMENT_POST_STATUS:
+      return Object.assign({}, state, {
+        commentPostStatus: action.payload
       });
   }
 
@@ -64,6 +77,20 @@ const Operation = {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTHORIZED));
       });
   },
+  postReview: (review, filmId) => (dispatch, getState, api) => {
+    dispatch(ActionCreator.changeCommentPostStatus(CommentPostStatus.POSTING));
+
+    return api.post(`/comments/${filmId}`, {
+      rating: review.rating,
+      comment: review.comment
+    })
+      .then(() => {
+        dispatch(ActionCreator.changeCommentPostStatus(CommentPostStatus.OK));
+      })
+      .catch(() => {
+        dispatch(ActionCreator.changeCommentPostStatus(CommentPostStatus.ERROR));
+      });
+  }
 };
 
 
