@@ -25,7 +25,11 @@ import {
   getFilteredFilms,
   getSimilarFilms
 } from "../../reducer/app-state/selectors.js";
-import {getAuthorizationStatus, getAuthorizationData} from "../../reducer/user/selectors.js";
+import {
+  getAuthorizationStatus,
+  getAuthorizationData,
+  getCommentPostStatus
+} from "../../reducer/user/selectors.js";
 import Main from "../main/main.jsx";
 import DetailedFilmCard from "../detailed-card/detailed-card.jsx";
 import ServerError from "../server-error/server-error.jsx";
@@ -126,7 +130,9 @@ class App extends React.PureComponent {
       onFilmsCountToShowIncrement,
       onPlayerStateChange,
       login,
-      loadFilmComments
+      loadFilmComments,
+      postReview,
+      commentPostStatus
     } = this.props;
 
     switch (activeScreen) {
@@ -183,6 +189,8 @@ class App extends React.PureComponent {
             authorizationStatus={authorizationStatus}
             authorizationData={authorizationData}
             onScreenChange={onScreenChange}
+            postReview={postReview}
+            commentPostStatus={commentPostStatus}
           />
         );
 
@@ -325,7 +333,9 @@ App.propTypes = {
   onFilmsCountToShowReset: PropTypes.func.isRequired,
   onFilmsCountToShowIncrement: PropTypes.func,
   onPlayerStateChange: PropTypes.func.isRequired,
-  loadFilmComments: PropTypes.func.isRequired
+  loadFilmComments: PropTypes.func.isRequired,
+  postReview: PropTypes.func.isRequired,
+  commentPostStatus: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -344,7 +354,8 @@ const mapStateToProps = (state) => ({
   isFilmsLoaded: getFilmsLoadState(state),
   isPromoFilmLoaded: getPromoFilmLoadState(state),
   isCommentsLoaded: getCommentsLoadState(state),
-  requestStatus: getRequestStatus(state)
+  requestStatus: getRequestStatus(state),
+  commentPostStatus: getCommentPostStatus(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -353,6 +364,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   loadFilmComments(filmId) {
     dispatch(DataOperation.loadActiveFilmComments(filmId));
+  },
+  postReview(review, filmId) {
+    dispatch(UserOperation.postReview(review, filmId));
   },
   onScreenChange(screen) {
     dispatch(ActionCreator.changeActiveScreen(screen));
