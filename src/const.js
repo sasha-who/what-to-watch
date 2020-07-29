@@ -13,6 +13,7 @@ export const SERVER_TIMEOUT = 5000;
 export const BASE_URL = `https://4.react.pages.academy/wtw`;
 export const RATING_START_COUNT = 5;
 export const STAR_CHECKED_BY_DEFAULT = 3;
+export const REVIEW_MIN_LENGTH = 50;
 
 export const RatingRange = {
   MIN: 0,
@@ -90,4 +91,11 @@ export const HttpStatus = {
   SUCCESS: 200,
   REDIRECT: 300,
   UNAUTHORIZED: 401
+};
+
+export const CommentPostStatus = {
+  PENDING: `PENDING`,
+  POSTING: `POSTING`,
+  OK: `OK`,
+  ERROR: `ERROR`
 };

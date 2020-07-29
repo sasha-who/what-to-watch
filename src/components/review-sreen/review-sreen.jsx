@@ -4,7 +4,15 @@ import Header from "../header/header.jsx";
 import ReviewForm from "../review-form/review-form.jsx";
 
 const ReviewScreen = (props) => {
-  const {film, authorizationData, authorizationStatus, onScreenChange} = props;
+  const {
+    film,
+    authorizationData,
+    authorizationStatus,
+    onScreenChange,
+    postReview,
+    commentPostStatus
+  } = props;
+
   const {title, cover, poster} = film;
 
   return (
@@ -44,7 +52,11 @@ const ReviewScreen = (props) => {
           />
         </div>
       </div>
-      <ReviewForm />
+      <ReviewForm
+        film={film}
+        postReview={postReview}
+        commentPostStatus={commentPostStatus}
+      />
     </section>
   );
 };
@@ -76,7 +88,9 @@ ReviewScreen.propTypes = {
     name: PropTypes.string,
     avatarUrl: PropTypes.string
   }),
-  onScreenChange: PropTypes.func.isRequired
+  onScreenChange: PropTypes.func.isRequired,
+  postReview: PropTypes.func.isRequired,
+  commentPostStatus: PropTypes.string.isRequired
 };
 
 export default ReviewScreen;
