@@ -11,6 +11,8 @@ export const VIDEO_CLASS_NAME = `player__video`;
 export const SECONDS_IN_MINUTE_COUNT = 60;
 export const SERVER_TIMEOUT = 5000;
 export const BASE_URL = `https://4.react.pages.academy/wtw`;
+export const RATING_START_COUNT = 5;
+export const STAR_CHECKED_BY_DEFAULT = 3;
 
 export const RatingRange = {
   MIN: 0,
@@ -31,7 +33,8 @@ export const RatingGrade = {
 export const Screen = {
   MAIN: `main`,
   CARD: `card`,
-  SIGN_IN: `sign-in`
+  SIGN_IN: `sign-in`,
+  REVIEW: `review`
 };
 
 export const TabsNames = {

@@ -31,6 +31,7 @@ import DetailedFilmCard from "../detailed-card/detailed-card.jsx";
 import ServerError from "../server-error/server-error.jsx";
 import AuthorizationScreen from "../authorization-screen/authorization-screen.jsx";
 import withValidityCheck from "../../hocs/with-validity-check/with-validity-check.js";
+import ReviewScreen from "../review-sreen/review-sreen.jsx";
 
 const AuthorizationScreenWrapped = withValidityCheck(AuthorizationScreen);
 
@@ -171,6 +172,16 @@ class App extends React.PureComponent {
         return (
           <AuthorizationScreenWrapped
             onAuthorizationFormSubmit={login}
+            onScreenChange={onScreenChange}
+          />
+        );
+
+      case Screen.REVIEW:
+        return (
+          <ReviewScreen
+            film={activeFilm}
+            authorizationStatus={authorizationStatus}
+            authorizationData={authorizationData}
             onScreenChange={onScreenChange}
           />
         );
