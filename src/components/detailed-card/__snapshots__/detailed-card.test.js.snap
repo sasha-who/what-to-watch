@@ -125,7 +125,8 @@ exports[`DetailedFilmCard should render correctly 1`] = `
             </button>
             <a
               className="btn movie-card__button"
-              href="add-review.html"
+              href="#"
+              onClick={[Function]}
             >
               Add review
             </a>
