@@ -4,7 +4,6 @@ export const PromoFilmData = {
   date: `2014`
 };
 
-const GENRE = `drama`;
 const RELEASE = `2020`;
 const RATING = 9;
 const RATINGS_COUNT = 228;
@@ -50,6 +49,18 @@ const ACTORS = [
   `Iddo Goldberg`
 ];
 
+export const GENRES = [
+  `all genres`,
+  `comedy`,
+  `drama`,
+  `melodrama`,
+  `horror`,
+  `crime`,
+  `documentary`,
+  `romance`,
+  `thriller`
+];
+
 const review = {
   id: `0`,
   text: `I didn't find it amusing, and while I can appreciate the creativity,
@@ -66,7 +77,7 @@ export const films = TITLES.map((title, index) => {
     cover: COVERS[index],
     poster: COVERS[index],
     preview: PREVIEW,
-    genre: GENRE,
+    genre: GENRES[index + 1] || GENRES[1],
     release: RELEASE,
     rating: RATING,
     ratingsCount: RATINGS_COUNT,

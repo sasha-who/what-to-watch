@@ -216,7 +216,7 @@ Array [
         <span
           className="movie-card__details-value"
         >
-          drama
+          comedy
         </span>
       </p>
       <p
@@ -309,9 +309,9 @@ Array [
             </cite>
             <time
               className="review__date"
-              dateTime="2020-07-07"
+              dateTime="2020-07-10"
             >
-              July 7, 2020
+              July 10, 2020
             </time>
           </footer>
         </blockquote>

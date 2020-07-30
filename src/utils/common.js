@@ -29,6 +29,10 @@ export const getRandomArrayItems = (array) => {
   return shuffledArray.slice(0, getRandomIntegerNumber(0, array.length));
 };
 
+export const extend = (a, b) => {
+  return Object.assign({}, a, b);
+};
+
 export const getFormatedRunTime = (duration) => {
   const durationInMinutes = moment.duration(duration, `minutes`);
 

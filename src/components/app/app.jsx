@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {connect} from "react-redux";
+import {ActionCreator} from "../../reducer/reducer.js";
 import {Screen} from "../../const.js";
 import Main from "../main/main.jsx";
 import DetailedFilmCard from "../detailed-card/detailed-card.jsx";
@@ -48,16 +50,28 @@ class App extends React.PureComponent {
   }
 
   _renderScreen() {
-    const {promoFilmData, films} = this.props;
+    const {
+      promoFilmData,
+      films,
+      currentGenre,
+      filteredFilms,
+      onGenreChange,
+      filterFilmsByGenre
+    } = this.props;
+
     const {activeScreen} = this.state;
 
     switch (activeScreen) {
       case Screen.MAIN:
         return (
           <Main
-            promoFilmData={promoFilmData}
             films={films}
+            promoFilmData={promoFilmData}
+            currentGenre={currentGenre}
+            filteredFilms={filteredFilms}
             onCardClick={this._handlerCardClick}
+            onGenreChange={onGenreChange}
+            filterFilmsByGenre={filterFilmsByGenre}
           />
         );
 
@@ -107,7 +121,52 @@ App.propTypes = {
             })
         ).isRequired
       })
-  ).isRequired
+  ).isRequired,
+  filteredFilms: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        cover: PropTypes.string.isRequired,
+        poster: PropTypes.string.isRequired,
+        preview: PropTypes.string.isRequired,
+        genre: PropTypes.string.isRequired,
+        release: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired,
+        ratingsCount: PropTypes.number.isRequired,
+        description: PropTypes.string.isRequired,
+        director: PropTypes.string.isRequired,
+        actors: PropTypes.arrayOf(PropTypes.string),
+        runTime: PropTypes.number.isRequired,
+        reviews: PropTypes.arrayOf(
+            PropTypes.shape({
+              id: PropTypes.string.isRequired,
+              text: PropTypes.string.isRequired,
+              rating: PropTypes.number.isRequired,
+              userName: PropTypes.string.isRequired,
+              date: PropTypes.instanceOf(Date).isRequired
+            })
+        ).isRequired
+      })
+  ).isRequired,
+  currentGenre: PropTypes.string.isRequired,
+  onGenreChange: PropTypes.func.isRequired,
+  filterFilmsByGenre: PropTypes.func.isRequired
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  currentGenre: state.currentGenre,
+  films: state.films,
+  filteredFilms: state.filteredFilms || []
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onGenreChange(genre) {
+    dispatch(ActionCreator.changeCurrentGenre(genre));
+  },
+  filterFilmsByGenre() {
+    dispatch(ActionCreator.filterFilmsByGenre());
+  }
+});
+
+export {App};
+export default connect(mapStateToProps, mapDispatchToProps)(App);
