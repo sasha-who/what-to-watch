@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import Loader from "react-loader-spinner";
-import {Screen, LoaderData, HttpStatus} from "../../const.js";
+import {LoaderData, HttpStatus, AppRoute} from "../../const.js";
 import {ActionCreator} from "../../reducer/app-state/app-state.js";
 import {Operation as DataOperation} from "../../reducer/data/data.js";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
@@ -45,18 +45,28 @@ class App extends React.PureComponent {
       authorizationStatus,
       authorizationData,
       isCommentsLoaded,
+      films,
+      promoFilm,
+      filteredFilms,
       similarFilms,
       activeFilm,
       activeFilmComments,
+      currentGenre,
+      filmsCountToShow,
       isPlayerActive,
       isFilmsLoaded,
       isPromoFilmLoaded,
       requestStatus,
+      commentPostStatus,
       onScreenChange,
       onActiveFilmChange,
       onPlayerStateChange,
+      onGenreChange,
+      onFilmsCountToShowReset,
+      onFilmsCountToShowIncrement,
       login,
-      loadFilmComments
+      loadFilmComments,
+      postReview
     } = this.props;
 
     if (!isFilmsLoaded || !isPromoFilmLoaded) {
@@ -79,10 +89,26 @@ class App extends React.PureComponent {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/">
-            {this._renderScreen()}
+          <Route exact path={AppRoute.ROOT}>
+            <Main
+              authorizationStatus={authorizationStatus}
+              authorizationData={authorizationData}
+              films={films}
+              promoFilm={promoFilm}
+              currentGenre={currentGenre}
+              filteredFilms={filteredFilms}
+              filmsCountToShow={filmsCountToShow}
+              isPlayerActive={isPlayerActive}
+              onScreenChange={onScreenChange}
+              onActiveFilmChange={onActiveFilmChange}
+              onGenreChange={onGenreChange}
+              onFilmsCountToShowReset={onFilmsCountToShowReset}
+              onFilmsCountToShowIncrement={onFilmsCountToShowIncrement}
+              onPlayerStateChange={onPlayerStateChange}
+              loadFilmComments={loadFilmComments}
+            />
           </Route>
-          <Route exact path="/film-card">
+          <Route exact path={AppRoute.FILM}>
             <DetailedFilmCard
               authorizationStatus={authorizationStatus}
               authorizationData={authorizationData}
@@ -97,106 +123,25 @@ class App extends React.PureComponent {
               loadFilmComments={loadFilmComments}
             />
           </Route>
-          <Route exact path="/dev-auth">
+          <Route exact path={AppRoute.LOGIN}>
             <AuthorizationScreenWrapped
               onAuthorizationFormSubmit={login}
               onScreenChange={onScreenChange}
             />
           </Route>
+          <Route exact path={AppRoute.REVIEW}>
+            <ReviewScreen
+              film={activeFilm}
+              authorizationStatus={authorizationStatus}
+              authorizationData={authorizationData}
+              onScreenChange={onScreenChange}
+              postReview={postReview}
+              commentPostStatus={commentPostStatus}
+            />
+          </Route>
         </Switch>
       </BrowserRouter>
     );
-  }
-
-  _renderScreen() {
-    const {
-      authorizationStatus,
-      authorizationData,
-      activeScreen,
-      isCommentsLoaded,
-      activeFilm,
-      promoFilm,
-      films,
-      activeFilmComments,
-      currentGenre,
-      filteredFilms,
-      filmsCountToShow,
-      similarFilms,
-      isPlayerActive,
-      onScreenChange,
-      onActiveFilmChange,
-      onGenreChange,
-      onFilmsCountToShowReset,
-      onFilmsCountToShowIncrement,
-      onPlayerStateChange,
-      login,
-      loadFilmComments,
-      postReview,
-      commentPostStatus
-    } = this.props;
-
-    switch (activeScreen) {
-      case Screen.MAIN:
-        return (
-          <Main
-            authorizationStatus={authorizationStatus}
-            authorizationData={authorizationData}
-            films={films}
-            promoFilm={promoFilm}
-            currentGenre={currentGenre}
-            filteredFilms={filteredFilms}
-            filmsCountToShow={filmsCountToShow}
-            isPlayerActive={isPlayerActive}
-            onScreenChange={onScreenChange}
-            onActiveFilmChange={onActiveFilmChange}
-            onGenreChange={onGenreChange}
-            onFilmsCountToShowReset={onFilmsCountToShowReset}
-            onFilmsCountToShowIncrement={onFilmsCountToShowIncrement}
-            onPlayerStateChange={onPlayerStateChange}
-            loadFilmComments={loadFilmComments}
-          />
-        );
-
-      case Screen.CARD:
-        return (
-          <DetailedFilmCard
-            authorizationStatus={authorizationStatus}
-            authorizationData={authorizationData}
-            isCommentsLoaded={isCommentsLoaded}
-            activeFilmComments={activeFilmComments}
-            film={activeFilm}
-            similarFilms={similarFilms}
-            isPlayerActive={isPlayerActive}
-            onScreenChange={onScreenChange}
-            onActiveFilmChange={onActiveFilmChange}
-            onPlayerStateChange={onPlayerStateChange}
-            loadFilmComments={loadFilmComments}
-          />
-        );
-
-      case Screen.SIGN_IN:
-        return (
-          <AuthorizationScreenWrapped
-            onAuthorizationFormSubmit={login}
-            onScreenChange={onScreenChange}
-          />
-        );
-
-      case Screen.REVIEW:
-        return (
-          <ReviewScreen
-            film={activeFilm}
-            authorizationStatus={authorizationStatus}
-            authorizationData={authorizationData}
-            onScreenChange={onScreenChange}
-            postReview={postReview}
-            commentPostStatus={commentPostStatus}
-          />
-        );
-
-      default:
-        return null;
-    }
   }
 }
 

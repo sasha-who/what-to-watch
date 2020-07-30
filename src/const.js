@@ -99,3 +99,10 @@ export const CommentPostStatus = {
   OK: `OK`,
   ERROR: `ERROR`
 };
+
+export const AppRoute = {
+  LOGIN: `/login`,
+  ROOT: `/`,
+  FILM: `/films/:id`,
+  REVIEW: `/films/:id/review`
+};
