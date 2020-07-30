@@ -30,12 +30,14 @@ import {
   getAuthorizationData,
   getCommentPostStatus
 } from "../../reducer/user/selectors.js";
+import PrivateRoute from "../private-route/private-route.jsx";
 import Main from "../main/main.jsx";
 import DetailedFilmCard from "../detailed-card/detailed-card.jsx";
 import ServerError from "../server-error/server-error.jsx";
 import AuthorizationScreen from "../authorization-screen/authorization-screen.jsx";
 import withValidityCheck from "../../hocs/with-validity-check/with-validity-check.js";
 import ReviewScreen from "../review-sreen/review-sreen.jsx";
+import MyList from "../my-list/my-list.jsx";
 
 const AuthorizationScreenWrapped = withValidityCheck(AuthorizationScreen);
 
@@ -125,20 +127,35 @@ class App extends React.PureComponent {
           </Route>
           <Route exact path={AppRoute.LOGIN}>
             <AuthorizationScreenWrapped
+              authorizationStatus={authorizationStatus}
               onAuthorizationFormSubmit={login}
               onScreenChange={onScreenChange}
             />
           </Route>
-          <Route exact path={AppRoute.REVIEW}>
-            <ReviewScreen
-              film={activeFilm}
-              authorizationStatus={authorizationStatus}
-              authorizationData={authorizationData}
-              onScreenChange={onScreenChange}
-              postReview={postReview}
-              commentPostStatus={commentPostStatus}
-            />
-          </Route>
+          <PrivateRoute
+            exact
+            path={AppRoute.REVIEW}
+            render={() => {
+              return (
+                <ReviewScreen
+                  film={activeFilm}
+                  authorizationData={authorizationData}
+                  onScreenChange={onScreenChange}
+                  postReview={postReview}
+                  commentPostStatus={commentPostStatus}
+                />
+              );
+            }}
+          />
+          <PrivateRoute
+            exact
+            path={AppRoute.MY_LIST}
+            render={() => {
+              return (
+                <MyList />
+              );
+            }}
+          />
         </Switch>
       </BrowserRouter>
     );
