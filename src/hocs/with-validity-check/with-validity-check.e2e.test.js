@@ -9,26 +9,26 @@ Enzyme.configure({
 });
 
 const AuthorizationScreen = (props) => {
-  const {onInputInvalid} = props;
+  const {onInputValidityChange} = props;
 
   return (
     <form>
-      <input onInvalid={onInputInvalid} />
+      <input onInvalid={onInputValidityChange} />
     </form>
   );
 };
 
 AuthorizationScreen.propTypes = {
-  onInputInvalid: PropTypes.func.isRequired
+  onInputValidityChange: PropTypes.func.isRequired
 };
 
 it(`Validity should change when input value is invalid`, () => {
-  const onInputInvalid = jest.fn();
+  const onInputValidityChange = jest.fn();
   const AuthorizationScreenWrapped = withValidityCheck(AuthorizationScreen);
 
   const wrapper = mount(
       <AuthorizationScreenWrapped
-        onInputInvalid={onInputInvalid}
+        onInputInvalid={onInputValidityChange}
       />
   );
 

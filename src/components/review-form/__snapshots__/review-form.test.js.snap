@@ -7,6 +7,7 @@ exports[`ReviewForm should render correctly 1`] = `
   <form
     action="#"
     className="add-review__form"
+    onSubmit={[Function]}
   >
     <div
       className="rating"
@@ -14,21 +15,6 @@ exports[`ReviewForm should render correctly 1`] = `
       <div
         className="rating__stars"
       >
-        <input
-          className="rating__input"
-          defaultChecked={false}
-          defaultValue={0}
-          id="star-0"
-          name="rating"
-          type="radio"
-        />
-        <label
-          className="rating__label"
-          htmlFor="star-0"
-        >
-          Rating 
-          0
-        </label>
         <input
           className="rating__input"
           defaultChecked={false}
@@ -46,7 +32,7 @@ exports[`ReviewForm should render correctly 1`] = `
         </label>
         <input
           className="rating__input"
-          defaultChecked={true}
+          defaultChecked={false}
           defaultValue={2}
           id="star-2"
           name="rating"
@@ -61,7 +47,7 @@ exports[`ReviewForm should render correctly 1`] = `
         </label>
         <input
           className="rating__input"
-          defaultChecked={false}
+          defaultChecked={true}
           defaultValue={3}
           id="star-3"
           name="rating"
@@ -89,6 +75,21 @@ exports[`ReviewForm should render correctly 1`] = `
           Rating 
           4
         </label>
+        <input
+          className="rating__input"
+          defaultChecked={false}
+          defaultValue={5}
+          id="star-5"
+          name="rating"
+          type="radio"
+        />
+        <label
+          className="rating__label"
+          htmlFor="star-5"
+        >
+          Rating 
+          5
+        </label>
       </div>
     </div>
     <div
@@ -97,7 +98,10 @@ exports[`ReviewForm should render correctly 1`] = `
       <textarea
         className="add-review__textarea"
         id="review-text"
+        maxLength={400}
+        minLength={50}
         name="review-text"
+        onInput={[Function]}
         placeholder="Review text"
       />
       <div
@@ -105,6 +109,7 @@ exports[`ReviewForm should render correctly 1`] = `
       >
         <button
           className="add-review__btn"
+          disabled={true}
           type="submit"
         >
           Post
