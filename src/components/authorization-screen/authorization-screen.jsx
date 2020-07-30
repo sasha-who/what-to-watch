@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Screen} from "../../const.js";
+import {Redirect} from "react-router-dom";
+import {AppRoute, AuthorizationStatus} from "../../const.js";
 import Footer from "../footer/footer.jsx";
 
 class AuthorizationScreen extends React.PureComponent {
@@ -14,7 +15,7 @@ class AuthorizationScreen extends React.PureComponent {
   }
 
   handleFormSubmit(evt) {
-    const {onAuthorizationFormSubmit, onScreenChange} = this.props;
+    const {onAuthorizationFormSubmit} = this.props;
 
     evt.preventDefault();
 
@@ -22,12 +23,14 @@ class AuthorizationScreen extends React.PureComponent {
       email: this.emailRef.current.value,
       password: this.passwordRef.current.value
     });
-
-    onScreenChange(Screen.MAIN);
   }
 
   render() {
-    const {isInputValid, onInputValidityChange} = this.props;
+    const {isInputValid, onInputValidityChange, authorizationStatus} = this.props;
+
+    if (authorizationStatus === AuthorizationStatus.AUTHORIZED) {
+      return <Redirect to={AppRoute.ROOT} />;
+    }
 
     return (
       <div className="user-page">
@@ -101,8 +104,8 @@ class AuthorizationScreen extends React.PureComponent {
 AuthorizationScreen.propTypes = {
   isInputValid: PropTypes.bool.isRequired,
   onAuthorizationFormSubmit: PropTypes.func.isRequired,
-  onScreenChange: PropTypes.func.isRequired,
-  onInputValidityChange: PropTypes.func.isRequired
+  onInputValidityChange: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired
 };
 
 export default AuthorizationScreen;
