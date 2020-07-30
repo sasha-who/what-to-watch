@@ -8,7 +8,7 @@ it(`AuthorizationScreen without errors should render correctly`, () => {
         isInputValid={true}
         onAuthorizationFormSubmit={() => {}}
         onScreenChange={() => {}}
-        onInputInvalid={() => {}}
+        onInputValidityChange={() => {}}
       />
   ).toJSON();
 
@@ -21,7 +21,7 @@ it(`AuthorizationScreen with validation errorshould render correctly`, () => {
         isInputValid={false}
         onAuthorizationFormSubmit={() => {}}
         onScreenChange={() => {}}
-        onInputInvalid={() => {}}
+        onInputValidityChange={() => {}}
       />
   ).toJSON();
 
