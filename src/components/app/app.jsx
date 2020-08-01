@@ -70,7 +70,7 @@ class App extends React.PureComponent {
       login,
       loadFilmComments,
       postReview,
-      changeFavoriteStatus
+      onFavoriteStatusChange
     } = this.props;
 
     if (!isFilmsLoaded || !isPromoFilmLoaded) {
@@ -112,7 +112,7 @@ class App extends React.PureComponent {
               onFilmsCountToShowIncrement={onFilmsCountToShowIncrement}
               onPlayerStateChange={onPlayerStateChange}
               loadFilmComments={loadFilmComments}
-              changeFavoriteStatus={changeFavoriteStatus}
+              onFavoriteStatusChange={onFavoriteStatusChange}
             />
           </Route>
           <Route exact path={AppRoute.FILM}>
@@ -128,7 +128,7 @@ class App extends React.PureComponent {
               onActiveFilmChange={onActiveFilmChange}
               onPlayerStateChange={onPlayerStateChange}
               loadFilmComments={loadFilmComments}
-              changeFavoriteStatus={changeFavoriteStatus}
+              onFavoriteStatusChange={onFavoriteStatusChange}
             />
           </Route>
           <Route exact path={AppRoute.LOGIN}>
@@ -304,7 +304,7 @@ App.propTypes = {
   loadFilmComments: PropTypes.func.isRequired,
   postReview: PropTypes.func.isRequired,
   commentPostStatus: PropTypes.string.isRequired,
-  changeFavoriteStatus: PropTypes.func.isRequired
+  onFavoriteStatusChange: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -337,7 +337,7 @@ const mapDispatchToProps = (dispatch) => ({
   postReview(review, filmId) {
     dispatch(UserOperation.postReview(review, filmId));
   },
-  changeFavoriteStatus(filmId, status, isPromoFilm) {
+  onFavoriteStatusChange(filmId, status, isPromoFilm) {
     dispatch(DataOperation.changeFavoriteStatus(filmId, status, isPromoFilm));
   },
   onScreenChange(screen) {

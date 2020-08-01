@@ -115,8 +115,9 @@ exports[`Catalog should render correctly 1`] = `
   <div
     className="catalog__movies-list"
   >
-    <article
+    <a
       className="small-movie-card catalog__movies-card"
+      href="/films/:id"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -142,9 +143,10 @@ exports[`Catalog should render correctly 1`] = `
           Fantastic Beasts: The Crimes of Grindelwald
         </a>
       </h3>
-    </article>
-    <article
+    </a>
+    <a
       className="small-movie-card catalog__movies-card"
+      href="/films/:id"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -170,9 +172,10 @@ exports[`Catalog should render correctly 1`] = `
           Bohemian Rhapsody
         </a>
       </h3>
-    </article>
-    <article
+    </a>
+    <a
       className="small-movie-card catalog__movies-card"
+      href="/films/:id"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -198,9 +201,10 @@ exports[`Catalog should render correctly 1`] = `
           Macbeth
         </a>
       </h3>
-    </article>
-    <article
+    </a>
+    <a
       className="small-movie-card catalog__movies-card"
+      href="/films/:id"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -226,9 +230,10 @@ exports[`Catalog should render correctly 1`] = `
           Aviator
         </a>
       </h3>
-    </article>
-    <article
+    </a>
+    <a
       className="small-movie-card catalog__movies-card"
+      href="/films/:id"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -254,9 +259,10 @@ exports[`Catalog should render correctly 1`] = `
           We need to talk about Kevin
         </a>
       </h3>
-    </article>
-    <article
+    </a>
+    <a
       className="small-movie-card catalog__movies-card"
+      href="/films/:id"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -282,9 +288,10 @@ exports[`Catalog should render correctly 1`] = `
           What We Do in the Shadows
         </a>
       </h3>
-    </article>
-    <article
+    </a>
+    <a
       className="small-movie-card catalog__movies-card"
+      href="/films/:id"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -310,9 +317,10 @@ exports[`Catalog should render correctly 1`] = `
           Revenant
         </a>
       </h3>
-    </article>
-    <article
+    </a>
+    <a
       className="small-movie-card catalog__movies-card"
+      href="/films/:id"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -338,7 +346,7 @@ exports[`Catalog should render correctly 1`] = `
           Johnny English
         </a>
       </h3>
-    </article>
+    </a>
   </div>
 </section>
 `;

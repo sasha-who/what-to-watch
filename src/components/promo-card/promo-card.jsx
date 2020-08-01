@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {InListIcon, AddToListIcon} from "../../const.js";
 
-const PromoCard = ({promoFilm, onPlayerStateChange, changeFavoriteStatus}) => {
+const PromoCard = ({promoFilm, onPlayerStateChange, onFavoriteStatusChange}) => {
   const {id, title, genre, release, isFavorite} = promoFilm;
   const myListIcon = isFavorite ? InListIcon : AddToListIcon;
 
@@ -41,7 +41,7 @@ const PromoCard = ({promoFilm, onPlayerStateChange, changeFavoriteStatus}) => {
                 onClick={() => {
                   const status = isFavorite ? 0 : 1;
 
-                  changeFavoriteStatus(id, status, true);
+                  onFavoriteStatusChange(id, status, true);
                 }}
               >
                 <svg
@@ -82,7 +82,7 @@ PromoCard.propTypes = {
     isFavorite: PropTypes.bool.isRequired
   }),
   onPlayerStateChange: PropTypes.func.isRequired,
-  changeFavoriteStatus: PropTypes.func.isRequired
+  onFavoriteStatusChange: PropTypes.func.isRequired
 };
 
 export default PromoCard;
