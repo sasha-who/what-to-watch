@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {InListIcon, AddToListIcon} from "../../const.js";
+import {Link} from "react-router-dom";
+import {InListIcon, AddToListIcon, AppRoute} from "../../const.js";
 
-const PromoCard = ({promoFilm, onPlayerStateChange, onFavoriteStatusChange}) => {
+const PromoCard = ({promoFilm, onFavoriteStatusChange, onActiveFilmChange}) => {
   const {id, title, genre, release, isFavorite} = promoFilm;
   const myListIcon = isFavorite ? InListIcon : AddToListIcon;
 
@@ -25,16 +26,18 @@ const PromoCard = ({promoFilm, onPlayerStateChange, onFavoriteStatusChange}) => 
               <span className="movie-card__year">{release}</span>
             </p>
             <div className="movie-card__buttons">
-              <button
+              <Link
                 className="btn btn--play movie-card__button"
-                type="button"
-                onClick={onPlayerStateChange}
+                to={AppRoute.PLAYER}
+                onClick={() => {
+                  onActiveFilmChange(promoFilm);
+                }}
               >
                 <svg viewBox="0 0 19 19" width={19} height={19}>
                   <use xlinkHref="#play-s" />
                 </svg>
                 <span>Play</span>
-              </button>
+              </Link>
               <button
                 className="btn btn--list movie-card__button"
                 type="button"
@@ -81,8 +84,8 @@ PromoCard.propTypes = {
     videoLink: PropTypes.string.isRequired,
     isFavorite: PropTypes.bool.isRequired
   }),
-  onPlayerStateChange: PropTypes.func.isRequired,
-  onFavoriteStatusChange: PropTypes.func.isRequired
+  onFavoriteStatusChange: PropTypes.func.isRequired,
+  onActiveFilmChange: PropTypes.func.isRequired
 };
 
 export default PromoCard;

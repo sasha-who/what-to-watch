@@ -10,7 +10,6 @@ const Player = (props) => {
     isPlaying,
     progress,
     onPlayButtonClick,
-    onPlayerStateChange,
     onFullScreenButtonClick
   } = props;
 
@@ -26,7 +25,9 @@ const Player = (props) => {
       <button
         type="button"
         className="player__exit"
-        onClick={onPlayerStateChange}
+        onClick={() => {
+          history.back();
+        }}
       >
         Exit
       </button>
@@ -95,7 +96,6 @@ Player.propTypes = {
   isPlaying: PropTypes.bool.isRequired,
   progress: PropTypes.number.isRequired,
   onPlayButtonClick: PropTypes.func.isRequired,
-  onPlayerStateChange: PropTypes.func.isRequired,
   onFullScreenButtonClick: PropTypes.func.isRequired
 };
 

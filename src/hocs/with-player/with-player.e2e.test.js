@@ -13,14 +13,13 @@
 //   const {
 //     children,
 //     onPlayButtonClick,
-//     onPlayerStateChange,
 //     onFullScreenButtonClick
 //   } = props;
 
 //   return (
 //     <div>
 //       {children}
-//       <button onClick={onPlayerStateChange}></button>
+//       <button></button>
 //       <div>
 //         <div>
 //           <button onClick={onPlayButtonClick}></button>
@@ -37,7 +36,6 @@
 //     PropTypes.node
 //   ]).isRequired,
 //   onPlayButtonClick: PropTypes.func.isRequired,
-//   onPlayerStateChange: PropTypes.func.isRequired,
 //   onFullScreenButtonClick: PropTypes.func.isRequired
 // };
 
@@ -55,7 +53,6 @@
 //       <PlayerWrapped
 //         film={films[0]}
 //         onPlayButtonClick={onPlayButtonClick}
-//         onPlayerStateChange={() => {}}
 //         onFullScreenButtonClick={() => {}}
 //       />
 //   );
@@ -89,7 +86,6 @@
 //       <PlayerWrapped
 //         film={films[0]}
 //         onPlayButtonClick={onPlayButtonClick}
-//         onPlayerStateChange={() => {}}
 //         onFullScreenButtonClick={() => {}}
 //       />
 //   );

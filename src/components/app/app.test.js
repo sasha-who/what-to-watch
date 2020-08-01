@@ -58,7 +58,6 @@ it(`Main screen should render correctly`, () => {
             onGenreChange={() => {}}
             onFilmsCountToShowReset={() => {}}
             onFilmsCountToShowIncrement={() => {}}
-            onPlayerStateChange={() => {}}
             login={() => {}}
             loadFilmComments={() => {}}
             postReview={() => {}}
@@ -102,7 +101,6 @@ it(`Card screen should render correctly`, () => {
             onGenreChange={() => {}}
             onFilmsCountToShowReset={() => {}}
             onFilmsCountToShowIncrement={() => {}}
-            onPlayerStateChange={() => {}}
             login={() => {}}
             loadFilmComments={() => {}}
             postReview={() => {}}

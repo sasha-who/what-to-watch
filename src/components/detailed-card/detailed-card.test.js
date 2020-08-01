@@ -24,7 +24,6 @@ it(`DetailedFilmCard should render correctly`, () => {
             isPlayerActive={false}
             onScreenChange={() => {}}
             onActiveFilmChange={() => {}}
-            onPlayerStateChange={() => {}}
             loadFilmComments={() => {}}
             onFavoriteStatusChange={() => {}}
           />
