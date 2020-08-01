@@ -64,6 +64,18 @@ export const PlayIconPause = {
   DESCRIPTION: `Pause`
 };
 
+export const AddToListIcon = {
+  WIDTH: 19,
+  HEIGHT: 20,
+  ID: `add`
+};
+
+export const InListIcon = {
+  WIDTH: 18,
+  HEIGHT: 14,
+  ID: `in-list`
+};
+
 export const ReviewDate = {
   HUMAN_FORMAT: `MMMM D, YYYY`,
   SERVICE_FORMAT: `YYYY-MM-DD`
