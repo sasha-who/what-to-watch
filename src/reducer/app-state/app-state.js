@@ -10,8 +10,7 @@ const initialState = {
   activeScreen: Screen.MAIN,
   currentGenre: DEFAULT_GENRE,
   filteredFilms: [],
-  filmsCountToShow: INITIAL_FILMS_COUNT,
-  isPlayerActive: false
+  filmsCountToShow: INITIAL_FILMS_COUNT
 };
 
 const ActionType = {
@@ -21,8 +20,7 @@ const ActionType = {
   FILTER_FILMS_BY_GENRE: `FILTER_FILMS_BY_GENRE`,
   RESET_FILMS_COUNT_TO_SHOW: `RESET_FILMS_COUNT_TO_SHOW`,
   INCREMENT_FILMS_COUNT_TO_SHOW: `INCREMENT_FILMS_COUNT_TO_SHOW`,
-  SET_SIMILAR_FILMS: `SET_SIMILAR_FILMS`,
-  CHANGE_PLAYER_STATE: `CHANGE_PLAYER_STATE`
+  SET_SIMILAR_FILMS: `SET_SIMILAR_FILMS`
 };
 
 const ActionCreator = {
@@ -51,9 +49,6 @@ const ActionCreator = {
   setSimilarFilms: (similarFilms) => ({
     type: ActionType.SET_SIMILAR_FILMS,
     payload: similarFilms
-  }),
-  changePlayerState: () => ({
-    type: ActionType.CHANGE_PLAYER_STATE
   })
 };
 
@@ -92,11 +87,6 @@ const reducer = (state = initialState, action) => {
     case ActionType.SET_SIMILAR_FILMS:
       return extend(state, {
         similarFilms: action.payload
-      });
-
-    case ActionType.CHANGE_PLAYER_STATE:
-      return extend(state, {
-        isPlayerActive: !state.isPlayerActive
       });
   }
 

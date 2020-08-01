@@ -7,8 +7,7 @@ it(`Reducer without additional parameters should return initial state`, () => {
     activeScreen: Screen.MAIN,
     currentGenre: GENRES[0],
     filteredFilms: [],
-    filmsCountToShow: INITIAL_FILMS_COUNT,
-    isPlayerActive: false
+    filmsCountToShow: INITIAL_FILMS_COUNT
   });
 });
 
@@ -17,8 +16,7 @@ it(`Reducer should change current genre by a given value`, () => {
     activeScreen: Screen.MAIN,
     currentGenre: GENRES[0],
     filteredFilms: [],
-    filmsCountToShow: INITIAL_FILMS_COUNT,
-    isPlayerActive: false
+    filmsCountToShow: INITIAL_FILMS_COUNT
   }, {
     type: ActionType.CHANGE_CURRENT_GENRE,
     payload: GENRES[1],
@@ -26,24 +24,21 @@ it(`Reducer should change current genre by a given value`, () => {
     activeScreen: Screen.MAIN,
     currentGenre: GENRES[1],
     filteredFilms: [],
-    filmsCountToShow: INITIAL_FILMS_COUNT,
-    isPlayerActive: false
+    filmsCountToShow: INITIAL_FILMS_COUNT
   });
 
   expect(reducer({
     activeScreen: Screen.MAIN,
     currentGenre: GENRES[0],
     filteredFilms: [],
-    filmsCountToShow: INITIAL_FILMS_COUNT,
-    isPlayerActive: false
+    filmsCountToShow: INITIAL_FILMS_COUNT
   }, {
     type: ActionType.CHANGE_CURRENT_GENRE
   })).toEqual({
     activeScreen: Screen.MAIN,
     currentGenre: GENRES[0],
     filteredFilms: [],
-    filmsCountToShow: INITIAL_FILMS_COUNT,
-    isPlayerActive: false
+    filmsCountToShow: INITIAL_FILMS_COUNT
   });
 });
 
@@ -52,16 +47,14 @@ it(`Reducer should reset films count to show`, () => {
     activeScreen: Screen.MAIN,
     currentGenre: GENRES[0],
     filteredFilms: [],
-    filmsCountToShow: INITIAL_FILMS_COUNT + 1,
-    isPlayerActive: false
+    filmsCountToShow: INITIAL_FILMS_COUNT + 1
   }, {
     type: ActionType.RESET_FILMS_COUNT_TO_SHOW
   })).toEqual({
     activeScreen: Screen.MAIN,
     currentGenre: GENRES[0],
     filteredFilms: [],
-    filmsCountToShow: INITIAL_FILMS_COUNT,
-    isPlayerActive: false
+    filmsCountToShow: INITIAL_FILMS_COUNT
   });
 });
 
@@ -70,34 +63,14 @@ it(`Reducer should increment films count to show`, () => {
     activeScreen: Screen.MAIN,
     currentGenre: GENRES[0],
     filteredFilms: [],
-    filmsCountToShow: INITIAL_FILMS_COUNT,
-    isPlayerActive: false
+    filmsCountToShow: INITIAL_FILMS_COUNT
   }, {
     type: ActionType.INCREMENT_FILMS_COUNT_TO_SHOW
   })).toEqual({
     activeScreen: Screen.MAIN,
     currentGenre: GENRES[0],
     filteredFilms: [],
-    filmsCountToShow: INITIAL_FILMS_COUNT + ADDITIONAL_FILMS_COUNT,
-    isPlayerActive: false
-  });
-});
-
-it(`Reducer should change player state`, () => {
-  expect(reducer({
-    activeScreen: Screen.MAIN,
-    currentGenre: GENRES[0],
-    filteredFilms: [],
-    filmsCountToShow: INITIAL_FILMS_COUNT,
-    isPlayerActive: false
-  }, {
-    type: ActionType.CHANGE_PLAYER_STATE
-  })).toEqual({
-    activeScreen: Screen.MAIN,
-    currentGenre: GENRES[0],
-    filteredFilms: [],
-    filmsCountToShow: INITIAL_FILMS_COUNT,
-    isPlayerActive: true
+    filmsCountToShow: INITIAL_FILMS_COUNT + ADDITIONAL_FILMS_COUNT
   });
 });
 
@@ -118,12 +91,6 @@ describe(`Action creators work correctly`, () => {
   it(`Action creator for incrementing films count to show returns correct action`, () => {
     expect(ActionCreator.incrementFilmsCountToShow()).toEqual({
       type: ActionType.INCREMENT_FILMS_COUNT_TO_SHOW
-    });
-  });
-
-  it(`Action creator for changing player state returns correct action`, () => {
-    expect(ActionCreator.changePlayerState()).toEqual({
-      type: ActionType.CHANGE_PLAYER_STATE
     });
   });
 });

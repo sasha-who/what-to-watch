@@ -26,7 +26,6 @@ it(`Main should render correctly`, () => {
             onGenreChange={() => {}}
             onFilmsCountToShowReset={() => {}}
             onFilmsCountToShowIncrement={() => {}}
-            onPlayerStateChange={() => {}}
             loadFilmComments={() => {}}
             onFavoriteStatusChange={() => {}}
           />

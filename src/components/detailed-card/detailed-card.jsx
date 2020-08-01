@@ -1,23 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 import Loader from "react-loader-spinner";
 import {
   LoaderData,
   Screen,
   AuthorizationStatus,
   AddToListIcon,
-  InListIcon
+  InListIcon,
+  AppRoute
 } from "../../const.js";
 import Header from "../header/header.jsx";
 import Footer from "../footer/footer.jsx";
 import FilmsList from "../films-list/films-list.jsx";
 import Tabs from "../tabs/tabs.jsx";
-import Player from "../player/player.jsx";
 import withActiveTab from "../../hocs/with-active-tab/with-active-tab.js";
-import withPlayer from "../../hocs/with-player/with-player.js";
 
 const TabsWrapped = withActiveTab(Tabs);
-const PlayerWrapped = withPlayer(Player);
 
 const DetailedFilmCard = (props) => {
   const {
@@ -27,10 +26,8 @@ const DetailedFilmCard = (props) => {
     film,
     similarFilms,
     activeFilmComments,
-    isPlayerActive,
     onScreenChange,
     onActiveFilmChange,
-    onPlayerStateChange,
     loadFilmComments,
     onFavoriteStatusChange
   } = props;
@@ -55,15 +52,6 @@ const DetailedFilmCard = (props) => {
           height={LoaderData.WIDTH}
         />
       </div>
-    );
-  }
-
-  if (isPlayerActive) {
-    return (
-      <PlayerWrapped
-        film={film}
-        onPlayerStateChange={onPlayerStateChange}
-      />
     );
   }
 
@@ -93,16 +81,15 @@ const DetailedFilmCard = (props) => {
                 <span className="movie-card__year">{release}</span>
               </p>
               <div className="movie-card__buttons">
-                <button
+                <Link
                   className="btn btn--play movie-card__button"
-                  type="button"
-                  onClick={onPlayerStateChange}
+                  to={AppRoute.PLAYER}
                 >
                   <svg viewBox="0 0 19 19" width={19} height={19}>
                     <use xlinkHref="#play-s" />
                   </svg>
                   <span>Play</span>
-                </button>
+                </Link>
                 <button
                   className="btn btn--list movie-card__button"
                   type="button"
@@ -231,7 +218,6 @@ DetailedFilmCard.propTypes = {
   isPlayerActive: PropTypes.bool.isRequired,
   onScreenChange: PropTypes.func.isRequired,
   onActiveFilmChange: PropTypes.func.isRequired,
-  onPlayerStateChange: PropTypes.func.isRequired,
   loadFilmComments: PropTypes.func.isRequired,
   onFavoriteStatusChange: PropTypes.func.isRequired
 };

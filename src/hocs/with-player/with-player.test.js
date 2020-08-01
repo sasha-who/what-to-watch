@@ -30,7 +30,6 @@
 //       isPlaying={true}
 //       progress={0}
 //       onPlayButtonClick={() => {}}
-//       onPlayerStateChange={() => {}}
 //       onFullScreenButtonClick={() => {}}
 //     />
 //   ), {

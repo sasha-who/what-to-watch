@@ -24,7 +24,6 @@ const Main = (props) => {
     onGenreChange,
     onFilmsCountToShowReset,
     onFilmsCountToShowIncrement,
-    onPlayerStateChange,
     loadFilmComments,
     onFavoriteStatusChange
   } = props;
@@ -33,7 +32,6 @@ const Main = (props) => {
     return (
       <PlayerWrapped
         film={promoFilm}
-        onPlayerStateChange={onPlayerStateChange}
       />
     );
   }
@@ -55,8 +53,8 @@ const Main = (props) => {
         />
         <PromoCard
           promoFilm={promoFilm}
-          onPlayerStateChange={onPlayerStateChange}
           onFavoriteStatusChange={onFavoriteStatusChange}
+          onActiveFilmChange={onActiveFilmChange}
         />
       </section>
       <div className="page-content">
@@ -155,7 +153,6 @@ Main.propTypes = {
   onGenreChange: PropTypes.func.isRequired,
   onFilmsCountToShowReset: PropTypes.func.isRequired,
   onFilmsCountToShowIncrement: PropTypes.func,
-  onPlayerStateChange: PropTypes.func.isRequired,
   loadFilmComments: PropTypes.func.isRequired,
   onFavoriteStatusChange: PropTypes.func.isRequired
 };

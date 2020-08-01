@@ -36,11 +36,14 @@ import Main from "../main/main.jsx";
 import DetailedFilmCard from "../detailed-card/detailed-card.jsx";
 import ServerError from "../server-error/server-error.jsx";
 import AuthorizationScreen from "../authorization-screen/authorization-screen.jsx";
-import withValidityCheck from "../../hocs/with-validity-check/with-validity-check.js";
 import ReviewScreen from "../review-sreen/review-sreen.jsx";
 import MyList from "../my-list/my-list.jsx";
+import Player from "../player/player.jsx";
+import withValidityCheck from "../../hocs/with-validity-check/with-validity-check.js";
+import withPlayer from "../../hocs/with-player/with-player.js";
 
 const AuthorizationScreenWrapped = withValidityCheck(AuthorizationScreen);
+const PlayerWrapped = withPlayer(Player);
 
 class App extends React.PureComponent {
   render() {
@@ -63,7 +66,6 @@ class App extends React.PureComponent {
       commentPostStatus,
       onScreenChange,
       onActiveFilmChange,
-      onPlayerStateChange,
       onGenreChange,
       onFilmsCountToShowReset,
       onFilmsCountToShowIncrement,
@@ -110,7 +112,6 @@ class App extends React.PureComponent {
               onGenreChange={onGenreChange}
               onFilmsCountToShowReset={onFilmsCountToShowReset}
               onFilmsCountToShowIncrement={onFilmsCountToShowIncrement}
-              onPlayerStateChange={onPlayerStateChange}
               loadFilmComments={loadFilmComments}
               onFavoriteStatusChange={onFavoriteStatusChange}
             />
@@ -126,7 +127,6 @@ class App extends React.PureComponent {
               isPlayerActive={isPlayerActive}
               onScreenChange={onScreenChange}
               onActiveFilmChange={onActiveFilmChange}
-              onPlayerStateChange={onPlayerStateChange}
               loadFilmComments={loadFilmComments}
               onFavoriteStatusChange={onFavoriteStatusChange}
             />
@@ -136,6 +136,11 @@ class App extends React.PureComponent {
               authorizationStatus={authorizationStatus}
               onAuthorizationFormSubmit={login}
               onScreenChange={onScreenChange}
+            />
+          </Route>
+          <Route exact path={AppRoute.PLAYER}>
+            <PlayerWrapped
+              film={activeFilm}
             />
           </Route>
           <PrivateRoute
@@ -300,7 +305,6 @@ App.propTypes = {
   onGenreChange: PropTypes.func.isRequired,
   onFilmsCountToShowReset: PropTypes.func.isRequired,
   onFilmsCountToShowIncrement: PropTypes.func,
-  onPlayerStateChange: PropTypes.func.isRequired,
   loadFilmComments: PropTypes.func.isRequired,
   postReview: PropTypes.func.isRequired,
   commentPostStatus: PropTypes.string.isRequired,
@@ -354,9 +358,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onFilmsCountToShowIncrement() {
     dispatch(ActionCreator.incrementFilmsCountToShow());
-  },
-  onPlayerStateChange() {
-    dispatch(ActionCreator.changePlayerState());
   }
 });
 
