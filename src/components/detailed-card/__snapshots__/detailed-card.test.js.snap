@@ -53,7 +53,7 @@ exports[`DetailedFilmCard should render correctly 1`] = `
         >
           <a
             className="user-block__link"
-            href="#"
+            href="/login"
             onClick={[Function]}
           >
             Sign in
@@ -108,6 +108,7 @@ exports[`DetailedFilmCard should render correctly 1`] = `
             </button>
             <button
               className="btn btn--list movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -258,8 +259,9 @@ suspect in her murder.
       <div
         className="catalog__movies-list"
       >
-        <article
+        <a
           className="small-movie-card catalog__movies-card"
+          href="/films/:id"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -285,9 +287,10 @@ suspect in her murder.
               Fantastic Beasts: The Crimes of Grindelwald
             </a>
           </h3>
-        </article>
-        <article
+        </a>
+        <a
           className="small-movie-card catalog__movies-card"
+          href="/films/:id"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -313,9 +316,10 @@ suspect in her murder.
               Bohemian Rhapsody
             </a>
           </h3>
-        </article>
-        <article
+        </a>
+        <a
           className="small-movie-card catalog__movies-card"
+          href="/films/:id"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -341,9 +345,10 @@ suspect in her murder.
               Macbeth
             </a>
           </h3>
-        </article>
-        <article
+        </a>
+        <a
           className="small-movie-card catalog__movies-card"
+          href="/films/:id"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -369,9 +374,10 @@ suspect in her murder.
               Aviator
             </a>
           </h3>
-        </article>
-        <article
+        </a>
+        <a
           className="small-movie-card catalog__movies-card"
+          href="/films/:id"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -397,9 +403,10 @@ suspect in her murder.
               We need to talk about Kevin
             </a>
           </h3>
-        </article>
-        <article
+        </a>
+        <a
           className="small-movie-card catalog__movies-card"
+          href="/films/:id"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -425,9 +432,10 @@ suspect in her murder.
               What We Do in the Shadows
             </a>
           </h3>
-        </article>
-        <article
+        </a>
+        <a
           className="small-movie-card catalog__movies-card"
+          href="/films/:id"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -453,9 +461,10 @@ suspect in her murder.
               Revenant
             </a>
           </h3>
-        </article>
-        <article
+        </a>
+        <a
           className="small-movie-card catalog__movies-card"
+          href="/films/:id"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -481,7 +490,7 @@ suspect in her murder.
               Johnny English
             </a>
           </h3>
-        </article>
+        </a>
       </div>
     </section>
     <footer

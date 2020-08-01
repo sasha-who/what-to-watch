@@ -48,16 +48,21 @@ Array [
       <div
         className="user-block"
       >
-        <div
-          className="user-block__avatar"
+        <a
+          href="/mylist"
+          onClick={[Function]}
         >
-          <img
-            alt="User avatar"
-            height={63}
-            src="https://4.react.pages.academyimg/1.png"
-            width={63}
-          />
-        </div>
+          <div
+            className="user-block__avatar"
+          >
+            <img
+              alt="User avatar"
+              height={63}
+              src="https://4.react.pages.academyimg/1.png"
+              width={63}
+            />
+          </div>
+        </a>
       </div>
     </header>
     <div
@@ -121,6 +126,7 @@ Array [
             </button>
             <button
               className="btn btn--list movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -258,8 +264,9 @@ Array [
       <div
         className="catalog__movies-list"
       >
-        <article
+        <a
           className="small-movie-card catalog__movies-card"
+          href="/films/:id"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -285,9 +292,10 @@ Array [
               Fantastic Beasts: The Crimes of Grindelwald
             </a>
           </h3>
-        </article>
-        <article
+        </a>
+        <a
           className="small-movie-card catalog__movies-card"
+          href="/films/:id"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -313,9 +321,10 @@ Array [
               Bohemian Rhapsody
             </a>
           </h3>
-        </article>
-        <article
+        </a>
+        <a
           className="small-movie-card catalog__movies-card"
+          href="/films/:id"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -341,9 +350,10 @@ Array [
               Macbeth
             </a>
           </h3>
-        </article>
-        <article
+        </a>
+        <a
           className="small-movie-card catalog__movies-card"
+          href="/films/:id"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -369,9 +379,10 @@ Array [
               Aviator
             </a>
           </h3>
-        </article>
-        <article
+        </a>
+        <a
           className="small-movie-card catalog__movies-card"
+          href="/films/:id"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -397,9 +408,10 @@ Array [
               We need to talk about Kevin
             </a>
           </h3>
-        </article>
-        <article
+        </a>
+        <a
           className="small-movie-card catalog__movies-card"
+          href="/films/:id"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -425,9 +437,10 @@ Array [
               What We Do in the Shadows
             </a>
           </h3>
-        </article>
-        <article
+        </a>
+        <a
           className="small-movie-card catalog__movies-card"
+          href="/films/:id"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -453,9 +466,10 @@ Array [
               Revenant
             </a>
           </h3>
-        </article>
-        <article
+        </a>
+        <a
           className="small-movie-card catalog__movies-card"
+          href="/films/:id"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -481,7 +495,7 @@ Array [
               Johnny English
             </a>
           </h3>
-        </article>
+        </a>
       </div>
     </section>
     <footer

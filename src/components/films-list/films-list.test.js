@@ -1,5 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import {Router} from "react-router-dom";
+import history from "../../history.js";
 import {INITIAL_FILMS_COUNT} from "../../const.js";
 import {films} from "../../test-mocks.js";
 import FilmsList from "./films-list.jsx";
@@ -7,15 +9,19 @@ import FilmsList from "./films-list.jsx";
 it(`FilmsList should render correctly with show more button`, () => {
   const tree = renderer
     .create(
-        <FilmsList
-          films={films}
-          filmsCountToShow={INITIAL_FILMS_COUNT}
-          onScreenChange={() => {}}
-          onActiveFilmChange={() => {}}
-          incrementFilmsCountToShow={() => {}}
-          onSimilarFilmsUpdate={() => {}}
-          loadFilmComments={() => {}}
-        />, {
+        <Router
+          history={history}
+        >
+          <FilmsList
+            films={films}
+            filmsCountToShow={INITIAL_FILMS_COUNT}
+            onScreenChange={() => {}}
+            onActiveFilmChange={() => {}}
+            incrementFilmsCountToShow={() => {}}
+            onSimilarFilmsUpdate={() => {}}
+            loadFilmComments={() => {}}
+          />
+        </Router>, {
           createNodeMock: () => {
             return {};
           }
@@ -29,14 +35,18 @@ it(`FilmsList should render correctly with show more button`, () => {
 it(`FilmsList should render correctly without show more button`, () => {
   const tree = renderer
     .create(
-        <FilmsList
-          films={films.slice(0, INITIAL_FILMS_COUNT - 1)}
-          filmsCountToShow={INITIAL_FILMS_COUNT}
-          onScreenChange={() => {}}
-          onActiveFilmChange={() => {}}
-          onFilmsCountToShowIncrement={() => {}}
-          loadFilmComments={() => {}}
-        />, {
+        <Router
+          history={history}
+        >
+          <FilmsList
+            films={films.slice(0, INITIAL_FILMS_COUNT - 1)}
+            filmsCountToShow={INITIAL_FILMS_COUNT}
+            onScreenChange={() => {}}
+            onActiveFilmChange={() => {}}
+            onFilmsCountToShowIncrement={() => {}}
+            loadFilmComments={() => {}}
+          />
+        </Router>, {
           createNodeMock: () => {
             return {};
           }
