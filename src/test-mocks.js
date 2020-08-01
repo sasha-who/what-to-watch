@@ -103,3 +103,13 @@ export const userData = {
   name: `Tommy`,
   avatarUrl: `img/1.png`
 };
+
+export const LoginData = {
+  email: `Tommy@gmail.com`,
+  password: `TommyPB`,
+};
+
+export const ReviewToPost = {
+  rating: 8,
+  comment: `Great!`
+};
