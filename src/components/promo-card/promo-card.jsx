@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {InListIcon, AddToListIcon} from "../../const.js";
 
-const PromoCard = ({promoFilm, onPlayerStateChange}) => {
-  const {title, genre, release} = promoFilm;
+const PromoCard = ({promoFilm, onPlayerStateChange, changeFavoriteStatus}) => {
+  const {id, title, genre, release, isFavorite} = promoFilm;
+  const myListIcon = isFavorite ? InListIcon : AddToListIcon;
 
   return (
     <React.Fragment>
@@ -33,9 +35,21 @@ const PromoCard = ({promoFilm, onPlayerStateChange}) => {
                 </svg>
                 <span>Play</span>
               </button>
-              <button className="btn btn--list movie-card__button" type="button">
-                <svg viewBox="0 0 19 20" width={19} height={20}>
-                  <use xlinkHref="#add" />
+              <button
+                className="btn btn--list movie-card__button"
+                type="button"
+                onClick={() => {
+                  const status = isFavorite ? 0 : 1;
+
+                  changeFavoriteStatus(id, status, true);
+                }}
+              >
+                <svg
+                  viewBox={`0 0 ${myListIcon.WIDTH} ${myListIcon.HEIGHT}`}
+                  width={myListIcon.WIDTH}
+                  height={myListIcon.HEIGHT}
+                >
+                  <use xlinkHref={`#${myListIcon.ID}`} />
                 </svg>
                 <span>My list</span>
               </button>
@@ -67,7 +81,8 @@ PromoCard.propTypes = {
     videoLink: PropTypes.string.isRequired,
     isFavorite: PropTypes.bool.isRequired
   }),
-  onPlayerStateChange: PropTypes.func.isRequired
+  onPlayerStateChange: PropTypes.func.isRequired,
+  changeFavoriteStatus: PropTypes.func.isRequired
 };
 
 export default PromoCard;

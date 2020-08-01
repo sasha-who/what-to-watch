@@ -25,7 +25,8 @@ const Main = (props) => {
     onFilmsCountToShowReset,
     onFilmsCountToShowIncrement,
     onPlayerStateChange,
-    loadFilmComments
+    loadFilmComments,
+    changeFavoriteStatus
   } = props;
 
   if (isPlayerActive) {
@@ -55,6 +56,7 @@ const Main = (props) => {
         <PromoCard
           promoFilm={promoFilm}
           onPlayerStateChange={onPlayerStateChange}
+          changeFavoriteStatus={changeFavoriteStatus}
         />
       </section>
       <div className="page-content">
@@ -154,7 +156,8 @@ Main.propTypes = {
   onFilmsCountToShowReset: PropTypes.func.isRequired,
   onFilmsCountToShowIncrement: PropTypes.func,
   onPlayerStateChange: PropTypes.func.isRequired,
-  loadFilmComments: PropTypes.func.isRequired
+  loadFilmComments: PropTypes.func.isRequired,
+  changeFavoriteStatus: PropTypes.func.isRequired
 };
 
 export default Main;

@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {Switch, Route, Router} from "react-router-dom";
 import {connect} from "react-redux";
 import Loader from "react-loader-spinner";
+import history from "../../history.js";
 import {LoaderData, HttpStatus, AppRoute} from "../../const.js";
 import {ActionCreator} from "../../reducer/app-state/app-state.js";
 import {Operation as DataOperation} from "../../reducer/data/data.js";
@@ -68,7 +69,8 @@ class App extends React.PureComponent {
       onFilmsCountToShowIncrement,
       login,
       loadFilmComments,
-      postReview
+      postReview,
+      changeFavoriteStatus
     } = this.props;
 
     if (!isFilmsLoaded || !isPromoFilmLoaded) {
@@ -89,7 +91,9 @@ class App extends React.PureComponent {
     }
 
     return (
-      <BrowserRouter>
+      <Router
+        history={history}
+      >
         <Switch>
           <Route exact path={AppRoute.ROOT}>
             <Main
@@ -108,6 +112,7 @@ class App extends React.PureComponent {
               onFilmsCountToShowIncrement={onFilmsCountToShowIncrement}
               onPlayerStateChange={onPlayerStateChange}
               loadFilmComments={loadFilmComments}
+              changeFavoriteStatus={changeFavoriteStatus}
             />
           </Route>
           <Route exact path={AppRoute.FILM}>
@@ -123,6 +128,7 @@ class App extends React.PureComponent {
               onActiveFilmChange={onActiveFilmChange}
               onPlayerStateChange={onPlayerStateChange}
               loadFilmComments={loadFilmComments}
+              changeFavoriteStatus={changeFavoriteStatus}
             />
           </Route>
           <Route exact path={AppRoute.LOGIN}>
@@ -157,7 +163,7 @@ class App extends React.PureComponent {
             }}
           />
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
@@ -297,7 +303,8 @@ App.propTypes = {
   onPlayerStateChange: PropTypes.func.isRequired,
   loadFilmComments: PropTypes.func.isRequired,
   postReview: PropTypes.func.isRequired,
-  commentPostStatus: PropTypes.string.isRequired
+  commentPostStatus: PropTypes.string.isRequired,
+  changeFavoriteStatus: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -329,6 +336,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   postReview(review, filmId) {
     dispatch(UserOperation.postReview(review, filmId));
+  },
+  changeFavoriteStatus(filmId, status, isPromoFilm) {
+    dispatch(DataOperation.changeFavoriteStatus(filmId, status, isPromoFilm));
   },
   onScreenChange(screen) {
     dispatch(ActionCreator.changeActiveScreen(screen));

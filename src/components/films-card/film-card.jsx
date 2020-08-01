@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Screen} from "../../const.js";
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../const.js";
 import VideoPlayer from "../video-player/video-player.jsx";
 
 const FilmCard = (props) => {
   const {
     film,
     isPlaying,
-    onScreenChange,
     onActiveFilmChange,
     onStartPlaying,
     onStopPlaying,
@@ -18,8 +18,9 @@ const FilmCard = (props) => {
   const {title, previewImage, previewVideo} = film;
 
   return (
-    <article
+    <Link
       className="small-movie-card catalog__movies-card"
+      to={AppRoute.FILM}
       onMouseEnter={() => {
         onHoverChange();
         onStartPlaying();
@@ -29,7 +30,6 @@ const FilmCard = (props) => {
         onStopPlaying();
       }}
       onClick={() => {
-        onScreenChange(Screen.CARD);
         onActiveFilmChange(film);
         loadFilmComments(film.id);
       }}
@@ -47,7 +47,7 @@ const FilmCard = (props) => {
           href="movie-page.html"
         >{title}</a>
       </h3>
-    </article>
+    </Link>
   );
 };
 
@@ -71,7 +71,6 @@ FilmCard.propTypes = {
     isFavorite: PropTypes.bool.isRequired
   }).isRequired,
   isPlaying: PropTypes.bool.isRequired,
-  onScreenChange: PropTypes.func.isRequired,
   onActiveFilmChange: PropTypes.func.isRequired,
   onStartPlaying: PropTypes.func.isRequired,
   onStopPlaying: PropTypes.func.isRequired,
