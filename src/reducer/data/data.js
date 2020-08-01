@@ -1,6 +1,9 @@
-import {HttpStatus} from "../../const.js";
+import history from "../../history.js";
+import {HttpStatus, AppRoute} from "../../const.js";
 import {extend} from "../../utils/common.js";
+import {getFilms} from "./selectors.js";
 import {adaptFilmFromServer, adaptFilmsFromServer} from "../../adapters/films.js";
+import {ActionCreator as AppStateActionCreator} from "../app-state/app-state.js";
 import {adaptCommentsFromServer} from "../../adapters/comments.js";
 
 const initialState = {
@@ -20,7 +23,9 @@ const ActionType = {
   CHANGE_FILMS_LOAD_STATE: `CHANGE_FILMS_LOAD_STATE`,
   CHANGE_PROMO_FILM_LOAD_STATE: `CHANGE_PROMO_FILM_LOAD_STATE`,
   CHANGE_COMMENTS_LOAD_STATE: `CHANGE_COMMENTS_LOAD_STATE`,
-  SET_REQUEST_STATUS: `SET_REQUEST_STATUS`
+  SET_REQUEST_STATUS: `SET_REQUEST_STATUS`,
+  UPDATE_PROMO_FILM: `UPDATE_PROMO_FILM`,
+  UPDATE_FILMS: `UPDATE_FILMS`
 };
 
 const ActionCreator = {
@@ -62,6 +67,18 @@ const ActionCreator = {
       type: ActionType.SET_REQUEST_STATUS,
       payload: status
     };
+  },
+  updatePromoFilm: (film) => {
+    return {
+      type: ActionType.UPDATE_PROMO_FILM,
+      payload: film
+    };
+  },
+  updateFilms: (films) => {
+    return {
+      type: ActionType.UPDATE_FILMS,
+      payload: films
+    };
   }
 };
 
@@ -99,6 +116,28 @@ const Operation = {
 
         dispatch(ActionCreator.loadActiveFilmComments(adaptedComments));
         dispatch(ActionCreator.changeCommentsLoadState());
+      });
+  },
+  changeFavoriteStatus: (filmId, status, isPromoFilm) => (dispatch, getState, api) => {
+    return api.post(`/favorite/${filmId}/${status}`)
+      .then((response) => {
+        const adaptedFilm = adaptFilmFromServer(response.data);
+
+        if (isPromoFilm) {
+          dispatch(ActionCreator.updatePromoFilm(adaptedFilm));
+        }
+
+        const films = getFilms(getState());
+        const updatedFilmIndex = films.findIndex((film) => film.id === filmId);
+
+        films[updatedFilmIndex] = adaptedFilm;
+        dispatch(ActionCreator.updateFilms(films));
+        dispatch(AppStateActionCreator.setActiveFilm(adaptedFilm));
+      })
+      .catch((error) => {
+        if (error.response.status === HttpStatus.UNAUTHORIZED) {
+          history.push(AppRoute.LOGIN);
+        }
       });
   }
 };
@@ -138,6 +177,16 @@ const reducer = (state = initialState, action) => {
     case ActionType.SET_REQUEST_STATUS:
       return extend(state, {
         requestStatus: action.payload
+      });
+
+    case ActionType.UPDATE_PROMO_FILM:
+      return extend(state, {
+        promoFilm: action.payload
+      });
+
+    case ActionType.UPDATE_FILMS:
+      return extend(state, {
+        films: action.payload
       });
   }
 
