@@ -63,6 +63,7 @@ it(`Main screen should render correctly`, () => {
             loadFilmComments={() => {}}
             postReview={() => {}}
             commentPostStatus={CommentPostStatus.OK}
+            onFavoriteStatusChange={() => {}}
           />
         </Provider>, {
           createNodeMock: () => {
@@ -106,6 +107,7 @@ it(`Card screen should render correctly`, () => {
             loadFilmComments={() => {}}
             postReview={() => {}}
             commentPostStatus={CommentPostStatus.OK}
+            onFavoriteStatusChange={() => {}}
           />
         </Provider>, {
           createNodeMock: () => {

@@ -32,7 +32,7 @@ const DetailedFilmCard = (props) => {
     onActiveFilmChange,
     onPlayerStateChange,
     loadFilmComments,
-    changeFavoriteStatus
+    onFavoriteStatusChange
   } = props;
 
   const {
@@ -109,7 +109,7 @@ const DetailedFilmCard = (props) => {
                   onClick={() => {
                     const status = isFavorite ? 0 : 1;
 
-                    changeFavoriteStatus(id, status, false);
+                    onFavoriteStatusChange(id, status, false);
                   }}
                 >
                   <svg
@@ -233,7 +233,7 @@ DetailedFilmCard.propTypes = {
   onActiveFilmChange: PropTypes.func.isRequired,
   onPlayerStateChange: PropTypes.func.isRequired,
   loadFilmComments: PropTypes.func.isRequired,
-  changeFavoriteStatus: PropTypes.func.isRequired
+  onFavoriteStatusChange: PropTypes.func.isRequired
 };
 
 export default DetailedFilmCard;
