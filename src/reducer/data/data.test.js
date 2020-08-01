@@ -2,6 +2,7 @@ import MockAdapter from "axios-mock-adapter";
 import {HttpStatus} from "../../const.js";
 import {createAPI} from "../../api.js";
 import {reducer, ActionType, ActionCreator, Operation} from "./data.js";
+// import {ActionType as AppStateActionType} from "../app-state/app-state.js";
 import {films, comments} from "../../test-mocks.js";
 
 const api = createAPI(() => {});
@@ -110,7 +111,7 @@ it(`Reducer should change films load state after loading`, () => {
   });
 });
 
-it(`Reducer should change promo films load state after loading`, () => {
+it(`Reducer should change promo film load state after loading`, () => {
   expect(reducer({
     films: [],
     promoFilm: null,
@@ -177,6 +178,52 @@ it(`Reducer should set response status after request`, () => {
   });
 });
 
+it(`Reducer should update films`, () => {
+  expect(reducer({
+    films: [],
+    promoFilm: null,
+    activeFilmComments: {},
+    isFilmsLoaded: false,
+    isPromoFilmLoaded: false,
+    isCommentsLoaded: false,
+    requestStatus: HttpStatus.SUCCESS
+  }, {
+    type: ActionType.UPDATE_FILMS,
+    payload: films
+  })).toEqual({
+    films,
+    promoFilm: null,
+    activeFilmComments: {},
+    isFilmsLoaded: false,
+    isPromoFilmLoaded: false,
+    isCommentsLoaded: false,
+    requestStatus: HttpStatus.SUCCESS
+  });
+});
+
+it(`Reducer should update promo film`, () => {
+  expect(reducer({
+    films: [],
+    promoFilm: null,
+    activeFilmComments: {},
+    isFilmsLoaded: false,
+    isPromoFilmLoaded: false,
+    isCommentsLoaded: false,
+    requestStatus: HttpStatus.SUCCESS
+  }, {
+    type: ActionType.UPDATE_PROMO_FILM,
+    payload: film
+  })).toEqual({
+    films: [],
+    promoFilm: film,
+    activeFilmComments: {},
+    isFilmsLoaded: false,
+    isPromoFilmLoaded: false,
+    isCommentsLoaded: false,
+    requestStatus: HttpStatus.SUCCESS
+  });
+});
+
 describe(`Action creators work correctly`, () => {
   it(`Action creator for loading films returns correct action`, () => {
     expect(ActionCreator.loadFilms(films)).toEqual({
@@ -221,6 +268,20 @@ describe(`Action creators work correctly`, () => {
     expect(ActionCreator.setRequestStatus(status)).toEqual({
       type: ActionType.SET_REQUEST_STATUS,
       payload: status
+    });
+  });
+
+  it(`Action creator for updating films returns correct action`, () => {
+    expect(ActionCreator.updateFilms(films)).toEqual({
+      type: ActionType.UPDATE_FILMS,
+      payload: films
+    });
+  });
+
+  it(`Action creator for updating promo film returns correct action`, () => {
+    expect(ActionCreator.updatePromoFilm(film)).toEqual({
+      type: ActionType.UPDATE_PROMO_FILM,
+      payload: film
     });
   });
 });
@@ -291,4 +352,58 @@ describe(`Operation work correctly`, () => {
         });
       });
   });
+
+  // it(`Operation should make a correct API call to /favorite/:film_id/0 with promo film`,
+  //     function () {
+  //       const apiMock = new MockAdapter(api);
+  //       const dispatch = jest.fn();
+  //       const favoriteStatusToogle = Operation.changeFavoriteStatus(films[0].id, 0, true);
+
+  //       apiMock
+  //         .onPost(`/favorite/0/0`)
+  //         .reply(200, {});
+
+  //       return favoriteStatusToogle(dispatch, () => {}, api)
+  //         .then(() => {
+  //           expect(dispatch).toHaveBeenCalledTimes(3);
+  //           expect(dispatch).toHaveBeenNthCalledWith(1, {
+  //             type: ActionType.UPDATE_PROMO_FILM,
+  //             payload: {}
+  //           });
+  //           expect(dispatch).toHaveBeenNthCalledWith(2, {
+  //             type: ActionType.UPDATE_FILMS,
+  //             payload: []
+  //           });
+  //           expect(dispatch).toHaveBeenNthCalledWith(3, {
+  //             type: AppStateActionType.SET_ACTIVE_FILM,
+  //             payload: {}
+  //           });
+  //         });
+  //     }
+  // );
+
+  // it(`Operation should make a correct API call to /favorite/:film_id/0 with ordinary film`,
+  //     function () {
+  //       const apiMock = new MockAdapter(api);
+  //       const dispatch = jest.fn();
+  //       const favoriteStatusToogle = Operation.changeFavoriteStatus(films[0].id, 0, true);
+
+  //       apiMock
+  //         .onPost(`/favorite/0/0`)
+  //         .reply(200, {});
+
+  //       return favoriteStatusToogle(dispatch, () => {}, api)
+  //         .then(() => {
+  //           expect(dispatch).toHaveBeenCalledTimes(2);
+  //           expect(dispatch).toHaveBeenNthCalledWith(1, {
+  //             type: ActionType.UPDATE_FILMS,
+  //             payload: []
+  //           });
+  //           expect(dispatch).toHaveBeenNthCalledWith(2, {
+  //             type: AppStateActionType.SET_ACTIVE_FILM,
+  //             payload: {}
+  //           });
+  //         });
+  //     }
+  // );
 });

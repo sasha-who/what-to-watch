@@ -1,6 +1,10 @@
+import MockAdapter from "axios-mock-adapter";
+import {createAPI} from "../../api.js";
 import {AuthorizationStatus, CommentPostStatus} from "../../const.js";
-import {reducer, ActionCreator, ActionType} from "./user.js";
-import {userData} from "../../test-mocks.js";
+import {reducer, ActionCreator, ActionType, Operation} from "./user.js";
+import {films, UserData, LoginData, ReviewToPost} from "../../test-mocks.js";
+
+const api = createAPI(() => {});
 
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
@@ -71,10 +75,10 @@ it(`Reducer should set authorizationData by a given value`, () => {
     commentPostStatus: CommentPostStatus.PENDING
   }, {
     type: ActionType.GET_USER_DATA,
-    payload: userData
+    payload: UserData
   })).toEqual({
     authorizationStatus: AuthorizationStatus.AUTHORIZED,
-    authorizationData: userData,
+    authorizationData: UserData,
     commentPostStatus: CommentPostStatus.PENDING
   });
 });
@@ -134,9 +138,9 @@ describe(`Action creators work correctly`, () => {
   });
 
   it(`Action creator for getting user data returns correct action`, () => {
-    expect(ActionCreator.getUserData(userData)).toEqual({
+    expect(ActionCreator.getUserData(UserData)).toEqual({
       type: ActionType.GET_USER_DATA,
-      payload: userData
+      payload: UserData
     });
   });
 
@@ -155,5 +159,72 @@ describe(`Action creators work correctly`, () => {
       type: ActionType.CHANGE_COMMENT_POST_STATUS,
       payload: CommentPostStatus.ERROR
     });
+  });
+});
+
+describe(`Operation work correctly`, () => {
+  it(`Operation should make a correct API call to /login (GET)`, function () {
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const loginCheck = Operation.checkAuthorization();
+
+    apiMock
+      .onGet(`/login`)
+      .reply(200, {});
+
+    return loginCheck(dispatch, () => {}, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.REQUIRED_AUTHORIZATION,
+          payload: AuthorizationStatus.AUTHORIZED
+        });
+      });
+  });
+
+  it(`Operation should make a correct API call to /login (POST)`, function () {
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const login = Operation.login(LoginData);
+
+    apiMock
+      .onPost(`/login`)
+      .reply(200, {});
+
+    return login(dispatch, () => {}, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.GET_USER_DATA,
+          payload: {}
+        });
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
+          type: ActionType.REQUIRED_AUTHORIZATION,
+          payload: AuthorizationStatus.AUTHORIZED
+        });
+      });
+  });
+
+  it(`Operation should make a correct API call to /comments/:film_id`, function () {
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const postReview = Operation.postReview(ReviewToPost, films[0].id);
+
+    apiMock
+      .onPost(`/comments/0`)
+      .reply(200, {});
+
+    return postReview(dispatch, () => {}, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.CHANGE_COMMENT_POST_STATUS,
+          payload: CommentPostStatus.POSTING
+        });
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
+          type: ActionType.CHANGE_COMMENT_POST_STATUS,
+          payload: CommentPostStatus.OK
+        });
+      });
   });
 });
