@@ -38,18 +38,6 @@ class DetailedFilmCard extends React.PureComponent {
       onFavoriteStatusChange
     } = this.props;
 
-    const film = getFilmFromParameters(films, this.props.match.params.id);
-
-    const {
-      id,
-      title,
-      cover,
-      poster,
-      genre,
-      release,
-      isFavorite
-    } = film;
-
     if (!isCommentsLoaded) {
       return (
         <div style={LoaderData.STYLE}>
@@ -63,7 +51,20 @@ class DetailedFilmCard extends React.PureComponent {
       );
     }
 
+    const film = getFilmFromParameters(films, this.props.match.params.id);
+
+    const {
+      id,
+      title,
+      cover,
+      poster,
+      genre,
+      release,
+      isFavorite
+    } = film;
+
     const myListIcon = isFavorite ? InListIcon : AddToListIcon;
+    const isSimilarFilmsExist = similarFilms.length > 0;
 
     return (
       <div>
@@ -146,14 +147,16 @@ class DetailedFilmCard extends React.PureComponent {
           </div>
         </section>
         <div className="page-content">
-          <section className="catalog catalog--like-this">
-            <h2 className="catalog__title">More like this</h2>
-            <FilmsList
-              films={similarFilms}
-              onActiveFilmChange={onActiveFilmChange}
-              loadFilmComments={loadFilmComments}
-            />
-          </section>
+          {isSimilarFilmsExist &&
+            <section className="catalog catalog--like-this">
+              <h2 className="catalog__title">More like this</h2>
+              <FilmsList
+                films={similarFilms}
+                onActiveFilmChange={onActiveFilmChange}
+                loadFilmComments={loadFilmComments}
+              />
+            </section>
+          }
           <Footer />
         </div>
       </div>
