@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Redirect, Link} from "react-router-dom";
-import {AppRoute, AuthorizationStatus} from "../../const.js";
+import {AppRoute, AuthorizationStatus, LoginErrorMessage} from "../../const.js";
 import Footer from "../footer/footer.jsx";
 
 class AuthorizationScreen extends React.PureComponent {
@@ -26,7 +26,12 @@ class AuthorizationScreen extends React.PureComponent {
   }
 
   render() {
-    const {isInputValid, onInputValidityChange, authorizationStatus} = this.props;
+    const {
+      isInputValid,
+      onInputValidityChange,
+      authorizationStatus,
+      loginError
+    } = this.props;
 
     if (authorizationStatus === AuthorizationStatus.AUTHORIZED) {
       return <Redirect to={AppRoute.ROOT} />;
@@ -53,9 +58,14 @@ class AuthorizationScreen extends React.PureComponent {
             className="sign-in__form"
             onSubmit={this.handleFormSubmit}
           >
-            {!isInputValid && <div className="sign-in__message">
-              <p>Please enter a valid email address</p>
-            </div>}
+            <div className="sign-in__message">
+              {!isInputValid &&
+                <p>{LoginErrorMessage.INVALID}</p>
+              }
+              {loginError !== null &&
+                <p>{`${LoginErrorMessage.SERVER_ERROR} ${loginError}`}</p>
+              }
+            </div>
             <div className="sign-in__fields">
               <div className="sign-in__field">
                 <input
@@ -108,7 +118,8 @@ AuthorizationScreen.propTypes = {
   isInputValid: PropTypes.bool.isRequired,
   onAuthorizationFormSubmit: PropTypes.func.isRequired,
   onInputValidityChange: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired
+  authorizationStatus: PropTypes.string.isRequired,
+  loginError: PropTypes.number
 };
 
 export default AuthorizationScreen;

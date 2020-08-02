@@ -4,13 +4,15 @@ import {adaptUserDataFromServer} from "../../adapters/user-data.js";
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTHORIZED,
   authorizationData: {},
-  commentPostStatus: CommentPostStatus.PENDING
+  commentPostStatus: CommentPostStatus.PENDING,
+  loginError: null
 };
 
 const ActionType = {
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
   GET_USER_DATA: `GET_USER_DATA`,
-  CHANGE_COMMENT_POST_STATUS: `CHANGE_COMMENT_POST_STATUS`
+  CHANGE_COMMENT_POST_STATUS: `CHANGE_COMMENT_POST_STATUS`,
+  SET_LOGIN_ERROR: `SET_LOGIN_ERROR`
 };
 
 const ActionCreator = {
@@ -31,6 +33,12 @@ const ActionCreator = {
       type: ActionType.CHANGE_COMMENT_POST_STATUS,
       payload: status
     };
+  },
+  setLoginError: (error) => {
+    return {
+      type: ActionType.SET_LOGIN_ERROR,
+      payload: error
+    };
   }
 };
 
@@ -50,6 +58,11 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         commentPostStatus: action.payload
       });
+
+    case ActionType.SET_LOGIN_ERROR:
+      return Object.assign({}, state, {
+        loginError: action.payload
+      });
   }
 
   return state;
@@ -64,8 +77,8 @@ const Operation = {
         dispatch(ActionCreator.getUserData(adaptedData));
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTHORIZED));
       })
-      .catch((err) => {
-        throw err;
+      .catch((error) => {
+        throw error;
       });
   },
   login: (authorizationData) => (dispatch, getState, api) => {
@@ -78,6 +91,9 @@ const Operation = {
 
         dispatch(ActionCreator.getUserData(adaptedData));
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTHORIZED));
+      })
+      .catch((error) => {
+        dispatch(ActionCreator.setLoginError(error.response.status));
       });
   },
   postReview: (review, filmId) => (dispatch, getState, api) => {

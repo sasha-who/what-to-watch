@@ -26,7 +26,8 @@ const store = mockStore({
   isCommentsLoaded: false,
   isFilmsLoaded: false,
   isPromoFilmLoaded: false,
-  commentPostStatus: CommentPostStatus.OK
+  commentPostStatus: CommentPostStatus.OK,
+  loginError: null
 });
 
 it(`Main screen should render correctly`, () => {
@@ -60,6 +61,7 @@ it(`Main screen should render correctly`, () => {
             favoriteFilms={films}
             isFavoriteFilmsLoaded={true}
             loadFavoriteFilms={() => {}}
+            loginError={HttpStatus.NOT_FOUND}
           />
         </Provider>, {
           createNodeMock: () => {
@@ -103,6 +105,7 @@ it(`Card screen should render correctly`, () => {
             favoriteFilms={films}
             isFavoriteFilmsLoaded={true}
             loadFavoriteFilms={() => {}}
+            loginError={HttpStatus.NOT_FOUND}
           />
         </Provider>, {
           createNodeMock: () => {

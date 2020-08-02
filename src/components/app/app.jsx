@@ -29,7 +29,8 @@ import {
 import {
   getAuthorizationStatus,
   getAuthorizationData,
-  getCommentPostStatus
+  getCommentPostStatus,
+  getLoginError
 } from "../../reducer/user/selectors.js";
 import PrivateRoute from "../private-route/private-route.jsx";
 import Main from "../main/main.jsx";
@@ -72,7 +73,8 @@ class App extends React.PureComponent {
       onFavoriteStatusChange,
       favoriteFilms,
       isFavoriteFilmsLoaded,
-      loadFavoriteFilms
+      loadFavoriteFilms,
+      loginError
     } = this.props;
 
     if (!isFilmsLoaded || !isPromoFilmLoaded) {
@@ -133,6 +135,7 @@ class App extends React.PureComponent {
             <AuthorizationScreenWrapped
               authorizationStatus={authorizationStatus}
               onAuthorizationFormSubmit={login}
+              loginError={loginError}
             />
           </Route>
           <Route
@@ -345,7 +348,8 @@ App.propTypes = {
   commentPostStatus: PropTypes.string.isRequired,
   onFavoriteStatusChange: PropTypes.func.isRequired,
   loadFavoriteFilms: PropTypes.func.isRequired,
-  isFavoriteFilmsLoaded: PropTypes.bool.isRequired
+  isFavoriteFilmsLoaded: PropTypes.bool.isRequired,
+  loginError: PropTypes.number
 };
 
 const mapStateToProps = (state) => ({
@@ -365,7 +369,8 @@ const mapStateToProps = (state) => ({
   requestStatus: getRequestStatus(state),
   commentPostStatus: getCommentPostStatus(state),
   favoriteFilms: getFavoriteFilms(state),
-  isFavoriteFilmsLoaded: getFavoriteFilmsLoadState(state)
+  isFavoriteFilmsLoaded: getFavoriteFilmsLoadState(state),
+  loginError: getLoginError(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
