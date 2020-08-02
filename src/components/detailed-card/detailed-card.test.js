@@ -21,7 +21,6 @@ it(`DetailedFilmCard should render correctly`, () => {
             similarFilms={films}
             activeFilmComments={comments}
             isPlayerActive={false}
-            onScreenChange={() => {}}
             onActiveFilmChange={() => {}}
             loadFilmComments={() => {}}
             onFavoriteStatusChange={() => {}}

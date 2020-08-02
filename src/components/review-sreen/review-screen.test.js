@@ -17,7 +17,6 @@ it(`ReviewScreen should render correctly`, () => {
             films={films}
             authorizationStatus={AuthorizationStatus.AUTHORIZED}
             authorizationData={userData}
-            onScreenChange={() => {}}
             postReview={() => {}}
             commentPostStatus={CommentPostStatus.OK}
           />

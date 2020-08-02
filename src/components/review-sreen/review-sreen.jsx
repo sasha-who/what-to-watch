@@ -9,7 +9,6 @@ const ReviewScreen = (props) => {
     films,
     authorizationData,
     authorizationStatus,
-    onScreenChange,
     postReview,
     commentPostStatus
   } = props;
@@ -31,7 +30,6 @@ const ReviewScreen = (props) => {
         <Header
           authorizationData={authorizationData}
           authorizationStatus={authorizationStatus}
-          onScreenChange={onScreenChange}
         >
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
@@ -92,7 +90,6 @@ ReviewScreen.propTypes = {
     name: PropTypes.string,
     avatarUrl: PropTypes.string
   }),
-  onScreenChange: PropTypes.func.isRequired,
   postReview: PropTypes.func.isRequired,
   commentPostStatus: PropTypes.string.isRequired,
   match: PropTypes.object.isRequired

@@ -14,7 +14,6 @@ const Main = (props) => {
     currentGenre,
     filteredFilms,
     filmsCountToShow,
-    onScreenChange,
     onActiveFilmChange,
     onGenreChange,
     onFilmsCountToShowReset,
@@ -37,7 +36,6 @@ const Main = (props) => {
           additionalClass={`movie-card__head`}
           authorizationData={authorizationData}
           authorizationStatus={authorizationStatus}
-          onScreenChange={onScreenChange}
         />
         <PromoCard
           promoFilm={promoFilm}
@@ -51,7 +49,6 @@ const Main = (props) => {
           currentGenre={currentGenre}
           filteredFilms={filteredFilms}
           filmsCountToShow={filmsCountToShow}
-          onScreenChange={onScreenChange}
           onActiveFilmChange={onActiveFilmChange}
           onGenreChange={onGenreChange}
           onFilmsCountToShowReset={onFilmsCountToShowReset}
@@ -135,7 +132,6 @@ Main.propTypes = {
   ).isRequired,
   currentGenre: PropTypes.string.isRequired,
   filmsCountToShow: PropTypes.number,
-  onScreenChange: PropTypes.func.isRequired,
   onActiveFilmChange: PropTypes.func.isRequired,
   onGenreChange: PropTypes.func.isRequired,
   onFilmsCountToShowReset: PropTypes.func.isRequired,

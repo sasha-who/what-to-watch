@@ -15,7 +15,6 @@ it(`Header should render correctly`, () => {
           <Header
             authorizationStatus={AuthorizationStatus.AUTHORIZED}
             authorizationData={userData}
-            onScreenChange={() => {}}
           />
         </Router>
     )

@@ -20,7 +20,6 @@ import {
   getFavoriteFilmsLoadState
 } from "../../reducer/data/selectors.js";
 import {
-  getActiveScreen,
   getCurrentGenre,
   getFilmsCountToShow,
   getPlayerState,
@@ -65,7 +64,6 @@ class App extends React.PureComponent {
       isPromoFilmLoaded,
       requestStatus,
       commentPostStatus,
-      onScreenChange,
       onActiveFilmChange,
       onGenreChange,
       onFilmsCountToShowReset,
@@ -111,7 +109,6 @@ class App extends React.PureComponent {
               filteredFilms={filteredFilms}
               filmsCountToShow={filmsCountToShow}
               isPlayerActive={isPlayerActive}
-              onScreenChange={onScreenChange}
               onActiveFilmChange={onActiveFilmChange}
               onGenreChange={onGenreChange}
               onFilmsCountToShowReset={onFilmsCountToShowReset}
@@ -131,7 +128,6 @@ class App extends React.PureComponent {
                 similarFilms={similarFilms}
                 activeFilmComments={activeFilmComments}
                 isPlayerActive={isPlayerActive}
-                onScreenChange={onScreenChange}
                 onActiveFilmChange={onActiveFilmChange}
                 loadFilmComments={loadFilmComments}
                 onFavoriteStatusChange={onFavoriteStatusChange}
@@ -142,7 +138,6 @@ class App extends React.PureComponent {
             <AuthorizationScreenWrapped
               authorizationStatus={authorizationStatus}
               onAuthorizationFormSubmit={login}
-              onScreenChange={onScreenChange}
             />
           </Route>
           <Route
@@ -164,7 +159,6 @@ class App extends React.PureComponent {
                 films={films}
                 authorizationData={authorizationData}
                 authorizationStatus={authorizationStatus}
-                onScreenChange={onScreenChange}
                 postReview={postReview}
                 commentPostStatus={commentPostStatus}
               />
@@ -261,7 +255,6 @@ App.propTypes = {
         isFavorite: PropTypes.bool.isRequired
       })
   ).isRequired,
-  activeScreen: PropTypes.string.isRequired,
   activeFilm: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
@@ -339,7 +332,6 @@ App.propTypes = {
   isPromoFilmLoaded: PropTypes.bool.isRequired,
   isCommentsLoaded: PropTypes.bool.isRequired,
   requestStatus: PropTypes.number.isRequired,
-  onScreenChange: PropTypes.func.isRequired,
   onActiveFilmChange: PropTypes.func.isRequired,
   onGenreChange: PropTypes.func.isRequired,
   onFilmsCountToShowReset: PropTypes.func.isRequired,
@@ -355,7 +347,6 @@ App.propTypes = {
 const mapStateToProps = (state) => ({
   authorizationStatus: getAuthorizationStatus(state),
   authorizationData: getAuthorizationData(state),
-  activeScreen: getActiveScreen(state),
   activeFilm: getActiveFilm(state),
   currentGenre: getCurrentGenre(state),
   films: getFilms(state),
@@ -389,9 +380,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onFavoriteStatusChange(filmId, status, isPromoFilm) {
     dispatch(DataOperation.changeFavoriteStatus(filmId, status, isPromoFilm));
-  },
-  onScreenChange(screen) {
-    dispatch(ActionCreator.changeActiveScreen(screen));
   },
   onActiveFilmChange(film) {
     dispatch(ActionCreator.setActiveFilm(film));

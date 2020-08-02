@@ -16,7 +16,6 @@ it(`FilmCard should render correctly`, () => {
           <FilmCard
             film={film}
             isPlaying={false}
-            onScreenChange={() => {}}
             onStartPlaying={() => {}}
             onStopPlaying={() => {}}
             onHoverChange={() => {}}

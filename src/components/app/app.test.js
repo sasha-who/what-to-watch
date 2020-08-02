@@ -18,7 +18,6 @@ const store = mockStore({
   authorizationStatus: AuthorizationStatus.AUTHORIZED,
   authorizationData: userData,
   requestStatus: HttpStatus.SUCCESS,
-  activeScreen: Screen.MAIN,
   activeFilm: films[0],
   activeFilmComments: comments,
   currentGenre: GENRES[0],
@@ -37,7 +36,6 @@ it(`Main screen should render correctly`, () => {
     .create(
         <Provider store={store}>
           <App
-            activeScreen={Screen.MAIN}
             activeFilm={films[0]}
             promoFilm={films[0]}
             films={films}
@@ -53,7 +51,6 @@ it(`Main screen should render correctly`, () => {
             requestStatus={HttpStatus.SUCCESS}
             authorizationStatus={AuthorizationStatus.AUTHORIZED}
             authorizationData={userData}
-            onScreenChange={() => {}}
             onActiveFilmChange={() => {}}
             onGenreChange={() => {}}
             onFilmsCountToShowReset={() => {}}
@@ -83,7 +80,6 @@ it(`Card screen should render correctly`, () => {
     .create(
         <Provider store={store}>
           <App
-            activeScreen={Screen.CARD}
             activeFilm={films[0]}
             promoFilm={films[0]}
             films={films}
@@ -99,7 +95,6 @@ it(`Card screen should render correctly`, () => {
             requestStatus={HttpStatus.SUCCESS}
             authorizationStatus={AuthorizationStatus.AUTHORIZED}
             authorizationData={userData}
-            onScreenChange={() => {}}
             onActiveFilmChange={() => {}}
             onGenreChange={() => {}}
             onFilmsCountToShowReset={() => {}}

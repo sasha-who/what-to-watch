@@ -4,7 +4,6 @@ import {reducer, ActionType, ActionCreator} from "./app-state.js";
 
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
-    activeScreen: Screen.MAIN,
     currentGenre: GENRES[0],
     filteredFilms: [],
     filmsCountToShow: INITIAL_FILMS_COUNT
@@ -13,7 +12,6 @@ it(`Reducer without additional parameters should return initial state`, () => {
 
 it(`Reducer should change current genre by a given value`, () => {
   expect(reducer({
-    activeScreen: Screen.MAIN,
     currentGenre: GENRES[0],
     filteredFilms: [],
     filmsCountToShow: INITIAL_FILMS_COUNT
@@ -21,21 +19,18 @@ it(`Reducer should change current genre by a given value`, () => {
     type: ActionType.CHANGE_CURRENT_GENRE,
     payload: GENRES[1],
   })).toEqual({
-    activeScreen: Screen.MAIN,
     currentGenre: GENRES[1],
     filteredFilms: [],
     filmsCountToShow: INITIAL_FILMS_COUNT
   });
 
   expect(reducer({
-    activeScreen: Screen.MAIN,
     currentGenre: GENRES[0],
     filteredFilms: [],
     filmsCountToShow: INITIAL_FILMS_COUNT
   }, {
     type: ActionType.CHANGE_CURRENT_GENRE
   })).toEqual({
-    activeScreen: Screen.MAIN,
     currentGenre: GENRES[0],
     filteredFilms: [],
     filmsCountToShow: INITIAL_FILMS_COUNT
@@ -44,14 +39,12 @@ it(`Reducer should change current genre by a given value`, () => {
 
 it(`Reducer should reset films count to show`, () => {
   expect(reducer({
-    activeScreen: Screen.MAIN,
     currentGenre: GENRES[0],
     filteredFilms: [],
     filmsCountToShow: INITIAL_FILMS_COUNT + 1
   }, {
     type: ActionType.RESET_FILMS_COUNT_TO_SHOW
   })).toEqual({
-    activeScreen: Screen.MAIN,
     currentGenre: GENRES[0],
     filteredFilms: [],
     filmsCountToShow: INITIAL_FILMS_COUNT
@@ -60,14 +53,12 @@ it(`Reducer should reset films count to show`, () => {
 
 it(`Reducer should increment films count to show`, () => {
   expect(reducer({
-    activeScreen: Screen.MAIN,
     currentGenre: GENRES[0],
     filteredFilms: [],
     filmsCountToShow: INITIAL_FILMS_COUNT
   }, {
     type: ActionType.INCREMENT_FILMS_COUNT_TO_SHOW
   })).toEqual({
-    activeScreen: Screen.MAIN,
     currentGenre: GENRES[0],
     filteredFilms: [],
     filmsCountToShow: INITIAL_FILMS_COUNT + ADDITIONAL_FILMS_COUNT
