@@ -20,15 +20,28 @@ class ReviewForm extends React.PureComponent {
   }
 
   componentDidUpdate() {
-    this.postButtonRef.current.disabled = true;
-    this.inputsRefs.map.forEach((input, index) => {
-      input.disabled = false;
+    const requestStatus = this.props.commentPostStatus;
 
-      if (index === STAR_CHECKED_BY_DEFAULT) {
-        input.checked = true;
-      }
-    });
-    this.commentTextRef.current.disabled = false;
+    switch (requestStatus) {
+      case CommentPostStatus.POSTING:
+        this.inputsRefs.map.forEach((input) => {
+          input.disabled = true;
+        });
+        this.commentTextRef.current.disabled = true;
+        this.postButtonRef.current.disabled = true;
+        break;
+
+      case CommentPostStatus.OK:
+        history.back();
+        break;
+
+      case CommentPostStatus.ERROR:
+        this.inputsRefs.map.forEach((input) => {
+          input.disabled = false;
+        });
+        this.commentTextRef.current.disabled = false;
+        break;
+    }
   }
 
   handleFormSubmit(evt) {
@@ -52,13 +65,6 @@ class ReviewForm extends React.PureComponent {
       rating: starCount,
       comment: this.commentTextRef.current.value
     }, film.id);
-
-    this.commentTextRef.current.value = ``;
-    this.inputsRefs.map.forEach((input) => {
-      input.disabled = true;
-    });
-    this.commentTextRef.current.disabled = true;
-    this.postButtonRef.current.disabled = true;
   }
 
   render() {
