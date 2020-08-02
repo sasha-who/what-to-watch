@@ -6,7 +6,7 @@ exports[`FilmsList should render correctly with show more button 1`] = `
 >
   <a
     className="small-movie-card catalog__movies-card"
-    href="/films/:id"
+    href="/films/0"
     onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
@@ -35,7 +35,7 @@ exports[`FilmsList should render correctly with show more button 1`] = `
   </a>
   <a
     className="small-movie-card catalog__movies-card"
-    href="/films/:id"
+    href="/films/1"
     onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
@@ -64,7 +64,7 @@ exports[`FilmsList should render correctly with show more button 1`] = `
   </a>
   <a
     className="small-movie-card catalog__movies-card"
-    href="/films/:id"
+    href="/films/2"
     onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
@@ -93,7 +93,7 @@ exports[`FilmsList should render correctly with show more button 1`] = `
   </a>
   <a
     className="small-movie-card catalog__movies-card"
-    href="/films/:id"
+    href="/films/3"
     onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
@@ -122,7 +122,7 @@ exports[`FilmsList should render correctly with show more button 1`] = `
   </a>
   <a
     className="small-movie-card catalog__movies-card"
-    href="/films/:id"
+    href="/films/4"
     onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
@@ -151,7 +151,7 @@ exports[`FilmsList should render correctly with show more button 1`] = `
   </a>
   <a
     className="small-movie-card catalog__movies-card"
-    href="/films/:id"
+    href="/films/5"
     onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
@@ -180,7 +180,7 @@ exports[`FilmsList should render correctly with show more button 1`] = `
   </a>
   <a
     className="small-movie-card catalog__movies-card"
-    href="/films/:id"
+    href="/films/6"
     onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
@@ -209,7 +209,7 @@ exports[`FilmsList should render correctly with show more button 1`] = `
   </a>
   <a
     className="small-movie-card catalog__movies-card"
-    href="/films/:id"
+    href="/films/7"
     onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
@@ -245,7 +245,7 @@ exports[`FilmsList should render correctly without show more button 1`] = `
 >
   <a
     className="small-movie-card catalog__movies-card"
-    href="/films/:id"
+    href="/films/0"
     onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
@@ -274,7 +274,7 @@ exports[`FilmsList should render correctly without show more button 1`] = `
   </a>
   <a
     className="small-movie-card catalog__movies-card"
-    href="/films/:id"
+    href="/films/1"
     onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
@@ -303,7 +303,7 @@ exports[`FilmsList should render correctly without show more button 1`] = `
   </a>
   <a
     className="small-movie-card catalog__movies-card"
-    href="/films/:id"
+    href="/films/2"
     onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
@@ -332,7 +332,7 @@ exports[`FilmsList should render correctly without show more button 1`] = `
   </a>
   <a
     className="small-movie-card catalog__movies-card"
-    href="/films/:id"
+    href="/films/3"
     onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
@@ -361,7 +361,7 @@ exports[`FilmsList should render correctly without show more button 1`] = `
   </a>
   <a
     className="small-movie-card catalog__movies-card"
-    href="/films/:id"
+    href="/films/4"
     onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
@@ -390,7 +390,7 @@ exports[`FilmsList should render correctly without show more button 1`] = `
   </a>
   <a
     className="small-movie-card catalog__movies-card"
-    href="/films/:id"
+    href="/films/5"
     onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
@@ -419,7 +419,7 @@ exports[`FilmsList should render correctly without show more button 1`] = `
   </a>
   <a
     className="small-movie-card catalog__movies-card"
-    href="/films/:id"
+    href="/films/6"
     onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}

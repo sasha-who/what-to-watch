@@ -11,8 +11,8 @@ exports[`ReviewScreen should render correctly 1`] = `
       className="movie-card__bg"
     >
       <img
-        alt="Fantastic Beasts: The Crimes of Grindelwald"
-        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+        alt="Bohemian Rhapsody"
+        src="img/bohemian-rhapsody.jpg"
       />
     </div>
     <h1
@@ -60,7 +60,7 @@ exports[`ReviewScreen should render correctly 1`] = `
               className="breadcrumbs__link"
               href="movie-page.html"
             >
-              Fantastic Beasts: The Crimes of Grindelwald
+              Bohemian Rhapsody
             </a>
           </li>
           <li
@@ -98,9 +98,9 @@ exports[`ReviewScreen should render correctly 1`] = `
       className="movie-card__poster movie-card__poster--small"
     >
       <img
-        alt="Fantastic Beasts: The Crimes of Grindelwald"
+        alt="Bohemian Rhapsody"
         height={327}
-        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+        src="img/bohemian-rhapsody.jpg"
         width={218}
       />
     </div>

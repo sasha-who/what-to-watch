@@ -44,7 +44,7 @@ exports[`PromoCard should render correctly 1`] = `
       >
         <a
           className="btn btn--play movie-card__button"
-          href="/films/:id/player"
+          href="/player/0"
           onClick={[Function]}
         >
           <svg
