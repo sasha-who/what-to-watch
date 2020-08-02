@@ -17,11 +17,9 @@ it(`FilmCard should render correctly`, () => {
             film={film}
             isPlaying={false}
             onScreenChange={() => {}}
-            onActiveFilmChange={() => {}}
             onStartPlaying={() => {}}
             onStopPlaying={() => {}}
             onHoverChange={() => {}}
-            loadFilmComments={() => {}}
           />
         </Router>, {
           createNodeMock: () => {

@@ -55,7 +55,6 @@ class App extends React.PureComponent {
       promoFilm,
       filteredFilms,
       similarFilms,
-      activeFilm,
       activeFilmComments,
       currentGenre,
       filmsCountToShow,
@@ -116,21 +115,24 @@ class App extends React.PureComponent {
               onFavoriteStatusChange={onFavoriteStatusChange}
             />
           </Route>
-          <Route exact path={AppRoute.FILM}>
-            <DetailedFilmCard
-              authorizationStatus={authorizationStatus}
-              authorizationData={authorizationData}
-              isCommentsLoaded={isCommentsLoaded}
-              film={activeFilm}
-              similarFilms={similarFilms}
-              activeFilmComments={activeFilmComments}
-              isPlayerActive={isPlayerActive}
-              onScreenChange={onScreenChange}
-              onActiveFilmChange={onActiveFilmChange}
-              loadFilmComments={loadFilmComments}
-              onFavoriteStatusChange={onFavoriteStatusChange}
-            />
-          </Route>
+          <Route exact path={AppRoute.FILM}
+            render={(props) => (
+              <DetailedFilmCard
+                {...props}
+                authorizationStatus={authorizationStatus}
+                authorizationData={authorizationData}
+                isCommentsLoaded={isCommentsLoaded}
+                films={films}
+                similarFilms={similarFilms}
+                activeFilmComments={activeFilmComments}
+                isPlayerActive={isPlayerActive}
+                onScreenChange={onScreenChange}
+                onActiveFilmChange={onActiveFilmChange}
+                loadFilmComments={loadFilmComments}
+                onFavoriteStatusChange={onFavoriteStatusChange}
+              />
+            )}
+          />
           <Route exact path={AppRoute.LOGIN}>
             <AuthorizationScreenWrapped
               authorizationStatus={authorizationStatus}
@@ -138,34 +140,37 @@ class App extends React.PureComponent {
               onScreenChange={onScreenChange}
             />
           </Route>
-          <Route exact path={AppRoute.PLAYER}>
-            <PlayerWrapped
-              film={activeFilm}
-            />
-          </Route>
+          <Route
+            exact
+            path={AppRoute.PLAYER}
+            render={(props) => (
+              <PlayerWrapped
+                {...props}
+                films={films}
+              />
+            )}
+          />
           <PrivateRoute
             exact
             path={AppRoute.REVIEW}
-            render={() => {
-              return (
-                <ReviewScreen
-                  film={activeFilm}
-                  authorizationData={authorizationData}
-                  onScreenChange={onScreenChange}
-                  postReview={postReview}
-                  commentPostStatus={commentPostStatus}
-                />
-              );
-            }}
+            render={(props) => (
+              <ReviewScreen
+                {...props}
+                films={films}
+                authorizationData={authorizationData}
+                authorizationStatus={authorizationStatus}
+                onScreenChange={onScreenChange}
+                postReview={postReview}
+                commentPostStatus={commentPostStatus}
+              />
+            )}
           />
           <PrivateRoute
             exact
             path={AppRoute.MY_LIST}
-            render={() => {
-              return (
-                <MyList />
-              );
-            }}
+            render={() => (
+              <MyList />
+            )}
           />
         </Switch>
       </Router>

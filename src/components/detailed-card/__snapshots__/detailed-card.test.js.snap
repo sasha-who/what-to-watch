@@ -12,8 +12,8 @@ exports[`DetailedFilmCard should render correctly 1`] = `
         className="movie-card__bg"
       >
         <img
-          alt="Fantastic Beasts: The Crimes of Grindelwald"
-          src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+          alt="Bohemian Rhapsody"
+          src="img/bohemian-rhapsody.jpg"
         />
       </div>
       <h1
@@ -69,7 +69,7 @@ exports[`DetailedFilmCard should render correctly 1`] = `
           <h2
             className="movie-card__title"
           >
-            Fantastic Beasts: The Crimes of Grindelwald
+            Bohemian Rhapsody
           </h2>
           <p
             className="movie-card__meta"
@@ -77,7 +77,7 @@ exports[`DetailedFilmCard should render correctly 1`] = `
             <span
               className="movie-card__genre"
             >
-              comedy
+              drama
             </span>
             <span
               className="movie-card__year"
@@ -90,7 +90,7 @@ exports[`DetailedFilmCard should render correctly 1`] = `
           >
             <a
               className="btn btn--play movie-card__button"
-              href="/films/:id/player"
+              href="/player/1"
               onClick={[Function]}
             >
               <svg
@@ -124,6 +124,13 @@ exports[`DetailedFilmCard should render correctly 1`] = `
                 My list
               </span>
             </button>
+            <a
+              className="btn movie-card__button"
+              href="/films/1/review"
+              onClick={[Function]}
+            >
+              Add review
+            </a>
           </div>
         </div>
       </div>
@@ -138,9 +145,9 @@ exports[`DetailedFilmCard should render correctly 1`] = `
           className="movie-card__poster movie-card__poster--big"
         >
           <img
-            alt="Fantastic Beasts: The Crimes of Grindelwald"
+            alt="Bohemian Rhapsody"
             height={327}
-            src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+            src="img/bohemian-rhapsody.jpg"
             width={218}
           />
         </div>
@@ -261,7 +268,7 @@ suspect in her murder.
       >
         <a
           className="small-movie-card catalog__movies-card"
-          href="/films/:id"
+          href="/films/0"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -290,7 +297,7 @@ suspect in her murder.
         </a>
         <a
           className="small-movie-card catalog__movies-card"
-          href="/films/:id"
+          href="/films/1"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -319,7 +326,7 @@ suspect in her murder.
         </a>
         <a
           className="small-movie-card catalog__movies-card"
-          href="/films/:id"
+          href="/films/2"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -348,7 +355,7 @@ suspect in her murder.
         </a>
         <a
           className="small-movie-card catalog__movies-card"
-          href="/films/:id"
+          href="/films/3"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -377,7 +384,7 @@ suspect in her murder.
         </a>
         <a
           className="small-movie-card catalog__movies-card"
-          href="/films/:id"
+          href="/films/4"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -406,7 +413,7 @@ suspect in her murder.
         </a>
         <a
           className="small-movie-card catalog__movies-card"
-          href="/films/:id"
+          href="/films/5"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -435,7 +442,7 @@ suspect in her murder.
         </a>
         <a
           className="small-movie-card catalog__movies-card"
-          href="/films/:id"
+          href="/films/6"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
@@ -464,7 +471,7 @@ suspect in her murder.
         </a>
         <a
           className="small-movie-card catalog__movies-card"
-          href="/films/:id"
+          href="/films/7"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}

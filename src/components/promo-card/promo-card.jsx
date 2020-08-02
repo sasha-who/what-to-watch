@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
-import {InListIcon, AddToListIcon, AppRoute} from "../../const.js";
+import {InListIcon, AddToListIcon} from "../../const.js";
 
 const PromoCard = ({promoFilm, onFavoriteStatusChange, onActiveFilmChange}) => {
   const {id, title, genre, release, isFavorite} = promoFilm;
@@ -28,7 +28,7 @@ const PromoCard = ({promoFilm, onFavoriteStatusChange, onActiveFilmChange}) => {
             <div className="movie-card__buttons">
               <Link
                 className="btn btn--play movie-card__button"
-                to={AppRoute.PLAYER}
+                to={`/player/${id}`}
                 onClick={() => {
                   onActiveFilmChange(promoFilm);
                 }}

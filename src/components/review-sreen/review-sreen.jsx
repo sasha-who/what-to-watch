@@ -1,17 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {getFilmFromParameters} from "../../utils/common.js";
 import Header from "../header/header.jsx";
 import ReviewForm from "../review-form/review-form.jsx";
 
 const ReviewScreen = (props) => {
   const {
-    film,
+    films,
     authorizationData,
     authorizationStatus,
     onScreenChange,
     postReview,
     commentPostStatus
   } = props;
+
+  const film = getFilmFromParameters(films, props.match.params.id);
 
   const {title, cover, poster} = film;
 
@@ -62,25 +65,26 @@ const ReviewScreen = (props) => {
 };
 
 ReviewScreen.propTypes = {
-  film: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    cover: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    previewVideo: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    release: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    ratingsCount: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    actors: PropTypes.arrayOf(PropTypes.string),
-    runTime: PropTypes.number.isRequired,
-    previewImage: PropTypes.string.isRequired,
-    backgroundColor: PropTypes.string.isRequired,
-    videoLink: PropTypes.string.isRequired,
-    isFavorite: PropTypes.bool.isRequired
-  }),
+  films: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        cover: PropTypes.string.isRequired,
+        poster: PropTypes.string.isRequired,
+        previewVideo: PropTypes.string.isRequired,
+        genre: PropTypes.string.isRequired,
+        release: PropTypes.number.isRequired,
+        rating: PropTypes.number.isRequired,
+        ratingsCount: PropTypes.number.isRequired,
+        description: PropTypes.string.isRequired,
+        director: PropTypes.string.isRequired,
+        actors: PropTypes.arrayOf(PropTypes.string),
+        previewImage: PropTypes.string.isRequired,
+        backgroundColor: PropTypes.string.isRequired,
+        videoLink: PropTypes.string.isRequired,
+        isFavorite: PropTypes.bool.isRequired
+      }).isRequired
+  ).isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   authorizationData: PropTypes.shape({
     id: PropTypes.number,
@@ -90,7 +94,8 @@ ReviewScreen.propTypes = {
   }),
   onScreenChange: PropTypes.func.isRequired,
   postReview: PropTypes.func.isRequired,
-  commentPostStatus: PropTypes.string.isRequired
+  commentPostStatus: PropTypes.string.isRequired,
+  match: PropTypes.object.isRequired
 };
 
 export default ReviewScreen;

@@ -65,3 +65,9 @@ export const getSimilarForCurrentFilm = (allFilms, currentFilm) => {
       .slice(0, RECOMENDED_FILMS_COUNT)
   );
 };
+
+export const getFilmFromParameters = (films, id) => {
+  const index = films.findIndex((film) => film.id === Number(id));
+
+  return films[index];
+};

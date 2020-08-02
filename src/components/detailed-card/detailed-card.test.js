@@ -6,8 +6,6 @@ import {AuthorizationStatus} from "../../const.js";
 import {films, useData, comments} from "../../test-mocks.js";
 import DetailedFilmCard from "../detailed-card/detailed-card.jsx";
 
-const [film] = films;
-
 it(`DetailedFilmCard should render correctly`, () => {
   const tree = renderer
     .create(
@@ -15,10 +13,11 @@ it(`DetailedFilmCard should render correctly`, () => {
           history={history}
         >
           <DetailedFilmCard
+            match={{params: {id: 1}, isExact: true, path: ``, url: ``}}
             authorizationStatus={AuthorizationStatus.NO_AUTHORIZED}
             authorizationData={useData}
             isCommentsLoaded={true}
-            film={film}
+            films={films}
             similarFilms={films}
             activeFilmComments={comments}
             isPlayerActive={false}

@@ -13,7 +13,8 @@ it(`ReviewScreen should render correctly`, () => {
           history={history}
         >
           <ReviewScreen
-            film={films[0]}
+            match={{params: {id: 1}, isExact: true, path: ``, url: ``}}
+            films={films}
             authorizationStatus={AuthorizationStatus.AUTHORIZED}
             authorizationData={userData}
             onScreenChange={() => {}}

@@ -4,10 +4,6 @@ import Header from "../header/header.jsx";
 import PromoCard from "../promo-card/promo-card.jsx";
 import Catalog from "../catalog/catalog.jsx";
 import Footer from "../footer/footer.jsx";
-import Player from "../player/player.jsx";
-import withPlayer from "../../hocs/with-player/with-player.js";
-
-const PlayerWrapped = withPlayer(Player);
 
 const Main = (props) => {
   const {
@@ -18,7 +14,6 @@ const Main = (props) => {
     currentGenre,
     filteredFilms,
     filmsCountToShow,
-    isPlayerActive,
     onScreenChange,
     onActiveFilmChange,
     onGenreChange,
@@ -27,14 +22,6 @@ const Main = (props) => {
     loadFilmComments,
     onFavoriteStatusChange
   } = props;
-
-  if (isPlayerActive) {
-    return (
-      <PlayerWrapped
-        film={promoFilm}
-      />
-    );
-  }
 
   return (
     <React.Fragment>
@@ -147,7 +134,6 @@ Main.propTypes = {
   ).isRequired,
   currentGenre: PropTypes.string.isRequired,
   filmsCountToShow: PropTypes.number,
-  isPlayerActive: PropTypes.bool.isRequired,
   onScreenChange: PropTypes.func.isRequired,
   onActiveFilmChange: PropTypes.func.isRequired,
   onGenreChange: PropTypes.func.isRequired,

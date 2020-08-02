@@ -3,7 +3,7 @@
 exports[`FilmCard should render correctly 1`] = `
 <a
   className="small-movie-card catalog__movies-card"
-  href="/films/:id"
+  href="/films/0"
   onClick={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}

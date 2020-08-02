@@ -1,26 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
-import {AppRoute} from "../../const.js";
 import VideoPlayer from "../video-player/video-player.jsx";
 
 const FilmCard = (props) => {
   const {
     film,
     isPlaying,
-    onActiveFilmChange,
     onStartPlaying,
     onStopPlaying,
-    onHoverChange,
-    loadFilmComments
+    onHoverChange
   } = props;
 
-  const {title, previewImage, previewVideo} = film;
+  const {id, title, previewImage, previewVideo} = film;
 
   return (
     <Link
       className="small-movie-card catalog__movies-card"
-      to={AppRoute.FILM}
+      to={`/films/${id}`}
       onMouseEnter={() => {
         onHoverChange();
         onStartPlaying();
@@ -28,10 +25,6 @@ const FilmCard = (props) => {
       onMouseLeave={() => {
         onHoverChange();
         onStopPlaying();
-      }}
-      onClick={() => {
-        onActiveFilmChange(film);
-        loadFilmComments(film.id);
       }}
     >
       <div className="small-movie-card__image">
@@ -71,11 +64,9 @@ FilmCard.propTypes = {
     isFavorite: PropTypes.bool.isRequired
   }).isRequired,
   isPlaying: PropTypes.bool.isRequired,
-  onActiveFilmChange: PropTypes.func.isRequired,
   onStartPlaying: PropTypes.func.isRequired,
   onStopPlaying: PropTypes.func.isRequired,
-  onHoverChange: PropTypes.func.isRequired,
-  loadFilmComments: PropTypes.func.isRequired
+  onHoverChange: PropTypes.func.isRequired
 };
 
 export default FilmCard;
