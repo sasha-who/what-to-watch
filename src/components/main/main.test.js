@@ -21,7 +21,6 @@ it(`Main should render correctly`, () => {
             filteredFilms={films}
             filmsCountToShow={INITIAL_FILMS_COUNT}
             isPlayerActive={false}
-            onActiveFilmChange={() => {}}
             onGenreChange={() => {}}
             onFilmsCountToShowReset={() => {}}
             onFilmsCountToShowIncrement={() => {}}

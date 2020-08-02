@@ -9,7 +9,6 @@ const Catalog = (props) => {
     currentGenre,
     filteredFilms,
     filmsCountToShow,
-    onActiveFilmChange,
     onGenreChange,
     onFilmsCountToShowReset,
     onFilmsCountToShowIncrement,
@@ -28,7 +27,6 @@ const Catalog = (props) => {
       <FilmsList
         films={filteredFilms}
         filmsCountToShow={filmsCountToShow}
-        onActiveFilmChange={onActiveFilmChange}
         onFilmsCountToShowIncrement={onFilmsCountToShowIncrement}
         loadFilmComments={loadFilmComments}
       />
@@ -81,7 +79,6 @@ Catalog.propTypes = {
   ).isRequired,
   filmsCountToShow: PropTypes.number,
   currentGenre: PropTypes.string.isRequired,
-  onActiveFilmChange: PropTypes.func.isRequired,
   onGenreChange: PropTypes.func.isRequired,
   onFilmsCountToShowReset: PropTypes.func.isRequired,
   onFilmsCountToShowIncrement: PropTypes.func,
