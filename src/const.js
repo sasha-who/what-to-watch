@@ -1,6 +1,6 @@
 export const RECOMENDED_FILMS_COUNT = 4;
 export const PREVIEW_DELAY = 1000;
-export const REVIEWS_IN_COLUMN_COUNT = 3;
+export const REVIEWS_COLUMNS_COUNT = 2;
 export const DEFAULT_GENRE = `all genres`;
 export const MAX_FILTERS_COUNT = 10;
 export const INITIAL_FILMS_COUNT = 8;
