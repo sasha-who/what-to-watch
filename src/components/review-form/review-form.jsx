@@ -20,13 +20,15 @@ class ReviewForm extends React.PureComponent {
   }
 
   componentDidUpdate() {
-    const {commentPostStatus} = this.props;
-    const isStatusOk = commentPostStatus === CommentPostStatus.OK;
-    const isStatusError = commentPostStatus === CommentPostStatus.ERROR;
+    this.postButtonRef.current.disabled = true;
+    this.inputsRefs.map.forEach((input, index) => {
+      input.disabled = false;
 
-    if (isStatusOk || isStatusError) {
-      this._switchFormDisabledState(false);
-    }
+      if (index === STAR_CHECKED_BY_DEFAULT) {
+        input.checked = true;
+      }
+    });
+    this.commentTextRef.current.disabled = false;
   }
 
   handleFormSubmit(evt) {
@@ -51,7 +53,12 @@ class ReviewForm extends React.PureComponent {
       comment: this.commentTextRef.current.value
     }, film.id);
 
-    this._switchFormDisabledState(true);
+    this.commentTextRef.current.value = ``;
+    this.inputsRefs.map.forEach((input) => {
+      input.disabled = true;
+    });
+    this.commentTextRef.current.disabled = true;
+    this.postButtonRef.current.disabled = true;
   }
 
   render() {
@@ -125,14 +132,6 @@ class ReviewForm extends React.PureComponent {
         </form>
       </div>
     );
-  }
-
-  _switchFormDisabledState(value) {
-    this.inputsRefs.map.forEach((input) => {
-      input.disabled = value;
-    });
-    this.commentTextRef.current.disabled = value;
-    this.postButtonRef.current.disabled = value;
   }
 }
 
