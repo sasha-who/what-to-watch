@@ -13,7 +13,9 @@ const initialState = {
   isFilmsLoaded: false,
   isPromoFilmLoaded: false,
   isCommentsLoaded: false,
-  requestStatus: HttpStatus.SUCCESS
+  requestStatus: HttpStatus.SUCCESS,
+  favoriteFilms: [],
+  isFavoriteFilmsLoaded: false
 };
 
 const ActionType = {
@@ -25,7 +27,9 @@ const ActionType = {
   CHANGE_COMMENTS_LOAD_STATE: `CHANGE_COMMENTS_LOAD_STATE`,
   SET_REQUEST_STATUS: `SET_REQUEST_STATUS`,
   UPDATE_PROMO_FILM: `UPDATE_PROMO_FILM`,
-  UPDATE_FILMS: `UPDATE_FILMS`
+  UPDATE_FILMS: `UPDATE_FILMS`,
+  LOAD_FAVORITE_FILMS: `LOAD_FAVORITE_FILMS`,
+  CHANGE_FAVORITE_FILMS_LOAD_STATE: `CHANGE_FAVORITE_FILMS_LOAD_STATE`
 };
 
 const ActionCreator = {
@@ -78,6 +82,17 @@ const ActionCreator = {
     return {
       type: ActionType.UPDATE_FILMS,
       payload: films
+    };
+  },
+  loadFavoriteFilms: (films) => {
+    return {
+      type: ActionType.LOAD_FAVORITE_FILMS,
+      payload: films
+    };
+  },
+  changeFavoriteFilmsLoadState: () => {
+    return {
+      type: ActionType.CHANGE_FAVORITE_FILMS_LOAD_STATE
     };
   }
 };
@@ -139,6 +154,19 @@ const Operation = {
           history.push(AppRoute.LOGIN);
         }
       });
+  },
+  loadFavoriteFilms: () => (dispatch, getState, api) => {
+    return api.get(`/favorite`)
+      .then((response) => {
+        const adaptedFilms = adaptFilmsFromServer(response.data);
+
+        dispatch(ActionCreator.loadFavoriteFilms(adaptedFilms));
+        dispatch(ActionCreator.changeFavoriteFilmsLoadState());
+      })
+      .catch((error) => {
+        dispatch(ActionCreator.setRequestStatus(error.response.status));
+        dispatch(ActionCreator.changeFavoriteFilmsLoadState());
+      });
   }
 };
 
@@ -187,6 +215,16 @@ const reducer = (state = initialState, action) => {
     case ActionType.UPDATE_FILMS:
       return extend(state, {
         films: action.payload
+      });
+
+    case ActionType.LOAD_FAVORITE_FILMS:
+      return extend(state, {
+        favoriteFilms: action.payload
+      });
+
+    case ActionType.CHANGE_FAVORITE_FILMS_LOAD_STATE:
+      return extend(state, {
+        isFavoriteFilmsLoaded: true
       });
   }
 

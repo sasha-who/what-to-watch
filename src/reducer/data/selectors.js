@@ -29,3 +29,11 @@ export const getFilmComments = (state) => {
 export const getCommentsLoadState = (state) => {
   return state[NAME_SPACE].isCommentsLoaded;
 };
+
+export const getFavoriteFilms = (state) => {
+  return state[NAME_SPACE].favoriteFilms;
+};
+
+export const getFavoriteFilmsLoadState = (state) => {
+  return state[NAME_SPACE].isFavoriteFilmsLoaded;
+};
