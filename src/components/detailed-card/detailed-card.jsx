@@ -78,6 +78,7 @@ class DetailedFilmCard extends React.PureComponent {
             </div>
             <h1 className="visually-hidden">WTW</h1>
             <Header
+              additionalClass={`movie-card__head`}
               authorizationData={authorizationData}
               authorizationStatus={authorizationStatus}
               onScreenChange={onScreenChange}

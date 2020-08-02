@@ -11,7 +11,6 @@ const FilmsList = (props) => {
     films,
     filmsCountToShow,
     onScreenChange,
-    onActiveFilmChange,
     onFilmsCountToShowIncrement,
     loadFilmComments
   } = props;
@@ -26,7 +25,6 @@ const FilmsList = (props) => {
           <FilmCardWrapped
             film={film}
             onScreenChange={onScreenChange}
-            onActiveFilmChange={onActiveFilmChange}
             loadFilmComments={loadFilmComments}
             key={film.id}
           />
@@ -64,7 +62,6 @@ FilmsList.propTypes = {
   ).isRequired,
   filmsCountToShow: PropTypes.number,
   onScreenChange: PropTypes.func.isRequired,
-  onActiveFilmChange: PropTypes.func.isRequired,
   onFilmsCountToShowIncrement: PropTypes.func,
   loadFilmComments: PropTypes.func.isRequired
 };
