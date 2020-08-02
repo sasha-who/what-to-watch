@@ -15,7 +15,9 @@ import {
   getPromoFilmLoadState,
   getRequestStatus,
   getFilmComments,
-  getCommentsLoadState
+  getCommentsLoadState,
+  getFavoriteFilms,
+  getFavoriteFilmsLoadState
 } from "../../reducer/data/selectors.js";
 import {
   getActiveScreen,
@@ -71,7 +73,10 @@ class App extends React.PureComponent {
       login,
       loadFilmComments,
       postReview,
-      onFavoriteStatusChange
+      onFavoriteStatusChange,
+      favoriteFilms,
+      isFavoriteFilmsLoaded,
+      loadFavoriteFilms
     } = this.props;
 
     if (!isFilmsLoaded || !isPromoFilmLoaded) {
@@ -171,8 +176,12 @@ class App extends React.PureComponent {
             render={(props) => (
               <MyList
                 {...props}
-                favoriteFilms={films}
+                favoriteFilms={favoriteFilms}
+                isFavoriteFilmsLoaded={isFavoriteFilmsLoaded}
                 loadFilmComments={loadFilmComments}
+                loadFavoriteFilms={loadFavoriteFilms}
+                authorizationData={authorizationData}
+                authorizationStatus={authorizationStatus}
               />
             )}
           />
@@ -293,6 +302,27 @@ App.propTypes = {
         isFavorite: PropTypes.bool.isRequired
       })
   ).isRequired,
+  favoriteFilms: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        cover: PropTypes.string.isRequired,
+        poster: PropTypes.string.isRequired,
+        previewVideo: PropTypes.string.isRequired,
+        genre: PropTypes.string.isRequired,
+        release: PropTypes.number.isRequired,
+        rating: PropTypes.number.isRequired,
+        ratingsCount: PropTypes.number.isRequired,
+        description: PropTypes.string.isRequired,
+        director: PropTypes.string.isRequired,
+        actors: PropTypes.arrayOf(PropTypes.string),
+        runTime: PropTypes.number.isRequired,
+        previewImage: PropTypes.string.isRequired,
+        backgroundColor: PropTypes.string.isRequired,
+        videoLink: PropTypes.string.isRequired,
+        isFavorite: PropTypes.bool.isRequired
+      })
+  ).isRequired,
   activeFilmComments: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -317,7 +347,9 @@ App.propTypes = {
   loadFilmComments: PropTypes.func.isRequired,
   postReview: PropTypes.func.isRequired,
   commentPostStatus: PropTypes.string.isRequired,
-  onFavoriteStatusChange: PropTypes.func.isRequired
+  onFavoriteStatusChange: PropTypes.func.isRequired,
+  loadFavoriteFilms: PropTypes.func.isRequired,
+  isFavoriteFilmsLoaded: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -337,7 +369,9 @@ const mapStateToProps = (state) => ({
   isPromoFilmLoaded: getPromoFilmLoadState(state),
   isCommentsLoaded: getCommentsLoadState(state),
   requestStatus: getRequestStatus(state),
-  commentPostStatus: getCommentPostStatus(state)
+  commentPostStatus: getCommentPostStatus(state),
+  favoriteFilms: getFavoriteFilms(state),
+  isFavoriteFilmsLoaded: getFavoriteFilmsLoadState(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -346,6 +380,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   loadFilmComments(filmId) {
     dispatch(DataOperation.loadActiveFilmComments(filmId));
+  },
+  loadFavoriteFilms() {
+    dispatch(DataOperation.loadFavoriteFilms());
   },
   postReview(review, filmId) {
     dispatch(UserOperation.postReview(review, filmId));

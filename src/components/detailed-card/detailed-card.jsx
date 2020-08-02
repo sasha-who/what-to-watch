@@ -81,7 +81,6 @@ class DetailedFilmCard extends React.PureComponent {
               additionalClass={`movie-card__head`}
               authorizationData={authorizationData}
               authorizationStatus={authorizationStatus}
-              onScreenChange={onScreenChange}
             />
             <div className="movie-card__wrap">
               <div className="movie-card__desc">

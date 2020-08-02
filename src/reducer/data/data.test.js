@@ -16,7 +16,9 @@ it(`Reducer without additional parameters should return initial state`, () => {
     isFilmsLoaded: false,
     isPromoFilmLoaded: false,
     isCommentsLoaded: false,
-    requestStatus: HttpStatus.SUCCESS
+    requestStatus: HttpStatus.SUCCESS,
+    favoriteFilms: [],
+    isFavoriteFilmsLoaded: false
   });
 });
 
@@ -28,7 +30,9 @@ it(`Reducer should load all films`, () => {
     isFilmsLoaded: false,
     isPromoFilmLoaded: false,
     isCommentsLoaded: false,
-    requestStatus: HttpStatus.SUCCESS
+    requestStatus: HttpStatus.SUCCESS,
+    favoriteFilms: [],
+    isFavoriteFilmsLoaded: false
   }, {
     type: ActionType.LOAD_FILMS,
     payload: films
@@ -39,7 +43,9 @@ it(`Reducer should load all films`, () => {
     isFilmsLoaded: false,
     isPromoFilmLoaded: false,
     isCommentsLoaded: false,
-    requestStatus: HttpStatus.SUCCESS
+    requestStatus: HttpStatus.SUCCESS,
+    favoriteFilms: [],
+    isFavoriteFilmsLoaded: false
   });
 });
 
@@ -51,7 +57,9 @@ it(`Reducer should load promo film`, () => {
     isFilmsLoaded: false,
     isPromoFilmLoaded: false,
     isCommentsLoaded: false,
-    requestStatus: HttpStatus.SUCCESS
+    requestStatus: HttpStatus.SUCCESS,
+    favoriteFilms: [],
+    isFavoriteFilmsLoaded: false
   }, {
     type: ActionType.LOAD_PROMO_FILM,
     payload: film
@@ -62,7 +70,9 @@ it(`Reducer should load promo film`, () => {
     isFilmsLoaded: false,
     isPromoFilmLoaded: false,
     isCommentsLoaded: false,
-    requestStatus: HttpStatus.SUCCESS
+    requestStatus: HttpStatus.SUCCESS,
+    favoriteFilms: [],
+    isFavoriteFilmsLoaded: false
   });
 });
 
@@ -74,7 +84,9 @@ it(`Reducer should load film comments`, () => {
     isFilmsLoaded: false,
     isPromoFilmLoaded: false,
     isCommentsLoaded: false,
-    requestStatus: HttpStatus.SUCCESS
+    requestStatus: HttpStatus.SUCCESS,
+    favoriteFilms: [],
+    isFavoriteFilmsLoaded: false
   }, {
     type: ActionType.LOAD_ACTIVE_FILM_COMMENTS,
     payload: comments
@@ -85,7 +97,9 @@ it(`Reducer should load film comments`, () => {
     isFilmsLoaded: false,
     isPromoFilmLoaded: false,
     isCommentsLoaded: false,
-    requestStatus: HttpStatus.SUCCESS
+    requestStatus: HttpStatus.SUCCESS,
+    favoriteFilms: [],
+    isFavoriteFilmsLoaded: false
   });
 });
 
@@ -97,7 +111,9 @@ it(`Reducer should change films load state after loading`, () => {
     isFilmsLoaded: false,
     isPromoFilmLoaded: false,
     isCommentsLoaded: false,
-    requestStatus: HttpStatus.SUCCESS
+    requestStatus: HttpStatus.SUCCESS,
+    favoriteFilms: [],
+    isFavoriteFilmsLoaded: false
   }, {
     type: ActionType.CHANGE_FILMS_LOAD_STATE
   })).toEqual({
@@ -107,7 +123,9 @@ it(`Reducer should change films load state after loading`, () => {
     isFilmsLoaded: true,
     isPromoFilmLoaded: false,
     isCommentsLoaded: false,
-    requestStatus: HttpStatus.SUCCESS
+    requestStatus: HttpStatus.SUCCESS,
+    favoriteFilms: [],
+    isFavoriteFilmsLoaded: false
   });
 });
 
@@ -119,7 +137,9 @@ it(`Reducer should change promo film load state after loading`, () => {
     isFilmsLoaded: false,
     isPromoFilmLoaded: false,
     isCommentsLoaded: false,
-    requestStatus: HttpStatus.SUCCESS
+    requestStatus: HttpStatus.SUCCESS,
+    favoriteFilms: [],
+    isFavoriteFilmsLoaded: false
   }, {
     type: ActionType.CHANGE_PROMO_FILM_LOAD_STATE
   })).toEqual({
@@ -129,7 +149,9 @@ it(`Reducer should change promo film load state after loading`, () => {
     isFilmsLoaded: false,
     isPromoFilmLoaded: true,
     isCommentsLoaded: false,
-    requestStatus: HttpStatus.SUCCESS
+    requestStatus: HttpStatus.SUCCESS,
+    favoriteFilms: [],
+    isFavoriteFilmsLoaded: false
   });
 });
 
@@ -141,7 +163,9 @@ it(`Reducer should change comments load state after loading`, () => {
     isFilmsLoaded: false,
     isPromoFilmLoaded: false,
     isCommentsLoaded: false,
-    requestStatus: HttpStatus.SUCCESS
+    requestStatus: HttpStatus.SUCCESS,
+    favoriteFilms: [],
+    isFavoriteFilmsLoaded: false
   }, {
     type: ActionType.CHANGE_COMMENTS_LOAD_STATE
   })).toEqual({
@@ -151,7 +175,9 @@ it(`Reducer should change comments load state after loading`, () => {
     isFilmsLoaded: false,
     isPromoFilmLoaded: false,
     isCommentsLoaded: true,
-    requestStatus: HttpStatus.SUCCESS
+    requestStatus: HttpStatus.SUCCESS,
+    favoriteFilms: [],
+    isFavoriteFilmsLoaded: false
   });
 });
 
@@ -163,7 +189,9 @@ it(`Reducer should set response status after request`, () => {
     isFilmsLoaded: false,
     isPromoFilmLoaded: false,
     isCommentsLoaded: false,
-    requestStatus: HttpStatus.SUCCESS
+    requestStatus: HttpStatus.SUCCESS,
+    favoriteFilms: [],
+    isFavoriteFilmsLoaded: false
   }, {
     type: ActionType.SET_REQUEST_STATUS,
     payload: status
@@ -174,7 +202,9 @@ it(`Reducer should set response status after request`, () => {
     isFilmsLoaded: false,
     isPromoFilmLoaded: false,
     isCommentsLoaded: false,
-    requestStatus: status
+    requestStatus: status,
+    favoriteFilms: [],
+    isFavoriteFilmsLoaded: false
   });
 });
 
@@ -186,7 +216,9 @@ it(`Reducer should update films`, () => {
     isFilmsLoaded: false,
     isPromoFilmLoaded: false,
     isCommentsLoaded: false,
-    requestStatus: HttpStatus.SUCCESS
+    requestStatus: HttpStatus.SUCCESS,
+    favoriteFilms: [],
+    isFavoriteFilmsLoaded: false
   }, {
     type: ActionType.UPDATE_FILMS,
     payload: films
@@ -197,7 +229,9 @@ it(`Reducer should update films`, () => {
     isFilmsLoaded: false,
     isPromoFilmLoaded: false,
     isCommentsLoaded: false,
-    requestStatus: HttpStatus.SUCCESS
+    requestStatus: HttpStatus.SUCCESS,
+    favoriteFilms: [],
+    isFavoriteFilmsLoaded: false
   });
 });
 
@@ -209,7 +243,9 @@ it(`Reducer should update promo film`, () => {
     isFilmsLoaded: false,
     isPromoFilmLoaded: false,
     isCommentsLoaded: false,
-    requestStatus: HttpStatus.SUCCESS
+    requestStatus: HttpStatus.SUCCESS,
+    favoriteFilms: [],
+    isFavoriteFilmsLoaded: false
   }, {
     type: ActionType.UPDATE_PROMO_FILM,
     payload: film
@@ -220,7 +256,62 @@ it(`Reducer should update promo film`, () => {
     isFilmsLoaded: false,
     isPromoFilmLoaded: false,
     isCommentsLoaded: false,
-    requestStatus: HttpStatus.SUCCESS
+    requestStatus: HttpStatus.SUCCESS,
+    favoriteFilms: [],
+    isFavoriteFilmsLoaded: false
+  });
+});
+
+it(`Reducer should load favorite films`, () => {
+  expect(reducer({
+    films: [],
+    promoFilm: null,
+    activeFilmComments: {},
+    isFilmsLoaded: false,
+    isPromoFilmLoaded: false,
+    isCommentsLoaded: false,
+    requestStatus: HttpStatus.SUCCESS,
+    favoriteFilms: [],
+    isFavoriteFilmsLoaded: false
+  }, {
+    type: ActionType.LOAD_FAVORITE_FILMS,
+    payload: films
+  })).toEqual({
+    films: [],
+    promoFilm: null,
+    activeFilmComments: {},
+    isFilmsLoaded: false,
+    isPromoFilmLoaded: false,
+    isCommentsLoaded: false,
+    requestStatus: HttpStatus.SUCCESS,
+    favoriteFilms: films,
+    isFavoriteFilmsLoaded: false
+  });
+});
+
+it(`Reducer should change favorite films load state after loading`, () => {
+  expect(reducer({
+    films: [],
+    promoFilm: null,
+    activeFilmComments: {},
+    isFilmsLoaded: false,
+    isPromoFilmLoaded: false,
+    isCommentsLoaded: false,
+    requestStatus: HttpStatus.SUCCESS,
+    favoriteFilms: [],
+    isFavoriteFilmsLoaded: false
+  }, {
+    type: ActionType.CHANGE_FAVORITE_FILMS_LOAD_STATE
+  })).toEqual({
+    films: [],
+    promoFilm: null,
+    activeFilmComments: {},
+    isFilmsLoaded: false,
+    isPromoFilmLoaded: false,
+    isCommentsLoaded: false,
+    requestStatus: HttpStatus.SUCCESS,
+    favoriteFilms: [],
+    isFavoriteFilmsLoaded: true
   });
 });
 
@@ -282,6 +373,19 @@ describe(`Action creators work correctly`, () => {
     expect(ActionCreator.updatePromoFilm(film)).toEqual({
       type: ActionType.UPDATE_PROMO_FILM,
       payload: film
+    });
+  });
+
+  it(`Action creator for loading favorite films returns correct action`, () => {
+    expect(ActionCreator.loadFavoriteFilms(films)).toEqual({
+      type: ActionType.LOAD_FAVORITE_FILMS,
+      payload: films
+    });
+  });
+
+  it(`Action creator for changing favorite films load state returns correct action`, () => {
+    expect(ActionCreator.changeFavoriteFilmsLoadState()).toEqual({
+      type: ActionType.CHANGE_FAVORITE_FILMS_LOAD_STATE
     });
   });
 });
@@ -349,6 +453,28 @@ describe(`Operation work correctly`, () => {
         });
         expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: ActionType.CHANGE_COMMENTS_LOAD_STATE
+        });
+      });
+  });
+
+  it(`Operation should make a correct API call to /favorite`, function () {
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const favoriteFilmsLoader = Operation.loadFavoriteFilms();
+
+    apiMock
+      .onGet(`/favorite`)
+      .reply(200, []);
+
+    return favoriteFilmsLoader(dispatch, () => {}, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.LOAD_FAVORITE_FILMS,
+          payload: []
+        });
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
+          type: ActionType.CHANGE_FAVORITE_FILMS_LOAD_STATE
         });
       });
   });
