@@ -20,7 +20,6 @@ it(`DetailedFilmCard should render correctly`, () => {
             films={films}
             similarFilms={films}
             activeFilmComments={comments}
-            isPlayerActive={false}
             onActiveFilmChange={() => {}}
             loadFilmComments={() => {}}
             onFavoriteStatusChange={() => {}}

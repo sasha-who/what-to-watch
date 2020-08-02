@@ -59,7 +59,6 @@ class App extends React.PureComponent {
       activeFilmComments,
       currentGenre,
       filmsCountToShow,
-      isPlayerActive,
       isFilmsLoaded,
       isPromoFilmLoaded,
       requestStatus,
@@ -108,7 +107,6 @@ class App extends React.PureComponent {
               currentGenre={currentGenre}
               filteredFilms={filteredFilms}
               filmsCountToShow={filmsCountToShow}
-              isPlayerActive={isPlayerActive}
               onGenreChange={onGenreChange}
               onFilmsCountToShowReset={onFilmsCountToShowReset}
               onFilmsCountToShowIncrement={onFilmsCountToShowIncrement}
@@ -126,7 +124,6 @@ class App extends React.PureComponent {
                 films={films}
                 similarFilms={similarFilms}
                 activeFilmComments={activeFilmComments}
-                isPlayerActive={isPlayerActive}
                 onActiveFilmChange={onActiveFilmChange}
                 loadFilmComments={loadFilmComments}
                 onFavoriteStatusChange={onFavoriteStatusChange}
@@ -326,7 +323,6 @@ App.propTypes = {
   ).isRequired,
   currentGenre: PropTypes.string.isRequired,
   filmsCountToShow: PropTypes.number,
-  isPlayerActive: PropTypes.bool.isRequired,
   isFilmsLoaded: PropTypes.bool.isRequired,
   isPromoFilmLoaded: PropTypes.bool.isRequired,
   isCommentsLoaded: PropTypes.bool.isRequired,
@@ -352,7 +348,6 @@ const mapStateToProps = (state) => ({
   filteredFilms: getFilteredFilms(state),
   filmsCountToShow: getFilmsCountToShow(state),
   similarFilms: getSimilarFilms(state),
-  isPlayerActive: getPlayerState(state),
   promoFilm: getPromoFilm(state),
   activeFilmComments: getFilmComments(state),
   isFilmsLoaded: getFilmsLoadState(state),

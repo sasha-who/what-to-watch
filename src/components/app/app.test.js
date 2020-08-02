@@ -24,7 +24,6 @@ const store = mockStore({
   films,
   filteredFilms: films,
   filmsCountToShow: INITIAL_FILMS_COUNT,
-  isPlayerActive: false,
   isCommentsLoaded: false,
   isFilmsLoaded: false,
   isPromoFilmLoaded: false,
@@ -44,7 +43,6 @@ it(`Main screen should render correctly`, () => {
             filmsCountToShow={INITIAL_FILMS_COUNT}
             currentGenre={GENRES[0]}
             similarFilms={films}
-            isPlayerActive={false}
             isFilmsLoaded={true}
             isPromoFilmLoaded={true}
             isCommentsLoaded={true}
@@ -88,7 +86,6 @@ it(`Card screen should render correctly`, () => {
             filmsCountToShow={INITIAL_FILMS_COUNT}
             currentGenre={GENRES[0]}
             similarFilms={films}
-            isPlayerActive={false}
             isFilmsLoaded={true}
             isPromoFilmLoaded={true}
             isCommentsLoaded={true}
