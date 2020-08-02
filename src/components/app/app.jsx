@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Switch, Route, Router} from "react-router-dom";
+import {Switch, Route, Router, Link} from "react-router-dom";
 import {connect} from "react-redux";
 import Loader from "react-loader-spinner";
 import history from "../../history.js";
@@ -22,7 +22,6 @@ import {
 import {
   getCurrentGenre,
   getFilmsCountToShow,
-  getPlayerState,
   getActiveFilm,
   getFilteredFilms,
   getSimilarFilms
@@ -173,6 +172,16 @@ class App extends React.PureComponent {
                 authorizationData={authorizationData}
                 authorizationStatus={authorizationStatus}
               />
+            )}
+          />
+          <Route
+            render={() => (
+              <React.Fragment>
+                <h1>
+                  Error: 404. Page not found.
+                </h1>
+                <Link to={AppRoute.ROOT}>Go to main page</Link>
+              </React.Fragment>
             )}
           />
         </Switch>

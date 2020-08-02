@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const ServerError = ({requestStatus}) => (
-  <p>Ошибка: {requestStatus}</p>
+  <p>Error: {requestStatus}</p>
 );
 
 ServerError.propTypes = {
