@@ -14,7 +14,6 @@ it(`AuthorizationScreen without errors should render correctly`, () => {
           isInputValid={true}
           authorizationStatus={AuthorizationStatus.AUTHORIZED}
           onAuthorizationFormSubmit={() => {}}
-          onScreenChange={() => {}}
           onInputValidityChange={() => {}}
         />
       </Router>
@@ -32,7 +31,6 @@ it(`AuthorizationScreen with validation errorshould render correctly`, () => {
           isInputValid={false}
           authorizationStatus={AuthorizationStatus.AUTHORIZED}
           onAuthorizationFormSubmit={() => {}}
-          onScreenChange={() => {}}
           onInputValidityChange={() => {}}
         />
       </Router>

@@ -15,7 +15,6 @@ it(`FilmsList should render correctly with show more button`, () => {
           <FilmsList
             films={films}
             filmsCountToShow={INITIAL_FILMS_COUNT}
-            onScreenChange={() => {}}
             onActiveFilmChange={() => {}}
             incrementFilmsCountToShow={() => {}}
             onSimilarFilmsUpdate={() => {}}
@@ -41,7 +40,6 @@ it(`FilmsList should render correctly without show more button`, () => {
           <FilmsList
             films={films.slice(0, INITIAL_FILMS_COUNT - 1)}
             filmsCountToShow={INITIAL_FILMS_COUNT}
-            onScreenChange={() => {}}
             onActiveFilmChange={() => {}}
             onFilmsCountToShowIncrement={() => {}}
             loadFilmComments={() => {}}

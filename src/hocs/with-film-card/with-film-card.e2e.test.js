@@ -35,20 +35,17 @@ const FilmCard = (props) => {
 };
 
 FilmCard.propTypes = {
-  onScreenChange: PropTypes.func.isRequired,
   onHoverChange: PropTypes.func.isRequired,
   onStartPlaying: PropTypes.func.isRequired,
   onStopPlaying: PropTypes.func.isRequired
 };
 
-const onScreenChange = jest.fn();
 const FilmCardWrapped = withFilmCard(FilmCard);
 
 const wrapper = mount(
     <FilmCardWrapped
       film={film}
       isPlaying={false}
-      onScreenChange={onScreenChange}
       onStartPlaying={() => {}}
       onStopPlaying={() => {}}
       onHoverChange={() => {}}

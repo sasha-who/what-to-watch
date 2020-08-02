@@ -1,20 +1,17 @@
 import {
   DEFAULT_GENRE,
   INITIAL_FILMS_COUNT,
-  ADDITIONAL_FILMS_COUNT,
-  Screen
+  ADDITIONAL_FILMS_COUNT
 } from "../../const.js";
 import {extend} from "../../utils/common.js";
 
 const initialState = {
-  activeScreen: Screen.MAIN,
   currentGenre: DEFAULT_GENRE,
   filteredFilms: [],
   filmsCountToShow: INITIAL_FILMS_COUNT
 };
 
 const ActionType = {
-  CHANGE_ACTIVE_SCREEN: `CHANGE_ACTIVE_SCREEN`,
   SET_ACTIVE_FILM: `SET_ACTIVE_FILM`,
   CHANGE_CURRENT_GENRE: `CHANGE_CURRENT_GENRE`,
   FILTER_FILMS_BY_GENRE: `FILTER_FILMS_BY_GENRE`,
@@ -24,10 +21,6 @@ const ActionType = {
 };
 
 const ActionCreator = {
-  changeActiveScreen: (screen) => ({
-    type: ActionType.CHANGE_ACTIVE_SCREEN,
-    payload: screen
-  }),
   setActiveFilm: (film) => ({
     type: ActionType.SET_ACTIVE_FILM,
     payload: film
@@ -54,11 +47,6 @@ const ActionCreator = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.CHANGE_ACTIVE_SCREEN:
-      return extend(state, {
-        activeScreen: action.payload || state.activeScreen
-      });
-
     case ActionType.SET_ACTIVE_FILM:
       return extend(state, {
         activeFilm: action.payload

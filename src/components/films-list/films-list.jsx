@@ -10,7 +10,6 @@ const FilmsList = (props) => {
   const {
     films,
     filmsCountToShow,
-    onScreenChange,
     onFilmsCountToShowIncrement,
     loadFilmComments
   } = props;
@@ -24,7 +23,6 @@ const FilmsList = (props) => {
         {shownFilms.map((film) => (
           <FilmCardWrapped
             film={film}
-            onScreenChange={onScreenChange}
             loadFilmComments={loadFilmComments}
             key={film.id}
           />
@@ -61,7 +59,6 @@ FilmsList.propTypes = {
       })
   ).isRequired,
   filmsCountToShow: PropTypes.number,
-  onScreenChange: PropTypes.func.isRequired,
   onFilmsCountToShowIncrement: PropTypes.func,
   loadFilmComments: PropTypes.func.isRequired
 };

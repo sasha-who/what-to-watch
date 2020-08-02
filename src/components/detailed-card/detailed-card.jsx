@@ -33,7 +33,6 @@ class DetailedFilmCard extends React.PureComponent {
       films,
       similarFilms,
       activeFilmComments,
-      onScreenChange,
       onActiveFilmChange,
       loadFilmComments,
       onFavoriteStatusChange
@@ -151,7 +150,6 @@ class DetailedFilmCard extends React.PureComponent {
             <h2 className="catalog__title">More like this</h2>
             <FilmsList
               films={similarFilms}
-              onScreenChange={onScreenChange}
               onActiveFilmChange={onActiveFilmChange}
               loadFilmComments={loadFilmComments}
             />
@@ -223,7 +221,6 @@ DetailedFilmCard.propTypes = {
   ).isRequired,
   isCommentsLoaded: PropTypes.bool.isRequired,
   isPlayerActive: PropTypes.bool.isRequired,
-  onScreenChange: PropTypes.func.isRequired,
   onActiveFilmChange: PropTypes.func.isRequired,
   loadFilmComments: PropTypes.func.isRequired,
   onFavoriteStatusChange: PropTypes.func.isRequired,

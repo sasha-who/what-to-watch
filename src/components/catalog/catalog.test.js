@@ -17,7 +17,6 @@ it(`Catalog should render correctly`, () => {
             filteredFilms={films}
             currentGenre={GENRES[0]}
             filmsCountToShow={INITIAL_FILMS_COUNT}
-            onScreenChange={() => {}}
             onActiveFilmChange={() => {}}
             onGenreChange={() => {}}
             onFilmsCountToShowReset={() => {}}

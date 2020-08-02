@@ -5,10 +5,6 @@ import {getFilms, getFilmsLoadState} from "../data/selectors.js";
 
 const NAME_SPACE = NameSpace.APP_STATE;
 
-export const getActiveScreen = (state) => {
-  return state[NAME_SPACE].activeScreen;
-};
-
 export const getCurrentGenre = (state) => {
   return state[NAME_SPACE].currentGenre;
 };
