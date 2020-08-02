@@ -1,4 +1,4 @@
-import {INITIAL_FILMS_COUNT, ADDITIONAL_FILMS_COUNT, Screen} from "../../const.js";
+import {INITIAL_FILMS_COUNT, ADDITIONAL_FILMS_COUNT} from "../../const.js";
 import {GENRES} from "../../test-mocks.js";
 import {reducer, ActionType, ActionCreator} from "./app-state.js";
 
