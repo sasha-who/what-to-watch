@@ -102,7 +102,8 @@ export const LoaderData = {
 export const HttpStatus = {
   SUCCESS: 200,
   REDIRECT: 300,
-  UNAUTHORIZED: 401
+  UNAUTHORIZED: 401,
+  NOT_FOUND: 404
 };
 
 export const CommentPostStatus = {
@@ -119,4 +120,9 @@ export const AppRoute = {
   REVIEW: `/films/:id/review`,
   MY_LIST: `/mylist`,
   PLAYER: `/player/:id`
+};
+
+export const LoginErrorMessage = {
+  INVALID: `Please enter a valid email address`,
+  SERVER_ERROR: `Try again. Error:`
 };

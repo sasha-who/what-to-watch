@@ -13,3 +13,7 @@ export const getAuthorizationData = (state) => {
 export const getCommentPostStatus = (state) => {
   return state[NAME_SPACE].commentPostStatus;
 };
+
+export const getLoginError = (state) => {
+  return state[NAME_SPACE].loginError;
+};
