@@ -14,7 +14,6 @@ it(`PromoCard should render correctly`, () => {
           <PromoCard
             promoFilm={films[0]}
             onFavoriteStatusChange={() => {}}
-            onActiveFilmChange={() => {}}
           />
         </Router>
     )

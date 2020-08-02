@@ -33,7 +33,6 @@ class DetailedFilmCard extends React.PureComponent {
       films,
       similarFilms,
       activeFilmComments,
-      onActiveFilmChange,
       loadFilmComments,
       onFavoriteStatusChange
     } = this.props;
@@ -152,7 +151,6 @@ class DetailedFilmCard extends React.PureComponent {
               <h2 className="catalog__title">More like this</h2>
               <FilmsList
                 films={similarFilms}
-                onActiveFilmChange={onActiveFilmChange}
                 loadFilmComments={loadFilmComments}
               />
             </section>

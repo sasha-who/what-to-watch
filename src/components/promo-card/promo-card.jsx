@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {InListIcon, AddToListIcon} from "../../const.js";
 
-const PromoCard = ({promoFilm, onFavoriteStatusChange, onActiveFilmChange}) => {
+const PromoCard = ({promoFilm, onFavoriteStatusChange}) => {
   const {id, title, genre, release, isFavorite} = promoFilm;
   const myListIcon = isFavorite ? InListIcon : AddToListIcon;
 
@@ -29,9 +29,6 @@ const PromoCard = ({promoFilm, onFavoriteStatusChange, onActiveFilmChange}) => {
               <Link
                 className="btn btn--play movie-card__button"
                 to={`/player/${id}`}
-                onClick={() => {
-                  onActiveFilmChange(promoFilm);
-                }}
               >
                 <svg viewBox="0 0 19 19" width={19} height={19}>
                   <use xlinkHref="#play-s" />
@@ -84,8 +81,7 @@ PromoCard.propTypes = {
     videoLink: PropTypes.string.isRequired,
     isFavorite: PropTypes.bool.isRequired
   }),
-  onFavoriteStatusChange: PropTypes.func.isRequired,
-  onActiveFilmChange: PropTypes.func.isRequired
+  onFavoriteStatusChange: PropTypes.func.isRequired
 };
 
 export default PromoCard;

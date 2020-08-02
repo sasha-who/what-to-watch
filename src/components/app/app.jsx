@@ -109,7 +109,6 @@ class App extends React.PureComponent {
               filteredFilms={filteredFilms}
               filmsCountToShow={filmsCountToShow}
               isPlayerActive={isPlayerActive}
-              onActiveFilmChange={onActiveFilmChange}
               onGenreChange={onGenreChange}
               onFilmsCountToShowReset={onFilmsCountToShowReset}
               onFilmsCountToShowIncrement={onFilmsCountToShowIncrement}
