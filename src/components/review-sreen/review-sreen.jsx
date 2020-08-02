@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 import {getFilmFromParameters} from "../../utils/common.js";
 import Header from "../header/header.jsx";
 import ReviewForm from "../review-form/review-form.jsx";
@@ -15,7 +16,7 @@ const ReviewScreen = (props) => {
 
   const film = getFilmFromParameters(films, props.match.params.id);
 
-  const {title, cover, poster} = film;
+  const {id, title, cover, poster} = film;
 
   return (
     <section className="movie-card movie-card--full">
@@ -34,9 +35,12 @@ const ReviewScreen = (props) => {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a href="movie-page.html" className="breadcrumbs__link">
+                <Link
+                  className="breadcrumbs__link"
+                  to={`/films/${id}`}
+                >
                   {title}
-                </a>
+                </Link>
               </li>
               <li className="breadcrumbs__item">
                 <a className="breadcrumbs__link">Add review</a>
