@@ -168,8 +168,12 @@ class App extends React.PureComponent {
           <PrivateRoute
             exact
             path={AppRoute.MY_LIST}
-            render={() => (
-              <MyList />
+            render={(props) => (
+              <MyList
+                {...props}
+                favoriteFilms={films}
+                loadFilmComments={loadFilmComments}
+              />
             )}
           />
         </Switch>
