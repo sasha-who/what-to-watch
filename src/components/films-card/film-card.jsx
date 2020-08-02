@@ -15,9 +15,8 @@ const FilmCard = (props) => {
   const {id, title, previewImage, previewVideo} = film;
 
   return (
-    <Link
+    <article
       className="small-movie-card catalog__movies-card"
-      to={`/films/${id}`}
       onMouseEnter={() => {
         onHoverChange();
         onStartPlaying();
@@ -27,20 +26,25 @@ const FilmCard = (props) => {
         onStopPlaying();
       }}
     >
-      <div className="small-movie-card__image">
+      <Link
+        className="small-movie-card__image"
+        to={`/films/${id}`}
+      >
         <VideoPlayer
           previewVideo={previewVideo}
           defaultImage={previewImage}
           isPlaying={isPlaying}
         />
-      </div>
+      </Link>
       <h3 className="small-movie-card__title">
-        <a
+        <Link
           className="small-movie-card__link"
-          href="movie-page.html"
-        >{title}</a>
+          to={`/films/${id}`}
+        >
+          {title}
+        </Link>
       </h3>
-    </Link>
+    </article>
   );
 };
 
