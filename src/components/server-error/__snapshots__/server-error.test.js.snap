@@ -2,7 +2,7 @@
 
 exports[`ServerError should render correctly 1`] = `
 <p>
-  Ошибка: 
+  Error: 
   300
 </p>
 `;

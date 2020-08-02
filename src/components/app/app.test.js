@@ -4,7 +4,6 @@ import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {
   INITIAL_FILMS_COUNT,
-  Screen,
   HttpStatus,
   AuthorizationStatus,
   CommentPostStatus

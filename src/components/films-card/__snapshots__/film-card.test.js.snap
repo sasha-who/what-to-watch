@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FilmCard should render correctly 1`] = `
-<a
+<article
   className="small-movie-card catalog__movies-card"
-  href="/films/0"
-  onClick={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
-  <div
+  <a
     className="small-movie-card__image"
+    href="/films/0"
+    onClick={[Function]}
   >
     <video
       height={175}
@@ -18,16 +18,17 @@ exports[`FilmCard should render correctly 1`] = `
       src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
       width={280}
     />
-  </div>
+  </a>
   <h3
     className="small-movie-card__title"
   >
     <a
       className="small-movie-card__link"
-      href="movie-page.html"
+      href="/films/0"
+      onClick={[Function]}
     >
       Fantastic Beasts: The Crimes of Grindelwald
     </a>
   </h3>
-</a>
+</article>
 `;
