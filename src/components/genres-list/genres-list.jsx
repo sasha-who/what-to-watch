@@ -19,44 +19,50 @@ const getGenreWithCapital = (genre) => {
   return genre[0].toUpperCase() + genre.slice(1);
 };
 
-const GenresList = (props) => {
-  const {
-    films,
-    currentGenre,
-    onGenreChange,
-    onFilmsCountToShowReset
-  } = props;
+class GenresList extends React.PureComponent {
+  componentWillUnmount() {
+    this.props.onGenreChange(DEFAULT_GENRE);
+  }
 
-  return (
-    <ul className="catalog__genres-list">
-      {generateGenresList(films).map((genre) => {
-        const activeClass = classNames({
-          'catalog__genres-item--active': genre === currentGenre
-        });
+  render() {
+    const {
+      films,
+      currentGenre,
+      onGenreChange,
+      onFilmsCountToShowReset
+    } = this.props;
 
-        return (
-          <li
-            className={`catalog__genres-item ${activeClass}`}
-            key={genre}
-          >
-            <a
-              href="#"
-              className="catalog__genres-link"
-              onClick={(evt) => {
-                if (genre !== currentGenre) {
-                  onGenreChange(evt.target.textContent.toLowerCase());
-                  onFilmsCountToShowReset();
-                }
-              }}
+    return (
+      <ul className="catalog__genres-list">
+        {generateGenresList(films).map((genre) => {
+          const activeClass = classNames({
+            'catalog__genres-item--active': genre.toLowerCase() === currentGenre
+          });
+
+          return (
+            <li
+              className={`catalog__genres-item ${activeClass}`}
+              key={genre}
             >
-              {getGenreWithCapital(genre)}
-            </a>
-          </li>
-        );
-      })}
-    </ul>
-  );
-};
+              <a
+                href="#"
+                className="catalog__genres-link"
+                onClick={(evt) => {
+                  if (genre !== currentGenre) {
+                    onGenreChange(evt.target.textContent.toLowerCase());
+                    onFilmsCountToShowReset();
+                  }
+                }}
+              >
+                {getGenreWithCapital(genre)}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    );
+  }
+}
 
 GenresList.propTypes = {
   films: PropTypes.arrayOf(
