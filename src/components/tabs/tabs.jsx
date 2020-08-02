@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import moment from "moment";
 import classNames from "classnames";
 import {
-  REVIEWS_IN_COLUMN_COUNT,
+  REVIEWS_COLUMNS_COUNT,
   ReviewDate,
   RatingRange,
   RatingGrade,
@@ -158,16 +158,17 @@ export default class Tabs extends React.PureComponent {
 
   _getReviewsTab() {
     const {activeFilmComments} = this.props;
+    const commentsInFirstColumn = Math.ceil(activeFilmComments.length / REVIEWS_COLUMNS_COUNT);
 
     return (
       <div className="movie-card__reviews movie-card__row">
         <div className="movie-card__reviews-col">
-          {activeFilmComments.slice(0, REVIEWS_IN_COLUMN_COUNT).map((comment) => (
+          {activeFilmComments.slice(0, commentsInFirstColumn).map((comment) => (
             this._getReviewMarkup(comment)
           ))}
         </div>
         <div className="movie-card__reviews-col">
-          {activeFilmComments.slice(REVIEWS_IN_COLUMN_COUNT).map((comment) => (
+          {activeFilmComments.slice(commentsInFirstColumn).map((comment) => (
             this._getReviewMarkup(comment)
           ))}
         </div>
