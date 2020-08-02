@@ -2,7 +2,7 @@ import MockAdapter from "axios-mock-adapter";
 import {HttpStatus} from "../../const.js";
 import {createAPI} from "../../api.js";
 import {reducer, ActionType, ActionCreator, Operation} from "./data.js";
-// import {ActionType as AppStateActionType} from "../app-state/app-state.js";
+import {ActionType as AppStateActionType} from "../app-state/app-state.js";
 import {films, comments} from "../../test-mocks.js";
 
 const api = createAPI(() => {});
@@ -479,57 +479,57 @@ describe(`Operation work correctly`, () => {
       });
   });
 
-  // it(`Operation should make a correct API call to /favorite/:film_id/0 with promo film`,
-  //     function () {
-  //       const apiMock = new MockAdapter(api);
-  //       const dispatch = jest.fn();
-  //       const favoriteStatusToogle = Operation.changeFavoriteStatus(films[0].id, 0, true);
+  it(`Operation should make a correct API call to /favorite/:film_id/0 with promo film`,
+      function () {
+        const apiMock = new MockAdapter(api);
+        const dispatch = jest.fn();
+        const favoriteStatusToogle = Operation.changeFavoriteStatus(films[0].id, 0, true);
 
-  //       apiMock
-  //         .onPost(`/favorite/0/0`)
-  //         .reply(200, {});
+        apiMock
+          .onPost(`/favorite/0/0`)
+          .reply(200, {});
 
-  //       return favoriteStatusToogle(dispatch, () => {}, api)
-  //         .then(() => {
-  //           expect(dispatch).toHaveBeenCalledTimes(3);
-  //           expect(dispatch).toHaveBeenNthCalledWith(1, {
-  //             type: ActionType.UPDATE_PROMO_FILM,
-  //             payload: {}
-  //           });
-  //           expect(dispatch).toHaveBeenNthCalledWith(2, {
-  //             type: ActionType.UPDATE_FILMS,
-  //             payload: []
-  //           });
-  //           expect(dispatch).toHaveBeenNthCalledWith(3, {
-  //             type: AppStateActionType.SET_ACTIVE_FILM,
-  //             payload: {}
-  //           });
-  //         });
-  //     }
-  // );
+        return favoriteStatusToogle(dispatch, () => {}, api)
+          .then(() => {
+            expect(dispatch).toHaveBeenCalledTimes(3);
+            expect(dispatch).toHaveBeenNthCalledWith(1, {
+              type: ActionType.UPDATE_PROMO_FILM,
+              payload: {}
+            });
+            expect(dispatch).toHaveBeenNthCalledWith(2, {
+              type: ActionType.UPDATE_FILMS,
+              payload: []
+            });
+            expect(dispatch).toHaveBeenNthCalledWith(3, {
+              type: AppStateActionType.SET_ACTIVE_FILM,
+              payload: {}
+            });
+          });
+      }
+  );
 
-  // it(`Operation should make a correct API call to /favorite/:film_id/0 with ordinary film`,
-  //     function () {
-  //       const apiMock = new MockAdapter(api);
-  //       const dispatch = jest.fn();
-  //       const favoriteStatusToogle = Operation.changeFavoriteStatus(films[0].id, 0, true);
+  it(`Operation should make a correct API call to /favorite/:film_id/0 with ordinary film`,
+      function () {
+        const apiMock = new MockAdapter(api);
+        const dispatch = jest.fn();
+        const favoriteStatusToogle = Operation.changeFavoriteStatus(films[0].id, 0, true);
 
-  //       apiMock
-  //         .onPost(`/favorite/0/0`)
-  //         .reply(200, {});
+        apiMock
+          .onPost(`/favorite/0/0`)
+          .reply(200, {});
 
-  //       return favoriteStatusToogle(dispatch, () => {}, api)
-  //         .then(() => {
-  //           expect(dispatch).toHaveBeenCalledTimes(2);
-  //           expect(dispatch).toHaveBeenNthCalledWith(1, {
-  //             type: ActionType.UPDATE_FILMS,
-  //             payload: []
-  //           });
-  //           expect(dispatch).toHaveBeenNthCalledWith(2, {
-  //             type: AppStateActionType.SET_ACTIVE_FILM,
-  //             payload: {}
-  //           });
-  //         });
-  //     }
-  // );
+        return favoriteStatusToogle(dispatch, () => {}, api)
+          .then(() => {
+            expect(dispatch).toHaveBeenCalledTimes(2);
+            expect(dispatch).toHaveBeenNthCalledWith(1, {
+              type: ActionType.UPDATE_FILMS,
+              payload: []
+            });
+            expect(dispatch).toHaveBeenNthCalledWith(2, {
+              type: AppStateActionType.SET_ACTIVE_FILM,
+              payload: {}
+            });
+          });
+      }
+  );
 });
