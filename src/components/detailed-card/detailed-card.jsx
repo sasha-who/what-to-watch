@@ -221,7 +221,6 @@ DetailedFilmCard.propTypes = {
       })
   ).isRequired,
   isCommentsLoaded: PropTypes.bool.isRequired,
-  isPlayerActive: PropTypes.bool.isRequired,
   onActiveFilmChange: PropTypes.func.isRequired,
   loadFilmComments: PropTypes.func.isRequired,
   onFavoriteStatusChange: PropTypes.func.isRequired,

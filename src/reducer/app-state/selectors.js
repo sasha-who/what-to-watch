@@ -13,10 +13,6 @@ export const getFilmsCountToShow = (state) => {
   return state[NAME_SPACE].filmsCountToShow;
 };
 
-export const getPlayerState = (state) => {
-  return state[NAME_SPACE].isPlayerActive;
-};
-
 export const getActiveFilm = (state) => {
   return state[NAME_SPACE].activeFilm;
 };
