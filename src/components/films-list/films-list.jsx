@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import FilmCard from "../films-card/film-card.jsx";
 import withFilmCard from "../../hocs/with-film-card/with-film-card.js";

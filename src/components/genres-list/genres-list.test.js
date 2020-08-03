@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import renderer from "react-test-renderer";
 import {films, GENRES} from "../../test-mocks.js";
 import GenresList from "../genres-list/genres-list.jsx";

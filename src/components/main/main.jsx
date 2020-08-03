@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import Header from "../header/header.jsx";
 import PromoCard from "../promo-card/promo-card.jsx";

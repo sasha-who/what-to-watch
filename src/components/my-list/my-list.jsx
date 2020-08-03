@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import Loader from "react-loader-spinner";
 import {LoaderData} from "../../const.js";
