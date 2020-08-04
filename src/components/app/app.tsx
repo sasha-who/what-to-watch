@@ -36,7 +36,7 @@ import Main from "../main/main";
 import DetailedFilmCard from "../detailed-card/detailed-card";
 import ServerError from "../server-error/server-error";
 import AuthorizationScreen from "../authorization-screen/authorization-screen";
-import ReviewScreen from "../review-sreen/review-sreen";
+import ReviewScreen from "../review-screen/review-screen";
 import MyList from "../my-list/my-list";
 import Player from "../player/player";
 import withValidityCheck from "../../hocs/with-validity-check/with-validity-check";

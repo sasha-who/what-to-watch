@@ -1,6 +1,5 @@
 import * as React from "react";
-import PropTypes from "prop-types";
-import moment from "moment";
+import * as moment from "moment";
 import classNames from "classnames";
 import {
   REVIEWS_COLUMNS_COUNT,
@@ -9,8 +8,16 @@ import {
   RatingGrade,
   TabsNames,
   TabsData
-} from "../../const.js";
-import {getFormatedRunTime} from "../../utils/common.js";
+} from "../../const";
+import {getFormatedRunTime} from "../../utils/common";
+import {Film, Comment} from "../../types";
+
+interface Props {
+  film: Film;
+  activeFilmComments: Comment[];
+  activeTab: string;
+  onActiveTabChange: (name: string) => void;
+}
 
 const getRatingGrade = (rating) => {
   switch (true) {
@@ -34,7 +41,7 @@ const getRatingGrade = (rating) => {
   }
 };
 
-export default class Tabs extends React.PureComponent {
+class Tabs extends React.PureComponent<Props, {}> {
   render() {
     const {
       activeTab,
@@ -214,35 +221,4 @@ export default class Tabs extends React.PureComponent {
   }
 }
 
-Tabs.propTypes = {
-  film: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    cover: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    previewVideo: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    release: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    ratingsCount: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    actors: PropTypes.arrayOf(PropTypes.string),
-    runTime: PropTypes.number.isRequired,
-    previewImage: PropTypes.string.isRequired,
-    backgroundColor: PropTypes.string.isRequired,
-    videoLink: PropTypes.string.isRequired,
-    isFavorite: PropTypes.bool.isRequired
-  }).isRequired,
-  activeFilmComments: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        text: PropTypes.string.isRequired,
-        rating: PropTypes.number.isRequired,
-        userName: PropTypes.string.isRequired,
-        date: PropTypes.instanceOf(Date).isRequired
-      })
-  ).isRequired,
-  activeTab: PropTypes.string.isRequired,
-  onActiveTabChange: PropTypes.func.isRequired
-};
+export default Tabs;

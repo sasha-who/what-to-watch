@@ -1,17 +1,29 @@
 import * as React from "react";
-import PropTypes from "prop-types";
-import {Link} from "react-router-dom";
-import {getFilmFromParameters} from "../../utils/common.js";
-import Header from "../header/header.jsx";
-import ReviewForm from "../review-form/review-form.jsx";
+import {Link, RouteComponentProps} from "react-router-dom";
+import {getFilmFromParameters} from "../../utils/common";
+import Header from "../header/header";
+import ReviewForm from "../review-form/review-form";
+import {Film, AuthorizationData} from "../../types";
 
-const ReviewScreen = (props) => {
+interface MatchParams {
+  id: string;
+}
+
+interface Props extends RouteComponentProps<MatchParams> {
+  films: Film[];
+  authorizationStatus: string;
+  authorizationData: AuthorizationData;
+  commentPostStatus: string;
+  postReview: () => void;
+}
+
+const ReviewScreen: React.FunctionComponent<Props> = (props: Props) => {
   const {
     films,
     authorizationData,
     authorizationStatus,
-    postReview,
-    commentPostStatus
+    commentPostStatus,
+    postReview
   } = props;
 
   const film = getFilmFromParameters(films, props.match.params.id);
@@ -64,39 +76,6 @@ const ReviewScreen = (props) => {
       />
     </section>
   );
-};
-
-ReviewScreen.propTypes = {
-  films: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-        cover: PropTypes.string.isRequired,
-        poster: PropTypes.string.isRequired,
-        previewVideo: PropTypes.string.isRequired,
-        genre: PropTypes.string.isRequired,
-        release: PropTypes.number.isRequired,
-        rating: PropTypes.number.isRequired,
-        ratingsCount: PropTypes.number.isRequired,
-        description: PropTypes.string.isRequired,
-        director: PropTypes.string.isRequired,
-        actors: PropTypes.arrayOf(PropTypes.string),
-        previewImage: PropTypes.string.isRequired,
-        backgroundColor: PropTypes.string.isRequired,
-        videoLink: PropTypes.string.isRequired,
-        isFavorite: PropTypes.bool.isRequired
-      }).isRequired
-  ).isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  authorizationData: PropTypes.shape({
-    id: PropTypes.number,
-    email: PropTypes.string,
-    name: PropTypes.string,
-    avatarUrl: PropTypes.string
-  }),
-  postReview: PropTypes.func.isRequired,
-  commentPostStatus: PropTypes.string.isRequired,
-  match: PropTypes.object.isRequired
 };
 
 export default ReviewScreen;
