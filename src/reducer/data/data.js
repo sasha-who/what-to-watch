@@ -2,9 +2,9 @@ import history from "../../history.js";
 import {HttpStatus, AppRoute} from "../../const.js";
 import {extend} from "../../utils/common.js";
 import {getFilms} from "./selectors.js";
-import {adaptFilmFromServer, adaptFilmsFromServer} from "../../adapters/films.js";
+import {convertFilmFromServer, convertFilmsFromServer} from "../../adapters/films.js";
 import {ActionCreator as AppStateActionCreator} from "../app-state/app-state.js";
-import {adaptCommentsFromServer} from "../../adapters/comments.js";
+import {convertCommentsFromServer} from "../../adapters/comments.js";
 
 const initialState = {
   films: [],
@@ -101,7 +101,7 @@ const Operation = {
   loadFilms: () => (dispatch, getState, api) => {
     return api.get(`/films`)
       .then((response) => {
-        const adaptedFilms = adaptFilmsFromServer(response.data);
+        const adaptedFilms = convertFilmsFromServer(response.data);
 
         dispatch(ActionCreator.loadFilms(adaptedFilms));
         dispatch(ActionCreator.changeFilmsLoadState());
@@ -114,7 +114,7 @@ const Operation = {
   loadPromoFilm: () => (dispatch, getState, api) => {
     return api.get(`/films/promo`)
       .then((response) => {
-        const adaptedFilm = adaptFilmFromServer(response.data);
+        const adaptedFilm = convertFilmFromServer(response.data);
 
         dispatch(ActionCreator.loadPromoFilm(adaptedFilm));
         dispatch(ActionCreator.changePromoFilmLoadState());
@@ -127,7 +127,7 @@ const Operation = {
   loadActiveFilmComments: (filmId) => (dispatch, getState, api) => {
     return api.get(`/comments/${filmId}`)
       .then((response) => {
-        const adaptedComments = adaptCommentsFromServer(response.data);
+        const adaptedComments = convertCommentsFromServer(response.data);
 
         dispatch(ActionCreator.loadActiveFilmComments(adaptedComments));
         dispatch(ActionCreator.changeCommentsLoadState());
@@ -136,7 +136,7 @@ const Operation = {
   changeFavoriteStatus: (filmId, status, isPromoFilm) => (dispatch, getState, api) => {
     return api.post(`/favorite/${filmId}/${status}`)
       .then((response) => {
-        const adaptedFilm = adaptFilmFromServer(response.data);
+        const adaptedFilm = convertFilmFromServer(response.data);
 
         if (isPromoFilm) {
           dispatch(ActionCreator.updatePromoFilm(adaptedFilm));
@@ -158,7 +158,7 @@ const Operation = {
   loadFavoriteFilms: () => (dispatch, getState, api) => {
     return api.get(`/favorite`)
       .then((response) => {
-        const adaptedFilms = adaptFilmsFromServer(response.data);
+        const adaptedFilms = convertFilmsFromServer(response.data);
 
         dispatch(ActionCreator.loadFavoriteFilms(adaptedFilms));
         dispatch(ActionCreator.changeFavoriteFilmsLoadState());

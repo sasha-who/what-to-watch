@@ -1,4 +1,4 @@
-export const adaptFilmFromServer = (film) => {
+export const convertFilmFromServer = (film) => {
   return ({
     id: film[`id`],
     title: film[`name`],
@@ -20,6 +20,6 @@ export const adaptFilmFromServer = (film) => {
   });
 };
 
-export const adaptFilmsFromServer = (films) => {
-  return films.map((film) => adaptFilmFromServer(film));
+export const convertFilmsFromServer = (films) => {
+  return films.map((film) => convertFilmFromServer(film));
 };
