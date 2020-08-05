@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Link} from "react-router-dom";
-import {AuthorizationStatus, AppRoute, HeaderType} from "../../const";
+import {AuthorizationStatus, AppRoute, HeaderType, Url} from "../../const";
 import {AuthorizationData} from "../../types";
 
 interface Props {
@@ -47,7 +47,7 @@ const Header: React.FunctionComponent<Props> = (props: Props) => {
           >
             <div className="user-block__avatar">
               <img
-                src={`https://4.react.pages.academy${authorizationData.avatarUrl}`}
+                src={`${Url.ACADEMY}${authorizationData.avatarUrl}`}
                 alt="User avatar"
                 width={63}
                 height={63}

@@ -1,9 +1,9 @@
 import axios from "axios";
-import {SERVER_TIMEOUT, BASE_URL, HttpStatus} from "./const.js";
+import {SERVER_TIMEOUT, HttpStatus, Url} from "./const.js";
 
 export const createAPI = (onUnauthorized) => {
   const api = axios.create({
-    baseURL: BASE_URL,
+    baseURL: Url.WHAT_TO_WHATCH,
     timeout: SERVER_TIMEOUT,
     withCredentials: true
   });
