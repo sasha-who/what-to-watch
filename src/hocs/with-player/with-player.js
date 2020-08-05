@@ -16,9 +16,13 @@ const withPlayer = (Component) => {
       this._videoRef = React.createRef();
       this.handlePlayButtonClick = this.handlePlayButtonClick.bind(this);
       this.handleFullScreenButtonClick = this.handleFullScreenButtonClick.bind(this);
+
+      this._isMounted = false;
     }
 
     componentDidMount() {
+      this._isMounted = true;
+
       const film = getFilmFromParameters(this.props.films, this.props.match.params.id);
       const {cover, videoLink} = film;
       const {isPlaying} = this.state;
@@ -36,9 +40,13 @@ const withPlayer = (Component) => {
         isPlaying: false
       });
 
-      video.ontimeupdate = () => this.setState({
-        progress: Math.floor(video.currentTime),
-      });
+      video.ontimeupdate = () => {
+        if (this._isMounted) {
+          this.setState({
+            progress: Math.floor(video.currentTime),
+          });
+        }
+      };
 
       if (isPlaying) {
         video.play();
@@ -64,6 +72,8 @@ const withPlayer = (Component) => {
       video.className = ``;
       video.poster = ``;
       video.src = ``;
+
+      this._isMounted = false;
     }
 
     handlePlayButtonClick() {
@@ -128,5 +138,3 @@ const withPlayer = (Component) => {
 };
 
 export default withPlayer;
-
-

@@ -19,6 +19,8 @@ const withFilmCard = (Component) => {
   type T = Subtract<P, InjectingProps>;
 
   class WithFilmCard extends React.PureComponent<T, State> {
+    private isMounted: boolean;
+
     constructor(props) {
       super(props);
 
@@ -30,6 +32,16 @@ const withFilmCard = (Component) => {
       this.handleStartPlaying = this.handleStartPlaying.bind(this);
       this.handleStopPlaying = this.handleStopPlaying.bind(this);
       this.handleHoverChange = this.handleHoverChange.bind(this);
+
+      this.isMounted = false;
+    }
+
+    componentDidMount() {
+      this.isMounted = true;
+    }
+
+    componentWillUnmount() {
+      this.isMounted = false;
     }
 
     render() {
@@ -46,9 +58,11 @@ const withFilmCard = (Component) => {
 
     handleStartPlaying() {
       const timerId = window.setTimeout(() => {
-        this.setState({
-          isPlaying: true
-        });
+        if (this.isMounted) {
+          this.setState({
+            isPlaying: true
+          });
+        }
       }, PREVIEW_DELAY);
 
       this.setState({
