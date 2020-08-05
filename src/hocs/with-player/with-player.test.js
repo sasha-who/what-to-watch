@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import renderer from "react-test-renderer";
 import {films} from "../../test-mocks.js";
@@ -24,20 +24,20 @@ MockComponent.propTypes = {
 const MockComponentWrapped = withPlayer(MockComponent);
 
 it(`withPlayer is rendered correctly`, () => {
-  const tree = renderer.create((
-    <MockComponentWrapped
-      match={{params: {id: 1}, isExact: true, path: ``, url: ``}}
-      films={films}
-      isPlaying={true}
-      progress={0}
-      onPlayButtonClick={() => {}}
-      onFullScreenButtonClick={() => {}}
-    />
-  ), {
-    createNodeMock() {
-      return {};
-    }
-  }).toJSON();
+  const tree = renderer.create(
+      <MockComponentWrapped
+        match={{params: {id: 1}, isExact: true, path: ``, url: ``}}
+        films={films}
+        isPlaying={true}
+        progress={0}
+        onPlayButtonClick={() => {}}
+        onFullScreenButtonClick={() => {}}
+      />, {
+        createNodeMock: () => {
+          return {};
+        }
+      }
+  ).toJSON();
 
   expect(tree).toMatchSnapshot();
 });
