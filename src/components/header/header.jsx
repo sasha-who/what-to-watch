@@ -48,7 +48,6 @@ const Header = (props) => {
             </div>
           </Link> :
           <Link
-            href="#"
             className="user-block__link"
             to={AppRoute.LOGIN}
           >
