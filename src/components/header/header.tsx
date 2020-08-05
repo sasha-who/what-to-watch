@@ -55,7 +55,6 @@ const Header: React.FunctionComponent<Props> = (props: Props) => {
             </div>
           </Link> :
           <Link
-            href="#"
             className="user-block__link"
             to={AppRoute.LOGIN}
           >
