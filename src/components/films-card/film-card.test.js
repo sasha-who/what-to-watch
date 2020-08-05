@@ -10,8 +10,13 @@ it(`FilmCard should render correctly`, () => {
     .create(
         <FilmCard
           film={film}
-          onCardHover={() => {}}
-          onCardClick={() => {}}
+          isPlaying={false}
+          onScreenChange={() => {}}
+          onActiveFilmChange={() => {}}
+          onStartPlaying={() => {}}
+          onStopPlaying={() => {}}
+          onHoverChange={() => {}}
+          onSimilarFilmsUpdate={() => {}}
         />, {
           createNodeMock: () => {
             return {};

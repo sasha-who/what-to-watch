@@ -9,11 +9,13 @@ const Catalog = (props) => {
     currentGenre,
     filteredFilms,
     filmsCountToShow,
-    onCardClick,
+    onScreenChange,
+    onActiveFilmChange,
     onGenreChange,
-    filterFilmsByGenre,
-    resetFilmsCountToShow,
-    incrementFilmsCountToShow
+    onFilmsFilterByGenre,
+    onFilmsCountToShowReset,
+    onFilmsCountToShowIncrement,
+    onSimilarFilmsUpdate
   } = props;
 
   return (
@@ -23,14 +25,16 @@ const Catalog = (props) => {
         films={films}
         currentGenre={currentGenre}
         onGenreChange={onGenreChange}
-        filterFilmsByGenre={filterFilmsByGenre}
-        resetFilmsCountToShow={resetFilmsCountToShow}
+        onFilmsFilterByGenre={onFilmsFilterByGenre}
+        onFilmsCountToShowReset={onFilmsCountToShowReset}
       />
       <FilmsList
         films={filteredFilms}
         filmsCountToShow={filmsCountToShow}
-        onCardClick={onCardClick}
-        incrementFilmsCountToShow={incrementFilmsCountToShow}
+        onScreenChange={onScreenChange}
+        onActiveFilmChange={onActiveFilmChange}
+        onFilmsCountToShowIncrement={onFilmsCountToShowIncrement}
+        onSimilarFilmsUpdate={onSimilarFilmsUpdate}
       />
     </section>
   );
@@ -91,11 +95,13 @@ Catalog.propTypes = {
   ).isRequired,
   filmsCountToShow: PropTypes.number,
   currentGenre: PropTypes.string.isRequired,
-  onCardClick: PropTypes.func.isRequired,
+  onScreenChange: PropTypes.func.isRequired,
+  onActiveFilmChange: PropTypes.func.isRequired,
   onGenreChange: PropTypes.func.isRequired,
-  filterFilmsByGenre: PropTypes.func.isRequired,
-  resetFilmsCountToShow: PropTypes.func.isRequired,
-  incrementFilmsCountToShow: PropTypes.func
+  onFilmsFilterByGenre: PropTypes.func.isRequired,
+  onFilmsCountToShowReset: PropTypes.func.isRequired,
+  onFilmsCountToShowIncrement: PropTypes.func,
+  onSimilarFilmsUpdate: PropTypes.func.isRequired
 };
 
 export default Catalog;

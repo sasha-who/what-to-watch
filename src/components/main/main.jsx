@@ -12,11 +12,13 @@ const Main = (props) => {
     currentGenre,
     filteredFilms,
     filmsCountToShow,
-    onCardClick,
+    onScreenChange,
+    onActiveFilmChange,
     onGenreChange,
-    filterFilmsByGenre,
-    resetFilmsCountToShow,
-    incrementFilmsCountToShow
+    onFilmsFilterByGenre,
+    onFilmsCountToShowReset,
+    onFilmsCountToShowIncrement,
+    onSimilarFilmsUpdate
   } = props;
 
   return (
@@ -38,11 +40,13 @@ const Main = (props) => {
           currentGenre={currentGenre}
           filteredFilms={filteredFilms}
           filmsCountToShow={filmsCountToShow}
-          onCardClick={onCardClick}
+          onScreenChange={onScreenChange}
+          onActiveFilmChange={onActiveFilmChange}
           onGenreChange={onGenreChange}
-          filterFilmsByGenre={filterFilmsByGenre}
-          resetFilmsCountToShow={resetFilmsCountToShow}
-          incrementFilmsCountToShow={incrementFilmsCountToShow}
+          onFilmsFilterByGenre={onFilmsFilterByGenre}
+          onFilmsCountToShowReset={onFilmsCountToShowReset}
+          onFilmsCountToShowIncrement={onFilmsCountToShowIncrement}
+          onSimilarFilmsUpdate={onSimilarFilmsUpdate}
         />
         <Footer />
       </div>
@@ -110,11 +114,13 @@ Main.propTypes = {
   ).isRequired,
   currentGenre: PropTypes.string.isRequired,
   filmsCountToShow: PropTypes.number,
-  onCardClick: PropTypes.func.isRequired,
+  onScreenChange: PropTypes.func.isRequired,
+  onActiveFilmChange: PropTypes.func.isRequired,
   onGenreChange: PropTypes.func.isRequired,
-  filterFilmsByGenre: PropTypes.func.isRequired,
-  resetFilmsCountToShow: PropTypes.func.isRequired,
-  incrementFilmsCountToShow: PropTypes.func
+  onFilmsFilterByGenre: PropTypes.func.isRequired,
+  onFilmsCountToShowReset: PropTypes.func.isRequired,
+  onFilmsCountToShowIncrement: PropTypes.func,
+  onSimilarFilmsUpdate: PropTypes.func.isRequired
 };
 
 export default Main;

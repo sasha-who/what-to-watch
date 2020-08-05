@@ -1,51 +1,45 @@
 import React from "react";
 import PropTypes from "prop-types";
 import FilmCard from "../films-card/film-card.jsx";
+import withFilmCard from "../../hocs/with-film-card/with-film-card.js";
 import ShowMoreButton from "../show-more/show-more.jsx";
 
-class FilmsList extends React.PureComponent {
-  constructor(props) {
-    super(props);
+const FilmCardWrapped = withFilmCard(FilmCard);
 
-    this.state = {
-      activeCard: null
-    };
+const FilmsList = (props) => {
+  const {
+    films,
+    filmsCountToShow,
+    onScreenChange,
+    onActiveFilmChange,
+    onFilmsCountToShowIncrement,
+    onSimilarFilmsUpdate
+  } = props;
 
-    this._handlerCardHover = this._handlerCardHover.bind(this);
-  }
+  const shownFilms = films.slice(0, filmsCountToShow);
+  const isAnyFilmsToShow = films.length > filmsCountToShow;
 
-  render() {
-    const {films, onCardClick, filmsCountToShow, incrementFilmsCountToShow} = this.props;
-    const shownFilms = films.slice(0, filmsCountToShow);
-    const isAnyFilmsToShow = films.length > filmsCountToShow;
-
-    return (
-      <React.Fragment>
-        <div className="catalog__movies-list">
-          {shownFilms.map((film) => (
-            <FilmCard
-              film={film}
-              onCardClick={onCardClick}
-              onCardHover={this._handlerCardHover}
-              key={film.id}
-            />
-          ))}
-        </div>
-        {isAnyFilmsToShow &&
-          <ShowMoreButton
-            incrementFilmsCountToShow={incrementFilmsCountToShow}
+  return (
+    <React.Fragment>
+      <div className="catalog__movies-list">
+        {shownFilms.map((film) => (
+          <FilmCardWrapped
+            film={film}
+            onScreenChange={onScreenChange}
+            onActiveFilmChange={onActiveFilmChange}
+            onSimilarFilmsUpdate={onSimilarFilmsUpdate}
+            key={film.id}
           />
-        }
-      </React.Fragment>
-    );
-  }
-
-  _handlerCardHover(film, activeCard) {
-    this.setState({
-      activeCard
-    });
-  }
-}
+        ))}
+      </div>
+      {isAnyFilmsToShow &&
+        <ShowMoreButton
+          onFilmsCountToShowIncrement={onFilmsCountToShowIncrement}
+        />
+      }
+    </React.Fragment>
+  );
+};
 
 FilmsList.propTypes = {
   films: PropTypes.arrayOf(
@@ -74,8 +68,10 @@ FilmsList.propTypes = {
       })
   ).isRequired,
   filmsCountToShow: PropTypes.number,
-  onCardClick: PropTypes.func.isRequired,
-  incrementFilmsCountToShow: PropTypes.func
+  onScreenChange: PropTypes.func.isRequired,
+  onActiveFilmChange: PropTypes.func.isRequired,
+  onFilmsCountToShowIncrement: PropTypes.func,
+  onSimilarFilmsUpdate: PropTypes.func.isRequired
 };
 
 export default FilmsList;

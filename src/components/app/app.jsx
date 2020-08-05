@@ -8,20 +8,14 @@ import Main from "../main/main.jsx";
 import DetailedFilmCard from "../detailed-card/detailed-card.jsx";
 
 class App extends React.PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeScreen: Screen.MAIN
-    };
-
-    this.activeFilm = null;
-    this._handlerCardClick = this._handlerCardClick.bind(this);
-  }
-
   render() {
-    const {films} = this.props;
-    const [film] = films;
+    const {
+      similarFilms,
+      activeFilm,
+      onScreenChange,
+      onActiveFilmChange,
+      onSimilarFilmsUpdate
+    } = this.props;
 
     return (
       <BrowserRouter>
@@ -31,9 +25,11 @@ class App extends React.PureComponent {
           </Route>
           <Route exact path="/film-card">
             <DetailedFilmCard
-              film={film}
-              films={films}
-              onCardClick={this._handlerCardClick}
+              film={activeFilm}
+              similarFilms={similarFilms}
+              onScreenChange={onScreenChange}
+              onActiveFilmChange={onActiveFilmChange}
+              onSimilarFilmsUpdate={onSimilarFilmsUpdate}
             />
           </Route>
         </Switch>
@@ -41,28 +37,24 @@ class App extends React.PureComponent {
     );
   }
 
-  _handlerCardClick(film) {
-    this.setState({
-      activeScreen: Screen.CARD
-    });
-
-    this.activeFilm = film;
-  }
-
   _renderScreen() {
     const {
+      activeScreen,
+      activeFilm,
       promoFilmData,
       films,
       currentGenre,
       filteredFilms,
       filmsCountToShow,
+      similarFilms,
+      onScreenChange,
+      onActiveFilmChange,
       onGenreChange,
-      filterFilmsByGenre,
-      resetFilmsCountToShow,
-      incrementFilmsCountToShow
+      onFilmsFilterByGenre,
+      onFilmsCountToShowReset,
+      onFilmsCountToShowIncrement,
+      onSimilarFilmsUpdate
     } = this.props;
-
-    const {activeScreen} = this.state;
 
     switch (activeScreen) {
       case Screen.MAIN:
@@ -73,20 +65,24 @@ class App extends React.PureComponent {
             currentGenre={currentGenre}
             filteredFilms={filteredFilms}
             filmsCountToShow={filmsCountToShow}
-            onCardClick={this._handlerCardClick}
+            onScreenChange={onScreenChange}
+            onActiveFilmChange={onActiveFilmChange}
             onGenreChange={onGenreChange}
-            filterFilmsByGenre={filterFilmsByGenre}
-            resetFilmsCountToShow={resetFilmsCountToShow}
-            incrementFilmsCountToShow={incrementFilmsCountToShow}
+            onFilmsFilterByGenre={onFilmsFilterByGenre}
+            onFilmsCountToShowReset={onFilmsCountToShowReset}
+            onFilmsCountToShowIncrement={onFilmsCountToShowIncrement}
+            onSimilarFilmsUpdate={onSimilarFilmsUpdate}
           />
         );
 
       case Screen.CARD:
         return (
           <DetailedFilmCard
-            film={this.activeFilm}
-            films={films}
-            onCardClick={this._handlerCardClick}
+            film={activeFilm}
+            similarFilms={similarFilms}
+            onScreenChange={onScreenChange}
+            onActiveFilmChange={onActiveFilmChange}
+            onSimilarFilmsUpdate={onSimilarFilmsUpdate}
           />
         );
 
@@ -154,33 +150,99 @@ App.propTypes = {
         ).isRequired
       })
   ).isRequired,
+  activeScreen: PropTypes.string.isRequired,
+  activeFilm: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    preview: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    release: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    ratingsCount: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    actors: PropTypes.arrayOf(PropTypes.string),
+    runTime: PropTypes.number.isRequired,
+    reviews: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.string.isRequired,
+          text: PropTypes.string.isRequired,
+          rating: PropTypes.number.isRequired,
+          userName: PropTypes.string.isRequired,
+          date: PropTypes.instanceOf(Date).isRequired
+        })
+    ).isRequired
+  }).isRequired,
+  similarFilms: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        cover: PropTypes.string.isRequired,
+        poster: PropTypes.string.isRequired,
+        preview: PropTypes.string.isRequired,
+        genre: PropTypes.string.isRequired,
+        release: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired,
+        ratingsCount: PropTypes.number.isRequired,
+        description: PropTypes.string.isRequired,
+        director: PropTypes.string.isRequired,
+        actors: PropTypes.arrayOf(PropTypes.string),
+        runTime: PropTypes.number.isRequired,
+        reviews: PropTypes.arrayOf(
+            PropTypes.shape({
+              id: PropTypes.string.isRequired,
+              text: PropTypes.string.isRequired,
+              rating: PropTypes.number.isRequired,
+              userName: PropTypes.string.isRequired,
+              date: PropTypes.instanceOf(Date).isRequired
+            })
+        ).isRequired
+      })
+  ).isRequired,
   currentGenre: PropTypes.string.isRequired,
   filmsCountToShow: PropTypes.number,
+  onScreenChange: PropTypes.func.isRequired,
+  onActiveFilmChange: PropTypes.func.isRequired,
   onGenreChange: PropTypes.func.isRequired,
-  filterFilmsByGenre: PropTypes.func.isRequired,
-  resetFilmsCountToShow: PropTypes.func.isRequired,
-  incrementFilmsCountToShow: PropTypes.func
+  onFilmsFilterByGenre: PropTypes.func.isRequired,
+  onFilmsCountToShowReset: PropTypes.func.isRequired,
+  onFilmsCountToShowIncrement: PropTypes.func,
+  onSimilarFilmsUpdate: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
+  activeScreen: state.activeScreen,
+  activeFilm: state.activeFilm || state.films[0],
   currentGenre: state.currentGenre,
   films: state.films,
   filteredFilms: state.filteredFilms || [],
-  filmsCountToShow: state.filmsCountToShow
+  filmsCountToShow: state.filmsCountToShow,
+  similarFilms: state.similarFilms || []
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  onScreenChange(screen) {
+    dispatch(ActionCreator.changeActiveScreen(screen));
+  },
+  onActiveFilmChange(film) {
+    dispatch(ActionCreator.setActiveFilm(film));
+  },
   onGenreChange(genre) {
     dispatch(ActionCreator.changeCurrentGenre(genre));
   },
-  filterFilmsByGenre() {
+  onFilmsFilterByGenre() {
     dispatch(ActionCreator.filterFilmsByGenre());
   },
-  resetFilmsCountToShow() {
+  onFilmsCountToShowReset() {
     dispatch(ActionCreator.resetFilmsCountToShow());
   },
-  incrementFilmsCountToShow() {
+  onFilmsCountToShowIncrement() {
     dispatch(ActionCreator.incrementFilmsCountToShow());
+  },
+  onSimilarFilmsUpdate() {
+    dispatch(ActionCreator.setSimilarFilms());
   }
 });
 

@@ -10,8 +10,10 @@ it(`FilmsList should render correctly with show more button`, () => {
         <FilmsList
           films={films}
           filmsCountToShow={INITIAL_FILMS_COUNT}
-          onCardClick={() => {}}
+          onScreenChange={() => {}}
+          onActiveFilmChange={() => {}}
           incrementFilmsCountToShow={() => {}}
+          onSimilarFilmsUpdate={() => {}}
         />, {
           createNodeMock: () => {
             return {};
@@ -29,8 +31,10 @@ it(`FilmsList should render correctly without show more button`, () => {
         <FilmsList
           films={films.slice(0, INITIAL_FILMS_COUNT - 1)}
           filmsCountToShow={INITIAL_FILMS_COUNT}
-          onCardClick={() => {}}
-          incrementFilmsCountToShow={() => {}}
+          onScreenChange={() => {}}
+          onActiveFilmChange={() => {}}
+          onFilmsCountToShowIncrement={() => {}}
+          onSimilarFilmsUpdate={() => {}}
         />, {
           createNodeMock: () => {
             return {};

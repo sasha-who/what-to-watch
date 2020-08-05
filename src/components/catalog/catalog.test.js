@@ -12,11 +12,13 @@ it(`Catalog should render correctly`, () => {
           filteredFilms={films}
           currentGenre={GENRES[0]}
           filmsCountToShow={INITIAL_FILMS_COUNT}
-          onCardClick={() => {}}
+          onScreenChange={() => {}}
+          onActiveFilmChange={() => {}}
           onGenreChange={() => {}}
-          filterFilmsByGenre={() => {}}
-          resetFilmsCountToShow={() => {}}
-          incrementFilmsCountToShow={() => {}}
+          onFilmsFilterByGenre={() => {}}
+          onFilmsCountToShowReset={() => {}}
+          onFilmsCountToShowIncrement={() => {}}
+          onSimilarFilmsUpdate={() => {}}
         />, {
           createNodeMock: () => {
             return {};

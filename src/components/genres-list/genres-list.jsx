@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 import {DEFAULT_GENRE, MAX_FILTERS_COUNT} from "../../const.js";
 
 const generateGenresList = (films) => {
@@ -23,14 +24,16 @@ const GenresList = (props) => {
     films,
     currentGenre,
     onGenreChange,
-    filterFilmsByGenre,
-    resetFilmsCountToShow
+    onFilmsFilterByGenre,
+    onFilmsCountToShowReset
   } = props;
 
   return (
     <ul className="catalog__genres-list">
       {generateGenresList(films).map((genre) => {
-        const activeClass = (genre === currentGenre) ? `catalog__genres-item--active` : ``;
+        const activeClass = classNames({
+          'catalog__genres-item--active': genre === currentGenre
+        });
 
         return (
           <li
@@ -43,8 +46,8 @@ const GenresList = (props) => {
               onClick={(evt) => {
                 if (genre !== currentGenre) {
                   onGenreChange(evt.target.textContent.toLowerCase());
-                  filterFilmsByGenre();
-                  resetFilmsCountToShow();
+                  onFilmsFilterByGenre();
+                  onFilmsCountToShowReset();
                 }
               }}
             >
@@ -86,8 +89,8 @@ GenresList.propTypes = {
   ).isRequired,
   currentGenre: PropTypes.string.isRequired,
   onGenreChange: PropTypes.func.isRequired,
-  filterFilmsByGenre: PropTypes.func.isRequired,
-  resetFilmsCountToShow: PropTypes.func.isRequired
+  onFilmsFilterByGenre: PropTypes.func.isRequired,
+  onFilmsCountToShowReset: PropTypes.func.isRequired
 };
 
 export default GenresList;

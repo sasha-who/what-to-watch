@@ -10,8 +10,8 @@ it(`GenresList should render correctly`, () => {
           films={films}
           currentGenre={GENRES[0]}
           onGenreChange={() => {}}
-          filterFilmsByGenre={() => {}}
-          resetFilmsCountToShow={() => {}}
+          onFilmsFilterByGenre={() => {}}
+          onFilmsCountToShowReset={() => {}}
         />
     )
     .toJSON();
