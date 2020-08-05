@@ -69,7 +69,7 @@ it(`Checks that HOC's callback turn on video`, () => {
   wrapper.find(`button`).at(0).simulate(`click`);
 
   expect(_videoRef.current.play).toHaveBeenCalledTimes(1);
-  // expect(onPlayButtonClick).toHaveBeenCalledTimes(1);
+  expect(onPlayButtonClick).toHaveBeenCalledTimes(1);
   expect(wrapper.props().isPlaying).toEqual(true);
 });
 
@@ -104,6 +104,6 @@ it(`Checks that HOC's callback turn off video`, () => {
   wrapper.find(`button`).at(0).simulate(`click`);
 
   expect(_videoRef.current.pause).toHaveBeenCalledTimes(1);
-  // expect(onPlayButtonClick).toHaveBeenCalledTimes(1);
+  expect(onPlayButtonClick).toHaveBeenCalledTimes(1);
   expect(wrapper.props().isPlaying).toEqual(false);
 });
