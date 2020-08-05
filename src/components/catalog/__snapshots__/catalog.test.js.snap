@@ -117,12 +117,13 @@ exports[`Catalog should render correctly 1`] = `
   >
     <article
       className="small-movie-card catalog__movies-card"
-      onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
-      <div
+      <a
         className="small-movie-card__image"
+        href="/films/0"
+        onClick={[Function]}
       >
         <video
           height={175}
@@ -131,13 +132,14 @@ exports[`Catalog should render correctly 1`] = `
           src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
           width={280}
         />
-      </div>
+      </a>
       <h3
         className="small-movie-card__title"
       >
         <a
           className="small-movie-card__link"
-          href="movie-page.html"
+          href="/films/0"
+          onClick={[Function]}
         >
           Fantastic Beasts: The Crimes of Grindelwald
         </a>
@@ -145,12 +147,13 @@ exports[`Catalog should render correctly 1`] = `
     </article>
     <article
       className="small-movie-card catalog__movies-card"
-      onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
-      <div
+      <a
         className="small-movie-card__image"
+        href="/films/1"
+        onClick={[Function]}
       >
         <video
           height={175}
@@ -159,13 +162,14 @@ exports[`Catalog should render correctly 1`] = `
           src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
           width={280}
         />
-      </div>
+      </a>
       <h3
         className="small-movie-card__title"
       >
         <a
           className="small-movie-card__link"
-          href="movie-page.html"
+          href="/films/1"
+          onClick={[Function]}
         >
           Bohemian Rhapsody
         </a>
@@ -173,12 +177,13 @@ exports[`Catalog should render correctly 1`] = `
     </article>
     <article
       className="small-movie-card catalog__movies-card"
-      onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
-      <div
+      <a
         className="small-movie-card__image"
+        href="/films/2"
+        onClick={[Function]}
       >
         <video
           height={175}
@@ -187,13 +192,14 @@ exports[`Catalog should render correctly 1`] = `
           src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
           width={280}
         />
-      </div>
+      </a>
       <h3
         className="small-movie-card__title"
       >
         <a
           className="small-movie-card__link"
-          href="movie-page.html"
+          href="/films/2"
+          onClick={[Function]}
         >
           Macbeth
         </a>
@@ -201,12 +207,13 @@ exports[`Catalog should render correctly 1`] = `
     </article>
     <article
       className="small-movie-card catalog__movies-card"
-      onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
-      <div
+      <a
         className="small-movie-card__image"
+        href="/films/3"
+        onClick={[Function]}
       >
         <video
           height={175}
@@ -215,13 +222,14 @@ exports[`Catalog should render correctly 1`] = `
           src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
           width={280}
         />
-      </div>
+      </a>
       <h3
         className="small-movie-card__title"
       >
         <a
           className="small-movie-card__link"
-          href="movie-page.html"
+          href="/films/3"
+          onClick={[Function]}
         >
           Aviator
         </a>
@@ -229,12 +237,13 @@ exports[`Catalog should render correctly 1`] = `
     </article>
     <article
       className="small-movie-card catalog__movies-card"
-      onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
-      <div
+      <a
         className="small-movie-card__image"
+        href="/films/4"
+        onClick={[Function]}
       >
         <video
           height={175}
@@ -243,13 +252,14 @@ exports[`Catalog should render correctly 1`] = `
           src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
           width={280}
         />
-      </div>
+      </a>
       <h3
         className="small-movie-card__title"
       >
         <a
           className="small-movie-card__link"
-          href="movie-page.html"
+          href="/films/4"
+          onClick={[Function]}
         >
           We need to talk about Kevin
         </a>
@@ -257,12 +267,13 @@ exports[`Catalog should render correctly 1`] = `
     </article>
     <article
       className="small-movie-card catalog__movies-card"
-      onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
-      <div
+      <a
         className="small-movie-card__image"
+        href="/films/5"
+        onClick={[Function]}
       >
         <video
           height={175}
@@ -271,13 +282,14 @@ exports[`Catalog should render correctly 1`] = `
           src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
           width={280}
         />
-      </div>
+      </a>
       <h3
         className="small-movie-card__title"
       >
         <a
           className="small-movie-card__link"
-          href="movie-page.html"
+          href="/films/5"
+          onClick={[Function]}
         >
           What We Do in the Shadows
         </a>
@@ -285,12 +297,13 @@ exports[`Catalog should render correctly 1`] = `
     </article>
     <article
       className="small-movie-card catalog__movies-card"
-      onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
-      <div
+      <a
         className="small-movie-card__image"
+        href="/films/6"
+        onClick={[Function]}
       >
         <video
           height={175}
@@ -299,13 +312,14 @@ exports[`Catalog should render correctly 1`] = `
           src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
           width={280}
         />
-      </div>
+      </a>
       <h3
         className="small-movie-card__title"
       >
         <a
           className="small-movie-card__link"
-          href="movie-page.html"
+          href="/films/6"
+          onClick={[Function]}
         >
           Revenant
         </a>
@@ -313,12 +327,13 @@ exports[`Catalog should render correctly 1`] = `
     </article>
     <article
       className="small-movie-card catalog__movies-card"
-      onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
-      <div
+      <a
         className="small-movie-card__image"
+        href="/films/7"
+        onClick={[Function]}
       >
         <video
           height={175}
@@ -327,13 +342,14 @@ exports[`Catalog should render correctly 1`] = `
           src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
           width={280}
         />
-      </div>
+      </a>
       <h3
         className="small-movie-card__title"
       >
         <a
           className="small-movie-card__link"
-          href="movie-page.html"
+          href="/films/7"
+          onClick={[Function]}
         >
           Johnny English
         </a>

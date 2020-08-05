@@ -1,15 +1,10 @@
-export const PromoFilmData = {
-  title: `The Grand Budapest Hotel`,
-  genre: `Drama`,
-  date: `2014`
-};
-
-const RELEASE = `2020`;
+const RELEASE = 2020;
 const RATING = 9;
 const RATINGS_COUNT = 228;
 const DIRECTOR = `Otto Bathurst`;
 const PREVIEW = `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`;
 const RUN_TIME = 140;
+const COMMENTS_COUNT = 6;
 
 const DESCRRIPTION = `In the 1930s, the Grand Budapest Hotel is a popular European ski resort,
 presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's
@@ -61,8 +56,14 @@ export const GENRES = [
   `thriller`
 ];
 
-const review = {
-  id: `0`,
+export const TABS_DATA = [
+  `overview`,
+  `details`,
+  `reviews`
+];
+
+const comment = {
+  id: 0,
   text: `I didn't find it amusing, and while I can appreciate the creativity,
   it's an hour and 40 minutes I wish I could take back.`,
   rating: 8,
@@ -70,13 +71,19 @@ const review = {
   date: new Date(`December 25, 2019 01:00:00`)
 };
 
+export const comments = Array(COMMENTS_COUNT)
+  .fill()
+  .map(() => comment);
+
 export const films = TITLES.map((title, index) => {
   return ({
-    id: index.toString(),
+    id: index,
     title,
     cover: COVERS[index],
     poster: COVERS[index],
-    preview: PREVIEW,
+    previewImage: COVERS[index],
+    previewVideo: PREVIEW,
+    videoLink: PREVIEW,
     genre: GENRES[index + 1] || GENRES[1],
     release: RELEASE,
     rating: RATING,
@@ -85,12 +92,24 @@ export const films = TITLES.map((title, index) => {
     director: DIRECTOR,
     actors: ACTORS,
     runTime: RUN_TIME,
-    reviews: [review]
+    isFavorite: false,
+    backgroundColor: `black`
   });
 });
 
-export const TABS_DATA = [
-  `overview`,
-  `details`,
-  `reviews`
-];
+export const userData = {
+  id: 1,
+  email: `Tommy@gmail.com`,
+  name: `Tommy`,
+  avatarUrl: `img/1.png`
+};
+
+export const LoginData = {
+  email: `Tommy@gmail.com`,
+  password: `TommyPB`,
+};
+
+export const ReviewToPost = {
+  rating: 8,
+  comment: `Great!`
+};

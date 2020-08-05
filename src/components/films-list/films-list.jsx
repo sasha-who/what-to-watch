@@ -10,10 +10,8 @@ const FilmsList = (props) => {
   const {
     films,
     filmsCountToShow,
-    onScreenChange,
-    onActiveFilmChange,
     onFilmsCountToShowIncrement,
-    onSimilarFilmsUpdate
+    loadFilmComments
   } = props;
 
   const shownFilms = films.slice(0, filmsCountToShow);
@@ -25,9 +23,7 @@ const FilmsList = (props) => {
         {shownFilms.map((film) => (
           <FilmCardWrapped
             film={film}
-            onScreenChange={onScreenChange}
-            onActiveFilmChange={onActiveFilmChange}
-            onSimilarFilmsUpdate={onSimilarFilmsUpdate}
+            loadFilmComments={loadFilmComments}
             key={film.id}
           />
         ))}
@@ -44,34 +40,27 @@ const FilmsList = (props) => {
 FilmsList.propTypes = {
   films: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
         cover: PropTypes.string.isRequired,
         poster: PropTypes.string.isRequired,
-        preview: PropTypes.string.isRequired,
+        previewVideo: PropTypes.string.isRequired,
         genre: PropTypes.string.isRequired,
-        release: PropTypes.string.isRequired,
+        release: PropTypes.number.isRequired,
         rating: PropTypes.number.isRequired,
         ratingsCount: PropTypes.number.isRequired,
         description: PropTypes.string.isRequired,
         director: PropTypes.string.isRequired,
         actors: PropTypes.arrayOf(PropTypes.string),
-        reviews: PropTypes.arrayOf(
-            PropTypes.shape({
-              id: PropTypes.string.isRequired,
-              text: PropTypes.string.isRequired,
-              rating: PropTypes.number.isRequired,
-              userName: PropTypes.string.isRequired,
-              date: PropTypes.instanceOf(Date).isRequired
-            })
-        ).isRequired
+        previewImage: PropTypes.string.isRequired,
+        backgroundColor: PropTypes.string.isRequired,
+        videoLink: PropTypes.string.isRequired,
+        isFavorite: PropTypes.bool.isRequired
       })
   ).isRequired,
   filmsCountToShow: PropTypes.number,
-  onScreenChange: PropTypes.func.isRequired,
-  onActiveFilmChange: PropTypes.func.isRequired,
   onFilmsCountToShowIncrement: PropTypes.func,
-  onSimilarFilmsUpdate: PropTypes.func.isRequired
+  loadFilmComments: PropTypes.func.isRequired
 };
 
 export default FilmsList;

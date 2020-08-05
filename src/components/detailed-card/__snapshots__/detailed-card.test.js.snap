@@ -12,8 +12,8 @@ exports[`DetailedFilmCard should render correctly 1`] = `
         className="movie-card__bg"
       >
         <img
-          alt="Fantastic Beasts: The Crimes of Grindelwald"
-          src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+          alt="Bohemian Rhapsody"
+          src="img/bohemian-rhapsody.jpg"
         />
       </div>
       <h1
@@ -29,7 +29,8 @@ exports[`DetailedFilmCard should render correctly 1`] = `
         >
           <a
             className="logo__link"
-            href="main.html"
+            href="/"
+            onClick={[Function]}
           >
             <span
               className="logo__letter logo__letter--1"
@@ -51,16 +52,13 @@ exports[`DetailedFilmCard should render correctly 1`] = `
         <div
           className="user-block"
         >
-          <div
-            className="user-block__avatar"
+          <a
+            className="user-block__link"
+            href="/login"
+            onClick={[Function]}
           >
-            <img
-              alt="User avatar"
-              height={63}
-              src="img/avatar.jpg"
-              width={63}
-            />
-          </div>
+            Sign in
+          </a>
         </div>
       </header>
       <div
@@ -72,7 +70,7 @@ exports[`DetailedFilmCard should render correctly 1`] = `
           <h2
             className="movie-card__title"
           >
-            Fantastic Beasts: The Crimes of Grindelwald
+            Bohemian Rhapsody
           </h2>
           <p
             className="movie-card__meta"
@@ -80,7 +78,7 @@ exports[`DetailedFilmCard should render correctly 1`] = `
             <span
               className="movie-card__genre"
             >
-              comedy
+              drama
             </span>
             <span
               className="movie-card__year"
@@ -91,9 +89,10 @@ exports[`DetailedFilmCard should render correctly 1`] = `
           <div
             className="movie-card__buttons"
           >
-            <button
+            <a
               className="btn btn--play movie-card__button"
-              type="button"
+              href="/player/1"
+              onClick={[Function]}
             >
               <svg
                 height={19}
@@ -107,9 +106,10 @@ exports[`DetailedFilmCard should render correctly 1`] = `
               <span>
                 Play
               </span>
-            </button>
+            </a>
             <button
               className="btn btn--list movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -127,7 +127,8 @@ exports[`DetailedFilmCard should render correctly 1`] = `
             </button>
             <a
               className="btn movie-card__button"
-              href="add-review.html"
+              href="/films/1/review"
+              onClick={[Function]}
             >
               Add review
             </a>
@@ -145,9 +146,9 @@ exports[`DetailedFilmCard should render correctly 1`] = `
           className="movie-card__poster movie-card__poster--big"
         >
           <img
-            alt="Fantastic Beasts: The Crimes of Grindelwald"
+            alt="Bohemian Rhapsody"
             height={327}
-            src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+            src="img/bohemian-rhapsody.jpg"
             width={218}
           />
         </div>
@@ -268,12 +269,13 @@ suspect in her murder.
       >
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          <div
+          <a
             className="small-movie-card__image"
+            href="/films/0"
+            onClick={[Function]}
           >
             <video
               height={175}
@@ -282,13 +284,14 @@ suspect in her murder.
               src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
-          </div>
+          </a>
           <h3
             className="small-movie-card__title"
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/0"
+              onClick={[Function]}
             >
               Fantastic Beasts: The Crimes of Grindelwald
             </a>
@@ -296,12 +299,13 @@ suspect in her murder.
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          <div
+          <a
             className="small-movie-card__image"
+            href="/films/1"
+            onClick={[Function]}
           >
             <video
               height={175}
@@ -310,13 +314,14 @@ suspect in her murder.
               src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
-          </div>
+          </a>
           <h3
             className="small-movie-card__title"
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/1"
+              onClick={[Function]}
             >
               Bohemian Rhapsody
             </a>
@@ -324,12 +329,13 @@ suspect in her murder.
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          <div
+          <a
             className="small-movie-card__image"
+            href="/films/2"
+            onClick={[Function]}
           >
             <video
               height={175}
@@ -338,13 +344,14 @@ suspect in her murder.
               src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
-          </div>
+          </a>
           <h3
             className="small-movie-card__title"
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/2"
+              onClick={[Function]}
             >
               Macbeth
             </a>
@@ -352,12 +359,13 @@ suspect in her murder.
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          <div
+          <a
             className="small-movie-card__image"
+            href="/films/3"
+            onClick={[Function]}
           >
             <video
               height={175}
@@ -366,13 +374,14 @@ suspect in her murder.
               src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
-          </div>
+          </a>
           <h3
             className="small-movie-card__title"
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/3"
+              onClick={[Function]}
             >
               Aviator
             </a>
@@ -380,12 +389,13 @@ suspect in her murder.
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          <div
+          <a
             className="small-movie-card__image"
+            href="/films/4"
+            onClick={[Function]}
           >
             <video
               height={175}
@@ -394,13 +404,14 @@ suspect in her murder.
               src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
-          </div>
+          </a>
           <h3
             className="small-movie-card__title"
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/4"
+              onClick={[Function]}
             >
               We need to talk about Kevin
             </a>
@@ -408,12 +419,13 @@ suspect in her murder.
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          <div
+          <a
             className="small-movie-card__image"
+            href="/films/5"
+            onClick={[Function]}
           >
             <video
               height={175}
@@ -422,13 +434,14 @@ suspect in her murder.
               src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
-          </div>
+          </a>
           <h3
             className="small-movie-card__title"
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/5"
+              onClick={[Function]}
             >
               What We Do in the Shadows
             </a>
@@ -436,12 +449,13 @@ suspect in her murder.
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          <div
+          <a
             className="small-movie-card__image"
+            href="/films/6"
+            onClick={[Function]}
           >
             <video
               height={175}
@@ -450,13 +464,14 @@ suspect in her murder.
               src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
-          </div>
+          </a>
           <h3
             className="small-movie-card__title"
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/6"
+              onClick={[Function]}
             >
               Revenant
             </a>
@@ -464,12 +479,13 @@ suspect in her murder.
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          <div
+          <a
             className="small-movie-card__image"
+            href="/films/7"
+            onClick={[Function]}
           >
             <video
               height={175}
@@ -478,13 +494,14 @@ suspect in her murder.
               src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
-          </div>
+          </a>
           <h3
             className="small-movie-card__title"
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/7"
+              onClick={[Function]}
             >
               Johnny English
             </a>
@@ -500,7 +517,8 @@ suspect in her murder.
       >
         <a
           className="logo__link logo__link--light"
-          href="main.html"
+          href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"

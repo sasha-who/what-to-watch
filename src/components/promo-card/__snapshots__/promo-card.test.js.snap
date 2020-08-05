@@ -23,7 +23,7 @@ exports[`PromoCard should render correctly 1`] = `
       <h2
         className="movie-card__title"
       >
-        The Grand Budapest Hotel
+        Fantastic Beasts: The Crimes of Grindelwald
       </h2>
       <p
         className="movie-card__meta"
@@ -31,20 +31,21 @@ exports[`PromoCard should render correctly 1`] = `
         <span
           className="movie-card__genre"
         >
-          Drama
+          comedy
         </span>
         <span
           className="movie-card__year"
         >
-          2014
+          2020
         </span>
       </p>
       <div
         className="movie-card__buttons"
       >
-        <button
+        <a
           className="btn btn--play movie-card__button"
-          type="button"
+          href="/player/0"
+          onClick={[Function]}
         >
           <svg
             height={19}
@@ -58,9 +59,10 @@ exports[`PromoCard should render correctly 1`] = `
           <span>
             Play
           </span>
-        </button>
+        </a>
         <button
           className="btn btn--list movie-card__button"
+          onClick={[Function]}
           type="button"
         >
           <svg

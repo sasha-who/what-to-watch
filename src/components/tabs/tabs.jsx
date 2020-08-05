@@ -3,9 +3,8 @@ import PropTypes from "prop-types";
 import moment from "moment";
 import classNames from "classnames";
 import {
-  REVIEWS_IN_COLUMN_COUNT,
-  REVIEW_DATE_HUMAN_FORMAT,
-  REVIEW_DATE_SERVICE_FORMAT,
+  REVIEWS_COLUMNS_COUNT,
+  ReviewDate,
   RatingRange,
   RatingGrade,
   TabsNames,
@@ -37,7 +36,10 @@ const getRatingGrade = (rating) => {
 
 export default class Tabs extends React.PureComponent {
   render() {
-    const {activeTab, onActiveTabChange} = this.props;
+    const {
+      activeTab,
+      onActiveTabChange
+    } = this.props;
 
     return (
       <React.Fragment>
@@ -155,18 +157,19 @@ export default class Tabs extends React.PureComponent {
   }
 
   _getReviewsTab() {
-    const {reviews} = this.props.film;
+    const {activeFilmComments} = this.props;
+    const commentsInFirstColumn = Math.ceil(activeFilmComments.length / REVIEWS_COLUMNS_COUNT);
 
     return (
       <div className="movie-card__reviews movie-card__row">
         <div className="movie-card__reviews-col">
-          {reviews.slice(0, REVIEWS_IN_COLUMN_COUNT).map((review) => (
-            this._getReviewMarkup(review)
+          {activeFilmComments.slice(0, commentsInFirstColumn).map((comment) => (
+            this._getReviewMarkup(comment)
           ))}
         </div>
         <div className="movie-card__reviews-col">
-          {reviews.slice(REVIEWS_IN_COLUMN_COUNT).map((review) => (
-            this._getReviewMarkup(review)
+          {activeFilmComments.slice(commentsInFirstColumn).map((comment) => (
+            this._getReviewMarkup(comment)
           ))}
         </div>
       </div>
@@ -175,8 +178,8 @@ export default class Tabs extends React.PureComponent {
 
   _getReviewMarkup(review) {
     const {id, text, rating, userName, date} = review;
-    const reviewDateInHumanFormat = moment(date).format(REVIEW_DATE_HUMAN_FORMAT);
-    const reviewDateInServiceFormat = moment(date).format(REVIEW_DATE_SERVICE_FORMAT);
+    const reviewDateInHumanFormat = moment(date).format(ReviewDate.HUMAN_FORMAT);
+    const reviewDateInServiceFormat = moment(date).format(ReviewDate.SERVICE_FORMAT);
 
     return (
       <div key={id} className="review">
@@ -213,29 +216,33 @@ export default class Tabs extends React.PureComponent {
 
 Tabs.propTypes = {
   film: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     cover: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
-    preview: PropTypes.string.isRequired,
+    previewVideo: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    release: PropTypes.string.isRequired,
+    release: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
     ratingsCount: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
     actors: PropTypes.arrayOf(PropTypes.string),
     runTime: PropTypes.number.isRequired,
-    reviews: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.string.isRequired,
-          text: PropTypes.string.isRequired,
-          rating: PropTypes.number.isRequired,
-          userName: PropTypes.string.isRequired,
-          date: PropTypes.instanceOf(Date).isRequired
-        })
-    ).isRequired
+    previewImage: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
+    videoLink: PropTypes.string.isRequired,
+    isFavorite: PropTypes.bool.isRequired
   }).isRequired,
+  activeFilmComments: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        text: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired,
+        userName: PropTypes.string.isRequired,
+        date: PropTypes.instanceOf(Date).isRequired
+      })
+  ).isRequired,
   activeTab: PropTypes.string.isRequired,
   onActiveTabChange: PropTypes.func.isRequired
 };

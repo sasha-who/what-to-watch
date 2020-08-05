@@ -1,21 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Screen} from "../../const.js";
+import {Link} from "react-router-dom";
 import VideoPlayer from "../video-player/video-player.jsx";
 
 const FilmCard = (props) => {
   const {
     film,
     isPlaying,
-    onScreenChange,
-    onActiveFilmChange,
     onStartPlaying,
     onStopPlaying,
-    onHoverChange,
-    onSimilarFilmsUpdate
+    onHoverChange
   } = props;
 
-  const {title, cover, preview} = film;
+  const {id, title, previewImage, previewVideo} = film;
 
   return (
     <article
@@ -28,24 +25,24 @@ const FilmCard = (props) => {
         onHoverChange();
         onStopPlaying();
       }}
-      onClick={() => {
-        onScreenChange(Screen.CARD);
-        onActiveFilmChange(film);
-        onSimilarFilmsUpdate();
-      }}
     >
-      <div className="small-movie-card__image">
+      <Link
+        className="small-movie-card__image"
+        to={`/films/${id}`}
+      >
         <VideoPlayer
-          preview={preview}
-          defaultImage={cover}
+          previewVideo={previewVideo}
+          defaultImage={previewImage}
           isPlaying={isPlaying}
         />
-      </div>
+      </Link>
       <h3 className="small-movie-card__title">
-        <a
+        <Link
           className="small-movie-card__link"
-          href="movie-page.html"
-        >{title}</a>
+          to={`/films/${id}`}
+        >
+          {title}
+        </Link>
       </h3>
     </article>
   );
@@ -53,35 +50,27 @@ const FilmCard = (props) => {
 
 FilmCard.propTypes = {
   film: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     cover: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
-    preview: PropTypes.string.isRequired,
+    previewVideo: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    release: PropTypes.string.isRequired,
+    release: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
     ratingsCount: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
     actors: PropTypes.arrayOf(PropTypes.string),
-    reviews: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.string.isRequired,
-          text: PropTypes.string.isRequired,
-          rating: PropTypes.number.isRequired,
-          userName: PropTypes.string.isRequired,
-          date: PropTypes.instanceOf(Date).isRequired
-        })
-    ).isRequired
+    previewImage: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
+    videoLink: PropTypes.string.isRequired,
+    isFavorite: PropTypes.bool.isRequired
   }).isRequired,
   isPlaying: PropTypes.bool.isRequired,
-  onScreenChange: PropTypes.func.isRequired,
-  onActiveFilmChange: PropTypes.func.isRequired,
   onStartPlaying: PropTypes.func.isRequired,
   onStopPlaying: PropTypes.func.isRequired,
-  onHoverChange: PropTypes.func.isRequired,
-  onSimilarFilmsUpdate: PropTypes.func.isRequired
+  onHoverChange: PropTypes.func.isRequired
 };
 
 export default FilmCard;
