@@ -20,11 +20,11 @@ it(`Tabs should render correctly all tabs`, () => {
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 
-  component.root.findAllByType(`a`)[1].props.onClick();
+  component.root.findAllByType(`a`)[1].props.onClick({preventDefault: () => {}});
   tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 
-  component.root.findAllByType(`a`)[2].props.onClick();
+  component.root.findAllByType(`a`)[2].props.onClick({preventDefault: () => {}});
   tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
