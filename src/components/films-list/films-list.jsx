@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import FilmCard from "../films-card/film-card.jsx";
+import ShowMoreButton from "../show-more/show-more.jsx";
 
 class FilmsList extends React.PureComponent {
   constructor(props) {
@@ -14,19 +15,28 @@ class FilmsList extends React.PureComponent {
   }
 
   render() {
-    const {films, onCardClick} = this.props;
+    const {films, onCardClick, filmsCountToShow, incrementFilmsCountToShow} = this.props;
+    const shownFilms = films.slice(0, filmsCountToShow);
+    const isAnyFilmsToShow = films.length > filmsCountToShow;
 
     return (
-      <div className="catalog__movies-list">
-        {films.map((film) => (
-          <FilmCard
-            film={film}
-            onCardClick={onCardClick}
-            onCardHover={this._handlerCardHover}
-            key={film.id}
+      <React.Fragment>
+        <div className="catalog__movies-list">
+          {shownFilms.map((film) => (
+            <FilmCard
+              film={film}
+              onCardClick={onCardClick}
+              onCardHover={this._handlerCardHover}
+              key={film.id}
+            />
+          ))}
+        </div>
+        {isAnyFilmsToShow &&
+          <ShowMoreButton
+            incrementFilmsCountToShow={incrementFilmsCountToShow}
           />
-        ))}
-      </div>
+        }
+      </React.Fragment>
     );
   }
 
@@ -63,7 +73,9 @@ FilmsList.propTypes = {
         ).isRequired
       })
   ).isRequired,
+  filmsCountToShow: PropTypes.number,
   onCardClick: PropTypes.func.isRequired,
+  incrementFilmsCountToShow: PropTypes.func
 };
 
 export default FilmsList;

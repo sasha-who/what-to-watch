@@ -18,33 +18,44 @@ const getGenreWithCapital = (genre) => {
   return genre[0].toUpperCase() + genre.slice(1);
 };
 
-const GenresList = ({films, currentGenre, onGenreChange, filterFilmsByGenre}) => (
-  <ul className="catalog__genres-list">
-    {generateGenresList(films).map((genre) => {
-      const activeClass = (genre === currentGenre) ? `catalog__genres-item--active` : ``;
+const GenresList = (props) => {
+  const {
+    films,
+    currentGenre,
+    onGenreChange,
+    filterFilmsByGenre,
+    resetFilmsCountToShow
+  } = props;
 
-      return (
-        <li
-          className={`catalog__genres-item ${activeClass}`}
-          key={genre}
-        >
-          <a
-            href="#"
-            className="catalog__genres-link"
-            onClick={(evt) => {
-              if (genre !== currentGenre) {
-                onGenreChange(evt.target.textContent.toLowerCase());
-                filterFilmsByGenre();
-              }
-            }}
+  return (
+    <ul className="catalog__genres-list">
+      {generateGenresList(films).map((genre) => {
+        const activeClass = (genre === currentGenre) ? `catalog__genres-item--active` : ``;
+
+        return (
+          <li
+            className={`catalog__genres-item ${activeClass}`}
+            key={genre}
           >
-            {getGenreWithCapital(genre)}
-          </a>
-        </li>
-      );
-    })}
-  </ul>
-);
+            <a
+              href="#"
+              className="catalog__genres-link"
+              onClick={(evt) => {
+                if (genre !== currentGenre) {
+                  onGenreChange(evt.target.textContent.toLowerCase());
+                  filterFilmsByGenre();
+                  resetFilmsCountToShow();
+                }
+              }}
+            >
+              {getGenreWithCapital(genre)}
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  );
+};
 
 GenresList.propTypes = {
   films: PropTypes.arrayOf(
@@ -75,7 +86,8 @@ GenresList.propTypes = {
   ).isRequired,
   currentGenre: PropTypes.string.isRequired,
   onGenreChange: PropTypes.func.isRequired,
-  filterFilmsByGenre: PropTypes.func.isRequired
+  filterFilmsByGenre: PropTypes.func.isRequired,
+  resetFilmsCountToShow: PropTypes.func.isRequired
 };
 
 export default GenresList;

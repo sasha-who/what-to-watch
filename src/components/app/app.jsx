@@ -55,8 +55,11 @@ class App extends React.PureComponent {
       films,
       currentGenre,
       filteredFilms,
+      filmsCountToShow,
       onGenreChange,
-      filterFilmsByGenre
+      filterFilmsByGenre,
+      resetFilmsCountToShow,
+      incrementFilmsCountToShow
     } = this.props;
 
     const {activeScreen} = this.state;
@@ -69,9 +72,12 @@ class App extends React.PureComponent {
             promoFilmData={promoFilmData}
             currentGenre={currentGenre}
             filteredFilms={filteredFilms}
+            filmsCountToShow={filmsCountToShow}
             onCardClick={this._handlerCardClick}
             onGenreChange={onGenreChange}
             filterFilmsByGenre={filterFilmsByGenre}
+            resetFilmsCountToShow={resetFilmsCountToShow}
+            incrementFilmsCountToShow={incrementFilmsCountToShow}
           />
         );
 
@@ -149,14 +155,18 @@ App.propTypes = {
       })
   ).isRequired,
   currentGenre: PropTypes.string.isRequired,
+  filmsCountToShow: PropTypes.number,
   onGenreChange: PropTypes.func.isRequired,
-  filterFilmsByGenre: PropTypes.func.isRequired
+  filterFilmsByGenre: PropTypes.func.isRequired,
+  resetFilmsCountToShow: PropTypes.func.isRequired,
+  incrementFilmsCountToShow: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({
   currentGenre: state.currentGenre,
   films: state.films,
-  filteredFilms: state.filteredFilms || []
+  filteredFilms: state.filteredFilms || [],
+  filmsCountToShow: state.filmsCountToShow
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -165,6 +175,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   filterFilmsByGenre() {
     dispatch(ActionCreator.filterFilmsByGenre());
+  },
+  resetFilmsCountToShow() {
+    dispatch(ActionCreator.resetFilmsCountToShow());
+  },
+  incrementFilmsCountToShow() {
+    dispatch(ActionCreator.incrementFilmsCountToShow());
   }
 });
 
