@@ -14,6 +14,16 @@ const withFilmCard = (Component) => {
       this.handleStartPlaying = this.handleStartPlaying.bind(this);
       this.handleStopPlaying = this.handleStopPlaying.bind(this);
       this.handleHoverChange = this.handleHoverChange.bind(this);
+
+      this._isMounted = false;
+    }
+
+    componentDidMount() {
+      this._isMounted = true;
+    }
+
+    componentWillUnmount() {
+      this._isMounted = false;
     }
 
     render() {
@@ -30,9 +40,11 @@ const withFilmCard = (Component) => {
 
     handleStartPlaying() {
       const timerId = setTimeout(() => {
-        this.setState({
-          isPlaying: true
-        });
+        if (this._isMounted) {
+          this.setState({
+            isPlaying: true
+          });
+        }
       }, PREVIEW_DELAY);
 
       this.setState({
