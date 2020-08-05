@@ -126,3 +126,8 @@ export const LoginErrorMessage = {
   INVALID: `Please enter a valid email address`,
   SERVER_ERROR: `Try again. Error:`
 };
+
+export const HeaderType = {
+  FILM_CARD: `FILM_CARD`,
+  USER_PAGE: `USER_PAGE`
+};

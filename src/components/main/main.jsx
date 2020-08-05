@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {HeaderType} from "../../const.js";
 import Header from "../header/header.jsx";
 import PromoCard from "../promo-card/promo-card.jsx";
 import Catalog from "../catalog/catalog.jsx";
@@ -32,7 +33,7 @@ const Main = (props) => {
         </div>
         <h1 className="visually-hidden">WTW</h1>
         <Header
-          additionalClass={`movie-card__head`}
+          type={HeaderType.FILM_CARD}
           authorizationData={authorizationData}
           authorizationStatus={authorizationStatus}
         />

@@ -8,9 +8,7 @@ export const createAPI = (onUnauthorized) => {
     withCredentials: true
   });
 
-  const onSuccess = (response) => {
-    return response;
-  };
+  const onSuccess = (response) => response;
 
   const onFail = (err) => {
     const {response} = err;

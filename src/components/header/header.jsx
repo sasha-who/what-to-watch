@@ -1,10 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
-import {AuthorizationStatus, AppRoute} from "../../const.js";
+import {AuthorizationStatus, AppRoute, HeaderType} from "../../const.js";
+
+const getAdditionalClass = (headerType) => {
+  switch (headerType) {
+    case HeaderType.FILM_CARD:
+      return `movie-card__head`;
+
+    case HeaderType.USER_PAGE:
+      return `user-page__head`;
+
+    default:
+      return ``;
+  }
+};
 
 const Header = (props) => {
-  const {authorizationStatus, authorizationData, children, additionalClass} = props;
+  const {authorizationStatus, authorizationData, children, type} = props;
+  const additionalClass = getAdditionalClass(type);
 
   return (
     <header className={`page-header ${additionalClass}`}>
@@ -58,7 +72,7 @@ Header.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]),
-  additionalClass: PropTypes.string
+  type: PropTypes.string
 };
 
 export default Header;
