@@ -10,7 +10,6 @@ export const RUN_TIME_FORMAT = `HH:mm:ss`;
 export const VIDEO_CLASS_NAME = `player__video`;
 export const SECONDS_IN_MINUTE_COUNT = 60;
 export const SERVER_TIMEOUT = 5000;
-export const BASE_URL = `https://4.react.pages.academy/wtw`;
 export const RATING_START_COUNT = 5;
 export const STAR_CHECKED_BY_DEFAULT = 3;
 export const REVIEW_MIN_LENGTH = 50;
@@ -130,4 +129,9 @@ export const LoginErrorMessage = {
 export const HeaderType = {
   FILM_CARD: `FILM_CARD`,
   USER_PAGE: `USER_PAGE`
+};
+
+export const Url = {
+  ACADEMY: `https://4.react.pages.academy`,
+  WHAT_TO_WHATCH: `https://4.react.pages.academy/wtw`
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
-import {AuthorizationStatus, AppRoute, HeaderType} from "../../const.js";
+import {AuthorizationStatus, AppRoute, HeaderType, Url} from "../../const.js";
 
 const getAdditionalClass = (headerType) => {
   switch (headerType) {
@@ -40,7 +40,7 @@ const Header = (props) => {
           >
             <div className="user-block__avatar">
               <img
-                src={`https://4.react.pages.academy${authorizationData.avatarUrl}`}
+                src={`${Url.ACADEMY}${authorizationData.avatarUrl}`}
                 alt="User avatar"
                 width={63}
                 height={63}
