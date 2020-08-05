@@ -1,8 +1,20 @@
 import * as React from "react";
-import {TabsNames} from "../../const.js";
+import {Subtract} from "utility-types";
+import {TabsNames} from "../../const";
+
+interface State {
+  activeTab: string;
+}
+
+interface InjectingProps {
+  onActiveTabChange: (name: string) => void;
+}
 
 const withActiveTab = (Component) => {
-  class WithActiveTab extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithActiveTab extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 

@@ -1,8 +1,24 @@
 import * as React from "react";
-import {PREVIEW_DELAY} from "../../const.js";
+import {Subtract} from "utility-types";
+import {PREVIEW_DELAY} from "../../const";
+
+interface State {
+  isPlaying: boolean;
+  currentTimer: number;
+}
+
+interface InjectingProps {
+  isPlaying: boolean;
+  onStartPlaying: () => void;
+  onStopPlaying: () => void;
+  onHoverChange: () => void;
+}
 
 const withFilmCard = (Component) => {
-  class WithFilmCard extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithFilmCard extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 
@@ -29,7 +45,7 @@ const withFilmCard = (Component) => {
     }
 
     handleStartPlaying() {
-      const timerId = setTimeout(() => {
+      const timerId = window.setTimeout(() => {
         this.setState({
           isPlaying: true
         });
