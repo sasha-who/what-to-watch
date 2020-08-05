@@ -4,7 +4,7 @@ import {Router} from "react-router-dom";
 import history from "../../history.js";
 import {AuthorizationStatus, CommentPostStatus} from "../../const.js";
 import {films, userData} from "../../test-mocks.js";
-import ReviewScreen from "../review-sreen/review-sreen.jsx";
+import ReviewScreen from "./review-sсreen.jsx.js";
 
 it(`ReviewScreen should render correctly`, () => {
   const tree = renderer
