@@ -1,5 +1,5 @@
 import {AuthorizationStatus, CommentPostStatus} from "../../const.js";
-import {adaptUserDataFromServer} from "../../adapters/user-data.js";
+import {convertUserDataFromServer} from "../../adapters/user-data.js";
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTHORIZED,
@@ -72,7 +72,7 @@ const Operation = {
   checkAuthorization: () => (dispatch, getState, api) => {
     return api.get(`/login`)
       .then((response) => {
-        const adaptedData = adaptUserDataFromServer(response.data);
+        const adaptedData = convertUserDataFromServer(response.data);
 
         dispatch(ActionCreator.getUserData(adaptedData));
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTHORIZED));
@@ -87,7 +87,7 @@ const Operation = {
       password: authorizationData.password,
     })
       .then((response) => {
-        const adaptedData = adaptUserDataFromServer(response.data);
+        const adaptedData = convertUserDataFromServer(response.data);
 
         dispatch(ActionCreator.getUserData(adaptedData));
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTHORIZED));

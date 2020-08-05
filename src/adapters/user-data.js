@@ -1,4 +1,4 @@
-export const adaptUserDataFromServer = (data) => {
+export const convertUserDataFromServer = (data) => {
   return ({
     id: data[`id`],
     email: data[`email`],

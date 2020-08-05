@@ -1,4 +1,4 @@
-const adaptCommentFromServer = (comment) => {
+const convertCommentFromServer = (comment) => {
   return ({
     id: comment[`id`],
     text: comment[`comment`],
@@ -8,6 +8,6 @@ const adaptCommentFromServer = (comment) => {
   });
 };
 
-export const adaptCommentsFromServer = (comments) => {
-  return comments.map((comment) => adaptCommentFromServer(comment));
+export const convertCommentsFromServer = (comments) => {
+  return comments.map((comment) => convertCommentFromServer(comment));
 };
