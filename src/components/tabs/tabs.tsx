@@ -66,7 +66,9 @@ class Tabs extends React.PureComponent<Props, {}> {
                   <a
                     href="#"
                     className="movie-nav__link"
-                    onClick={() => {
+                    onClick={(evt) => {
+                      evt.preventDefault();
+
                       onActiveTabChange(name);
                     }}
                   >
