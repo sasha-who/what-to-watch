@@ -1,6 +1,6 @@
 import * as React from "react";
 import Loader from "react-loader-spinner";
-import {LoaderData} from "../../const";
+import {LoaderData, HeaderType} from "../../const";
 import Header from "../header/header";
 import FilmCard from "../films-card/film-card";
 import withFilmCard from "../../hocs/with-film-card/with-film-card";
@@ -49,7 +49,7 @@ class MyList extends React.PureComponent<Props, {}> {
 
     return (<div className="user-page">
       <Header
-        additionalClass={`user-page__head`}
+        type={HeaderType.USER_PAGE}
         authorizationData={authorizationData}
         authorizationStatus={authorizationStatus}
       >

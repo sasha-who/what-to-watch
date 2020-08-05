@@ -1,4 +1,5 @@
 import * as React from "react";
+import {HeaderType} from "../../const.js";
 import Header from "../header/header";
 import PromoCard from "../promo-card/promo-card";
 import Catalog from "../catalog/catalog";
@@ -47,7 +48,7 @@ const Main: React.FunctionComponent<Props> = (props: Props) => {
         </div>
         <h1 className="visually-hidden">WTW</h1>
         <Header
-          additionalClass={`movie-card__head`}
+          type={HeaderType.FILM_CARD}
           authorizationData={authorizationData}
           authorizationStatus={authorizationStatus}
         />

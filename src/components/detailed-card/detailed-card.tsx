@@ -4,7 +4,8 @@ import Loader from "react-loader-spinner";
 import {
   LoaderData,
   AddToListIcon,
-  InListIcon
+  InListIcon,
+  HeaderType
 } from "../../const";
 import {getFilmFromParameters} from "../../utils/common";
 import Header from "../header/header";
@@ -93,7 +94,7 @@ class DetailedFilmCard extends React.PureComponent<Props, {}> {
             </div>
             <h1 className="visually-hidden">WTW</h1>
             <Header
-              additionalClass={`movie-card__head`}
+              type={HeaderType.FILM_CARD}
               authorizationData={authorizationData}
               authorizationStatus={authorizationStatus}
             />

@@ -1,17 +1,31 @@
 import * as React from "react";
 import {Link} from "react-router-dom";
-import {AuthorizationStatus, AppRoute} from "../../const";
+import {AuthorizationStatus, AppRoute, HeaderType} from "../../const";
 import {AuthorizationData} from "../../types";
 
 interface Props {
   authorizationStatus: string;
   authorizationData: AuthorizationData;
-  additionalClass?: string;
+  type?: string;
   children?: React.ReactNode;
 }
 
+const getAdditionalClass = (headerType) => {
+  switch (headerType) {
+    case HeaderType.FILM_CARD:
+      return `movie-card__head`;
+
+    case HeaderType.USER_PAGE:
+      return `user-page__head`;
+
+    default:
+      return ``;
+  }
+};
+
 const Header: React.FunctionComponent<Props> = (props: Props) => {
-  const {authorizationStatus, authorizationData, children, additionalClass} = props;
+  const {authorizationStatus, authorizationData, children, type} = props;
+  const additionalClass = getAdditionalClass(type);
 
   return (
     <header className={`page-header ${additionalClass}`}>
