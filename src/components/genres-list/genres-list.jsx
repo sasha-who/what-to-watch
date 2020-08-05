@@ -48,6 +48,8 @@ class GenresList extends React.PureComponent {
                 href="#"
                 className="catalog__genres-link"
                 onClick={(evt) => {
+                  evt.preventDefault();
+
                   if (genre !== currentGenre) {
                     onGenreChange(evt.target.textContent.toLowerCase());
                     onFilmsCountToShowReset();
