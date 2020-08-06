@@ -1,10 +1,39 @@
 import * as React from "react";
-import PropTypes from "prop-types";
-import {VIDEO_CLASS_NAME} from "../../const.js";
-import {getFilmFromParameters} from "../../utils/common.js";
+import {RouteComponentProps} from "react-router-dom";
+import {Subtract} from "utility-types";
+import {VIDEO_CLASS_NAME} from "../../const";
+import {getFilmFromParameters} from "../../utils/common";
+import {Film} from "../../types";
+
+interface State {
+  isPlaying: boolean;
+  progress: number;
+}
+
+interface MatchParams {
+  id: string;
+}
+
+interface Props extends RouteComponentProps<MatchParams>{
+  films: Film[];
+}
+
+interface InjectingProps {
+  isPlaying: boolean;
+  progress: number;
+  film: Film;
+  onPlayButtonClick: () => void;
+  onFullScreenButtonClick: () => void;
+}
 
 const withPlayer = (Component) => {
-  class WithPlayer extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Props & Subtract<P, InjectingProps>;
+
+  class WithPlayer extends React.PureComponent<T, State> {
+    private videoRef: React.RefObject<HTMLVideoElement>;
+    private isMounted: boolean;
+
     constructor(props) {
       super(props);
 
@@ -13,20 +42,20 @@ const withPlayer = (Component) => {
         progress: 0
       };
 
-      this._videoRef = React.createRef();
+      this.videoRef = React.createRef();
       this.handlePlayButtonClick = this.handlePlayButtonClick.bind(this);
       this.handleFullScreenButtonClick = this.handleFullScreenButtonClick.bind(this);
 
-      this._isMounted = false;
+      this.isMounted = false;
     }
 
     componentDidMount() {
-      this._isMounted = true;
+      this.isMounted = true;
 
       const film = getFilmFromParameters(this.props.films, this.props.match.params.id);
       const {cover, videoLink} = film;
       const {isPlaying} = this.state;
-      const video = this._videoRef.current;
+      const video = this.videoRef.current;
 
       video.className = VIDEO_CLASS_NAME;
       video.poster = cover;
@@ -41,7 +70,7 @@ const withPlayer = (Component) => {
       });
 
       video.ontimeupdate = () => {
-        if (this._isMounted) {
+        if (this.isMounted) {
           this.setState({
             progress: Math.floor(video.currentTime),
           });
@@ -55,7 +84,7 @@ const withPlayer = (Component) => {
 
     componentDidUpdate() {
       const {isPlaying} = this.state;
-      const video = this._videoRef.current;
+      const video = this.videoRef.current;
 
       if (isPlaying) {
         video.play();
@@ -65,7 +94,7 @@ const withPlayer = (Component) => {
     }
 
     componentWillUnmount() {
-      const video = this._videoRef.current;
+      const video = this.videoRef.current;
 
       video.onplay = null;
       video.onpause = null;
@@ -73,7 +102,7 @@ const withPlayer = (Component) => {
       video.poster = ``;
       video.src = ``;
 
-      this._isMounted = false;
+      this.isMounted = false;
     }
 
     handlePlayButtonClick() {
@@ -83,7 +112,7 @@ const withPlayer = (Component) => {
     }
 
     handleFullScreenButtonClick() {
-      const video = this._videoRef.current;
+      const video = this.videoRef.current;
 
       if (!document.fullscreenElement) {
         video.requestFullscreen();
@@ -104,35 +133,11 @@ const withPlayer = (Component) => {
           onPlayButtonClick={this.handlePlayButtonClick}
           onFullScreenButtonClick={this.handleFullScreenButtonClick}
         >
-          <video ref={this._videoRef} />
+          <video ref={this.videoRef} />
         </Component>
       );
     }
   }
-
-  WithPlayer.propTypes = {
-    films: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          title: PropTypes.string.isRequired,
-          cover: PropTypes.string.isRequired,
-          poster: PropTypes.string.isRequired,
-          previewVideo: PropTypes.string.isRequired,
-          genre: PropTypes.string.isRequired,
-          release: PropTypes.number.isRequired,
-          rating: PropTypes.number.isRequired,
-          ratingsCount: PropTypes.number.isRequired,
-          description: PropTypes.string.isRequired,
-          director: PropTypes.string.isRequired,
-          actors: PropTypes.arrayOf(PropTypes.string),
-          previewImage: PropTypes.string.isRequired,
-          backgroundColor: PropTypes.string.isRequired,
-          videoLink: PropTypes.string.isRequired,
-          isFavorite: PropTypes.bool.isRequired
-        }).isRequired
-    ).isRequired,
-    match: PropTypes.object.isRequired
-  };
 
   return WithPlayer;
 };

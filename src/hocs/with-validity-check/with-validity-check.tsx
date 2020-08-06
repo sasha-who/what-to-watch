@@ -1,7 +1,11 @@
 import * as React from "react";
 
+interface State {
+  isValid: boolean;
+}
+
 const withValidityCheck = (Component) => {
-  class WithValidityCheck extends React.PureComponent {
+  class WithValidityCheck extends React.PureComponent<{}, State> {
     constructor(props) {
       super(props);
 
