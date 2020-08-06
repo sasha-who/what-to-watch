@@ -33,8 +33,13 @@ it(`withPlayer is rendered correctly`, () => {
         onPlayButtonClick={() => {}}
         onFullScreenButtonClick={() => {}}
       />, {
-        createNodeMock: () => {
-          return {};
+        createNodeMock: (element) => {
+          if (element.type === `video`) {
+            return {
+              play: () => {}
+            };
+          }
+          return null;
         }
       }
   ).toJSON();
