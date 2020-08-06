@@ -33,7 +33,7 @@ interface Props extends RouteComponentProps<MatchParams> {
 
 const TabsWrapped = withActiveTab(Tabs);
 
-class DetailedFilmCard extends React.PureComponent<Props, {}> {
+class DetailedFilmCard extends React.PureComponent<Props, null> {
   componentDidMount() {
     const {films, loadFilmComments, onActiveFilmChange} = this.props;
     const film = getFilmFromParameters(films, this.props.match.params.id);

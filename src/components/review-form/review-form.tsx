@@ -14,7 +14,7 @@ interface Props {
   commentPostStatus: string;
 }
 
-class ReviewForm extends React.PureComponent<Props, {}> {
+class ReviewForm extends React.PureComponent<Props, null> {
   private commentTextRef: React.RefObject<HTMLTextAreaElement>;
   private postButtonRef: React.RefObject<HTMLInputElement>;
   private inputsRefs: MultiRef<unknown, unknown>;
@@ -128,7 +128,7 @@ class ReviewForm extends React.PureComponent<Props, {}> {
               ref={this.commentTextRef}
               onInput={() => {
                 this.postButtonRef.current
-	                .disabled = this.commentTextRef.current.value.length < REVIEW_MIN_LENGTH;
+                  .disabled = this.commentTextRef.current.value.length < REVIEW_MIN_LENGTH;
               }}
             />
             <div className="add-review__submit">

@@ -41,7 +41,7 @@ const getRatingGrade = (rating) => {
   }
 };
 
-class Tabs extends React.PureComponent<Props, {}> {
+class Tabs extends React.PureComponent<Props, null> {
   render() {
     const {
       activeTab,

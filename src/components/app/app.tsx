@@ -76,7 +76,7 @@ interface Props {
 const AuthorizationScreenWrapped = withValidityCheck(AuthorizationScreen);
 const PlayerWrapped = withPlayer(Player);
 
-class App extends React.PureComponent<Props, {}> {
+class App extends React.PureComponent<Props, null> {
   render() {
     const {
       authorizationStatus,

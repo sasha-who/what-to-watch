@@ -11,7 +11,7 @@ interface Props {
   onInputValidityChange: () => void;
 }
 
-class AuthorizationScreen extends React.PureComponent<Props, {}> {
+class AuthorizationScreen extends React.PureComponent<Props, null> {
   private emailRef: React.RefObject<HTMLInputElement>;
   private passwordRef: React.RefObject<HTMLInputElement>;
 

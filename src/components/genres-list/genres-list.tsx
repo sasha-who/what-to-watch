@@ -26,7 +26,7 @@ const getGenreWithCapital = (genre) => {
   return genre[0].toUpperCase() + genre.slice(1);
 };
 
-class GenresList extends React.PureComponent<Props, {}> {
+class GenresList extends React.PureComponent<Props, null> {
   componentWillUnmount() {
     this.props.onGenreChange(DEFAULT_GENRE);
   }

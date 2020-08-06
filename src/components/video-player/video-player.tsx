@@ -6,7 +6,7 @@ interface Props {
   isPlaying: boolean;
 }
 
-class VideoPlayer extends React.PureComponent<Props, {}> {
+class VideoPlayer extends React.PureComponent<Props, null> {
   private videoRef: React.RefObject<HTMLVideoElement>;
 
   constructor(props) {

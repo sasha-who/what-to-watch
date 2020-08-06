@@ -18,7 +18,7 @@ interface Props {
 
 const FilmCardWrapped = withFilmCard(FilmCard);
 
-class MyList extends React.PureComponent<Props, {}> {
+class MyList extends React.PureComponent<Props, null> {
   componentDidMount() {
     const {loadFavoriteFilms} = this.props;
 
