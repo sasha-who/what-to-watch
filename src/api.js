@@ -1,5 +1,5 @@
 import axios from "axios";
-import {SERVER_TIMEOUT, HttpStatus, Url} from "./const.js";
+import {SERVER_TIMEOUT, HttpStatus, Url} from "./const";
 
 export const createAPI = (onUnauthorized) => {
   const api = axios.create({

@@ -1,8 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`ServerError should render correctly 1`] = `
-<p>
-  Error: 
-  300
-</p>
-`;

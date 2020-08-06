@@ -1,6 +1,6 @@
-import {INITIAL_FILMS_COUNT, ADDITIONAL_FILMS_COUNT} from "../../const.js";
-import {GENRES} from "../../test-mocks.js";
-import {reducer, ActionType, ActionCreator} from "./app-state.js";
+import {INITIAL_FILMS_COUNT, ADDITIONAL_FILMS_COUNT} from "../../const";
+import {GENRES} from "../../test-mocks";
+import {reducer, ActionType, ActionCreator} from "./app-state";
 
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({

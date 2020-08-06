@@ -1,10 +1,10 @@
-import history from "../../history.js";
-import {HttpStatus, AppRoute} from "../../const.js";
-import {extend} from "../../utils/common.js";
-import {getFilms} from "./selectors.js";
-import {convertFilmFromServer, convertFilmsFromServer} from "../../adapters/films.js";
-import {ActionCreator as AppStateActionCreator} from "../app-state/app-state.js";
-import {convertCommentsFromServer} from "../../adapters/comments.js";
+import history from "../../history";
+import {HttpStatus, AppRoute} from "../../const";
+import {extend} from "../../utils/common";
+import {getFilms} from "./selectors";
+import {convertFilmFromServer, convertFilmsFromServer} from "../../adapters/films";
+import {ActionCreator as AppStateActionCreator} from "../app-state/app-state";
+import {convertCommentsFromServer} from "../../adapters/comments";
 
 const initialState = {
   films: [],

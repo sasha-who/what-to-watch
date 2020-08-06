@@ -4,8 +4,13 @@ interface State {
   isValid: boolean;
 }
 
+interface InjectingProps {
+  isInputValid: boolean;
+  onInputValidityChange: () => void;
+}
+
 const withValidityCheck = (Component) => {
-  class WithValidityCheck extends React.PureComponent<{}, State> {
+  class WithValidityCheck extends React.PureComponent<InjectingProps, State> {
     constructor(props) {
       super(props);
 

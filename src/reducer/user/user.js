@@ -1,5 +1,5 @@
-import {AuthorizationStatus, CommentPostStatus} from "../../const.js";
-import {convertUserDataFromServer} from "../../adapters/user-data.js";
+import {AuthorizationStatus, CommentPostStatus} from "../../const";
+import {convertUserDataFromServer} from "../../adapters/user-data";
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTHORIZED,

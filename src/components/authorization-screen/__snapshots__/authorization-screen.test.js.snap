@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`AuthorizationScreen with server error should render correctly 1`] = `null`;
-
-exports[`AuthorizationScreen with validation error should render correctly 1`] = `null`;
-
-exports[`AuthorizationScreen without errors should render correctly 1`] = `null`;
