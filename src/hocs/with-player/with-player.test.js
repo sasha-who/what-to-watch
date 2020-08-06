@@ -24,20 +24,25 @@ MockComponent.propTypes = {
 const MockComponentWrapped = withPlayer(MockComponent);
 
 it(`withPlayer is rendered correctly`, () => {
-  const tree = renderer.create((
-    <MockComponentWrapped
-      match={{params: {id: 1}, isExact: true, path: ``, url: ``}}
-      films={films}
-      isPlaying={true}
-      progress={0}
-      onPlayButtonClick={() => {}}
-      onFullScreenButtonClick={() => {}}
-    />
-  ), {
-    createNodeMock() {
-      return {};
-    }
-  }).toJSON();
+  const tree = renderer.create(
+      <MockComponentWrapped
+        match={{params: {id: 1}, isExact: true, path: ``, url: ``}}
+        films={films}
+        isPlaying={true}
+        progress={0}
+        onPlayButtonClick={() => {}}
+        onFullScreenButtonClick={() => {}}
+      />, {
+        createNodeMock: (element) => {
+          if (element.type === `video`) {
+            return {
+              play: () => {}
+            };
+          }
+          return null;
+        }
+      }
+  ).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

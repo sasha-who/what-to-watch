@@ -37,7 +37,7 @@ import Main from "../main/main.jsx";
 import DetailedFilmCard from "../detailed-card/detailed-card.jsx";
 import ServerError from "../server-error/server-error.jsx";
 import AuthorizationScreen from "../authorization-screen/authorization-screen.jsx";
-import ReviewScreen from "../review-sreen/review-sreen.jsx";
+import ReviewScreen from "../review-sсreen/review-sсreen.jsx";
 import MyList from "../my-list/my-list.jsx";
 import Player from "../player/player.jsx";
 import withValidityCheck from "../../hocs/with-validity-check/with-validity-check.js";

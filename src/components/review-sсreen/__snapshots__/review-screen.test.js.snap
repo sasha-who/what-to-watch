@@ -21,7 +21,7 @@ exports[`ReviewScreen should render correctly 1`] = `
       WTW
     </h1>
     <header
-      className="page-header undefined"
+      className="page-header "
     >
       <div
         className="logo"

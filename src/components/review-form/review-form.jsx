@@ -117,11 +117,8 @@ class ReviewForm extends React.PureComponent {
               maxLength={400}
               ref={this.commentTextRef}
               onInput={() => {
-                if (this.commentTextRef.current.value.length >= REVIEW_MIN_LENGTH) {
-                  this.postButtonRef.current.disabled = false;
-                } else {
-                  this.postButtonRef.current.disabled = true;
-                }
+                this.postButtonRef.current
+                  .disabled = this.commentTextRef.current.value.length < REVIEW_MIN_LENGTH;
               }}
             />
             <div className="add-review__submit">

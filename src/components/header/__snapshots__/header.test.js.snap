@@ -2,7 +2,7 @@
 
 exports[`Header should render correctly 1`] = `
 <header
-  className="page-header undefined"
+  className="page-header "
 >
   <div
     className="logo"
