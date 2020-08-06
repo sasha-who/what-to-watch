@@ -8,7 +8,6 @@ interface Props {
   films: Film[];
   filmsCountToShow?: number;
   onFilmsCountToShowIncrement?: () => void;
-  loadFilmComments: () => void;
 }
 
 const FilmCardWrapped = withFilmCard(FilmCard);
@@ -17,8 +16,7 @@ const FilmsList: React.FunctionComponent<Props> = (props: Props) => {
   const {
     films,
     filmsCountToShow,
-    onFilmsCountToShowIncrement,
-    loadFilmComments
+    onFilmsCountToShowIncrement
   } = props;
 
   const shownFilms = films.slice(0, filmsCountToShow);
@@ -30,7 +28,6 @@ const FilmsList: React.FunctionComponent<Props> = (props: Props) => {
         {shownFilms.map((film) => (
           <FilmCardWrapped
             film={film}
-            loadFilmComments={loadFilmComments}
             key={film.id}
           />
         ))}
