@@ -7,6 +7,7 @@ interface Props {
   film: Film;
   children: React.ReactNode;
   isPlaying: boolean;
+  isLoading: boolean;
   progress: number;
   onPlayButtonClick: () => void;
   onFullScreenButtonClick: () => void;
@@ -17,6 +18,7 @@ const Player: React.FunctionComponent<Props> = (props: Props) => {
     film,
     children,
     isPlaying,
+    isLoading,
     progress,
     onPlayButtonClick,
     onFullScreenButtonClick
@@ -51,7 +53,12 @@ const Player: React.FunctionComponent<Props> = (props: Props) => {
           <div className="player__time-value">{getRunTimeForPlayer(runTimeWithProgress)}</div>
         </div>
         <div className="player__controls-row">
-          <button type="button" className="player__play" onClick={onPlayButtonClick}>
+          <button
+            type="button"
+            className="player__play"
+            disabled={isLoading}
+            onClick={onPlayButtonClick}
+          >
             <svg
               viewBox={`0 0 ${playIcon.WIDTH} ${playIcon.HEIGHT}`}
               width={playIcon.WIDTH}

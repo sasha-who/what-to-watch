@@ -7,6 +7,7 @@ import {Film} from "../../types";
 
 interface State {
   isPlaying: boolean;
+  isLoading: boolean;
   progress: number;
 }
 
@@ -20,6 +21,7 @@ interface Props extends RouteComponentProps<MatchParams>{
 
 interface InjectingProps {
   isPlaying: boolean;
+  isLoading: boolean;
   progress: number;
   film: Film;
   onPlayButtonClick: () => void;
@@ -39,6 +41,7 @@ const withPlayer = (Component) => {
 
       this.state = {
         isPlaying: true,
+        isLoading: true,
         progress: 0
       };
 
@@ -61,6 +64,10 @@ const withPlayer = (Component) => {
       video.poster = cover;
       video.src = videoLink;
 
+      video.oncanplaythrough = () => this.setState({
+        isLoading: false
+      });
+
       video.onplay = () => this.setState({
         isPlaying: true
       });
@@ -77,8 +84,11 @@ const withPlayer = (Component) => {
         }
       };
 
-      if (isPlaying) {
-        video.play();
+      const playPromise = video.play();
+
+      if (playPromise !== undefined && isPlaying) {
+        playPromise.then(() => {})
+        .catch(() => {});
       }
     }
 
@@ -86,18 +96,25 @@ const withPlayer = (Component) => {
       const {isPlaying} = this.state;
       const video = this.videoRef.current;
 
-      if (isPlaying) {
-        video.play();
-      } else {
-        video.pause();
+      const playPromise = video.play();
+
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          if (isPlaying === false) {
+            video.pause();
+          }
+        })
+        .catch(() => {});
       }
     }
 
     componentWillUnmount() {
       const video = this.videoRef.current;
 
+      video.oncanplaythrough = null;
       video.onplay = null;
       video.onpause = null;
+      video.ontimeupdate = null;
       video.className = ``;
       video.poster = ``;
       video.src = ``;
@@ -129,6 +146,7 @@ const withPlayer = (Component) => {
           {...this.props}
           film={film}
           isPlaying={this.state.isPlaying}
+          isLoading={this.state.isLoading}
           progress={this.state.progress}
           onPlayButtonClick={this.handlePlayButtonClick}
           onFullScreenButtonClick={this.handleFullScreenButtonClick}
