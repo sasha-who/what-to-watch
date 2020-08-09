@@ -3,7 +3,7 @@ import MultiRef from "react-multi-ref";
 import {
   RATING_START_COUNT,
   STAR_CHECKED_BY_DEFAULT,
-  REVIEW_MIN_LENGTH,
+  ReviewLength,
   CommentPostStatus
 } from "../../const";
 import {Film} from "../../types";
@@ -123,12 +123,14 @@ class ReviewForm extends React.PureComponent<Props, null> {
               name="review-text"
               id="review-text"
               placeholder="Review text"
-              minLength={REVIEW_MIN_LENGTH}
-              maxLength={400}
+              minLength={ReviewLength.MIN_LENGTH}
+              maxLength={ReviewLength.MAX_LENGTH}
               ref={this.commentTextRef}
               onInput={() => {
+                const commentLength = this.commentTextRef.current.value.length;
                 this.postButtonRef.current
-                  .disabled = this.commentTextRef.current.value.length < REVIEW_MIN_LENGTH;
+                  .disabled = (commentLength < ReviewLength.MIN_LENGTH) ||
+                  (commentLength > ReviewLength.MAX_LENGTH);
               }}
             />
             <div className="add-review__submit">
