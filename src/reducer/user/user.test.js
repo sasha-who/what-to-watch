@@ -1,8 +1,8 @@
 import MockAdapter from "axios-mock-adapter";
-import {createAPI} from "../../api.js";
-import {AuthorizationStatus, CommentPostStatus, HttpStatus} from "../../const.js";
-import {reducer, ActionCreator, ActionType, Operation} from "./user.js";
-import {films, UserData, LoginData, ReviewToPost} from "../../test-mocks.js";
+import {createAPI} from "../../api";
+import {AuthorizationStatus, CommentPostStatus, HttpStatus} from "../../const";
+import {reducer, ActionCreator, ActionType, Operation} from "./user";
+import {films, UserData, LoginData, ReviewToPost} from "../../test-mocks";
 
 const api = createAPI(() => {});
 
