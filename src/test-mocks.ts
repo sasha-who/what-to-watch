@@ -1,3 +1,5 @@
+import {AuthorizationData, Film, Comment} from "./types";
+
 const RELEASE = 2020;
 const RATING = 9;
 const RATINGS_COUNT = 228;
@@ -71,11 +73,11 @@ const comment = {
   date: new Date(`December 25, 2019 01:00:00`)
 };
 
-export const comments = Array(COMMENTS_COUNT)
-  .fill()
+export const comments: Comment[] = Array(COMMENTS_COUNT)
+  .fill(``)
   .map(() => comment);
 
-export const films = TITLES.map((title, index) => {
+export const films: Film[] = TITLES.map((title, index) => {
   return ({
     id: index,
     title,
@@ -97,7 +99,7 @@ export const films = TITLES.map((title, index) => {
   });
 });
 
-export const userData = {
+export const userData: AuthorizationData = {
   id: 1,
   email: `Tommy@gmail.com`,
   name: `Tommy`,
