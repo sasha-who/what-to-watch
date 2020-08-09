@@ -3,7 +3,7 @@ import * as renderer from "react-test-renderer";
 import {Router} from "react-router-dom";
 import history from "../../history";
 import {AuthorizationStatus} from "../../const";
-import {films, useData, comments} from "../../test-mocks";
+import {films, userData, comments} from "../../test-mocks";
 import DetailedFilmCard from "../detailed-card/detailed-card";
 import {noop} from "../../utils/common";
 
@@ -18,7 +18,7 @@ it(`DetailedFilmCard should render correctly`, () => {
             location={history.location}
             history={history.history}
             authorizationStatus={AuthorizationStatus.NO_AUTHORIZED}
-            authorizationData={useData}
+            authorizationData={userData}
             isCommentsLoaded={true}
             films={films}
             similarFilms={films}

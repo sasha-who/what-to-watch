@@ -9,6 +9,7 @@ it(`Player should render correctly`, () => {
       <Player
         film={films[0]}
         isPlaying={true}
+        isLoading={false}
         progress={0}
         onPlayButtonClick={noop}
         onFullScreenButtonClick={noop}

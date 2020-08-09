@@ -140,7 +140,6 @@ const App: React.FunctionComponent<Props> = (props: Props) => {
             onGenreChange={onGenreChange}
             onFilmsCountToShowReset={onFilmsCountToShowReset}
             onFilmsCountToShowIncrement={onFilmsCountToShowIncrement}
-            loadFilmComments={loadFilmComments}
             onFavoriteStatusChange={onFavoriteStatusChange}
           />
         </Route>

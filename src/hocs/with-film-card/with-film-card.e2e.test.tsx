@@ -1,8 +1,8 @@
 import * as React from "react";
-import Enzyme, {mount} from "enzyme";
+import {configure, mount} from "enzyme";
 import * as Adapter from "enzyme-adapter-react-16";
-import {films} from "../../test-mocks.js";
-import withFilmCard from "./with-film-card.js";
+import {films} from "../../test-mocks";
+import withFilmCard from "./with-film-card";
 import {noop} from "../../utils/common";
 
 interface Props {
@@ -11,9 +11,7 @@ interface Props {
   onStopPlaying: () => void;
 }
 
-Enzyme.configure({
-  adapter: new Adapter()
-});
+configure({adapter: new Adapter()});
 
 jest.useFakeTimers();
 

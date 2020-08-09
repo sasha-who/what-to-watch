@@ -21,7 +21,6 @@ it(`Catalog should render correctly`, () => {
             onGenreChange={noop}
             onFilmsCountToShowReset={noop}
             onFilmsCountToShowIncrement={noop}
-            loadFilmComments={noop}
           />
         </Router>, {
           createNodeMock: () => {

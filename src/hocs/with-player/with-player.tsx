@@ -35,7 +35,7 @@ const withPlayer = (Component) => {
 
   class WithPlayer extends React.PureComponent<T, State> {
     private videoRef: React.RefObject<HTMLVideoElement>;
-    private isMounted: boolean;
+    private mounted: boolean;
 
     constructor(props) {
       super(props);
@@ -50,11 +50,11 @@ const withPlayer = (Component) => {
       this.handlePlayButtonClick = this.handlePlayButtonClick.bind(this);
       this.handleFullScreenButtonClick = this.handleFullScreenButtonClick.bind(this);
 
-      this.isMounted = false;
+      this.mounted = false;
     }
 
     componentDidMount() {
-      this.isMounted = true;
+      this.mounted = true;
 
       const film = getFilmFromParameters(this.props.films, this.props.match.params.id);
       const {cover, videoLink} = film;
@@ -78,7 +78,7 @@ const withPlayer = (Component) => {
       });
 
       video.ontimeupdate = () => {
-        if (this.isMounted) {
+        if (this.mounted) {
           this.setState({
             progress: Math.floor(video.currentTime),
           });
@@ -120,7 +120,7 @@ const withPlayer = (Component) => {
       video.poster = ``;
       video.src = ``;
 
-      this.isMounted = false;
+      this.mounted = false;
     }
 
     handlePlayButtonClick() {

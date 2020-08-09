@@ -1,11 +1,9 @@
 import * as React from "react";
-import Enzyme, {shallow} from "enzyme";
+import {configure, shallow} from "enzyme";
 import * as Adapter from "enzyme-adapter-react-16";
 import ShowMoreButton from "../show-more/show-more";
 
-Enzyme.configure({
-  adapter: new Adapter()
-});
+configure({adapter: new Adapter()});
 
 const onFilmsCountToShowIncrement = jest.fn();
 

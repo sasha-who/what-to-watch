@@ -11,7 +11,6 @@ interface Props {
   onGenreChange: () => void;
   onFilmsCountToShowReset: () => void;
   onFilmsCountToShowIncrement?: () => void;
-  loadFilmComments: () => void;
 }
 
 const Catalog: React.FunctionComponent<Props> = (props: Props) => {
@@ -22,8 +21,7 @@ const Catalog: React.FunctionComponent<Props> = (props: Props) => {
     filmsCountToShow,
     onGenreChange,
     onFilmsCountToShowReset,
-    onFilmsCountToShowIncrement,
-    loadFilmComments
+    onFilmsCountToShowIncrement
   } = props;
 
   return (
@@ -39,7 +37,6 @@ const Catalog: React.FunctionComponent<Props> = (props: Props) => {
         films={filteredFilms}
         filmsCountToShow={filmsCountToShow}
         onFilmsCountToShowIncrement={onFilmsCountToShowIncrement}
-        loadFilmComments={loadFilmComments}
       />
     </section>
   );

@@ -24,7 +24,6 @@ it(`Main should render correctly`, () => {
             onGenreChange={noop}
             onFilmsCountToShowReset={noop}
             onFilmsCountToShowIncrement={noop}
-            loadFilmComments={noop}
             onFavoriteStatusChange={noop}
           />
         </Router>, {

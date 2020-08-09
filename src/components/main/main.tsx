@@ -17,7 +17,6 @@ interface Props {
   onGenreChange: () => void;
   onFilmsCountToShowReset: () => void;
   onFilmsCountToShowIncrement: () => void;
-  loadFilmComments: () => void;
   onFavoriteStatusChange: () => void;
 }
 
@@ -33,7 +32,6 @@ const Main: React.FunctionComponent<Props> = (props: Props) => {
     onGenreChange,
     onFilmsCountToShowReset,
     onFilmsCountToShowIncrement,
-    loadFilmComments,
     onFavoriteStatusChange
   } = props;
 
@@ -66,7 +64,6 @@ const Main: React.FunctionComponent<Props> = (props: Props) => {
           onGenreChange={onGenreChange}
           onFilmsCountToShowReset={onFilmsCountToShowReset}
           onFilmsCountToShowIncrement={onFilmsCountToShowIncrement}
-          loadFilmComments={loadFilmComments}
         />
         <Footer />
       </div>

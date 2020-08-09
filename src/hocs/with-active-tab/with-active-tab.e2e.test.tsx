@@ -1,5 +1,5 @@
 import * as React from "react";
-import Enzyme, {mount} from "enzyme";
+import {configure, mount} from "enzyme";
 import * as Adapter from "enzyme-adapter-react-16";
 import {films, TABS_DATA} from "../../test-mocks";
 import withActiveTab from "./with-active-tab";
@@ -9,9 +9,7 @@ interface Props {
   onActiveTabChange: (tab: string) => void;
 }
 
-Enzyme.configure({
-  adapter: new Adapter()
-});
+configure({adapter: new Adapter()});
 
 const [film] = films;
 

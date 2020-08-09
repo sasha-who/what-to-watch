@@ -1,4 +1,5 @@
 import * as React from "react";
+import {Subtract} from "utility-types";
 
 interface State {
   isValid: boolean;
@@ -10,7 +11,10 @@ interface InjectingProps {
 }
 
 const withValidityCheck = (Component) => {
-  class WithValidityCheck extends React.PureComponent<InjectingProps, State> {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithValidityCheck extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 
