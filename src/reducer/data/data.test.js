@@ -2,7 +2,6 @@ import MockAdapter from "axios-mock-adapter";
 import {HttpStatus} from "../../const";
 import {createAPI} from "../../api";
 import {reducer, ActionType, ActionCreator, Operation} from "./data";
-import {ActionType as AppStateActionType} from "../app-state/app-state";
 import {films, comments} from "../../test-mocks";
 
 const api = createAPI(() => {});

@@ -36,7 +36,7 @@ it(`withPlayer is rendered correctly`, () => {
         createNodeMock: (element) => {
           if (element.type === `video`) {
             return {
-              play: () => {}
+              play: noop
             };
           }
           return null;

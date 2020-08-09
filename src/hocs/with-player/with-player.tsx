@@ -4,6 +4,7 @@ import {Subtract} from "utility-types";
 import {VIDEO_CLASS_NAME} from "../../const";
 import {getFilmFromParameters} from "../../utils/common";
 import {Film} from "../../types";
+import {noop} from "../../utils/common";
 
 interface State {
   isPlaying: boolean;
@@ -87,8 +88,8 @@ const withPlayer = (Component) => {
       const playPromise = video.play();
 
       if (playPromise !== undefined && isPlaying) {
-        playPromise.then(() => {})
-        .catch(() => {});
+        playPromise.then(noop)
+        .catch(noop);
       }
     }
 
@@ -104,7 +105,7 @@ const withPlayer = (Component) => {
             video.pause();
           }
         })
-        .catch(() => {});
+        .catch(noop);
       }
     }
 
