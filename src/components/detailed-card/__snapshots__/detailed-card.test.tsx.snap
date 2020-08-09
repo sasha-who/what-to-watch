@@ -235,7 +235,7 @@ suspect in her murder.
               className="movie-card__director"
             >
               <strong>
-                Director:
+                Director: 
                 Otto Bathurst
               </strong>
             </p>
@@ -243,7 +243,7 @@ suspect in her murder.
               className="movie-card__starring"
             >
               <strong>
-                Starring:
+                Starring: 
                 Cillian Murphy, Sam Neill, Helen McCrory, Paul Anderson, Annabelle Wallis, Iddo Goldberg
                  and other
               </strong>
