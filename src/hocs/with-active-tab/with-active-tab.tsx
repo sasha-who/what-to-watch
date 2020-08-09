@@ -25,6 +25,14 @@ const withActiveTab = (Component) => {
       this.handleActiveTabChange = this.handleActiveTabChange.bind(this);
     }
 
+    handleActiveTabChange(name) {
+      if (this.state.activeTab !== name) {
+        this.setState({
+          activeTab: name
+        });
+      }
+    }
+
     render() {
       return (
         <Component
@@ -33,14 +41,6 @@ const withActiveTab = (Component) => {
           onActiveTabChange={this.handleActiveTabChange}
         />
       );
-    }
-
-    handleActiveTabChange(name) {
-      if (this.state.activeTab !== name) {
-        this.setState({
-          activeTab: name
-        });
-      }
     }
   }
 

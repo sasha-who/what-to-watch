@@ -25,6 +25,12 @@ const withValidityCheck = (Component) => {
       this.handleInputSwitchValidity = this.handleInputSwitchValidity.bind(this);
     }
 
+    handleInputSwitchValidity() {
+      this.setState((state) => ({
+        isValid: !state.isValid
+      }));
+    }
+
     render() {
       return (
         <Component
@@ -33,12 +39,6 @@ const withValidityCheck = (Component) => {
           onInputValidityChange={this.handleInputSwitchValidity}
         />
       );
-    }
-
-    handleInputSwitchValidity() {
-      this.setState((state) => ({
-        isValid: !state.isValid
-      }));
     }
   }
 

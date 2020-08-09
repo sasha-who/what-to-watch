@@ -44,18 +44,6 @@ const withFilmCard = (Component) => {
       this.mounted = false;
     }
 
-    render() {
-      return (
-        <Component
-          {...this.props}
-          isPlaying={this.state.isPlaying}
-          onStartPlaying={this.handleStartPlaying}
-          onStopPlaying={this.handleStopPlaying}
-          onHoverChange={this.handleHoverChange}
-        />
-      );
-    }
-
     handleStartPlaying() {
       const timerId = window.setTimeout(() => {
         if (this.mounted) {
@@ -78,6 +66,18 @@ const withFilmCard = (Component) => {
 
     handleHoverChange() {
       clearTimeout(this.state.currentTimer);
+    }
+
+    render() {
+      return (
+        <Component
+          {...this.props}
+          isPlaying={this.state.isPlaying}
+          onStartPlaying={this.handleStartPlaying}
+          onStopPlaying={this.handleStopPlaying}
+          onHoverChange={this.handleHoverChange}
+        />
+      );
     }
   }
 

@@ -42,48 +42,6 @@ const getRatingGrade = (rating) => {
 };
 
 class Tabs extends React.PureComponent<Props, null> {
-  render() {
-    const {
-      activeTab,
-      onActiveTabChange
-    } = this.props;
-
-    return (
-      <React.Fragment>
-        <nav className="movie-nav movie-card__nav">
-          <ul className="movie-nav__list">
-            {TabsData.map((tab) => {
-              const {name, content} = tab;
-              const activeClass = classNames({
-                'movie-nav__item--active': activeTab === name
-              });
-
-              return (
-                <li
-                  key={name}
-                  className={`movie-nav__item ${activeClass}`}
-                >
-                  <a
-                    href="#"
-                    className="movie-nav__link"
-                    onClick={(evt) => {
-                      evt.preventDefault();
-
-                      onActiveTabChange(name);
-                    }}
-                  >
-                    {content}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-        {this._renderTabContent()}
-      </React.Fragment>
-    );
-  }
-
   _getOverviewTab() {
     const {
       rating,
@@ -220,6 +178,48 @@ class Tabs extends React.PureComponent<Props, null> {
       default:
         return this._getOverviewTab();
     }
+  }
+
+  render() {
+    const {
+      activeTab,
+      onActiveTabChange
+    } = this.props;
+
+    return (
+      <React.Fragment>
+        <nav className="movie-nav movie-card__nav">
+          <ul className="movie-nav__list">
+            {TabsData.map((tab) => {
+              const {name, content} = tab;
+              const activeClass = classNames({
+                'movie-nav__item--active': activeTab === name
+              });
+
+              return (
+                <li
+                  key={name}
+                  className={`movie-nav__item ${activeClass}`}
+                >
+                  <a
+                    href="#"
+                    className="movie-nav__link"
+                    onClick={(evt) => {
+                      evt.preventDefault();
+
+                      onActiveTabChange(name);
+                    }}
+                  >
+                    {content}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+        {this._renderTabContent()}
+      </React.Fragment>
+    );
   }
 }
 
