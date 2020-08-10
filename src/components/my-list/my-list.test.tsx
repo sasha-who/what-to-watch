@@ -16,7 +16,6 @@ it(`MyList should render correctly`, () => {
           <MyList
             favoriteFilms={films}
             isFavoriteFilmsLoaded={true}
-            loadFilmComments={noop}
             loadFavoriteFilms={noop}
             authorizationStatus={AuthorizationStatus.AUTHORIZED}
             authorizationData={userData}

@@ -198,7 +198,6 @@ const App: React.FunctionComponent<Props> = (props: Props) => {
               {...routeProps}
               favoriteFilms={favoriteFilms}
               isFavoriteFilmsLoaded={isFavoriteFilmsLoaded}
-              loadFilmComments={loadFilmComments}
               loadFavoriteFilms={loadFavoriteFilms}
               authorizationData={authorizationData}
               authorizationStatus={authorizationStatus}

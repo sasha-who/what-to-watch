@@ -6,6 +6,7 @@ import withActiveTab from "./with-active-tab";
 import {noop} from "../../utils/common";
 
 interface Props {
+  activeTab: string;
   onActiveTabChange: (tab: string) => void;
 }
 
@@ -39,7 +40,6 @@ const TabsWrapped = withActiveTab(Tabs);
 
 const wrapper = mount(
     <TabsWrapped
-      film={film}
       activeTab={TABS_DATA[0]}
       onActiveTabChange={noop}
     />

@@ -12,7 +12,6 @@ interface Props {
   isFavoriteFilmsLoaded: boolean;
   authorizationStatus: string;
   authorizationData: AuthorizationData;
-  loadFilmComments: () => void;
   loadFavoriteFilms: () => void;
 }
 
@@ -28,7 +27,6 @@ class MyList extends React.PureComponent<Props, null> {
   render(): React.ReactNode {
     const {
       favoriteFilms,
-      loadFilmComments,
       isFavoriteFilmsLoaded,
       authorizationData,
       authorizationStatus
@@ -61,7 +59,6 @@ class MyList extends React.PureComponent<Props, null> {
           {favoriteFilms.map((film) => (
             <FilmCardWrapped
               film={film}
-              loadFilmComments={loadFilmComments}
               key={film.id}
             />
           ))}
