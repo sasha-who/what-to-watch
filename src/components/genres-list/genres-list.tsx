@@ -29,6 +29,7 @@ const getGenreWithCapital = (genre) => {
 class GenresList extends React.PureComponent<Props, null> {
   componentWillUnmount(): void {
     this.props.onGenreChange(DEFAULT_GENRE);
+    this.props.onFilmsCountToShowReset();
   }
 
   render(): React.ReactNode {

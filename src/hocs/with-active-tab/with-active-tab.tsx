@@ -10,7 +10,7 @@ interface InjectingProps {
   onActiveTabChange: (name: string) => void;
 }
 
-const withActiveTab = <Props extends InjectingProps>(Component: React.ComponentType<Props>) => {
+const withActiveTab = (Component) => {
   type P = React.ComponentProps<typeof Component>;
   type T = Subtract<P, InjectingProps>;
 
@@ -36,7 +36,7 @@ const withActiveTab = <Props extends InjectingProps>(Component: React.ComponentT
     render() {
       return (
         <Component
-          {...this.props as Props}
+          {...this.props}
           activeTab={this.state.activeTab}
           onActiveTabChange={this.handleActiveTabChange}
         />

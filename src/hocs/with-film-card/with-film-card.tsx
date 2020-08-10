@@ -14,7 +14,7 @@ interface InjectingProps {
   onHoverChange: () => void;
 }
 
-const withFilmCard = <Props extends InjectingProps>(Component: React.ComponentType<Props>) => {
+const withFilmCard = (Component) => {
   type P = React.ComponentProps<typeof Component>;
   type T = Subtract<P, InjectingProps>;
 
@@ -71,7 +71,7 @@ const withFilmCard = <Props extends InjectingProps>(Component: React.ComponentTy
     render() {
       return (
         <Component
-          {...this.props as Props}
+          {...this.props}
           isPlaying={this.state.isPlaying}
           onStartPlaying={this.handleStartPlaying}
           onStopPlaying={this.handleStopPlaying}

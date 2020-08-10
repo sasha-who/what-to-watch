@@ -29,7 +29,7 @@ interface InjectingProps {
   onFullScreenButtonClick: () => void;
 }
 
-const withPlayer = <HocProps extends InjectingProps>(Component: React.ComponentType<HocProps>) => {
+const withPlayer = (Component) => {
   type P = React.ComponentProps<typeof Component>;
   type T = Props & Subtract<P, InjectingProps>;
 
@@ -144,7 +144,7 @@ const withPlayer = <HocProps extends InjectingProps>(Component: React.ComponentT
 
       return (
         <Component
-          {...this.props as HocProps}
+          {...this.props}
           film={film}
           isPlaying={this.state.isPlaying}
           isLoading={this.state.isLoading}

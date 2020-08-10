@@ -12,8 +12,6 @@ interface Props {
 
 configure({adapter: new Adapter()});
 
-const [film] = films;
-
 const Tabs = (props: Props) => {
   const {onActiveTabChange} = props;
 
