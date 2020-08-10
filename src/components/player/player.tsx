@@ -5,7 +5,7 @@ import {Film} from "../../types";
 
 interface Props {
   film: Film;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   isPlaying: boolean;
   isLoading: boolean;
   progress: number;
