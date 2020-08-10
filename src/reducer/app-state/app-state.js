@@ -2,8 +2,8 @@ import {
   DEFAULT_GENRE,
   INITIAL_FILMS_COUNT,
   ADDITIONAL_FILMS_COUNT
-} from "../../const.js";
-import {extend} from "../../utils/common.js";
+} from "../../const";
+import {extend} from "../../utils/common";
 
 const initialState = {
   currentGenre: DEFAULT_GENRE,

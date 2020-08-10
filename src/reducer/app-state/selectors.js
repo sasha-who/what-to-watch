@@ -1,7 +1,7 @@
 import {createSelector} from "reselect";
-import {getFilmsFilteredByGenre, getSimilarForCurrentFilm} from "../../utils/common.js";
-import NameSpace from "../name-space.js";
-import {getFilms, getFilmsLoadState} from "../data/selectors.js";
+import {getFilmsFilteredByGenre, getSimilarForCurrentFilm} from "../../utils/common";
+import NameSpace from "../name-space";
+import {getFilms, getFilmsLoadState} from "../data/selectors";
 
 const NAME_SPACE = NameSpace.APP_STATE;
 

@@ -12,7 +12,6 @@ export const SECONDS_IN_MINUTE_COUNT = 60;
 export const SERVER_TIMEOUT = 5000;
 export const RATING_START_COUNT = 5;
 export const STAR_CHECKED_BY_DEFAULT = 3;
-export const REVIEW_MIN_LENGTH = 50;
 
 export const RatingRange = {
   MIN: 0,
@@ -134,4 +133,9 @@ export const HeaderType = {
 export const Url = {
   ACADEMY: `https://4.react.pages.academy`,
   WHAT_TO_WHATCH: `https://4.react.pages.academy/wtw`
+};
+
+export const ReviewLength = {
+  MIN_LENGTH: 50,
+  MAX_LENGTH: 400
 };

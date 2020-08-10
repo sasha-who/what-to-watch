@@ -4,7 +4,7 @@ import {
   RUN_TIME_FORMAT,
   DEFAULT_GENRE,
   RECOMENDED_FILMS_COUNT
-} from "../const.js";
+} from "../const";
 
 export const getRandomIntegerNumber = (min, max) => {
   min = Math.ceil(min);
@@ -70,4 +70,8 @@ export const getFilmFromParameters = (films, id) => {
   const index = films.findIndex((film) => film.id === Number(id));
 
   return films[index];
+};
+
+export const noop = () => {
+  // do nothing
 };
