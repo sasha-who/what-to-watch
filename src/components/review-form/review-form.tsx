@@ -19,7 +19,7 @@ class ReviewForm extends React.PureComponent<Props, null> {
   private postButtonRef: React.RefObject<HTMLInputElement>;
   private inputsRefs: MultiRef<unknown, unknown>;
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.inputsRefs = new MultiRef();
@@ -29,7 +29,7 @@ class ReviewForm extends React.PureComponent<Props, null> {
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(): void {
     const requestStatus = this.props.commentPostStatus;
 
     switch (requestStatus) {
@@ -54,7 +54,7 @@ class ReviewForm extends React.PureComponent<Props, null> {
     }
   }
 
-  handleFormSubmit(evt) {
+  handleFormSubmit(evt: {preventDefault: () => void;}): void {
     const {
       film,
       postReview
@@ -77,7 +77,7 @@ class ReviewForm extends React.PureComponent<Props, null> {
     }, film.id);
   }
 
-  render() {
+  render(): React.ReactNode {
     const {commentPostStatus} = this.props;
 
     return (

@@ -14,14 +14,14 @@ interface InjectingProps {
   onHoverChange: () => void;
 }
 
-const withFilmCard = (Component) => {
+const withFilmCard = <Props extends InjectingProps>(Component: React.ComponentType<Props>) => {
   type P = React.ComponentProps<typeof Component>;
   type T = Subtract<P, InjectingProps>;
 
   class WithFilmCard extends React.PureComponent<T, State> {
     private mounted: boolean;
 
-    constructor(props) {
+    constructor(props: T) {
       super(props);
 
       this.state = {
@@ -71,7 +71,7 @@ const withFilmCard = (Component) => {
     render() {
       return (
         <Component
-          {...this.props}
+          {...this.props as Props}
           isPlaying={this.state.isPlaying}
           onStartPlaying={this.handleStartPlaying}
           onStopPlaying={this.handleStopPlaying}

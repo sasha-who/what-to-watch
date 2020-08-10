@@ -9,13 +9,13 @@ interface Props {
 class VideoPlayer extends React.PureComponent<Props, null> {
   private videoRef: React.RefObject<HTMLVideoElement>;
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.videoRef = React.createRef();
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     const {isPlaying} = this.props;
     const video = this.videoRef.current;
 
@@ -28,14 +28,14 @@ class VideoPlayer extends React.PureComponent<Props, null> {
     }
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     const video = this.videoRef.current;
 
     video.onpause = null;
     video.src = ``;
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(): void {
     const {isPlaying} = this.props;
     const video = this.videoRef.current;
 
@@ -47,7 +47,7 @@ class VideoPlayer extends React.PureComponent<Props, null> {
     }
   }
 
-  render() {
+  render(): React.ReactNode {
     const {previewVideo, defaultImage} = this.props;
 
     return (

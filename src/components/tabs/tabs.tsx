@@ -15,7 +15,7 @@ import {Film, Comment} from "../../types";
 interface Props {
   film: Film;
   activeFilmComments: Comment[];
-  activeTab: string;
+  activeTab?: string;
   onActiveTabChange: (name: string) => void;
 }
 
@@ -42,7 +42,7 @@ const getRatingGrade = (rating) => {
 };
 
 class Tabs extends React.PureComponent<Props, null> {
-  _getOverviewTab() {
+  _getOverviewTab(): React.ReactNode {
     const {
       rating,
       ratingsCount,
@@ -77,7 +77,7 @@ class Tabs extends React.PureComponent<Props, null> {
     );
   }
 
-  _getDetailsTab() {
+  _getDetailsTab(): React.ReactNode {
     const {
       genre,
       director,
@@ -123,7 +123,7 @@ class Tabs extends React.PureComponent<Props, null> {
     );
   }
 
-  _getReviewsTab() {
+  _getReviewsTab(): React.ReactNode {
     const {activeFilmComments} = this.props;
     const commentsInFirstColumn = Math.ceil(activeFilmComments.length / REVIEWS_COLUMNS_COUNT);
 
@@ -143,7 +143,7 @@ class Tabs extends React.PureComponent<Props, null> {
     );
   }
 
-  _getReviewMarkup(review) {
+  _getReviewMarkup(review: Comment): React.ReactNode {
     const {id, text, rating, userName, date} = review;
     const reviewDateInHumanFormat = moment(date).format(ReviewDate.HUMAN_FORMAT);
     const reviewDateInServiceFormat = moment(date).format(ReviewDate.SERVICE_FORMAT);
@@ -164,7 +164,7 @@ class Tabs extends React.PureComponent<Props, null> {
     );
   }
 
-  _renderTabContent() {
+  _renderTabContent(): React.ReactNode {
     switch (this.props.activeTab) {
       case TabsNames.OVERVIEW:
         return this._getOverviewTab();
@@ -180,7 +180,7 @@ class Tabs extends React.PureComponent<Props, null> {
     }
   }
 
-  render() {
+  render(): React.ReactNode {
     const {
       activeTab,
       onActiveTabChange

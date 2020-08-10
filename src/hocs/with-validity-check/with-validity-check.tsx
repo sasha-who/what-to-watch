@@ -10,12 +10,12 @@ interface InjectingProps {
   onInputValidityChange: () => void;
 }
 
-const withValidityCheck = (Component) => {
+const withValidityCheck = <Props extends InjectingProps>(Component: React.ComponentType<Props>) => {
   type P = React.ComponentProps<typeof Component>;
   type T = Subtract<P, InjectingProps>;
 
   class WithValidityCheck extends React.PureComponent<T, State> {
-    constructor(props) {
+    constructor(props: T) {
       super(props);
 
       this.state = {
@@ -34,7 +34,7 @@ const withValidityCheck = (Component) => {
     render() {
       return (
         <Component
-          {...this.props}
+          {...this.props as Props}
           isInputValid={this.state.isValid}
           onInputValidityChange={this.handleInputSwitchValidity}
         />

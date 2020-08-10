@@ -15,7 +15,7 @@ class AuthorizationScreen extends React.PureComponent<Props, null> {
   private emailRef: React.RefObject<HTMLInputElement>;
   private passwordRef: React.RefObject<HTMLInputElement>;
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.emailRef = React.createRef();
@@ -24,7 +24,7 @@ class AuthorizationScreen extends React.PureComponent<Props, null> {
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
-  handleFormSubmit(evt) {
+  handleFormSubmit(evt: {preventDefault: () => void;}): void {
     const {onAuthorizationFormSubmit} = this.props;
 
     evt.preventDefault();
@@ -35,7 +35,7 @@ class AuthorizationScreen extends React.PureComponent<Props, null> {
     });
   }
 
-  render() {
+  render(): React.ReactNode {
     const {
       isInputValid,
       onInputValidityChange,

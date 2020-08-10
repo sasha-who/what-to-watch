@@ -29,7 +29,7 @@ interface InjectingProps {
   onFullScreenButtonClick: () => void;
 }
 
-const withPlayer = (Component) => {
+const withPlayer = <HocProps extends InjectingProps>(Component: React.ComponentType<HocProps>) => {
   type P = React.ComponentProps<typeof Component>;
   type T = Props & Subtract<P, InjectingProps>;
 
@@ -37,7 +37,7 @@ const withPlayer = (Component) => {
     private videoRef: React.RefObject<HTMLVideoElement>;
     private mounted: boolean;
 
-    constructor(props) {
+    constructor(props: T) {
       super(props);
 
       this.state = {
@@ -144,7 +144,7 @@ const withPlayer = (Component) => {
 
       return (
         <Component
-          {...this.props}
+          {...this.props as HocProps}
           film={film}
           isPlaying={this.state.isPlaying}
           isLoading={this.state.isLoading}

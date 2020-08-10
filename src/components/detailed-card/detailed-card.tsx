@@ -34,7 +34,7 @@ interface Props extends RouteComponentProps<MatchParams> {
 const TabsWrapped = withActiveTab(Tabs);
 
 class DetailedFilmCard extends React.PureComponent<Props, null> {
-  componentDidMount() {
+  componentDidMount(): void {
     const {films, loadFilmComments, onActiveFilmChange} = this.props;
     const film = getFilmFromParameters(films, this.props.match.params.id);
 
@@ -42,7 +42,7 @@ class DetailedFilmCard extends React.PureComponent<Props, null> {
     onActiveFilmChange(film);
   }
 
-  render() {
+  render(): React.ReactNode {
     const {
       authorizationStatus,
       authorizationData,
